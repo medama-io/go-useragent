@@ -7,76 +7,36 @@ import (
 	"github.com/stretchr/testify/assert"
 )
 
-var matchTests = map[string][]ua.MatchResults{
-	// Browsers
-	// Chrome
-	"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/118.0.0.0 Safari/537.36": {
-		{
-			StartIndex: 98,
-			EndIndex:   104,
-			Match:      ua.Safari,
-			Precedence: 1,
-		},
-		{
-			StartIndex: 81,
-			EndIndex:   87,
-			Match:      ua.Chrome,
-			Precedence: 2,
-		},
-		{
-			StartIndex: 13,
-			EndIndex:   20,
-			Match:      ua.Windows,
-			Precedence: 1,
-		},
-	},
-	"Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/119.0.0.0 Safari/537.36": {
-		{
-			StartIndex: 93,
-			EndIndex:   99,
-			Match:      ua.Safari,
-			Precedence: 1,
-		},
-		{
-			StartIndex: 76,
-			EndIndex:   82,
-			Match:      ua.Chrome,
-			Precedence: 2,
-		},
-		{
-			StartIndex: 13,
-			EndIndex:   20,
-			Match:      ua.Windows,
-			Precedence: 1,
-		},
-	},
-	"Mozilla/5.0 (Windows NT 10.0) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/119.0.0.0 Safari/537.36": {
-		{
-			StartIndex: 86,
-			EndIndex:   92,
-			Match:      ua.Safari,
-			Precedence: 1,
-		},
-		{
-			StartIndex: 69,
-			EndIndex:   75,
-			Match:      ua.Chrome,
-			Precedence: 2,
-		},
-		{
-			StartIndex: 13,
-			EndIndex:   20,
-			Match:      ua.Windows,
-			Precedence: 1,
-		},
-	},
+var matchResults = [][]string{
+	// Windows
+	{ua.Safari, ua.Chrome, ua.Windows},
+	{ua.Safari, ua.Chrome, ua.Windows},
+	{ua.Windows, ua.IE},
+	{ua.Windows, ua.IE},
+	{ua.Edge, ua.Safari, ua.Chrome, ua.Windows},
+	// Mac
+	{ua.Safari, ua.MacOS},
+	{ua.Safari, ua.Chrome, ua.MacOS},
+	{ua.Firefox, ua.MacOS},
+	{ua.Vivaldi, ua.Safari, ua.Chrome, ua.MacOS},
+	{ua.Edge, ua.Safari, ua.Chrome, ua.MacOS},
 }
 
 func TestMatchTokenIndexes(t *testing.T) {
 	assert := assert.New(t)
 
-	for test, result := range matchTests {
-		match := ua.MatchTokenIndexes(test)
-		assert.Equal(result, match)
+	// Refer to version_test.go for versionResults test cases
+	for i, v := range versionResults {
+		match := ua.MatchTokenIndexes(v)
+
+		if len(match) != len(matchResults[i]) {
+			t.Errorf("Test Case: %s, expected %d matches, got %d\nMatch Index: %d", v, len(match), len(matchResults[i]), i)
+			t.FailNow()
+		}
+
+		for j, m := range match {
+			assert.Equal(matchResults[i][j], m.Match, "Test Case: %s\nMatch Number: %d\nExpected: %v", v, i, match)
+		}
+
 	}
 }

@@ -18,14 +18,20 @@ type UserAgent struct {
 	OS      string
 	Device  string
 
-	precedence *Precedence
+	precedence Precedence
+}
+
+// populateTrie populates the trie with user agent data.
+func (p *Parser) populateTrie() {
+	p.trie.Put("Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/118.0.0.0 Safari/537.36")
 }
 
 // Create a new Trie and populate it with user agent data.
 func NewParser() *Parser {
 	trie := NewRuneTrie()
-
-	return &Parser{trie: trie}
+	parser := &Parser{trie: trie}
+	parser.populateTrie()
+	return parser
 }
 
 // Parse a user agent string and return a UserAgent struct.

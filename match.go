@@ -16,6 +16,7 @@ const (
 	IE      = "IE"
 	Opera   = "Opera"
 	Safari  = "Safari"
+	Vivaldi = "Vivaldi"
 
 	// Devices
 
@@ -44,11 +45,12 @@ const (
 var MatchMap = map[string][]string{
 	// Browsers
 	Chrome:  {"Chrome"},
-	Edge:    {"Edge"},
+	Edge:    {"Edge", "Edg"},
 	Firefox: {"Firefox"},
 	IE:      {"MSIE", "Trident"},
 	Opera:   {"Opera"},
 	Safari:  {"Safari"},
+	Vivaldi: {"Vivaldi"},
 	// Devices
 	Android: {"Android"},
 	iPad:    {"iPad"},
@@ -81,6 +83,7 @@ var MatchPrecedenceMap = map[string]int{
 	IE:      4,
 	Opera:   5,
 	Edge:    6,
+	Vivaldi: 7,
 
 	// Devices
 	Android: 1,
@@ -97,7 +100,6 @@ var MatchPrecedenceMap = map[string]int{
 }
 
 type MatchResults struct {
-	StartIndex int
 	EndIndex   int
 	Match      string
 	Precedence int
@@ -118,7 +120,20 @@ func MatchTokenIndexes(ua string) []MatchResults {
 			}
 
 			lastIndex := indexes[len(indexes)-1]
-			results = append(results, MatchResults{StartIndex: lastIndex[0], EndIndex: lastIndex[1], Match: key, Precedence: MatchPrecedenceMap[key]})
+
+			// Check if key match doesn't already exist in results.
+			// This is to prevent duplicate matches in the trie.
+			exists := false
+			for _, r := range results {
+				if r.Match == key {
+					exists = true
+					break
+				}
+			}
+
+			if !exists {
+				results = append(results, MatchResults{EndIndex: lastIndex[1], Match: key, Precedence: MatchPrecedenceMap[key]})
+			}
 		}
 	}
 
@@ -133,7 +148,7 @@ func MatchTokenIndexes(ua string) []MatchResults {
 }
 
 // This adds a matching constant to a user agent struct.
-func (ua *UserAgent) addMatch(result *Result, existingPrecedence *Precedence) {
+func (ua *UserAgent) addMatch(result *Result, existingPrecedence Precedence) {
 	match := result.result
 	precedence := result.precedence
 
