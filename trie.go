@@ -15,6 +15,9 @@ type Result struct {
 type RuneTrie struct {
 	children map[rune]*RuneTrie
 	result   *Result
+	// Number of runes to skip when iterating over the trie. This is used
+	// to skip over version numbers or language codes.
+	skipIndex int
 }
 
 // NewRuneTrie allocates and returns a new *RuneTrie.
@@ -33,8 +36,14 @@ func (trie *RuneTrie) Get(key string) *UserAgent {
 	// Flag to indicate if we are currently iterating over a version number.
 	isVersion := false
 	isMacVersion := false
+	skipCount := uint8(0)
 
 	for i, r := range key {
+		if skipCount > 0 {
+			skipCount--
+			continue
+		}
+
 		// If we encounter a potential version, skip the runes until we reach
 		// the end of the version number.
 		if r == '/' {
@@ -59,6 +68,13 @@ func (trie *RuneTrie) Get(key string) *UserAgent {
 		// We want to strip any other version numbers from other products to get more hits
 		// to the trie.
 		if unicode.IsDigit(r) || (r == '.' && len(key) > i+1 && unicode.IsDigit(rune(key[i+1]))) {
+			continue
+		}
+
+		// Identify and skip language codes e.g. en-US, zh-cn
+		if len(key) > i+6 && r == ' ' && unicode.IsLetter(rune(key[i+1])) && unicode.IsLetter(rune(key[i+2])) && (key[i+3] == '-' || key[i+3] == '_') && unicode.IsLetter(rune(key[i+4])) && unicode.IsLetter(rune(key[i+5])) && (key[i+6] == ' ' || key[i+6] == ')' || key[i+6] == ';') {
+			// Add the number of runes to skip to the skip count.
+			skipCount += 6
 			continue
 		}
 

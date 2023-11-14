@@ -63,10 +63,10 @@ var MatchMap = map[string][]string{
 	Windows:  {Windows},
 
 	// Types
-	Desktop: {Desktop},
-	Mobile:  {Mobile, "ONEPLUS", "Huawei", "HTC", "Galaxy"},
-	Tablet:  {Tablet, "Touch"},
-	TV:      {TV, "Large Screen", "Smart Display"},
+	Desktop: {Desktop, "Ubuntu", "Fedora"},
+	Mobile:  {Mobile, "ONEPLUS", "Huawei", "HTC", "Galaxy", iPhone, iPod, "Windows Phone"},
+	Tablet:  {Tablet, "Touch", iPad},
+	TV:      {TV, "Large Screen", "Smart Display", "PLAYSTATION"},
 	Bot:     {Bot, "bot", "Yahoo! Slurp", "LinkCheck", "QuickLook", "Haosou", "Yahoo Ad", "GoogleProber", "GoogleProducer", "Mediapartners", "Headless", "facebookexternalhit", "facebookcatalog"},
 }
 
@@ -220,6 +220,7 @@ func (ua *UserAgent) addMatch(result *Result, existingPrecedence Precedence) {
 			ua.OS = MacOS
 		case Windows:
 			ua.OS = Windows
+			ua.Desktop = true
 		}
 
 		ua.precedence.OS = precedence
@@ -236,7 +237,9 @@ func (ua *UserAgent) addMatch(result *Result, existingPrecedence Precedence) {
 			}
 			ua.Tablet = true
 		case Mobile, iPhone, iPod, Android, OperaMini:
-			ua.Mobile = true
+			if !ua.Tablet {
+				ua.Mobile = true
+			}
 		case TV:
 			ua.TV = true
 		case Bot:

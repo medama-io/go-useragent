@@ -26,8 +26,8 @@ var matchResults = [][]string{
 	// Linux
 	{ua.Firefox, ua.Linux},
 	{ua.Firefox, ua.Linux},
-	{ua.Firefox, ua.Linux},
-	{ua.Firefox, ua.Linux},
+	{ua.Firefox, ua.Linux, ua.Desktop},
+	{ua.Firefox, ua.Linux, ua.Desktop},
 	{ua.Safari, ua.Chrome, ua.Linux},
 }
 

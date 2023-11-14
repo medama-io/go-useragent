@@ -12,20 +12,26 @@ func RemoveVersions(ua string) string {
 	// Flag to indicate if we are currently iterating over a version number.
 	isVersion := false
 	isMacVersion := false
+	skipCount := uint8(0)
 	indexesToReplace := []int{}
 
 	for i, r := range ua {
+		if skipCount > 0 {
+			skipCount--
+			continue
+		}
+
 		// If we encouter a slash, we can assume the version number is next.
 		if r == '/' {
 			isVersion = true
-		} else if r == ' ' {
+		} else if unicode.IsSpace(r) {
 			// If we encounter a space, we can assume the version number is over.
 			isVersion = false
 		}
 
 		// Mac OS X version numbers are separated by "X " followed by a version number
 		// with underscores.
-		if r == 'X' && len(ua) > i+1 && ua[i+1] == ' ' {
+		if r == 'X' && len(ua) > i+1 && unicode.IsSpace(rune(ua[i+1])) {
 			isMacVersion = true
 		} else if r == ')' {
 			isMacVersion = false
@@ -43,6 +49,15 @@ func RemoveVersions(ua string) string {
 		// would change the indexes of the remaining runes.
 		if isVersion || isMacVersion {
 			indexesToReplace = append(indexesToReplace, i)
+			continue
+		}
+
+		// Identify and skip language codes e.g. en-US, zh-cn, en_US, ZH_cn
+		if len(ua) > i+6 && unicode.IsSpace(r) && unicode.IsLetter(rune(ua[i+1])) && unicode.IsLetter(rune(ua[i+2])) && (ua[i+3] == '-' || ua[i+3] == '_') && unicode.IsLetter(rune(ua[i+4])) && unicode.IsLetter(rune(ua[i+5])) && (unicode.IsSpace(rune(ua[i+6])) || ua[i+6] == ')' || ua[i+6] == ';') {
+			// Add the number of runes to skip to the skip count.
+			skipCount += 6
+			indexesToReplace = append(indexesToReplace, i, i+1, i+2, i+3, i+4, i+5, i+6)
+			continue
 		}
 	}
 
