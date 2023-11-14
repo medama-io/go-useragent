@@ -25,6 +25,11 @@ func NewRuneTrie() *RuneTrie {
 	return new(RuneTrie)
 }
 
+// IsDigit reports whether the rune is a decimal digit.
+func IsDigit(r rune) bool {
+	return '0' <= r && r <= '9'
+}
+
 // Get returns the value stored at the given key. Returns nil for internal
 // nodes or for nodes with a value of nil.
 func (trie *RuneTrie) Get(key string) *UserAgent {
@@ -67,7 +72,7 @@ func (trie *RuneTrie) Get(key string) *UserAgent {
 
 		// We want to strip any other version numbers from other products to get more hits
 		// to the trie.
-		if unicode.IsDigit(r) || (r == '.' && len(key) > i+1 && unicode.IsDigit(rune(key[i+1]))) {
+		if IsDigit(r) || (r == '.' && len(key) > i+1 && IsDigit(rune(key[i+1]))) {
 			continue
 		}
 
