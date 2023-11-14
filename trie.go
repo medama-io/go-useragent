@@ -1,5 +1,7 @@
 package useragent
 
+import "unicode"
+
 type Result struct {
 	result     string
 	precedence int
@@ -33,9 +35,6 @@ func (trie *RuneTrie) Get(key string) *UserAgent {
 		// the end of the version number.
 		if r == '/' {
 			isVersion = true
-			if node.result != nil {
-				ua.addMatch(node.result, ua.precedence)
-			}
 			continue
 		} else if r == ' ' {
 			isVersion = false
@@ -50,6 +49,12 @@ func (trie *RuneTrie) Get(key string) *UserAgent {
 		}
 
 		if isVersion || isMacVersion {
+			continue
+		}
+
+		// We want to strip any other version numbers from other products to get more hits
+		// to the trie.
+		if unicode.IsDigit(r) || (r == '.' && unicode.IsDigit(rune(key[i+1]))) {
 			continue
 		}
 

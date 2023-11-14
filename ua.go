@@ -18,6 +18,10 @@ type UserAgent struct {
 	OS      string
 	Device  string
 
+	Desktop bool
+	Mobile  bool
+	Tablet  bool
+
 	precedence Precedence
 }
 

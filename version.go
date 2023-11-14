@@ -1,5 +1,7 @@
 package useragent
 
+import "unicode"
+
 // RemoveVersions removes the version numbers from the user agent string.
 func RemoveVersions(ua string) string {
 	// Flag to indicate if we are currently iterating over a version number.
@@ -22,6 +24,13 @@ func RemoveVersions(ua string) string {
 			isMacVersion = true
 		} else if r == ')' {
 			isMacVersion = false
+		}
+
+		// We want to strip any other version numbers from other products to get more hits
+		// to the trie.
+		if unicode.IsDigit(r) || (r == '.' && unicode.IsDigit(rune(ua[i+1]))) {
+			indexesToReplace = append(indexesToReplace, i)
+			continue
 		}
 
 		// If we are currently iterating over a version number, add the index to the

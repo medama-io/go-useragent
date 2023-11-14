@@ -9,7 +9,6 @@ import (
 const (
 	// The following constants are used to determine agents.
 	// Browsers
-
 	Chrome  = "Chrome"
 	Edge    = "Edge"
 	Firefox = "Firefox"
@@ -19,14 +18,12 @@ const (
 	Vivaldi = "Vivaldi"
 
 	// Devices
-
 	Android = "Android"
 	iPad    = "iPad"
 	iPhone  = "iPhone"
 	iPod    = "iPod"
 
 	// Operating Systems
-
 	AndroidOS = "AndroidOS"
 	ChromeOS  = "ChromeOS"
 	iOS       = "iOS"
@@ -34,10 +31,11 @@ const (
 	MacOS     = "MacOS"
 	Windows   = "Windows"
 
-	// Other
+	// Types
 	Desktop = "Desktop"
 	Mobile  = "Mobile"
 	Tablet  = "Tablet"
+
 	Unknown = "Unknown"
 )
 
@@ -51,11 +49,13 @@ var MatchMap = map[string][]string{
 	Opera:   {"Opera"},
 	Safari:  {"Safari"},
 	Vivaldi: {"Vivaldi"},
+
 	// Devices
 	Android: {"Android"},
 	iPad:    {"iPad"},
 	iPhone:  {"iPhone"},
 	iPod:    {"iPod"},
+
 	// Operating Systems
 	AndroidOS: {"Android"},
 	ChromeOS:  {"CrOS"},
@@ -63,6 +63,10 @@ var MatchMap = map[string][]string{
 	Linux:     {"Linux"},
 	MacOS:     {"Macintosh"},
 	Windows:   {"Windows"},
+
+	// Types
+	Mobile: {"Mobile"},
+	Tablet: {"Tablet"},
 }
 
 // MatchPrecedenceMap is a map of user agent types to their importance
@@ -179,10 +183,13 @@ func (ua *UserAgent) addMatch(result *Result, existingPrecedence Precedence) {
 			ua.Device = Android
 		case iPad:
 			ua.Device = iPad
+			ua.Tablet = true
 		case iPhone:
 			ua.Device = iPhone
+			ua.Mobile = true
 		case iPod:
 			ua.Device = iPod
+			ua.Mobile = true
 		}
 
 		ua.precedence.Device = precedence
@@ -195,10 +202,12 @@ func (ua *UserAgent) addMatch(result *Result, existingPrecedence Precedence) {
 			ua.OS = AndroidOS
 		case ChromeOS:
 			ua.OS = ChromeOS
+			ua.Desktop = true
 		case iOS:
 			ua.OS = iOS
 		case Linux:
 			ua.OS = Linux
+			ua.Desktop = true
 		case MacOS:
 			ua.OS = MacOS
 		case Windows:
@@ -206,5 +215,9 @@ func (ua *UserAgent) addMatch(result *Result, existingPrecedence Precedence) {
 		}
 
 		ua.precedence.OS = precedence
+	}
+
+	if result.result == Mobile {
+		ua.Mobile = true
 	}
 }
