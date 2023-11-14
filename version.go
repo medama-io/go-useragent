@@ -79,6 +79,20 @@ func CleanAgentsFile() error {
 	for _, line := range lines {
 		cleanedLine := RemoveVersions(line)
 
+		// For each line, get all token indexes
+		// and remove all strings after the largest EndIndex.
+		results := MatchTokenIndexes(cleanedLine)
+
+		// If no results, skip the line.
+		if len(results) == 0 {
+			continue
+		}
+
+		// Get the largest EndIndex.
+		largestEndIndex := results[0].EndIndex
+		// Remove all strings after the largest EndIndex.
+		cleanedLine = cleanedLine[:largestEndIndex]
+
 		// Check for duplicates.
 		if !seen[cleanedLine] {
 			cleanedAgents = append(cleanedAgents, cleanedLine)
@@ -96,6 +110,6 @@ func CleanAgentsFile() error {
 		return err
 	}
 
-	fmt.Println("Cleaning completed. Cleaned agents saved to agents_cleaned.txt")
+	fmt.Println("Cleaned agents saved to agents_cleaned.txt")
 	return nil
 }

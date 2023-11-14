@@ -33,13 +33,21 @@ var testCases = []string{
 
 var result *ua.UserAgent
 
-func BenchmarkParser(b *testing.B) {
+func BenchmarkParserAll(b *testing.B) {
 	parser := ua.NewParser()
 
 	for i := 0; i < b.N; i++ {
 		for _, k := range testCases {
 			result = parser.Parse(k)
 		}
+	}
+}
+
+func BenchmarkParserSingle(b *testing.B) {
+	parser := ua.NewParser()
+
+	for i := 0; i < b.N; i++ {
+		result = parser.Parse(testCases[0])
 	}
 }
 
@@ -142,7 +150,6 @@ func NoTestParse(t *testing.T) {
 			result := parser.Parse(v)
 			assert.Equal(t, resultCases[i].Browser, result.Browser, "Browser Test Case: %s\nExpected: %s", v, resultCases[i].Browser)
 			assert.Equal(t, resultCases[i].OS, result.OS, "OS Test Case: %s\nExpected: %s", v, resultCases[i].OS)
-			assert.Equal(t, resultCases[i].Device, result.Device, "Device Test Case: %s\nExpected: %s", v, resultCases[i].Device)
 			assert.Equal(t, resultCases[i].Desktop, result.Desktop, "Desktop Test Case: %s\nExpected: %s", v, resultCases[i].Desktop)
 			assert.Equal(t, resultCases[i].Mobile, result.Mobile, "Mobile Test Case: %s\nExpected: %s", v, resultCases[i].Mobile)
 			assert.Equal(t, resultCases[i].Tablet, result.Tablet, "Tablet Test Case: %s\nExpected: %s", v, resultCases[i].Tablet)

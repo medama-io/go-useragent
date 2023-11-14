@@ -1,6 +1,7 @@
 package useragent_test
 
 import (
+	"fmt"
 	"testing"
 
 	ua "github.com/medama-io/go-useragent"
@@ -33,7 +34,7 @@ var matchResults = [][]string{
 func TestMatchTokenIndexes(t *testing.T) {
 	// Refer to version_test.go for versionResults test cases
 	for i, v := range versionResults {
-		t.Run(v, func(t *testing.T) {
+		t.Run(fmt.Sprintf("Case:%d", i), func(t *testing.T) {
 			match := ua.MatchTokenIndexes(v)
 
 			if len(match) != len(matchResults[i]) {

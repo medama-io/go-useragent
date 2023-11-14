@@ -1,5 +1,7 @@
 package useragent
 
+import "strings"
+
 type Parser struct {
 	trie *RuneTrie
 }
@@ -8,26 +10,30 @@ type Parser struct {
 // browser, device, and OS. The lower the number, the higher the
 // precedence.
 type Precedence struct {
-	Browser int
-	OS      int
-	Device  int
+	Browser uint8
+	OS      uint8
+	Type    uint8
 }
 
 type UserAgent struct {
 	Browser string
 	OS      string
-	Device  string
 
 	Desktop bool
 	Mobile  bool
 	Tablet  bool
+	TV      bool
+	Bot     bool
 
 	precedence Precedence
 }
 
 // populateTrie populates the trie with user agent data.
 func (p *Parser) populateTrie() {
-	p.trie.Put("Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/118.0.0.0 Safari/537.36")
+	// For each newline in the file, add the user agent to the trie.
+	for _, ua := range strings.Split(UserAgentsFile, "\n") {
+		p.trie.Put(ua)
+	}
 }
 
 // Create a new Trie and populate it with user agent data.
