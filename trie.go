@@ -42,7 +42,7 @@ func (trie *RuneTrie) Get(key string) *UserAgent {
 
 		// Mac OS X version numbers are separated by "X " followed by a version number
 		// with underscores.
-		if r == 'X' && key[i+1] == ' ' {
+		if r == 'X' && len(key) > i+1 && key[i+1] == ' ' {
 			isMacVersion = true
 		} else if r == ')' {
 			isMacVersion = false
@@ -54,7 +54,7 @@ func (trie *RuneTrie) Get(key string) *UserAgent {
 
 		// We want to strip any other version numbers from other products to get more hits
 		// to the trie.
-		if unicode.IsDigit(r) || (r == '.' && unicode.IsDigit(rune(key[i+1]))) {
+		if unicode.IsDigit(r) || (r == '.' && len(key) > i+1 && unicode.IsDigit(rune(key[i+1]))) {
 			continue
 		}
 

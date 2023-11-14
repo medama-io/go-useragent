@@ -1,6 +1,11 @@
 package useragent
 
-import "unicode"
+import (
+	"fmt"
+	"os"
+	"strings"
+	"unicode"
+)
 
 // RemoveVersions removes the version numbers from the user agent string.
 func RemoveVersions(ua string) string {
@@ -20,7 +25,7 @@ func RemoveVersions(ua string) string {
 
 		// Mac OS X version numbers are separated by "X " followed by a version number
 		// with underscores.
-		if r == 'X' && ua[i+1] == ' ' {
+		if r == 'X' && len(ua) > i+1 && ua[i+1] == ' ' {
 			isMacVersion = true
 		} else if r == ')' {
 			isMacVersion = false
@@ -28,7 +33,7 @@ func RemoveVersions(ua string) string {
 
 		// We want to strip any other version numbers from other products to get more hits
 		// to the trie.
-		if unicode.IsDigit(r) || (r == '.' && unicode.IsDigit(rune(ua[i+1]))) {
+		if unicode.IsDigit(r) || (r == '.' && len(ua) > i+1 && unicode.IsDigit(rune(ua[i+1]))) {
 			indexesToReplace = append(indexesToReplace, i)
 			continue
 		}
@@ -53,4 +58,44 @@ func RemoveVersions(ua string) string {
 	}
 
 	return ua
+}
+
+// This reads the agents.txt file and returns a new agents_cleaned.txt file
+// with the version numbers removed.
+func CleanAgentsFile() error {
+	// Read agents.txt file.
+	filePath := "agents.txt"
+	content, err := os.ReadFile(filePath)
+	if err != nil {
+		return err
+	}
+
+	// Split the content into lines.
+	lines := strings.Split(string(content), "\n")
+
+	// Clean each line and store the cleaned agents.
+	var cleanedAgents []string
+	seen := make(map[string]bool) // to track duplicates
+	for _, line := range lines {
+		cleanedLine := RemoveVersions(line)
+
+		// Check for duplicates.
+		if !seen[cleanedLine] {
+			cleanedAgents = append(cleanedAgents, cleanedLine)
+			seen[cleanedLine] = true
+		}
+	}
+
+	// Join the cleaned agents into a single string with newline separators.
+	cleanedContent := strings.Join(cleanedAgents, "\n")
+
+	// Write the cleaned content to agents_cleaned.txt file.
+	cleanedFilePath := "agents_cleaned.txt"
+	err = os.WriteFile(cleanedFilePath, []byte(cleanedContent), 0o644)
+	if err != nil {
+		return err
+	}
+
+	fmt.Println("Cleaning completed. Cleaned agents saved to agents_cleaned.txt")
+	return nil
 }
