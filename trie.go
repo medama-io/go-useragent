@@ -72,7 +72,7 @@ func (trie *RuneTrie) Get(key string) *UserAgent {
 
 		// We want to strip any other version numbers from other products to get more hits
 		// to the trie.
-		if IsDigit(r) || (r == '.' && len(key) > i+1 && IsDigit(rune(key[i+1]))) {
+		if IsDigit(r) || (r == '.' && len(key) > i+1 && IsDigit(rune(key[i+1]))) || r == ';' {
 			continue
 		}
 

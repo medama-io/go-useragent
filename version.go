@@ -39,7 +39,7 @@ func RemoveVersions(ua string) string {
 
 		// We want to strip any other version numbers from other products to get more hits
 		// to the trie.
-		if unicode.IsDigit(r) || (r == '.' && len(ua) > i+1 && unicode.IsDigit(rune(ua[i+1]))) {
+		if unicode.IsDigit(r) || (r == '.' && len(ua) > i+1 && unicode.IsDigit(rune(ua[i+1]))) || r == ';' {
 			indexesToReplace = append(indexesToReplace, i)
 			continue
 		}
@@ -53,7 +53,7 @@ func RemoveVersions(ua string) string {
 		}
 
 		// Identify and skip language codes e.g. en-US, zh-cn, en_US, ZH_cn
-		if len(ua) > i+6 && unicode.IsSpace(r) && unicode.IsLetter(rune(ua[i+1])) && unicode.IsLetter(rune(ua[i+2])) && (ua[i+3] == '-' || ua[i+3] == '_') && unicode.IsLetter(rune(ua[i+4])) && unicode.IsLetter(rune(ua[i+5])) && (unicode.IsSpace(rune(ua[i+6])) || ua[i+6] == ')' || ua[i+6] == ';') {
+		if len(ua) > i+6 && r == ' ' && unicode.IsLetter(rune(ua[i+1])) && unicode.IsLetter(rune(ua[i+2])) && (ua[i+3] == '-' || ua[i+3] == '_') && unicode.IsLetter(rune(ua[i+4])) && unicode.IsLetter(rune(ua[i+5])) && (ua[i+6] == ' ' || ua[i+6] == ')' || ua[i+6] == ';') {
 			// Add the number of runes to skip to the skip count.
 			skipCount += 6
 			indexesToReplace = append(indexesToReplace, i, i+1, i+2, i+3, i+4, i+5, i+6)
