@@ -1,7 +1,6 @@
 package useragent
 
 import (
-	"fmt"
 	"os"
 	"strings"
 	"unicode"
@@ -39,7 +38,7 @@ func RemoveVersions(ua string) string {
 
 		// We want to strip any other version numbers from other products to get more hits
 		// to the trie.
-		if unicode.IsDigit(r) || (r == '.' && len(ua) > i+1 && unicode.IsDigit(rune(ua[i+1]))) || r == ';' {
+		if unicode.IsDigit(r) || (r == '.' && len(ua) > i+1 && unicode.IsDigit(rune(ua[i+1]))) {
 			indexesToReplace = append(indexesToReplace, i)
 			continue
 		}
@@ -57,6 +56,12 @@ func RemoveVersions(ua string) string {
 			// Add the number of runes to skip to the skip count.
 			skipCount += 6
 			indexesToReplace = append(indexesToReplace, i, i+1, i+2, i+3, i+4, i+5, i+6)
+			continue
+		}
+
+		// Skip whitespace
+		if r == ' ' || r == ';' || r == ')' || r == '(' || r == ',' || r == '_' {
+			indexesToReplace = append(indexesToReplace, i)
 			continue
 		}
 	}
@@ -77,12 +82,11 @@ func RemoveVersions(ua string) string {
 
 // This reads the agents.txt file and returns a new agents_cleaned.txt file
 // with the version numbers removed.
-func CleanAgentsFile() error {
+func CleanAgentsFile(filePath string) ([]string, error) {
 	// Read agents.txt file.
-	filePath := "agents.txt"
 	content, err := os.ReadFile(filePath)
 	if err != nil {
-		return err
+		return nil, err
 	}
 
 	// Split the content into lines.
@@ -115,16 +119,5 @@ func CleanAgentsFile() error {
 		}
 	}
 
-	// Join the cleaned agents into a single string with newline separators.
-	cleanedContent := strings.Join(cleanedAgents, "\n")
-
-	// Write the cleaned content to agents_cleaned.txt file.
-	cleanedFilePath := "agents_cleaned.txt"
-	err = os.WriteFile(cleanedFilePath, []byte(cleanedContent), 0o644)
-	if err != nil {
-		return err
-	}
-
-	fmt.Println("Cleaned agents saved to agents_cleaned.txt")
-	return nil
+	return cleanedAgents, nil
 }

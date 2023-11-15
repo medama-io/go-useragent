@@ -72,7 +72,7 @@ func (trie *RuneTrie) Get(key string) *UserAgent {
 
 		// We want to strip any other version numbers from other products to get more hits
 		// to the trie.
-		if IsDigit(r) || (r == '.' && len(key) > i+1 && IsDigit(rune(key[i+1]))) || r == ';' {
+		if IsDigit(r) || (r == '.' && len(key) > i+1 && IsDigit(rune(key[i+1]))) {
 			continue
 		}
 
@@ -80,6 +80,10 @@ func (trie *RuneTrie) Get(key string) *UserAgent {
 		if len(key) > i+6 && r == ' ' && unicode.IsLetter(rune(key[i+1])) && unicode.IsLetter(rune(key[i+2])) && (key[i+3] == '-' || key[i+3] == '_') && unicode.IsLetter(rune(key[i+4])) && unicode.IsLetter(rune(key[i+5])) && (key[i+6] == ' ' || key[i+6] == ')' || key[i+6] == ';') {
 			// Add the number of runes to skip to the skip count.
 			skipCount += 6
+			continue
+		}
+
+		if r == ' ' || r == ';' || r == ')' || r == '(' || r == ',' || r == '_' {
 			continue
 		}
 

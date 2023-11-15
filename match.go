@@ -64,10 +64,10 @@ var MatchMap = map[string][]string{
 
 	// Types
 	Desktop: {Desktop, "Ubuntu", "Fedora"},
-	Mobile:  {Mobile, "ONEPLUS", "Huawei", "HTC", "Galaxy", iPhone, iPod, "Windows Phone"},
+	Mobile:  {Mobile, "ONEPLUS", "Huawei", "HTC", "Galaxy", iPhone, iPod, "Windows Phone", "LG"},
 	Tablet:  {Tablet, "Touch", iPad},
 	TV:      {TV, "Large Screen", "Smart Display", "PLAYSTATION"},
-	Bot:     {Bot, "bot", "Yahoo! Slurp", "LinkCheck", "QuickLook", "Haosou", "Yahoo Ad", "GoogleProber", "GoogleProducer", "Mediapartners", "Headless", "facebookexternalhit", "facebookcatalog"},
+	Bot:     {Bot, "bot", "Slurp", "LinkCheck", "QuickLook", "Haosou", "Yahoo Ad", "GoogleProber", "GoogleProducer", "Mediapartners", "Headless", "facebookexternalhit", "facebookcatalog"},
 }
 
 // MatchPrecedenceMap is a map of user agent types to their importance
