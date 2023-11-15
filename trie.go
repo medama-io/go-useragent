@@ -1,7 +1,5 @@
 package useragent
 
-import "unicode"
-
 type Result struct {
 	result string
 	// 0: Unknown, 1: Browser, 2: OS, 3: Type
@@ -23,11 +21,6 @@ type RuneTrie struct {
 // NewRuneTrie allocates and returns a new *RuneTrie.
 func NewRuneTrie() *RuneTrie {
 	return new(RuneTrie)
-}
-
-// IsDigit reports whether the rune is a decimal digit.
-func IsDigit(r rune) bool {
-	return '0' <= r && r <= '9'
 }
 
 // Get returns the value stored at the given key. Returns nil for internal
@@ -77,7 +70,7 @@ func (trie *RuneTrie) Get(key string) *UserAgent {
 		}
 
 		// Identify and skip language codes e.g. en-US, zh-cn
-		if len(key) > i+6 && r == ' ' && unicode.IsLetter(rune(key[i+1])) && unicode.IsLetter(rune(key[i+2])) && (key[i+3] == '-' || key[i+3] == '_') && unicode.IsLetter(rune(key[i+4])) && unicode.IsLetter(rune(key[i+5])) && (key[i+6] == ' ' || key[i+6] == ')' || key[i+6] == ';') {
+		if len(key) > i+6 && r == ' ' && IsLetter(rune(key[i+1])) && IsLetter(rune(key[i+2])) && (key[i+3] == '-' || key[i+3] == '_') && IsLetter(rune(key[i+4])) && IsLetter(rune(key[i+5])) && (key[i+6] == ' ' || key[i+6] == ')' || key[i+6] == ';') {
 			// Add the number of runes to skip to the skip count.
 			skipCount += 6
 			continue

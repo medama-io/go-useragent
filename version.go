@@ -3,7 +3,6 @@ package useragent
 import (
 	"os"
 	"strings"
-	"unicode"
 )
 
 // RemoveVersions removes the version numbers from the user agent string.
@@ -23,14 +22,14 @@ func RemoveVersions(ua string) string {
 		// If we encouter a slash, we can assume the version number is next.
 		if r == '/' {
 			isVersion = true
-		} else if unicode.IsSpace(r) {
+		} else if r == ' ' {
 			// If we encounter a space, we can assume the version number is over.
 			isVersion = false
 		}
 
 		// Mac OS X version numbers are separated by "X " followed by a version number
 		// with underscores.
-		if r == 'X' && len(ua) > i+1 && unicode.IsSpace(rune(ua[i+1])) {
+		if r == 'X' && len(ua) > i+1 && ua[i+1] == ' ' {
 			isMacVersion = true
 		} else if r == ')' {
 			isMacVersion = false
@@ -38,7 +37,7 @@ func RemoveVersions(ua string) string {
 
 		// We want to strip any other version numbers from other products to get more hits
 		// to the trie.
-		if unicode.IsDigit(r) || (r == '.' && len(ua) > i+1 && unicode.IsDigit(rune(ua[i+1]))) {
+		if IsDigit(r) || (r == '.' && len(ua) > i+1 && IsDigit(rune(ua[i+1]))) {
 			indexesToReplace = append(indexesToReplace, i)
 			continue
 		}
@@ -52,7 +51,7 @@ func RemoveVersions(ua string) string {
 		}
 
 		// Identify and skip language codes e.g. en-US, zh-cn, en_US, ZH_cn
-		if len(ua) > i+6 && r == ' ' && unicode.IsLetter(rune(ua[i+1])) && unicode.IsLetter(rune(ua[i+2])) && (ua[i+3] == '-' || ua[i+3] == '_') && unicode.IsLetter(rune(ua[i+4])) && unicode.IsLetter(rune(ua[i+5])) && (ua[i+6] == ' ' || ua[i+6] == ')' || ua[i+6] == ';') {
+		if len(ua) > i+6 && r == ' ' && IsLetter(rune(ua[i+1])) && IsLetter(rune(ua[i+2])) && (ua[i+3] == '-' || ua[i+3] == '_') && IsLetter(rune(ua[i+4])) && IsLetter(rune(ua[i+5])) && (ua[i+6] == ' ' || ua[i+6] == ')' || ua[i+6] == ';') {
 			// Add the number of runes to skip to the skip count.
 			skipCount += 6
 			indexesToReplace = append(indexesToReplace, i, i+1, i+2, i+3, i+4, i+5, i+6)
