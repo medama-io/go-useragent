@@ -18,6 +18,7 @@ const (
 	Safari    = "Safari"
 	Vivaldi   = "Vivaldi"
 	Samsung   = "SamsungBrowser"
+	Nintendo  = "NintendoBrowser"
 
 	// Operating Systems
 	Android  = "Android"
@@ -53,6 +54,7 @@ var MatchMap = map[string][]string{
 	Safari:    {Safari},
 	Vivaldi:   {Vivaldi},
 	Samsung:   {Samsung},
+	Nintendo:  {Nintendo},
 
 	// Operating Systems
 	Android:  {Android},
@@ -65,8 +67,8 @@ var MatchMap = map[string][]string{
 	// Types
 	Desktop: {Desktop, "Ubuntu", "Fedora"},
 	Mobile:  {Mobile, "ONEPLUS", "Huawei", "HTC", "Galaxy", iPhone, iPod, "Windows Phone", "LG"},
-	Tablet:  {Tablet, "Touch", iPad},
-	TV:      {TV, "Large Screen", "Smart Display", "PLAYSTATION"},
+	Tablet:  {Tablet, "Touch", iPad, "Nintendo Switch", "Kindle"},
+	TV:      {TV, "Large Screen", "Smart Display", "PLAYSTATION", "PlayStation", "ADT-2", "ADT-1", "CrKey", "Roku", "AFT", "Android TV", "Web0S", "Nexus Player", "Xbox", "XBOX", "Nintendo WiiU"},
 	Bot:     {Bot, "bot", "Slurp", "LinkCheck", "QuickLook", "Haosou", "Yahoo Ad", "GoogleProber", "GoogleProducer", "Mediapartners", "Headless", "facebookexternalhit", "facebookcatalog"},
 }
 
@@ -91,6 +93,7 @@ var MatchPrecedenceMap = map[string]uint8{
 	Edge:      7,
 	Vivaldi:   8,
 	Samsung:   9,
+	Nintendo:  10,
 
 	// Operating Systems
 	Linux:    1,
