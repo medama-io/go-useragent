@@ -26,12 +26,7 @@ const (
 	iOS      = "iOS"
 	Linux    = "Linux"
 	MacOS    = "MacOS"
-	Windows  = "Windows NT"
-
-	// Devices
-	iPad   = "iPad"
-	iPhone = "iPhone"
-	iPod   = "iPod"
+	Windows  = "Windows"
 
 	// Types
 	Desktop = "Desktop"
@@ -59,17 +54,17 @@ var MatchMap = map[string][]string{
 	// Operating Systems
 	Android:  {Android},
 	ChromeOS: {"CrOS"},
-	iOS:      {iPhone, iPad, iPod},
+	iOS:      {"iPhoneOS", "iPhone OS", "iPad OS", "iPadOS", "iPod OS", "iPodOS"},
 	Linux:    {Linux},
 	MacOS:    {"Macintosh"},
-	Windows:  {Windows},
+	Windows:  {"Windows NT", "WindowsNT"},
 
 	// Types
 	Desktop: {Desktop, "Ubuntu", "Fedora"},
-	Mobile:  {Mobile, "ONEPLUS", "Huawei", "HTC", "Galaxy", iPhone, iPod, "Windows Phone", "LG"},
-	Tablet:  {Tablet, "Touch", iPad, "Nintendo Switch", "Kindle"},
-	TV:      {TV, "Large Screen", "Smart Display", "PLAYSTATION", "PlayStation", "ADT-2", "ADT-1", "CrKey", "Roku", "AFT", "Android TV", "Web0S", "Nexus Player", "Xbox", "XBOX", "Nintendo WiiU"},
-	Bot:     {Bot, "bot", "Slurp", "LinkCheck", "QuickLook", "Haosou", "Yahoo Ad", "GoogleProber", "GoogleProducer", "Mediapartners", "Headless", "facebookexternalhit", "facebookcatalog"},
+	Mobile:  {Mobile, "ONEPLUS", "Huawei", "HTC", "Galaxy", "iPhone", "iPod", "Windows Phone", "LG"},
+	Tablet:  {Tablet, "Touch", "iPad", "Nintendo Switch", "NintendoSwitch", "Kindle"},
+	TV:      {TV, "Large Screen", "LargeScreen", "Smart Display", "SmartDisplay", "PLAYSTATION", "PlayStation", "ADT-2", "ADT-1", "CrKey", "Roku", "AFT", "Web0S", "Nexus Player", "Xbox", "XBOX", "Nintendo WiiU", "NintendoWiiU"},
+	Bot:     {Bot, "bot", "Slurp", "LinkCheck", "QuickLook", "Haosou", "Yahoo Ad", "YahooAd", "GoogleProber", "GoogleProducer", "Mediapartners", "Headless", "facebookexternalhit", "facebookcatalog"},
 }
 
 // MatchPrecedenceMap is a map of user agent types to their importance
@@ -122,11 +117,11 @@ type MatchResults struct {
 // GetMatchType returns the match type of a match result using the MatchPrecedenceMap.
 func GetMatchType(match string) uint8 {
 	switch match {
-	case Chrome, Edge, Firefox, IE, Opera, OperaMini, Safari, Vivaldi, Samsung:
+	case Chrome, Edge, Firefox, IE, Opera, OperaMini, Safari, Vivaldi, Samsung, Nintendo:
 		return 1
 	case Android, ChromeOS, iOS, Linux, MacOS, Windows:
 		return 2
-	case Desktop, Mobile, Tablet, Bot:
+	case Desktop, Mobile, Tablet, Bot, TV:
 		return 3
 	default:
 		return 0
@@ -203,6 +198,8 @@ func (ua *UserAgent) addMatch(result *Result, existingPrecedence Precedence) {
 			ua.Browser = Vivaldi
 		case Samsung:
 			ua.Browser = Samsung
+		case Nintendo:
+			ua.Browser = Nintendo
 		}
 
 		ua.precedence.Browser = precedence
@@ -232,14 +229,14 @@ func (ua *UserAgent) addMatch(result *Result, existingPrecedence Precedence) {
 	// Types
 	if result.resultType == 3 && precedence > existingPrecedence.Type {
 		switch match {
-		case Desktop, Windows, MacOS, Linux, ChromeOS:
+		case Desktop:
 			ua.Desktop = true
-		case Tablet, iPad:
+		case Tablet:
 			if ua.Mobile {
 				ua.Mobile = false
 			}
 			ua.Tablet = true
-		case Mobile, iPhone, iPod, Android, OperaMini:
+		case Mobile:
 			if !ua.Tablet {
 				ua.Mobile = true
 			}
