@@ -100,7 +100,6 @@ func (trie *RuneTrie) Get(key string) *UserAgent {
 // by MatchTokenIndexes.
 func (trie *RuneTrie) Put(key string) {
 	node := trie
-	key = RemoveVersions(key)
 	matchResults := MatchTokenIndexes(key)
 	for i, r := range key {
 		// If we've reached the end of the key, store the result.
