@@ -153,6 +153,8 @@ func TestParse(t *testing.T) {
 			assert.Equal(t, resultCases[i].Desktop, result.Desktop, "Desktop Test Case: %s\nExpected: %s", v, resultCases[i].Desktop)
 			assert.Equal(t, resultCases[i].Mobile, result.Mobile, "Mobile Test Case: %s\nExpected: %s", v, resultCases[i].Mobile)
 			assert.Equal(t, resultCases[i].Tablet, result.Tablet, "Tablet Test Case: %s\nExpected: %s", v, resultCases[i].Tablet)
+			assert.Equal(t, resultCases[i].TV, result.TV, "TV Test Case: %s\nExpected: %s", v, resultCases[i].TV)
+			assert.Equal(t, resultCases[i].Bot, result.Bot, "Bot Test Case: %s\nExpected: %s", v, resultCases[i].Bot)
 		})
 	}
 }

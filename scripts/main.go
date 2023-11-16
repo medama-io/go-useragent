@@ -10,7 +10,7 @@ import (
 
 func main() {
 	var content []string
-	filenames := []string{"agents/1.txt", "agents/2.txt"}
+	filenames := []string{"agents/1.txt", "agents/2.txt", "agents/3.txt"}
 
 	for _, filename := range filenames {
 		// Read agents.txt file.

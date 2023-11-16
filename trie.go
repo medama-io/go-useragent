@@ -13,9 +13,6 @@ type Result struct {
 type RuneTrie struct {
 	children map[rune]*RuneTrie
 	result   *Result
-	// Number of runes to skip when iterating over the trie. This is used
-	// to skip over version numbers or language codes.
-	skipIndex int
 }
 
 // NewRuneTrie allocates and returns a new *RuneTrie.
@@ -113,7 +110,9 @@ func (trie *RuneTrie) Put(key string) {
 	for i, r := range key {
 		// If we've reached the end of the key, store the result.
 		matchIndex := len(matchResults) - 1
-		if matchIndex != -1 && i == matchResults[matchIndex].EndIndex {
+		// The end index is after the last rune in the match, so
+		// we need to subtract 1 to get the last rune.
+		if i == matchResults[matchIndex].EndIndex {
 			node.result = &Result{Match: matchResults[matchIndex].Match, Type: matchResults[matchIndex].MatchType, Precedence: matchResults[matchIndex].Precedence}
 			matchResults = matchResults[:matchIndex]
 		}

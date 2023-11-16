@@ -155,7 +155,9 @@ func MatchTokenIndexes(ua string) []MatchResults {
 
 			// Add the match to the results.
 			matchType := GetMatchType(key)
-			results = append(results, MatchResults{EndIndex: lastIndex[1], Match: key, MatchType: matchType, Precedence: MatchPrecedenceMap[key]})
+			// The end index is after the last rune in the match, so
+			// we need to subtract 1 to get the last rune.
+			results = append(results, MatchResults{EndIndex: lastIndex[1] - 1, Match: key, MatchType: matchType, Precedence: MatchPrecedenceMap[key]})
 			exists[key] = true
 		}
 	}
@@ -208,12 +210,20 @@ func (ua *UserAgent) addMatch(result *Result) {
 			ua.OS = Android
 		case ChromeOS:
 			ua.OS = ChromeOS
+			ua.Desktop = true
 		case iOS:
 			ua.OS = iOS
+			if !ua.Tablet {
+				ua.Mobile = true
+			}
 		case Linux:
 			ua.OS = Linux
+			if !ua.Tablet && !ua.TV {
+				ua.Desktop = true
+			}
 		case MacOS:
 			ua.OS = MacOS
+			ua.Desktop = true
 		case Windows:
 			ua.OS = Windows
 			ua.Desktop = true
