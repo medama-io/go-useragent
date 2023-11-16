@@ -45,15 +45,20 @@ func (trie *RuneTrie) Get(key string) *UserAgent {
 
 		// If we encounter a potential version, skip the runes until we reach
 		// the end of the version number.
-		if r == '/' {
+		switch r {
+		case '/':
 			isVersion = true
-			continue
-		} else if r == ' ' {
+		case ' ':
+			// If we encounter a space, we can assume the version number is over.
 			isVersion = false
 		}
 
 		// Mac OS X version numbers are separated by "X " followed by a version number
 		// with underscores.
+		//
+		// We also do not use a switch here as Go does not generate a jump table for
+		// switch statements with no integral constants. Benchmarking shows that ops
+		// go down if we try to migrate statements like this to a switch.
 		if r == 'X' && len(key) > i+1 && key[i+1] == ' ' {
 			isMacVersion = true
 		} else if r == ')' {
@@ -77,7 +82,8 @@ func (trie *RuneTrie) Get(key string) *UserAgent {
 			continue
 		}
 
-		if r == ' ' || r == ';' || r == ')' || r == '(' || r == ',' || r == '_' {
+		switch r {
+		case ' ', ';', ')', '(', ',', '_':
 			continue
 		}
 

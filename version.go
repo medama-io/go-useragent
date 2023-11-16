@@ -22,9 +22,10 @@ func RemoveVersions(ua string) string {
 		}
 
 		// If we encouter a slash, we can assume the version number is next.
-		if r == '/' {
+		switch r {
+		case '/':
 			isVersion = true
-		} else if r == ' ' {
+		case ' ':
 			// If we encounter a space, we can assume the version number is over.
 			isVersion = false
 		}
@@ -61,7 +62,8 @@ func RemoveVersions(ua string) string {
 		}
 
 		// Skip whitespace
-		if r == ' ' || r == ';' || r == ')' || r == '(' || r == ',' || r == '_' {
+		switch r {
+		case ' ', ';', ')', '(', ',', '_':
 			indexesToReplace = append(indexesToReplace, i)
 			continue
 		}
