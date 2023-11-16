@@ -172,12 +172,12 @@ func MatchTokenIndexes(ua string) []MatchResults {
 }
 
 // This adds a matching constant to a user agent struct.
-func (ua *UserAgent) addMatch(result *Result, existingPrecedence Precedence) {
+func (ua *UserAgent) addMatch(result *Result) {
 	match := result.result
 	precedence := result.precedence
 
 	// Browsers
-	if result.resultType == 1 && precedence > existingPrecedence.Browser {
+	if result.resultType == 1 && precedence > ua.precedence.Browser {
 		switch match {
 		case Chrome:
 			ua.Browser = Chrome
@@ -206,7 +206,7 @@ func (ua *UserAgent) addMatch(result *Result, existingPrecedence Precedence) {
 	}
 
 	// Operating Systems
-	if result.resultType == 2 && precedence > existingPrecedence.OS {
+	if result.resultType == 2 && precedence > ua.precedence.OS {
 		switch match {
 		case Android:
 			ua.OS = Android
@@ -227,7 +227,7 @@ func (ua *UserAgent) addMatch(result *Result, existingPrecedence Precedence) {
 	}
 
 	// Types
-	if result.resultType == 3 && precedence > existingPrecedence.Type {
+	if result.resultType == 3 && precedence > ua.precedence.Type {
 		switch match {
 		case Desktop:
 			ua.Desktop = true

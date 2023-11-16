@@ -32,9 +32,10 @@ func (trie *RuneTrie) Get(key string) *UserAgent {
 	}
 
 	// Flag to indicate if we are currently iterating over a version number.
-	isVersion := false
-	isMacVersion := false
-	skipCount := uint8(0)
+	var isVersion, isMacVersion bool
+	// Number of runes to skip when iterating over the trie. This is used
+	// to skip over version numbers or language codes.
+	var skipCount uint8
 
 	for i, r := range key {
 		if skipCount > 0 {
@@ -82,13 +83,15 @@ func (trie *RuneTrie) Get(key string) *UserAgent {
 
 		// If result exists, we can append it to the value.
 		if node.result != nil {
-			ua.addMatch(node.result, ua.precedence)
+			ua.addMatch(node.result)
 		}
 
-		node = node.children[r]
-		if node == nil {
-			return ua
+		// Set the next node to the child of the current node.
+		next := node.children[r]
+		if next == nil {
+			continue // No match found, but we can try to match the next rune.
 		}
+		node = next
 
 	}
 	return ua

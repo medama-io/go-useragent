@@ -8,9 +8,11 @@ import (
 // RemoveVersions removes the version numbers from the user agent string.
 func RemoveVersions(ua string) string {
 	// Flag to indicate if we are currently iterating over a version number.
-	isVersion := false
-	isMacVersion := false
-	skipCount := uint8(0)
+	var isVersion, isMacVersion bool
+	// Number of runes to skip when iterating over the trie. This is used
+	// to skip over version numbers or language codes.
+	var skipCount uint8
+	// Indexes of the runes to replace with an empty string.
 	indexesToReplace := []int{}
 
 	for i, r := range ua {

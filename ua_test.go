@@ -142,7 +142,7 @@ var resultCases = []*ua.UserAgent{
 	},
 }
 
-func NoTestParse(t *testing.T) {
+func TestParse(t *testing.T) {
 	parser := ua.NewParser()
 
 	for i, v := range testCases {
