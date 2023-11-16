@@ -110,7 +110,9 @@ type MatchResults struct {
 	EndIndex int
 	Match    string
 	// 0: Unknown, 1: Browser, 2: OS, 3: Type
-	MatchType  uint8
+	MatchType uint8
+	// Precedence value for each result type to determine which result should be overwritten.
+	// Higher valeus are overwritten by lower values.
 	Precedence uint8
 }
 
@@ -133,6 +135,7 @@ func GetMatchType(match string) uint8 {
 // when to insert a result value into the trie.
 func MatchTokenIndexes(ua string) []MatchResults {
 	var results []MatchResults
+	exists := make(map[string]bool)
 	for key, match := range MatchMap {
 		for _, m := range match {
 			indexes := str.IndexAll(ua, m, -1)
@@ -146,18 +149,14 @@ func MatchTokenIndexes(ua string) []MatchResults {
 
 			// Check if key match doesn't already exist in results.
 			// This is to prevent duplicate matches in the trie.
-			exists := false
-			for _, r := range results {
-				if r.Match == key {
-					exists = true
-					break
-				}
+			if exists[key] {
+				continue
 			}
 
-			if !exists {
-				matchType := GetMatchType(key)
-				results = append(results, MatchResults{EndIndex: lastIndex[1], Match: key, MatchType: matchType, Precedence: MatchPrecedenceMap[key]})
-			}
+			// Add the match to the results.
+			matchType := GetMatchType(key)
+			results = append(results, MatchResults{EndIndex: lastIndex[1], Match: key, MatchType: matchType, Precedence: MatchPrecedenceMap[key]})
+			exists[key] = true
 		}
 	}
 
@@ -173,12 +172,9 @@ func MatchTokenIndexes(ua string) []MatchResults {
 
 // This adds a matching constant to a user agent struct.
 func (ua *UserAgent) addMatch(result *Result) {
-	match := result.result
-	precedence := result.precedence
-
 	// Browsers
-	if result.resultType == 1 && precedence > ua.precedence.Browser {
-		switch match {
+	if result.Type == 1 && result.Precedence > ua.precedence.Browser {
+		switch result.Match {
 		case Chrome:
 			ua.Browser = Chrome
 		case Edge:
@@ -202,12 +198,12 @@ func (ua *UserAgent) addMatch(result *Result) {
 			ua.Browser = Nintendo
 		}
 
-		ua.precedence.Browser = precedence
+		ua.precedence.Browser = result.Precedence
 	}
 
 	// Operating Systems
-	if result.resultType == 2 && precedence > ua.precedence.OS {
-		switch match {
+	if result.Type == 2 && result.Precedence > ua.precedence.OS {
+		switch result.Match {
 		case Android:
 			ua.OS = Android
 		case ChromeOS:
@@ -223,12 +219,12 @@ func (ua *UserAgent) addMatch(result *Result) {
 			ua.Desktop = true
 		}
 
-		ua.precedence.OS = precedence
+		ua.precedence.OS = result.Precedence
 	}
 
 	// Types
-	if result.resultType == 3 && precedence > ua.precedence.Type {
-		switch match {
+	if result.Type == 3 && result.Precedence > ua.precedence.Type {
+		switch result.Match {
 		case Desktop:
 			ua.Desktop = true
 		case Tablet:
@@ -245,5 +241,7 @@ func (ua *UserAgent) addMatch(result *Result) {
 		case Bot:
 			ua.Bot = true
 		}
+
+		ua.precedence.Type = result.Precedence
 	}
 }

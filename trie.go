@@ -1,12 +1,12 @@
 package useragent
 
 type Result struct {
-	result string
+	Match string
 	// 0: Unknown, 1: Browser, 2: OS, 3: Type
-	resultType uint8
+	Type uint8
 	// Precedence value for each result type to determine which result
 	// should be overwritten.
-	precedence uint8
+	Precedence uint8
 }
 
 // RuneTrie is a trie of runes with string keys and interface{} values.
@@ -108,7 +108,7 @@ func (trie *RuneTrie) Put(key string) {
 		// If we've reached the end of the key, store the result.
 		matchIndex := len(matchResults) - 1
 		if matchIndex != -1 && i == matchResults[matchIndex].EndIndex {
-			node.result = &Result{result: matchResults[matchIndex].Match, resultType: matchResults[matchIndex].MatchType, precedence: matchResults[matchIndex].Precedence}
+			node.result = &Result{Match: matchResults[matchIndex].Match, Type: matchResults[matchIndex].MatchType, Precedence: matchResults[matchIndex].Precedence}
 			matchResults = matchResults[:matchIndex]
 		}
 
