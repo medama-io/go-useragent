@@ -45,6 +45,6 @@ func NewParser() *Parser {
 }
 
 // Parse a user agent string and return a UserAgent struct.
-func (p *Parser) Parse(ua string) *UserAgent {
+func (p *Parser) Parse(ua string) UserAgent {
 	return p.trie.Get(ua)
 }

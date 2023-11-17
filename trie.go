@@ -22,9 +22,9 @@ func NewRuneTrie() *RuneTrie {
 
 // Get returns the value stored at the given key. Returns nil for internal
 // nodes or for nodes with a value of nil.
-func (trie *RuneTrie) Get(key string) *UserAgent {
+func (trie *RuneTrie) Get(key string) UserAgent {
 	node := trie
-	ua := &UserAgent{
+	ua := UserAgent{
 		precedence: Precedence{},
 	}
 
@@ -72,7 +72,7 @@ func (trie *RuneTrie) Get(key string) *UserAgent {
 			continue
 		}
 
-		// Identify and skip language codes e.g. en-US, zh-cn
+		// Identify and skip language codes e.g. en-US, zh-cn, en_US, ZH_cn
 		if len(key) > i+6 && r == ' ' && IsLetter(rune(key[i+1])) && IsLetter(rune(key[i+2])) && (key[i+3] == '-' || key[i+3] == '_') && IsLetter(rune(key[i+4])) && IsLetter(rune(key[i+5])) && (key[i+6] == ' ' || key[i+6] == ')' || key[i+6] == ';') {
 			// Add the number of runes to skip to the skip count.
 			skipCount += 6
