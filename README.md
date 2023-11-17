@@ -4,7 +4,7 @@
 
 It achieves this efficiency by using a [trie](https://en.wikipedia.org/wiki/Trie) data structure to store and rapidly look up user-agent tokens. Utilizing heuristic rules, the library tokenizes a list of user-agent strings into a trie during startup. Subsequently, during runtime, the parsing process involves a straightforward lookup operation with zero allocations.
 
-The project's scope is intentionally limited to the most common user-agents, making it a specialized solution rather than a comprehensive user-agent parser. However, developers can still leverage this library as an initial parser to optimize best-case performance and fallback to a more complete parser to handle the remaining user-agents.
+The project's scope is intentionally limited to the most common user-agents, making it a specialized solution rather than a comprehensive user-agent parser. However, developers can still leverage this library as an initial parser to optimize best-case performance and fallback to a more complete parser to handle the remaining user-agents if needed.
 
 ## Installation
 

@@ -80,7 +80,7 @@ func (trie *RuneTrie) Get(key string) UserAgent {
 		}
 
 		switch r {
-		case ' ', ';', ')', '(', ',', '_':
+		case ' ', ';', ')', '(', ',', '_', '-':
 			continue
 		}
 
@@ -112,7 +112,7 @@ func (trie *RuneTrie) Put(key string) {
 		matchIndex := len(matchResults) - 1
 		// The end index is after the last rune in the match, so
 		// we need to subtract 1 to get the last rune.
-		if i == matchResults[matchIndex].EndIndex {
+		if i == matchResults[matchIndex].EndIndex-1 {
 			node.result = &Result{Match: matchResults[matchIndex].Match, Type: matchResults[matchIndex].MatchType, Precedence: matchResults[matchIndex].Precedence}
 			matchResults = matchResults[:matchIndex]
 		}

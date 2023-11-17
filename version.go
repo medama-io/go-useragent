@@ -63,7 +63,7 @@ func RemoveVersions(ua string) string {
 
 		// Skip whitespace
 		switch r {
-		case ' ', ';', ')', '(', ',', '_':
+		case ' ', ';', ')', '(', ',', '_', '-':
 			indexesToReplace = append(indexesToReplace, i)
 			continue
 		}

@@ -155,9 +155,7 @@ func MatchTokenIndexes(ua string) []MatchResults {
 
 			// Add the match to the results.
 			matchType := GetMatchType(key)
-			// The end index is after the last rune in the match, so
-			// we need to subtract 1 to get the last rune.
-			results = append(results, MatchResults{EndIndex: lastIndex[1] - 1, Match: key, MatchType: matchType, Precedence: MatchPrecedenceMap[key]})
+			results = append(results, MatchResults{EndIndex: lastIndex[1], Match: key, MatchType: matchType, Precedence: MatchPrecedenceMap[key]})
 			exists[key] = true
 		}
 	}
