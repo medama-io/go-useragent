@@ -13,22 +13,22 @@ var versionResults = []string{
 	// Windows
 	"MozillaWindowsNTWinxAppleWebKitKHTMLlikeGeckoChromeSafari",
 	"MozillaWindowsNTWOWAppleWebKitKHTMLlikeGeckoChromeSafari",
-	"MozillacompatibleMSIEWindowsNTWOWTridentSLCC.NETCLR.NETCLR.NETCLRMediaCenterPC.NETC.NETEInfoPathGWX:RED",
+	"MozillacompatibleMSIEWindowsNTWOWTridentSLCCNETCLRNETCLRNETCLRMediaCenterPCNETCNETEInfoPathGWXRED",
 	"MozillacompatibleMSIEWindowsNTTrident",
-	"MozillaWindowsNTTridentrv:likeGecko",
-	"MozillacompatibleMSIEWindowsNTSV.NETCLRNS",
+	"MozillaWindowsNTTridentrvlikeGecko",
+	"MozillacompatibleMSIEWindowsNTSVNETCLRNS",
 	"MozillaWindowsNTAppleWebKitKHTMLlikeGeckoChromeSafariEdge",
 	// Mac
 	"MozillaMacintoshIntelMacOSXAppleWebKitKHTMLlikeGeckoVersionSafari",
 	"MozillaMacintoshIntelMacOSXAppleWebKitKHTMLlikeGeckoChromeSafari",
-	"MozillaMacintoshIntelMacOSXrv:GeckoFirefox",
+	"MozillaMacintoshIntelMacOSXrvGeckoFirefox",
 	"MozillaMacintoshIntelMacOSXAppleWebKitKHTMLlikeGeckoChromeSafariVivaldi",
 	"MozillaMacintoshIntelMacOSXAppleWebKitKHTMLlikeGeckoChromeSafariEdg",
 	// Linux
-	"MozillaXLinuxxrv:GeckoFirefox",
-	"MozillaXLinuxirv:GeckoFirefox",
-	"MozillaXUbuntuLinuxirv:GeckoFirefox",
-	"MozillaXFedoraLinuxxrv:GeckoFirefox",
+	"MozillaXLinuxxrvGeckoFirefox",
+	"MozillaXLinuxirvGeckoFirefox",
+	"MozillaXUbuntuLinuxirvGeckoFirefox",
+	"MozillaXFedoraLinuxxrvGeckoFirefox",
 	"MozillaXLinuxxAppleWebKitKHTMLlikeGeckoChromeSafari",
 }
 

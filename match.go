@@ -8,10 +8,11 @@ import (
 
 const (
 	// These are enum constants for the match type.
-	Browser = 1
-	OS      = 2
-	Type    = 3
-	Unknown = 0
+	BrowserMatch = 1
+	OSMatch      = 2
+	TypeMatch    = 3
+	VersionMatch = 4
+	UnknownMatch = 0
 
 	// The following constants are used to determine agents.
 	// Browsers.
@@ -40,6 +41,9 @@ const (
 	Tablet  = "Tablet"
 	TV      = "TV"
 	Bot     = "Bot"
+
+	// Version.
+	Version = "Version"
 )
 
 // matchMap is a map of user agent types to their matching strings.
@@ -71,6 +75,9 @@ var matchMap = map[string][]string{
 	Tablet:  {Tablet, "Touch", "iPad", "Nintendo Switch", "NintendoSwitch", "Kindle"},
 	TV:      {TV, "Large Screen", "LargeScreen", "Smart Display", "SmartDisplay", "PLAYSTATION", "PlayStation", "ADT-2", "ADT-1", "CrKey", "Roku", "AFT", "Web0S", "Nexus Player", "Xbox", "XBOX", "Nintendo WiiU", "NintendoWiiU"},
 	Bot:     {Bot, "bot", "Slurp", "LinkCheck", "QuickLook", "Haosou", "Yahoo Ad", "YahooAd", "GoogleProber", "GoogleProducer", "Mediapartners", "Headless", "facebookexternalhit", "facebookcatalog"},
+
+	// Version
+	Version: {Version},
 }
 
 // matchPrecedenceMap is a map of user agent types to their importance
@@ -126,13 +133,15 @@ type MatchResults struct {
 func GetMatchType(match string) uint8 {
 	switch match {
 	case Chrome, Edge, Firefox, IE, Opera, OperaMini, Safari, Vivaldi, Samsung, Nintendo:
-		return Browser
+		return BrowserMatch
 	case Android, ChromeOS, iOS, Linux, MacOS, Windows:
-		return OS
+		return OSMatch
 	case Desktop, Mobile, Tablet, Bot, TV:
-		return Type
+		return TypeMatch
+	case Version:
+		return VersionMatch
 	default:
-		return Unknown
+		return UnknownMatch
 	}
 }
 
@@ -179,7 +188,7 @@ func MatchTokenIndexes(ua string) []MatchResults {
 // This adds a matching constant to a user agent struct.
 func (ua *UserAgent) addMatch(result *Result) bool {
 	// Browsers
-	if result.Type == Browser && result.Precedence > ua.precedence.Browser {
+	if result.Type == BrowserMatch && result.Precedence > ua.precedence.Browser {
 		switch result.Match {
 		case Chrome:
 			ua.Browser = Chrome
@@ -209,7 +218,7 @@ func (ua *UserAgent) addMatch(result *Result) bool {
 	}
 
 	// Operating Systems
-	if result.Type == OS && result.Precedence > ua.precedence.OS {
+	if result.Type == OSMatch && result.Precedence > ua.precedence.OS {
 		switch result.Match {
 		case Android:
 			ua.OS = Android
@@ -239,7 +248,7 @@ func (ua *UserAgent) addMatch(result *Result) bool {
 	}
 
 	// Types
-	if result.Type == Type && result.Precedence > ua.precedence.Type {
+	if result.Type == TypeMatch && result.Precedence > ua.precedence.Type {
 		switch result.Match {
 		case Desktop:
 			ua.Desktop = true

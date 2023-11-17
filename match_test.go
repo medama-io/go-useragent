@@ -18,7 +18,7 @@ var matchResults = [][]string{
 	{ua.Windows, ua.IE},
 	{ua.Edge, ua.Safari, ua.Chrome, ua.Windows},
 	// Mac
-	{ua.Safari, ua.MacOS},
+	{ua.Safari, ua.Version, ua.MacOS},
 	{ua.Safari, ua.Chrome, ua.MacOS},
 	{ua.Firefox, ua.MacOS},
 	{ua.Vivaldi, ua.Safari, ua.Chrome, ua.MacOS},

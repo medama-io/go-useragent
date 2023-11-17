@@ -80,7 +80,10 @@ func (trie *RuneTrie) Get(key string) UserAgent {
 			matched := ua.addMatch(node.result)
 			// If we matched a browser of the highest precedence, we can mark the
 			// next set of runes as the version number we want to store.
-			if matched && node.result.Type == Browser {
+			//
+			// We also reject any version numbers related to Safari since it has a
+			// separate key for its version number.
+			if (matched && node.result.Type == BrowserMatch && node.result.Match != Safari) || (node.result.Type == VersionMatch && ua.Version == "") {
 				// Clear version buffer if it has old values.
 				versionBuffer = versionBuffer[:0]
 				skipCount++ // We want to omit the slash after the browser name.
