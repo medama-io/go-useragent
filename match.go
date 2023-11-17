@@ -14,7 +14,7 @@ const (
 	Unknown = 0
 
 	// The following constants are used to determine agents.
-	// Browsers
+	// Browsers.
 	Chrome    = "Chrome"
 	Edge      = "Edge"
 	Firefox   = "Firefox"
@@ -26,7 +26,7 @@ const (
 	Samsung   = "SamsungBrowser"
 	Nintendo  = "NintendoBrowser"
 
-	// Operating Systems
+	// Operating Systems.
 	Android  = "Android"
 	ChromeOS = "ChromeOS"
 	iOS      = "iOS"
@@ -34,7 +34,7 @@ const (
 	MacOS    = "MacOS"
 	Windows  = "Windows"
 
-	// Types
+	// Types.
 	Desktop = "Desktop"
 	Mobile  = "Mobile"
 	Tablet  = "Tablet"
@@ -42,13 +42,13 @@ const (
 	Bot     = "Bot"
 )
 
-// MatchMap is a map of user agent types to their matching strings.
+// matchMap is a map of user agent types to their matching strings.
 // These are the tokens saved into the trie when populating it.
-var MatchMap = map[string][]string{
+var matchMap = map[string][]string{
 	// Browsers
-	Chrome:    {Chrome},
+	Chrome:    {Chrome, "CriOS"},
 	Edge:      {Edge, "Edg"},
-	Firefox:   {Firefox},
+	Firefox:   {Firefox, "FxiOS"},
 	IE:        {"MSIE", "Trident"},
 	Opera:     {Opera, "OPR"},
 	OperaMini: {OperaMini},
@@ -73,7 +73,7 @@ var MatchMap = map[string][]string{
 	Bot:     {Bot, "bot", "Slurp", "LinkCheck", "QuickLook", "Haosou", "Yahoo Ad", "YahooAd", "GoogleProber", "GoogleProducer", "Mediapartners", "Headless", "facebookexternalhit", "facebookcatalog"},
 }
 
-// MatchPrecedenceMap is a map of user agent types to their importance
+// matchPrecedenceMap is a map of user agent types to their importance
 // in determining what is the actual browser/device/OS being used.
 //
 // For example, Chrome user agents also contain the string "Safari" at
@@ -83,7 +83,7 @@ var MatchMap = map[string][]string{
 //
 // By setting a precedence, we can determine which match is more important
 // and use that as the final result.
-var MatchPrecedenceMap = map[string]uint8{
+var matchPrecedenceMap = map[string]uint8{
 	// Browsers
 	Safari:    1, // Is always at the end of a Chrome user agent.
 	Chrome:    2,
@@ -142,7 +142,7 @@ func GetMatchType(match string) uint8 {
 func MatchTokenIndexes(ua string) []MatchResults {
 	var results []MatchResults
 	exists := make(map[string]bool)
-	for key, match := range MatchMap {
+	for key, match := range matchMap {
 		for _, m := range match {
 			indexes := str.IndexAll(ua, m, -1)
 
@@ -161,7 +161,7 @@ func MatchTokenIndexes(ua string) []MatchResults {
 
 			// Add the match to the results.
 			matchType := GetMatchType(key)
-			results = append(results, MatchResults{EndIndex: lastIndex[1], Match: key, MatchType: matchType, Precedence: MatchPrecedenceMap[key]})
+			results = append(results, MatchResults{EndIndex: lastIndex[1], Match: key, MatchType: matchType, Precedence: matchPrecedenceMap[key]})
 			exists[key] = true
 		}
 	}
@@ -177,7 +177,7 @@ func MatchTokenIndexes(ua string) []MatchResults {
 }
 
 // This adds a matching constant to a user agent struct.
-func (ua *UserAgent) addMatch(result *Result) {
+func (ua *UserAgent) addMatch(result *Result) bool {
 	// Browsers
 	if result.Type == Browser && result.Precedence > ua.precedence.Browser {
 		switch result.Match {
@@ -205,6 +205,7 @@ func (ua *UserAgent) addMatch(result *Result) {
 		}
 
 		ua.precedence.Browser = result.Precedence
+		return true
 	}
 
 	// Operating Systems
@@ -234,6 +235,7 @@ func (ua *UserAgent) addMatch(result *Result) {
 		}
 
 		ua.precedence.OS = result.Precedence
+		return true
 	}
 
 	// Types
@@ -257,5 +259,8 @@ func (ua *UserAgent) addMatch(result *Result) {
 		}
 
 		ua.precedence.Type = result.Precedence
+		return true
 	}
+
+	return false
 }

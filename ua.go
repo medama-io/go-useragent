@@ -18,6 +18,7 @@ type Precedence struct {
 type UserAgent struct {
 	Browser string
 	OS      string
+	Version string
 
 	Desktop bool
 	Mobile  bool

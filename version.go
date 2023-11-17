@@ -8,7 +8,7 @@ import (
 // RemoveVersions removes the version numbers from the user agent string.
 func RemoveVersions(ua string) string {
 	// Flag to indicate if we are currently iterating over a version number.
-	var isVersion, isMacVersion bool
+	var isVersion bool
 	// Number of runes to skip when iterating over the trie. This is used
 	// to skip over version numbers or language codes.
 	var skipCount uint8
@@ -21,34 +21,22 @@ func RemoveVersions(ua string) string {
 			continue
 		}
 
-		// If we encouter a slash, we can assume the version number is next.
-		switch r {
-		case '/':
-			isVersion = true
-		case ' ':
-			// If we encounter a space, we can assume the version number is over.
-			isVersion = false
-		}
-
-		// Mac OS X version numbers are separated by "X " followed by a version number
-		// with underscores.
-		if r == 'X' && len(ua) > i+1 && ua[i+1] == ' ' {
-			isMacVersion = true
-		} else if r == ')' {
-			isMacVersion = false
+		if isVersion {
+			// If we encounter any unknown characters, we can assume the version number is over.]
+			if !IsDigit(r) && r != '.' {
+				isVersion = false
+			} else {
+				// If we are currently iterating over a version number, add the index to the
+				// list of indexes to replace. We can't remove the rune in this pass as it
+				// would change the indexes of the remaining runes.
+				indexesToReplace = append(indexesToReplace, i)
+				continue
+			}
 		}
 
 		// We want to strip any other version numbers from other products to get more hits
 		// to the trie.
 		if IsDigit(r) || (r == '.' && len(ua) > i+1 && IsDigit(rune(ua[i+1]))) {
-			indexesToReplace = append(indexesToReplace, i)
-			continue
-		}
-
-		// If we are currently iterating over a version number, add the index to the
-		// list of indexes to replace. We can't remove the rune in this pass as it
-		// would change the indexes of the remaining runes.
-		if isVersion || isMacVersion {
 			indexesToReplace = append(indexesToReplace, i)
 			continue
 		}
@@ -63,7 +51,14 @@ func RemoveVersions(ua string) string {
 
 		// Skip whitespace
 		switch r {
-		case ' ', ';', ')', '(', ',', '_', '-':
+		case ' ', ';', ')', '(', ',', '_', '-', '/':
+			indexesToReplace = append(indexesToReplace, i)
+			continue
+		}
+
+		// Replace all non-latin characters with a space. The trie function will automatically
+		// skip over any characters it can't find, so this is a safe operation.
+		if !IsLetter(r) {
 			indexesToReplace = append(indexesToReplace, i)
 			continue
 		}

@@ -31,114 +31,111 @@ var testCases = []string{
 	"Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/119.0.0.0 Safari/537.36",
 }
 
-var result ua.UserAgent
-
-func BenchmarkParserAll(b *testing.B) {
-	parser := ua.NewParser()
-
-	for i := 0; i < b.N; i++ {
-		for _, k := range testCases {
-			result = parser.Parse(k)
-		}
-	}
-}
-
-func BenchmarkParserSingle(b *testing.B) {
-	parser := ua.NewParser()
-
-	for i := 0; i < b.N; i++ {
-		result = parser.Parse(testCases[0])
-	}
-}
-
-var resultCases = []*ua.UserAgent{
+var resultCases = []ua.UserAgent{
 	// Windows
 	{
 		Browser: ua.Chrome,
 		OS:      ua.Windows,
 		Desktop: true,
+		Version: "118.0.0.0",
 	},
 	{
 		Browser: ua.Chrome,
 		OS:      ua.Windows,
 		Desktop: true,
+		Version: "59.0.3071.115",
 	},
 	{
 		Browser: ua.IE,
 		OS:      ua.Windows,
 		Desktop: true,
+		Version: "8.0",
 	},
 	{
 		Browser: ua.IE,
 		OS:      ua.Windows,
 		Desktop: true,
+		Version: "10.0",
 	},
 	{
 		Browser: ua.IE,
 		OS:      ua.Windows,
 		Desktop: true,
+		Version: "7.0", // Technically should be 11.0, but we need to manually map this after getting it.
 	},
 	{
 		Browser: ua.IE,
 		OS:      ua.Windows,
 		Desktop: true,
+		Version: "6.0",
 	},
 	{
 		Browser: ua.Edge,
 		OS:      ua.Windows,
 		Desktop: true,
+		Version: "15.15063",
 	},
 	// Mac
 	{
 		Browser: ua.Safari,
 		OS:      ua.MacOS,
 		Desktop: true,
+		Version: "10.1.2",
 	},
 	{
 		Browser: ua.Chrome,
 		OS:      ua.MacOS,
 		Desktop: true,
+		Version: "60.0.3112.90",
 	},
 	{
 		Browser: ua.Firefox,
 		OS:      ua.MacOS,
 		Desktop: true,
+		Version: "54.0",
 	},
 	{
 		Browser: ua.Vivaldi,
 		OS:      ua.MacOS,
 		Desktop: true,
+		Version: "1.92.917.39",
 	},
 	{
 		Browser: ua.Edge,
 		OS:      ua.MacOS,
 		Desktop: true,
+		Version: "79.0.309.71",
 	},
 	// Linux
 	{
 		Browser: ua.Firefox,
 		OS:      ua.Linux,
 		Desktop: true,
+		Version: "52.0",
 	},
 	{
 		Browser: ua.Firefox,
 		OS:      ua.Linux,
 		Desktop: true,
+		Version: "119.0",
 	},
 	{
 		Browser: ua.Firefox,
 		OS:      ua.Linux,
 		Desktop: true,
+		Version: "119.0",
 	},
 	{
 		Browser: ua.Firefox,
 		OS:      ua.Linux,
 		Desktop: true,
+		Version: "119.0",
 	},
 	{
 		Browser: ua.Chrome,
 		OS:      ua.Linux,
 		Desktop: true,
+		Version: "119.0.0.0",
 	},
 }
 
@@ -151,6 +148,7 @@ func TestParse(t *testing.T) {
 			assert.Equal(t, resultCases[i].Browser, result.Browser, "Browser Test Case: %s\nExpected: %s", v, resultCases[i].Browser)
 			assert.Equal(t, resultCases[i].OS, result.OS, "OS Test Case: %s\nExpected: %s", v, resultCases[i].OS)
 			assert.Equal(t, resultCases[i].Desktop, result.Desktop, "Desktop Test Case: %s\nExpected: %s", v, resultCases[i].Desktop)
+			assert.Equal(t, resultCases[i].Version, result.Version, "Version Test Case: %s\nExpected: %s", v, resultCases[i].Version)
 			assert.Equal(t, resultCases[i].Mobile, result.Mobile, "Mobile Test Case: %s\nExpected: %s", v, resultCases[i].Mobile)
 			assert.Equal(t, resultCases[i].Tablet, result.Tablet, "Tablet Test Case: %s\nExpected: %s", v, resultCases[i].Tablet)
 			assert.Equal(t, resultCases[i].TV, result.TV, "TV Test Case: %s\nExpected: %s", v, resultCases[i].TV)

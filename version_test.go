@@ -8,7 +8,7 @@ import (
 	"github.com/stretchr/testify/assert"
 )
 
-// Refer to ua_test.go for main original test cases
+// Refer to ua_test.go for main original test cases.
 var versionResults = []string{
 	// Windows
 	"MozillaWindowsNTWinxAppleWebKitKHTMLlikeGeckoChromeSafari",
@@ -19,11 +19,11 @@ var versionResults = []string{
 	"MozillacompatibleMSIEWindowsNTSV.NETCLRNS",
 	"MozillaWindowsNTAppleWebKitKHTMLlikeGeckoChromeSafariEdge",
 	// Mac
-	"MozillaMacintoshIntelMacOSAppleWebKitKHTMLlikeGeckoVersionSafari",
-	"MozillaMacintoshIntelMacOSAppleWebKitKHTMLlikeGeckoChromeSafari",
-	"MozillaMacintoshIntelMacOSGeckoFirefox",
-	"MozillaMacintoshIntelMacOSAppleWebKitKHTMLlikeGeckoChromeSafariVivaldi",
-	"MozillaMacintoshIntelMacOSAppleWebKitKHTMLlikeGeckoChromeSafariEdg",
+	"MozillaMacintoshIntelMacOSXAppleWebKitKHTMLlikeGeckoVersionSafari",
+	"MozillaMacintoshIntelMacOSXAppleWebKitKHTMLlikeGeckoChromeSafari",
+	"MozillaMacintoshIntelMacOSXrv:GeckoFirefox",
+	"MozillaMacintoshIntelMacOSXAppleWebKitKHTMLlikeGeckoChromeSafariVivaldi",
+	"MozillaMacintoshIntelMacOSXAppleWebKitKHTMLlikeGeckoChromeSafariEdg",
 	// Linux
 	"MozillaXLinuxxrv:GeckoFirefox",
 	"MozillaXLinuxirv:GeckoFirefox",

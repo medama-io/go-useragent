@@ -29,7 +29,9 @@ func (trie *RuneTrie) Get(key string) UserAgent {
 	}
 
 	// Flag to indicate if we are currently iterating over a version number.
-	var isVersion, isMacVersion bool
+	var isVersion bool
+	// A temporary buffer to store the version number.
+	var versionBuffer []rune
 	// Number of runes to skip when iterating over the trie. This is used
 	// to skip over version numbers or language codes.
 	var skipCount uint8
@@ -40,34 +42,23 @@ func (trie *RuneTrie) Get(key string) UserAgent {
 			continue
 		}
 
-		// If we encounter a potential version, skip the runes until we reach
-		// the end of the version number.
-		switch r {
-		case '/':
-			isVersion = true
-		case ' ':
-			// If we encounter a space, we can assume the version number is over.
-			isVersion = false
-		}
-
-		// Mac OS X version numbers are separated by "X " followed by a version number
-		// with underscores.
-		//
-		// We also do not use a switch here as Go does not generate a jump table for
-		// switch statements with no integral constants. Benchmarking shows that ops
-		// go down if we try to migrate statements like this to a switch.
-		if r == 'X' && len(key) > i+1 && key[i+1] == ' ' {
-			isMacVersion = true
-		} else if r == ')' {
-			isMacVersion = false
-		}
-
-		if isVersion || isMacVersion {
-			continue
+		if isVersion {
+			// If we encounter any unknown characters, we can assume the version number is over.]
+			if !IsDigit(r) && r != '.' {
+				isVersion = false
+			} else {
+				// Add to rune buffer
+				versionBuffer = append(versionBuffer, r)
+				continue
+			}
 		}
 
 		// We want to strip any other version numbers from other products to get more hits
 		// to the trie.
+		//
+		// We also do not use a switch here as Go does not generate a jump table for
+		// switch statements with no integral constants. Benchmarking shows that ops
+		// go down if we try to migrate statements like this to a switch.
 		if IsDigit(r) || (r == '.' && len(key) > i+1 && IsDigit(rune(key[i+1]))) {
 			continue
 		}
@@ -80,13 +71,21 @@ func (trie *RuneTrie) Get(key string) UserAgent {
 		}
 
 		switch r {
-		case ' ', ';', ')', '(', ',', '_', '-':
+		case ' ', ';', ')', '(', ',', '_', '-', '/':
 			continue
 		}
 
 		// If result exists, we can append it to the value.
 		if node.result != nil {
-			ua.addMatch(node.result)
+			matched := ua.addMatch(node.result)
+			// If we matched a browser of the highest precedence, we can mark the
+			// next set of runes as the version number we want to store.
+			if matched && node.result.Type == Browser {
+				// Clear version buffer if it has old values.
+				versionBuffer = versionBuffer[:0]
+				skipCount++ // We want to omit the slash after the browser name.
+				isVersion = true
+			}
 		}
 
 		// Set the next node to the child of the current node.
@@ -95,8 +94,13 @@ func (trie *RuneTrie) Get(key string) UserAgent {
 			continue // No match found, but we can try to match the next rune.
 		}
 		node = next
-
 	}
+
+	// If we have a version buffer stored, we can add it to the user agent.
+	if len(versionBuffer) > 0 {
+		ua.Version = string(versionBuffer)
+	}
+
 	return ua
 }
 
