@@ -7,6 +7,12 @@ import (
 )
 
 const (
+	// These are enum constants for the match type.
+	Browser = 1
+	OS      = 2
+	Type    = 3
+	Unknown = 0
+
 	// The following constants are used to determine agents.
 	// Browsers
 	Chrome    = "Chrome"
@@ -120,13 +126,13 @@ type MatchResults struct {
 func GetMatchType(match string) uint8 {
 	switch match {
 	case Chrome, Edge, Firefox, IE, Opera, OperaMini, Safari, Vivaldi, Samsung, Nintendo:
-		return 1
+		return Browser
 	case Android, ChromeOS, iOS, Linux, MacOS, Windows:
-		return 2
+		return OS
 	case Desktop, Mobile, Tablet, Bot, TV:
-		return 3
+		return Type
 	default:
-		return 0
+		return Unknown
 	}
 }
 
@@ -173,7 +179,7 @@ func MatchTokenIndexes(ua string) []MatchResults {
 // This adds a matching constant to a user agent struct.
 func (ua *UserAgent) addMatch(result *Result) {
 	// Browsers
-	if result.Type == 1 && result.Precedence > ua.precedence.Browser {
+	if result.Type == Browser && result.Precedence > ua.precedence.Browser {
 		switch result.Match {
 		case Chrome:
 			ua.Browser = Chrome
@@ -202,7 +208,7 @@ func (ua *UserAgent) addMatch(result *Result) {
 	}
 
 	// Operating Systems
-	if result.Type == 2 && result.Precedence > ua.precedence.OS {
+	if result.Type == OS && result.Precedence > ua.precedence.OS {
 		switch result.Match {
 		case Android:
 			ua.OS = Android
@@ -231,7 +237,7 @@ func (ua *UserAgent) addMatch(result *Result) {
 	}
 
 	// Types
-	if result.Type == 3 && result.Precedence > ua.precedence.Type {
+	if result.Type == Type && result.Precedence > ua.precedence.Type {
 		switch result.Match {
 		case Desktop:
 			ua.Desktop = true

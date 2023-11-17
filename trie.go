@@ -108,7 +108,7 @@ func (trie *RuneTrie) Put(key string) {
 	node := trie
 	matchResults := MatchTokenIndexes(key)
 	for i, r := range key {
-		// If we've reached the end of the key, store the result.
+		// If we've reached the end of a matching key, store the result.
 		matchIndex := len(matchResults) - 1
 		// The end index is after the last rune in the match, so
 		// we need to subtract 1 to get the last rune.
