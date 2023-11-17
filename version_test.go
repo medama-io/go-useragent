@@ -18,24 +18,35 @@ var versionResults = []string{
 	"MozillaWindowsNTTridentrvlikeGecko",
 	"MozillacompatibleMSIEWindowsNTSVNETCLRNS",
 	"MozillaWindowsNTAppleWebKitKHTMLlikeGeckoChromeSafariEdge",
+
 	// Mac
 	"MozillaMacintoshIntelMacOSXAppleWebKitKHTMLlikeGeckoVersionSafari",
 	"MozillaMacintoshIntelMacOSXAppleWebKitKHTMLlikeGeckoChromeSafari",
 	"MozillaMacintoshIntelMacOSXrvGeckoFirefox",
 	"MozillaMacintoshIntelMacOSXAppleWebKitKHTMLlikeGeckoChromeSafariVivaldi",
 	"MozillaMacintoshIntelMacOSXAppleWebKitKHTMLlikeGeckoChromeSafariEdg",
+
 	// Linux
 	"MozillaXLinuxxrvGeckoFirefox",
 	"MozillaXLinuxirvGeckoFirefox",
 	"MozillaXUbuntuLinuxirvGeckoFirefox",
 	"MozillaXFedoraLinuxxrvGeckoFirefox",
 	"MozillaXLinuxxAppleWebKitKHTMLlikeGeckoChromeSafari",
+
+	// iPhone
+	"MozillaiPhoneCPUiPhoneOSlikeMacOSXAppleWebKitKHTMLlikeGeckoVersionMobileSafari",
+	"MozillaiPhoneCPUiPhoneOSlikeMacOSXAppleWebKitKHTMLlikeGeckoCriOSMobileSafari",
+	"MozillaiPhoneCPUiPhoneOSlikeMacOSXAppleWebKitKHTMLlikeGeckoOPiOSMobileSafari",
+	"MozillaiPhoneCPUiPhoneOSlikeMacOSXAppleWebKitKHTMLlikeGeckoFxiOSMobileSafari",
+	"MozillaiPhoneCPUiPhoneOSlikeMacOSXAppleWebKitKHTMLlikeGeckoVersionEdgiOSMobileSafari",
 }
 
-func TestRemoveVersions(t *testing.T) {
+func TestCleanVersions(t *testing.T) {
 	for i, v := range versionResults {
 		t.Run(fmt.Sprintf("Case:%d", i), func(t *testing.T) {
-			assert.Equal(t, v, ua.RemoveVersions(testCases[i]), "Test Case: %s\nExpected: %s", testCases[i], v)
+			id := ua.RemoveDeviceIdentifiers(testCases[i], ua.MatchTokenIndexes(testCases[i]))
+			line := ua.RemoveVersions(id)
+			assert.Equal(t, v, line, "Test Case: %s\nNoID: %s\nExpected: %s", testCases[i], id, v)
 		})
 	}
 }

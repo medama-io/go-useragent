@@ -5,6 +5,22 @@ import (
 	"strings"
 )
 
+// ReplaceIndexes replaces the runes at the given indexes with empty strings.
+func ReplaceIndexes(ua string, indexes []int) string {
+	// Remove the version numbers from the user agent string.
+	for _, i := range indexes {
+		ua = ua[:i] + ua[i+1:]
+		// Update the indexes of the remaining runes.
+		for j := range indexes {
+			if indexes[j] > i {
+				indexes[j]--
+			}
+		}
+	}
+
+	return ua
+}
+
 // RemoveVersions removes the version numbers from the user agent string.
 func RemoveVersions(ua string) string {
 	// Flag to indicate if we are currently iterating over a version number.
@@ -64,14 +80,37 @@ func RemoveVersions(ua string) string {
 		}
 	}
 
-	// Remove the version numbers from the user agent string.
-	for _, i := range indexesToReplace {
-		ua = ua[:i] + ua[i+1:]
-		// Update the indexes of the remaining runes.
-		for j := range indexesToReplace {
-			if indexesToReplace[j] > i {
-				indexesToReplace[j]--
+	ua = ReplaceIndexes(ua, indexesToReplace)
+	return ua
+}
+
+// RemoveDeviceIdentifiers removes the device identifiers from the user agent string.
+// This specifically removes any strings that follow the Mobile tokens.
+func RemoveDeviceIdentifiers(ua string, tokens []MatchResults) string {
+	// Find mobile token.
+	for _, token := range tokens {
+		var skipUntilWhitespace bool
+		var indexesToReplace []int
+		if token.Match == Mobile {
+			// Iterate over the user agent string and remove all characters
+			// after the mobile token until we encounter whitespace.
+			for i, r := range ua {
+				if skipUntilWhitespace {
+					if r == ' ' {
+						skipUntilWhitespace = false
+					} else {
+						indexesToReplace = append(indexesToReplace, i)
+						continue
+					}
+				}
+
+				if i == token.EndIndex-1 {
+					skipUntilWhitespace = true
+				}
 			}
+
+			ua = ReplaceIndexes(ua, indexesToReplace)
+			return ua
 		}
 	}
 
@@ -94,11 +133,12 @@ func CleanAgentsFile(filePath string) ([]string, error) {
 	var cleanedAgents []string
 	seen := make(map[string]bool) // to track duplicates
 	for _, line := range lines {
-		cleanedLine := RemoveVersions(line)
+		line = RemoveDeviceIdentifiers(line, MatchTokenIndexes(line))
+		line = RemoveVersions(line)
 
 		// For each line, get all token indexes
 		// and remove all strings after the largest EndIndex.
-		results := MatchTokenIndexes(cleanedLine)
+		results := MatchTokenIndexes(line)
 
 		// If no results, skip the line.
 		if len(results) == 0 {
@@ -108,12 +148,12 @@ func CleanAgentsFile(filePath string) ([]string, error) {
 		// Get the largest EndIndex.
 		largestEndIndex := results[0].EndIndex
 		// Remove all strings after the largest EndIndex.
-		cleanedLine = cleanedLine[:largestEndIndex]
+		line = line[:largestEndIndex]
 
 		// Check for duplicates.
-		if !seen[cleanedLine] {
-			cleanedAgents = append(cleanedAgents, cleanedLine)
-			seen[cleanedLine] = true
+		if !seen[line] {
+			cleanedAgents = append(cleanedAgents, line)
+			seen[line] = true
 		}
 	}
 

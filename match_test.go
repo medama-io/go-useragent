@@ -9,7 +9,7 @@ import (
 )
 
 var matchResults = [][]string{
-	// Windows
+	// Windows (7)
 	{ua.Safari, ua.Chrome, ua.Windows},
 	{ua.Safari, ua.Chrome, ua.Windows},
 	{ua.Windows, ua.IE},
@@ -17,23 +17,31 @@ var matchResults = [][]string{
 	{ua.IE, ua.Windows},
 	{ua.Windows, ua.IE},
 	{ua.Edge, ua.Safari, ua.Chrome, ua.Windows},
-	// Mac
+
+	// Mac (5)
 	{ua.Safari, ua.Version, ua.MacOS},
 	{ua.Safari, ua.Chrome, ua.MacOS},
 	{ua.Firefox, ua.MacOS},
 	{ua.Vivaldi, ua.Safari, ua.Chrome, ua.MacOS},
 	{ua.Edge, ua.Safari, ua.Chrome, ua.MacOS},
-	// Linux
+
+	// Linux (5)
 	{ua.Firefox, ua.Linux},
 	{ua.Firefox, ua.Linux},
 	{ua.Firefox, ua.Linux, ua.Desktop},
 	{ua.Firefox, ua.Linux, ua.Desktop},
 	{ua.Safari, ua.Chrome, ua.Linux},
+
+	// iPhone (5)
+	{ua.Safari, ua.Mobile, ua.Version, ua.IOS, ua.MobileDevice},
+	{ua.Safari, ua.Mobile, ua.Chrome, ua.IOS, ua.MobileDevice},
+	{ua.Safari, ua.Mobile, ua.Opera, ua.IOS, ua.MobileDevice},
+	{ua.Safari, ua.Mobile, ua.Firefox, ua.IOS, ua.MobileDevice},
+	{ua.Safari, ua.Mobile, ua.Edge, ua.Version, ua.IOS, ua.MobileDevice},
 }
 
 func TestMatchTokenIndexes(t *testing.T) {
-	// Refer to version_test.go for versionResults test cases
-	for i, v := range versionResults {
+	for i, v := range testCases {
 		t.Run(fmt.Sprintf("Case:%d", i), func(t *testing.T) {
 			match := ua.MatchTokenIndexes(v)
 

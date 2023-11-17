@@ -1,6 +1,8 @@
 package useragent
 
-import "strings"
+import (
+	"strings"
+)
 
 type Result struct {
 	Match string
@@ -37,15 +39,25 @@ func (trie *RuneTrie) Get(key string) UserAgent {
 	// Number of runes to skip when iterating over the trie. This is used
 	// to skip over version numbers or language codes.
 	var skipCount uint8
+	// Skip until we encounter whitespace.
+	var skipUntilWhitespace bool
 
 	for i, r := range key {
+		if skipUntilWhitespace {
+			if r == ' ' {
+				skipUntilWhitespace = false
+			} else {
+				continue
+			}
+		}
+
 		if skipCount > 0 {
 			skipCount--
 			continue
 		}
 
 		if isVersion {
-			// If we encounter any unknown characters, we can assume the version number is over.]
+			// If we encounter any unknown characters, we can assume the version number is over.
 			if !IsDigit(r) && r != '.' {
 				isVersion = false
 			} else {
@@ -90,6 +102,15 @@ func (trie *RuneTrie) Get(key string) UserAgent {
 				versionBuffer.Reset()
 				skipCount++ // We want to omit the slash after the browser name.
 				isVersion = true
+			}
+
+			// If we matched a mobile token, we want to strip everything after it
+			// until we reach whitespace to get around random device IDs.
+			if matched && node.result.Match == Mobile {
+				// We need to clear the result so we can match the next token.
+				node.result = nil
+				skipUntilWhitespace = true
+				continue
 			}
 		}
 

@@ -30,7 +30,7 @@ const (
 	// Operating Systems.
 	Android  = "Android"
 	ChromeOS = "ChromeOS"
-	iOS      = "iOS"
+	IOS      = "iOS"
 	Linux    = "Linux"
 	MacOS    = "MacOS"
 	Windows  = "Windows"
@@ -38,9 +38,13 @@ const (
 	// Types.
 	Desktop = "Desktop"
 	Mobile  = "Mobile"
-	Tablet  = "Tablet"
-	TV      = "TV"
-	Bot     = "Bot"
+	// We need a separate type for mobile devices since some user agents use "Mobile/"
+	// appended with a device ID. We need to handle these separately to strip those IDs
+	// out.
+	MobileDevice = "MobileDevice"
+	Tablet       = "Tablet"
+	TV           = "TV"
+	Bot          = "Bot"
 
 	// Version.
 	Version = "Version"
@@ -48,13 +52,16 @@ const (
 
 // matchMap is a map of user agent types to their matching strings.
 // These are the tokens saved into the trie when populating it.
+//
+// Matching tokens are ordered by precedence. The first match is the
+// most important match.
 var matchMap = map[string][]string{
 	// Browsers
-	Chrome:    {Chrome, "CriOS"},
-	Edge:      {Edge, "Edg"},
-	Firefox:   {Firefox, "FxiOS"},
+	Chrome:    {"CriOS", Chrome},
+	Edge:      {"EdgiOS", Edge, "Edg"},
+	Firefox:   {"FxiOS", Firefox},
 	IE:        {"MSIE", "Trident"},
-	Opera:     {Opera, "OPR"},
+	Opera:     {"OPiOS", "OPR", Opera},
 	OperaMini: {OperaMini},
 	Safari:    {Safari},
 	Vivaldi:   {Vivaldi},
@@ -64,17 +71,18 @@ var matchMap = map[string][]string{
 	// Operating Systems
 	Android:  {Android},
 	ChromeOS: {"CrOS"},
-	iOS:      {"iPhoneOS", "iPhone OS", "iPad OS", "iPadOS", "iPod OS", "iPodOS"},
+	IOS:      {"iPhoneOS", "iPhone OS", "iPad OS", "iPadOS", "iPod OS", "iPodOS"},
 	Linux:    {Linux},
 	MacOS:    {"Macintosh"},
 	Windows:  {"Windows NT", "WindowsNT"},
 
 	// Types
-	Desktop: {Desktop, "Ubuntu", "Fedora"},
-	Mobile:  {Mobile, "ONEPLUS", "Huawei", "HTC", "Galaxy", "iPhone", "iPod", "Windows Phone", "LG"},
-	Tablet:  {Tablet, "Touch", "iPad", "Nintendo Switch", "NintendoSwitch", "Kindle"},
-	TV:      {TV, "Large Screen", "LargeScreen", "Smart Display", "SmartDisplay", "PLAYSTATION", "PlayStation", "ADT-2", "ADT-1", "CrKey", "Roku", "AFT", "Web0S", "Nexus Player", "Xbox", "XBOX", "Nintendo WiiU", "NintendoWiiU"},
-	Bot:     {Bot, "bot", "Slurp", "LinkCheck", "QuickLook", "Haosou", "Yahoo Ad", "YahooAd", "GoogleProber", "GoogleProducer", "Mediapartners", "Headless", "facebookexternalhit", "facebookcatalog"},
+	Desktop:      {Desktop, "Ubuntu", "Fedora"},
+	Mobile:       {Mobile},
+	MobileDevice: {"ONEPLUS", "Huawei", "HTC", "Galaxy", "iPhone", "iPod", "Windows Phone", "LG"},
+	Tablet:       {Tablet, "Touch", "iPad", "Nintendo Switch", "NintendoSwitch", "Kindle"},
+	TV:           {TV, "Large Screen", "LargeScreen", "Smart Display", "SmartDisplay", "PLAYSTATION", "PlayStation", "ADT-2", "ADT-1", "CrKey", "Roku", "AFT", "Web0S", "Nexus Player", "Xbox", "XBOX", "Nintendo WiiU", "NintendoWiiU"},
+	Bot:          {Bot, "bot", "Slurp", "LinkCheck", "QuickLook", "Haosou", "Yahoo Ad", "YahooAd", "GoogleProber", "GoogleProducer", "Mediapartners", "Headless", "facebookexternalhit", "facebookcatalog"},
 
 	// Version
 	Version: {Version},
@@ -106,17 +114,18 @@ var matchPrecedenceMap = map[string]uint8{
 	// Operating Systems
 	Linux:    1,
 	Android:  2,
-	iOS:      3,
+	IOS:      3,
 	ChromeOS: 4,
 	MacOS:    5,
 	Windows:  6,
 
 	// Types
-	Desktop: 1,
-	Mobile:  2,
-	Tablet:  3,
-	TV:      4,
-	Bot:     5,
+	Desktop:      1,
+	Mobile:       2,
+	MobileDevice: 3,
+	Tablet:       4,
+	TV:           5,
+	Bot:          6,
 }
 
 type MatchResults struct {
@@ -134,9 +143,9 @@ func GetMatchType(match string) uint8 {
 	switch match {
 	case Chrome, Edge, Firefox, IE, Opera, OperaMini, Safari, Vivaldi, Samsung, Nintendo:
 		return BrowserMatch
-	case Android, ChromeOS, iOS, Linux, MacOS, Windows:
+	case Android, ChromeOS, IOS, Linux, MacOS, Windows:
 		return OSMatch
-	case Desktop, Mobile, Tablet, Bot, TV:
+	case Desktop, Mobile, MobileDevice, Tablet, Bot, TV:
 		return TypeMatch
 	case Version:
 		return VersionMatch
@@ -225,8 +234,8 @@ func (ua *UserAgent) addMatch(result *Result) bool {
 		case ChromeOS:
 			ua.OS = ChromeOS
 			ua.Desktop = true
-		case iOS:
-			ua.OS = iOS
+		case IOS:
+			ua.OS = IOS
 			if !ua.Tablet {
 				ua.Mobile = true
 			}
@@ -257,7 +266,7 @@ func (ua *UserAgent) addMatch(result *Result) bool {
 				ua.Mobile = false
 			}
 			ua.Tablet = true
-		case Mobile:
+		case Mobile, MobileDevice:
 			if !ua.Tablet {
 				ua.Mobile = true
 			}
