@@ -1,5 +1,7 @@
 package useragent
 
+import "strings"
+
 type Result struct {
 	Match string
 	// 0: Unknown, 1: Browser, 2: OS, 3: Type
@@ -30,8 +32,8 @@ func (trie *RuneTrie) Get(key string) UserAgent {
 
 	// Flag to indicate if we are currently iterating over a version number.
 	var isVersion bool
-	// A temporary buffer to store the version number.
-	var versionBuffer []rune
+	// A buffer to store the version number.
+	var versionBuffer strings.Builder
 	// Number of runes to skip when iterating over the trie. This is used
 	// to skip over version numbers or language codes.
 	var skipCount uint8
@@ -48,7 +50,7 @@ func (trie *RuneTrie) Get(key string) UserAgent {
 				isVersion = false
 			} else {
 				// Add to rune buffer
-				versionBuffer = append(versionBuffer, r)
+				versionBuffer.WriteRune(r)
 				continue
 			}
 		}
@@ -85,7 +87,7 @@ func (trie *RuneTrie) Get(key string) UserAgent {
 			// separate key for its version number.
 			if (matched && node.result.Type == BrowserMatch && node.result.Match != Safari) || (node.result.Type == VersionMatch && ua.Version == "") {
 				// Clear version buffer if it has old values.
-				versionBuffer = versionBuffer[:0]
+				versionBuffer.Reset()
 				skipCount++ // We want to omit the slash after the browser name.
 				isVersion = true
 			}
@@ -99,10 +101,8 @@ func (trie *RuneTrie) Get(key string) UserAgent {
 		node = next
 	}
 
-	// If we have a version buffer stored, we can add it to the user agent.
-	if len(versionBuffer) > 0 {
-		ua.Version = string(versionBuffer)
-	}
+	// Store version buffer into the user agent struct.
+	ua.Version = versionBuffer.String()
 
 	return ua
 }
