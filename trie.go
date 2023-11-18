@@ -113,6 +113,12 @@ func (trie *RuneTrie) Get(key string) UserAgent {
 			}
 		}
 
+		// We need to catch the flag change after the loop since it isn't possible
+		// for a continue to affect an outer loop.
+		if skipUntilWhitespace {
+			continue
+		}
+
 		// Set the next node to the child of the current node.
 		next := node.children[r]
 		if next == nil {

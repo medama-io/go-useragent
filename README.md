@@ -1,6 +1,6 @@
 # go-useragent
 
-`go-useragent` is a high-performance Go library designed to parse browser, operating system, and device type information from user-agent strings with _sub-microsecond_ parsing times.
+`go-useragent` is a high-performance Go library designed to parse browser name and version, operating system, and device type information from user-agent strings with _sub-microsecond_ parsing times.
 
 It achieves this efficiency by using a [trie](https://en.wikipedia.org/wiki/Trie) data structure to store and rapidly look up user-agent tokens. Utilizing heuristic rules, the library tokenizes a list of user-agent strings into a trie during startup. Subsequently, during runtime, the parsing process involves a straightforward lookup operation.
 
@@ -33,11 +33,15 @@ func main() {
 	// Access parsed information using agent fields.
 	fmt.Println(agent.Browser)  // Chrome
 	fmt.Println(agent.OS)       // Windows
+	fmt.Println(agent.Version)  // 118.0.0.0
 	fmt.Println(agent.Desktop)  // true
 	fmt.Println(agent.Mobile)   // false
 	fmt.Println(agent.Tablet)   // false
 	fmt.Println(agent.TV)       // false
 	fmt.Println(agent.Bot)      // false
+
+	// Helper functions.
+	fmt.Println(agent.GetMajorVersion())  // 118
 }
 ```
 Refer to the Go.pkg documentation for more details on available fields and their meanings.
