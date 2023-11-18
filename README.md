@@ -44,7 +44,7 @@ func main() {
 	fmt.Println(agent.GetMajorVersion())  // 118
 }
 ```
-Refer to the Go.pkg documentation for more details on available fields and their meanings.
+Refer to the [pkg.go.dev](https://pkg.go.dev/github.com/medama-io/go-useragent) documentation for more details on available fields and their meanings.
 
 ## Acknowledgements
 

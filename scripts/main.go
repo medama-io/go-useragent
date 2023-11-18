@@ -8,13 +8,56 @@ import (
 	ua "github.com/medama-io/go-useragent"
 )
 
+// This reads the agents.txt file and returns a new agents_cleaned.txt file
+// with the version numbers removed.
+func CleanAgentsFile(filePath string) ([]string, error) {
+	// Read agents.txt file.
+	content, err := os.ReadFile(filePath)
+	if err != nil {
+		return nil, err
+	}
+
+	// Split the content into lines.
+	lines := strings.Split(string(content), "\n")
+
+	// Clean each line and store the cleaned agents.
+	var cleanedAgents []string
+	seen := make(map[string]bool) // to track duplicates
+	for _, line := range lines {
+		line = ua.RemoveDeviceIdentifiers(line)
+		line = ua.RemoveVersions(line)
+
+		// For each line, get all token indexes
+		// and remove all strings after the largest EndIndex.
+		results := ua.MatchTokenIndexes(line)
+
+		// If no results, skip the line.
+		if len(results) == 0 {
+			continue
+		}
+
+		// Get the largest EndIndex.
+		largestEndIndex := results[0].EndIndex
+		// Remove all strings after the largest EndIndex.
+		line = line[:largestEndIndex]
+
+		// Check for duplicates.
+		if !seen[line] {
+			cleanedAgents = append(cleanedAgents, line)
+			seen[line] = true
+		}
+	}
+
+	return cleanedAgents, nil
+}
+
 func main() {
 	var content []string
 	filenames := []string{"agents/1.txt", "agents/2.txt", "agents/3.txt"}
 
 	for _, filename := range filenames {
 		// Read agents.txt file.
-		agents, err := ua.CleanAgentsFile(filename)
+		agents, err := CleanAgentsFile(filename)
 		if err != nil {
 			fmt.Printf("Error cleaning agents file: %s\n", err)
 			return

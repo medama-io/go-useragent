@@ -128,6 +128,7 @@ var matchPrecedenceMap = map[string]uint8{
 	Bot:          6,
 }
 
+// MatchResults contains the information from MatchTokenIndexes.
 type MatchResults struct {
 	EndIndex int
 	Match    string

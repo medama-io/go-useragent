@@ -3,7 +3,7 @@ package useragent
 import "strings"
 
 type Parser struct {
-	trie *RuneTrie
+	Trie *RuneTrie
 }
 
 // Precedence is the order in which the user agent matched the
@@ -29,23 +29,20 @@ type UserAgent struct {
 	precedence Precedence
 }
 
-// populateTrie populates the trie with user agent data.
-func (p *Parser) populateTrie() {
-	// For each newline in the file, add the user agent to the trie.
-	for _, ua := range strings.Split(UserAgentsFile, "\n") {
-		p.trie.Put(ua)
-	}
-}
-
 // Create a new Trie and populate it with user agent data.
 func NewParser() *Parser {
 	trie := NewRuneTrie()
-	parser := &Parser{trie: trie}
-	parser.populateTrie()
+	parser := &Parser{Trie: trie}
+
+	// For each newline in the file, add the user agent to the trie.
+	for _, ua := range strings.Split(userAgentsFile, "\n") {
+		parser.Trie.Put(ua)
+	}
+
 	return parser
 }
 
 // Parse a user agent string and return a UserAgent struct.
 func (p *Parser) Parse(ua string) UserAgent {
-	return p.trie.Get(ua)
+	return p.Trie.Get(ua)
 }

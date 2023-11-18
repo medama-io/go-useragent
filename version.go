@@ -1,10 +1,5 @@
 package useragent
 
-import (
-	"os"
-	"strings"
-)
-
 // ReplaceIndexes replaces the runes at the given indexes with empty strings.
 func ReplaceIndexes(ua string, indexes []int) string {
 	// Remove the version numbers from the user agent string.
@@ -102,47 +97,4 @@ func RemoveDeviceIdentifiers(ua string) string {
 	}
 
 	return ua
-}
-
-// This reads the agents.txt file and returns a new agents_cleaned.txt file
-// with the version numbers removed.
-func CleanAgentsFile(filePath string) ([]string, error) {
-	// Read agents.txt file.
-	content, err := os.ReadFile(filePath)
-	if err != nil {
-		return nil, err
-	}
-
-	// Split the content into lines.
-	lines := strings.Split(string(content), "\n")
-
-	// Clean each line and store the cleaned agents.
-	var cleanedAgents []string
-	seen := make(map[string]bool) // to track duplicates
-	for _, line := range lines {
-		line = RemoveDeviceIdentifiers(line)
-		line = RemoveVersions(line)
-
-		// For each line, get all token indexes
-		// and remove all strings after the largest EndIndex.
-		results := MatchTokenIndexes(line)
-
-		// If no results, skip the line.
-		if len(results) == 0 {
-			continue
-		}
-
-		// Get the largest EndIndex.
-		largestEndIndex := results[0].EndIndex
-		// Remove all strings after the largest EndIndex.
-		line = line[:largestEndIndex]
-
-		// Check for duplicates.
-		if !seen[line] {
-			cleanedAgents = append(cleanedAgents, line)
-			seen[line] = true
-		}
-	}
-
-	return cleanedAgents, nil
 }
