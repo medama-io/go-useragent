@@ -16,7 +16,7 @@ type Result struct {
 // RuneTrie is a trie of runes with string keys and interface{} values.
 type RuneTrie struct {
 	children map[rune]*RuneTrie
-	result   *Result
+	result   []Result
 }
 
 // NewRuneTrie allocates and returns a new *RuneTrie.
@@ -90,27 +90,26 @@ func (trie *RuneTrie) Get(key string) UserAgent {
 		}
 
 		// If result exists, we can append it to the value.
-		if node.result != nil {
-			matched := ua.addMatch(node.result)
+		for _, result := range node.result {
+			matched := ua.addMatch(result)
 			// If we matched a browser of the highest precedence, we can mark the
 			// next set of runes as the version number we want to store.
 			//
 			// We also reject any version numbers related to Safari since it has a
 			// separate key for its version number.
-			if (matched && node.result.Type == BrowserMatch && node.result.Match != Safari) || (node.result.Type == VersionMatch && ua.Version == "") {
+			if (matched && result.Type == BrowserMatch && result.Match != Safari) || (result.Type == VersionMatch && ua.Version == "") {
 				// Clear version buffer if it has old values.
 				versionBuffer.Reset()
-				skipCount++ // We want to omit the slash after the browser name.
+				skipCount = 1 // We want to omit the slash after the browser name.
 				isVersion = true
 			}
 
 			// If we matched a mobile token, we want to strip everything after it
 			// until we reach whitespace to get around random device IDs.
-			if matched && node.result.Match == Mobile {
+			if matched && result.Match == Mobile {
 				// We need to clear the result so we can match the next token.
 				node.result = nil
 				skipUntilWhitespace = true
-				continue
 			}
 		}
 
@@ -135,14 +134,16 @@ func (trie *RuneTrie) Get(key string) UserAgent {
 func (trie *RuneTrie) Put(key string) {
 	node := trie
 	matchResults := MatchTokenIndexes(key)
-	for i, r := range key {
-		// If we've reached the end of a matching key, store the result.
-		matchIndex := len(matchResults) - 1
-		// The end index is after the last rune in the match, so
-		// we need to subtract 1 to get the last rune.
-		if i == matchResults[matchIndex].EndIndex-1 {
-			node.result = &Result{Match: matchResults[matchIndex].Match, Type: matchResults[matchIndex].MatchType, Precedence: matchResults[matchIndex].Precedence}
-			matchResults = matchResults[:matchIndex]
+	for keyIndex, r := range key {
+		// Reset the result slice for each new rune.
+		node.result = []Result{}
+
+		// If we encounter a match, we can store it in the trie.
+		for _, result := range matchResults {
+			if keyIndex == result.EndIndex-1 {
+				result := Result{Match: result.Match, Type: result.MatchType, Precedence: result.Precedence}
+				node.result = append(node.result, result)
+			}
 		}
 
 		child := node.children[r]

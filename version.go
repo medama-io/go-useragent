@@ -23,8 +23,6 @@ func ReplaceIndexes(ua string, indexes []int) string {
 
 // RemoveVersions removes the version numbers from the user agent string.
 func RemoveVersions(ua string) string {
-	// Flag to indicate if we are currently iterating over a version number.
-	var isVersion bool
 	// Number of runes to skip when iterating over the trie. This is used
 	// to skip over version numbers or language codes.
 	var skipCount uint8
@@ -35,19 +33,6 @@ func RemoveVersions(ua string) string {
 		if skipCount > 0 {
 			skipCount--
 			continue
-		}
-
-		if isVersion {
-			// If we encounter any unknown characters, we can assume the version number is over.]
-			if !IsDigit(r) && r != '.' {
-				isVersion = false
-			} else {
-				// If we are currently iterating over a version number, add the index to the
-				// list of indexes to replace. We can't remove the rune in this pass as it
-				// would change the indexes of the remaining runes.
-				indexesToReplace = append(indexesToReplace, i)
-				continue
-			}
 		}
 
 		// We want to strip any other version numbers from other products to get more hits
@@ -86,7 +71,9 @@ func RemoveVersions(ua string) string {
 
 // RemoveDeviceIdentifiers removes the device identifiers from the user agent string.
 // This specifically removes any strings that follow the Mobile tokens.
-func RemoveDeviceIdentifiers(ua string, tokens []MatchResults) string {
+func RemoveDeviceIdentifiers(ua string) string {
+	tokens := MatchTokenIndexes(ua)
+
 	// Find mobile token.
 	for _, token := range tokens {
 		var skipUntilWhitespace bool
@@ -133,7 +120,7 @@ func CleanAgentsFile(filePath string) ([]string, error) {
 	var cleanedAgents []string
 	seen := make(map[string]bool) // to track duplicates
 	for _, line := range lines {
-		line = RemoveDeviceIdentifiers(line, MatchTokenIndexes(line))
+		line = RemoveDeviceIdentifiers(line)
 		line = RemoveVersions(line)
 
 		// For each line, get all token indexes

@@ -33,11 +33,16 @@ var matchResults = [][]string{
 	{ua.Safari, ua.Chrome, ua.Linux},
 
 	// iPhone (5)
-	{ua.Safari, ua.Mobile, ua.Version, ua.IOS, ua.MobileDevice},
-	{ua.Safari, ua.Mobile, ua.Chrome, ua.IOS, ua.MobileDevice},
-	{ua.Safari, ua.Mobile, ua.Opera, ua.IOS, ua.MobileDevice},
-	{ua.Safari, ua.Mobile, ua.Firefox, ua.IOS, ua.MobileDevice},
-	{ua.Safari, ua.Mobile, ua.Edge, ua.Version, ua.IOS, ua.MobileDevice},
+	{ua.Safari, ua.Mobile, ua.Version, ua.MobileDevice, ua.IOS},
+	{ua.Safari, ua.Mobile, ua.Chrome, ua.MobileDevice, ua.IOS},
+	{ua.Safari, ua.Mobile, ua.Opera, ua.MobileDevice, ua.IOS},
+	{ua.Safari, ua.Mobile, ua.Firefox, ua.MobileDevice, ua.IOS},
+	{ua.Safari, ua.Mobile, ua.Edge, ua.Version, ua.MobileDevice, ua.IOS},
+
+	// iPad (3)
+	{ua.Safari, ua.Mobile, ua.Version, ua.Tablet, ua.IOS},
+	{ua.Safari, ua.Mobile, ua.Chrome, ua.Tablet, ua.IOS},
+	{ua.Safari, ua.Mobile, ua.Firefox, ua.Tablet, ua.IOS},
 }
 
 func TestMatchTokenIndexes(t *testing.T) {
@@ -51,7 +56,7 @@ func TestMatchTokenIndexes(t *testing.T) {
 			}
 
 			for j, m := range match {
-				assert.Equal(t, matchResults[i][j], m.Match, "Test Case: %s\nMatch Number: %d\nExpected: %v", v, i, match)
+				assert.Equal(t, matchResults[i][j], m.Match, "Test Case: %s\nMatch Number: %d\nExpected: %v\nGot: %v", v, i, matchResults[i], match)
 			}
 		})
 	}

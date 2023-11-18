@@ -10,7 +10,7 @@ import (
 
 // Refer to ua_test.go for main original test cases.
 var versionResults = []string{
-	// Windows
+	// Windows (7)
 	"MozillaWindowsNTWinxAppleWebKitKHTMLlikeGeckoChromeSafari",
 	"MozillaWindowsNTWOWAppleWebKitKHTMLlikeGeckoChromeSafari",
 	"MozillacompatibleMSIEWindowsNTWOWTridentSLCCNETCLRNETCLRNETCLRMediaCenterPCNETCNETEInfoPathGWXRED",
@@ -19,32 +19,37 @@ var versionResults = []string{
 	"MozillacompatibleMSIEWindowsNTSVNETCLRNS",
 	"MozillaWindowsNTAppleWebKitKHTMLlikeGeckoChromeSafariEdge",
 
-	// Mac
+	// Mac (5)
 	"MozillaMacintoshIntelMacOSXAppleWebKitKHTMLlikeGeckoVersionSafari",
 	"MozillaMacintoshIntelMacOSXAppleWebKitKHTMLlikeGeckoChromeSafari",
 	"MozillaMacintoshIntelMacOSXrvGeckoFirefox",
 	"MozillaMacintoshIntelMacOSXAppleWebKitKHTMLlikeGeckoChromeSafariVivaldi",
 	"MozillaMacintoshIntelMacOSXAppleWebKitKHTMLlikeGeckoChromeSafariEdg",
 
-	// Linux
+	// Linux (5)
 	"MozillaXLinuxxrvGeckoFirefox",
 	"MozillaXLinuxirvGeckoFirefox",
 	"MozillaXUbuntuLinuxirvGeckoFirefox",
 	"MozillaXFedoraLinuxxrvGeckoFirefox",
 	"MozillaXLinuxxAppleWebKitKHTMLlikeGeckoChromeSafari",
 
-	// iPhone
+	// iPhone (5)
 	"MozillaiPhoneCPUiPhoneOSlikeMacOSXAppleWebKitKHTMLlikeGeckoVersionMobileSafari",
 	"MozillaiPhoneCPUiPhoneOSlikeMacOSXAppleWebKitKHTMLlikeGeckoCriOSMobileSafari",
 	"MozillaiPhoneCPUiPhoneOSlikeMacOSXAppleWebKitKHTMLlikeGeckoOPiOSMobileSafari",
 	"MozillaiPhoneCPUiPhoneOSlikeMacOSXAppleWebKitKHTMLlikeGeckoFxiOSMobileSafari",
 	"MozillaiPhoneCPUiPhoneOSlikeMacOSXAppleWebKitKHTMLlikeGeckoVersionEdgiOSMobileSafari",
+
+	// iPad (3)
+	"MozillaiPadCPUOSlikeMacOSXAppleWebKitKHTMLlikeGeckoVersionMobileSafari",
+	"MozillaiPadCPUOSlikeMacOSXAppleWebKitKHTMLlikeGeckoCriOSMobileSafari",
+	"MozillaiPadCPUOSlikeMacOSXAppleWebKitKHTMLlikeGeckoFxiOSMobileSafari",
 }
 
 func TestCleanVersions(t *testing.T) {
 	for i, v := range versionResults {
 		t.Run(fmt.Sprintf("Case:%d", i), func(t *testing.T) {
-			id := ua.RemoveDeviceIdentifiers(testCases[i], ua.MatchTokenIndexes(testCases[i]))
+			id := ua.RemoveDeviceIdentifiers(testCases[i])
 			line := ua.RemoveVersions(id)
 			assert.Equal(t, v, line, "Test Case: %s\nNoID: %s\nExpected: %s", testCases[i], id, v)
 		})

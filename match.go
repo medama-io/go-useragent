@@ -71,7 +71,7 @@ var matchMap = map[string][]string{
 	// Operating Systems
 	Android:  {Android},
 	ChromeOS: {"CrOS"},
-	IOS:      {"iPhoneOS", "iPhone OS", "iPad OS", "iPadOS", "iPod OS", "iPodOS"},
+	IOS:      {"iPhone", "iPad", "iPod"},
 	Linux:    {Linux},
 	MacOS:    {"Macintosh"},
 	Windows:  {"Windows NT", "WindowsNT"},
@@ -79,7 +79,7 @@ var matchMap = map[string][]string{
 	// Types
 	Desktop:      {Desktop, "Ubuntu", "Fedora"},
 	Mobile:       {Mobile},
-	MobileDevice: {"ONEPLUS", "Huawei", "HTC", "Galaxy", "iPhone", "iPod", "Windows Phone", "LG"},
+	MobileDevice: {"ONEPLUS", "Huawei", "HTC", "Galaxy", "iPhone", "iPod", "Windows Phone", "WindowsPhone", "LG"},
 	Tablet:       {Tablet, "Touch", "iPad", "Nintendo Switch", "NintendoSwitch", "Kindle"},
 	TV:           {TV, "Large Screen", "LargeScreen", "Smart Display", "SmartDisplay", "PLAYSTATION", "PlayStation", "ADT-2", "ADT-1", "CrKey", "Roku", "AFT", "Web0S", "Nexus Player", "Xbox", "XBOX", "Nintendo WiiU", "NintendoWiiU"},
 	Bot:          {Bot, "bot", "Slurp", "LinkCheck", "QuickLook", "Haosou", "Yahoo Ad", "YahooAd", "GoogleProber", "GoogleProducer", "Mediapartners", "Headless", "facebookexternalhit", "facebookcatalog"},
@@ -162,6 +162,12 @@ func MatchTokenIndexes(ua string) []MatchResults {
 	exists := make(map[string]bool)
 	for key, match := range matchMap {
 		for _, m := range match {
+			// Check if key match doesn't already exist in results.
+			// This is to prevent duplicate matches in the trie.
+			if exists[key] {
+				continue
+			}
+
 			indexes := str.IndexAll(ua, m, -1)
 
 			// Return the last match.
@@ -170,12 +176,6 @@ func MatchTokenIndexes(ua string) []MatchResults {
 			}
 
 			lastIndex := indexes[len(indexes)-1]
-
-			// Check if key match doesn't already exist in results.
-			// This is to prevent duplicate matches in the trie.
-			if exists[key] {
-				continue
-			}
 
 			// Add the match to the results.
 			matchType := GetMatchType(key)
@@ -187,7 +187,13 @@ func MatchTokenIndexes(ua string) []MatchResults {
 	// Sort the results by EndIndex in descending order.
 	// This allows us to determine the first matching token in the user agent
 	// when we iterate over it when populating the trie.
+	//
+	// Some tokens may have the same EndIndex, so we need to sort by Match key
+	// to make it deterministic.
 	sort.Slice(results, func(i, j int) bool {
+		if results[i].EndIndex == results[j].EndIndex {
+			return results[i].Match < results[j].Match
+		}
 		return results[i].EndIndex > results[j].EndIndex
 	})
 
@@ -195,7 +201,7 @@ func MatchTokenIndexes(ua string) []MatchResults {
 }
 
 // This adds a matching constant to a user agent struct.
-func (ua *UserAgent) addMatch(result *Result) bool {
+func (ua *UserAgent) addMatch(result Result) bool {
 	// Browsers
 	if result.Type == BrowserMatch && result.Precedence > ua.precedence.Browser {
 		switch result.Match {
