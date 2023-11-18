@@ -6,7 +6,7 @@
 
 ## Update
 
-To update the list of cleaned user agents, run the following command:
+To update the final list of cleaned user agents, run the following command:
 
 ```bash
 go run scripts/main.go
