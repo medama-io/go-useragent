@@ -24,7 +24,8 @@ func CleanAgentsFile(filePath string) ([]string, error) {
 	var cleanedAgents []string
 	seen := make(map[string]bool) // to track duplicates
 	for _, line := range lines {
-		line = ua.RemoveDeviceIdentifiers(line)
+		line = ua.RemoveMobileIdentifiers(line)
+		line = ua.RemoveAndroidIdentifiers(line)
 		line = ua.RemoveVersions(line)
 
 		// For each line, get all token indexes
