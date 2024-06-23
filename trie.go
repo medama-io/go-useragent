@@ -41,6 +41,8 @@ func (trie *RuneTrie) Get(key string) UserAgent {
 	var skipCount uint8
 	// Skip until we encounter whitespace.
 	var skipUntilWhitespace bool
+	// Skip until we encounter a closing parenthesis, used for skipping over device IDs.
+	var skipUntilClosingParenthesis bool
 
 	for i, r := range key {
 		if skipUntilWhitespace {
@@ -53,6 +55,13 @@ func (trie *RuneTrie) Get(key string) UserAgent {
 
 		if skipCount > 0 {
 			skipCount--
+			continue
+		}
+
+		if skipUntilClosingParenthesis {
+			if r == ')' {
+				skipUntilClosingParenthesis = false
+			}
 			continue
 		}
 
@@ -106,10 +115,17 @@ func (trie *RuneTrie) Get(key string) UserAgent {
 
 			// If we matched a mobile token, we want to strip everything after it
 			// until we reach whitespace to get around random device IDs.
+			// For example, "Mobile/14F89" should be "Mobile".
 			if matched && result.Match == Mobile {
 				// We need to clear the result so we can match the next token.
 				node.result = nil
 				skipUntilWhitespace = true
+			}
+
+			// If we matched an Android token, we want to strip everything after it until
+			// we reach a closing parenthesis to get around random device IDs.
+			if matched && result.Match == Android {
+				skipUntilClosingParenthesis = true
 			}
 		}
 

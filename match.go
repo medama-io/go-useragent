@@ -135,7 +135,7 @@ type MatchResults struct {
 	// 0: Unknown, 1: Browser, 2: OS, 3: Type
 	MatchType uint8
 	// Precedence value for each result type to determine which result should be overwritten.
-	// Higher valeus are overwritten by lower values.
+	// Higher values are overwrite lower values.
 	Precedence uint8
 }
 
