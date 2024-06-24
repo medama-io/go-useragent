@@ -17,7 +17,7 @@ const (
 	// The following constants are used to determine agents.
 
 	// Browsers.
-	// There is no match token for this, but the absence of a any browser token paired with Android is a good indicator of this browser.
+	// There is no match token for this, but the absence of any browser token paired with Android is a good indicator of this browser.
 	AndroidBrowser = "AndroidBrowser"
 	Chrome         = "Chrome"
 	Edge           = "Edge"
@@ -245,11 +245,14 @@ func (ua *UserAgent) addMatch(result Result) bool {
 			// An older generic white-labeled variant of Chrome/Chromium on Android.
 			if ua.Browser == "" {
 				ua.Browser = AndroidBrowser
-				ua.precedence.Browser = matchPrecedenceMap[AndroidBrowser]
+				// Special case we set this as the precedence with this is zero
+				// and can be overwritten by Safari.
+				ua.precedence.Browser = matchPrecedenceMap[Mobile]
 			}
 		case ChromeOS:
 			ua.OS = ChromeOS
 			ua.Desktop = true
+
 		case IOS:
 			ua.OS = IOS
 			if !ua.Tablet {
