@@ -135,7 +135,7 @@ type MatchResults struct {
 	// 0: Unknown, 1: Browser, 2: OS, 3: Type
 	MatchType uint8
 	// Precedence value for each result type to determine which result should be overwritten.
-	// Higher values are overwrite lower values.
+	// Higher values overwrite lower values.
 	Precedence uint8
 }
 
@@ -276,6 +276,7 @@ func (ua *UserAgent) addMatch(result Result) bool {
 		case Mobile, MobileDevice:
 			if !ua.Tablet {
 				ua.Mobile = true
+				ua.Desktop = false
 			}
 		case TV:
 			ua.TV = true

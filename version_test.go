@@ -44,14 +44,23 @@ var versionResults = []string{
 	"MozillaiPadCPUOSlikeMacOSXAppleWebKitKHTMLlikeGeckoVersionMobileSafari",
 	"MozillaiPadCPUOSlikeMacOSXAppleWebKitKHTMLlikeGeckoCriOSMobileSafari",
 	"MozillaiPadCPUOSlikeMacOSXAppleWebKitKHTMLlikeGeckoFxiOSMobileSafari",
+
+	// Android (6)
+	"MozillaLinuxAndroidAppleWebKitKHTMLlikeGeckoSamsungBrowserChromeMobileSafari",
+	"MozillaLinuxAndroidAppleWebKitKHTMLlikeGeckoChromeMobileSafari",
+	"MozillaLinuxAndroidAppleWebKitKHTMLlikeGeckoChromeMobileSafari",
+	"MozillaLinuxAndroidAppleWebKitKHTMLlikeGeckoChromeMobileSafari",
+	"MozillaLinuxAndroidAppleWebKitKHTMLlikeGeckoChromeMobileSafari",
+	"MozillaLinuxAndroidAppleWebKitKHTMLlikeGeckoChromeMobileSafari",
 }
 
 func TestCleanVersions(t *testing.T) {
-	for i, v := range versionResults {
+	for i, v := range testCases {
 		t.Run(fmt.Sprintf("Case:%d", i), func(t *testing.T) {
-			id := ua.RemoveDeviceIdentifiers(testCases[i])
-			line := ua.RemoveVersions(id)
-			assert.Equal(t, v, line, "Test Case: %s\nNoID: %s\nExpected: %s", testCases[i], id, v)
+			line := ua.RemoveMobileIdentifiers(v)
+			line = ua.RemoveAndroidIdentifiers(line)
+			line = ua.RemoveVersions(line)
+			assert.Equal(t, versionResults[i], line, "Test Case: %s\nNoID: %s\nExpected: %s", v, line, versionResults[i])
 		})
 	}
 }

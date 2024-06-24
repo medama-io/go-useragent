@@ -1,6 +1,7 @@
 package useragent
 
 import (
+	"fmt"
 	"strings"
 )
 
@@ -61,8 +62,9 @@ func (trie *RuneTrie) Get(key string) UserAgent {
 		if skipUntilClosingParenthesis {
 			if r == ')' {
 				skipUntilClosingParenthesis = false
+			} else {
+				continue
 			}
-			continue
 		}
 
 		if isVersion {
@@ -99,8 +101,10 @@ func (trie *RuneTrie) Get(key string) UserAgent {
 		}
 
 		// If result exists, we can append it to the value.
+
 		for _, result := range node.result {
 			matched := ua.addMatch(result)
+
 			// If we matched a browser of the highest precedence, we can mark the
 			// next set of runes as the version number we want to store.
 			//
@@ -125,17 +129,23 @@ func (trie *RuneTrie) Get(key string) UserAgent {
 			// If we matched an Android token, we want to strip everything after it until
 			// we reach a closing parenthesis to get around random device IDs.
 			if matched && result.Match == Android {
+				node.result = nil
 				skipUntilClosingParenthesis = true
+
 			}
+
+			// fmt.Printf("- %t - ", matched)
+			fmt.Printf("%+v\n", result)
 		}
 
 		// We need to catch the flag change after the loop since it isn't possible
 		// for a continue to affect an outer loop.
-		if skipUntilWhitespace {
+		/* if skipUntilWhitespace {
 			continue
-		}
+		}*/
 
 		// Set the next node to the child of the current node.
+		fmt.Printf(string(r))
 		next := node.children[r]
 		if next == nil {
 			continue // No match found, but we can try to match the next rune.
@@ -161,12 +171,15 @@ func (trie *RuneTrie) Put(key string) {
 		node.result = []Result{}
 
 		// If we encounter a match, we can store it in the trie.
+
 		for _, result := range matchResults {
 			if keyIndex == result.EndIndex-1 {
 				result := Result{Match: result.Match, Type: result.MatchType, Precedence: result.Precedence}
 				node.result = append(node.result, result)
 			}
 		}
+		// fmt.Printf(string(r))
+		// fmt.Printf("%+v\n", node.result)
 
 		child := node.children[r]
 		if child == nil {
