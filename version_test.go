@@ -47,7 +47,7 @@ var versionResults = []string{
 
 	// Android (6)
 	"MozillaLinuxAndroidAppleWebKitKHTMLlikeGeckoSamsungBrowserChromeMobileSafari",
-	"MozillaLinuxAndroidAppleWebKitKHTMLlikeGeckoChromeMobileSafari",
+	"MozillaLinuxAndroidAppleWebKitKHTMLlikeGeckoVersionMobileSafari",
 	"MozillaLinuxAndroidAppleWebKitKHTMLlikeGeckoChromeMobileSafari",
 	"MozillaLinuxAndroidAppleWebKitKHTMLlikeGeckoChromeMobileSafari",
 	"MozillaLinuxAndroidAppleWebKitKHTMLlikeGeckoChromeMobileSafari",

@@ -15,17 +15,20 @@ const (
 	UnknownMatch = 0
 
 	// The following constants are used to determine agents.
+
 	// Browsers.
-	Chrome    = "Chrome"
-	Edge      = "Edge"
-	Firefox   = "Firefox"
-	IE        = "IE"
-	Opera     = "Opera"
-	OperaMini = "Mini"
-	Safari    = "Safari"
-	Vivaldi   = "Vivaldi"
-	Samsung   = "SamsungBrowser"
-	Nintendo  = "NintendoBrowser"
+	// There is no match token for this, but the absence of a any browser token paired with Android is a good indicator of this browser.
+	AndroidBrowser = "AndroidBrowser"
+	Chrome         = "Chrome"
+	Edge           = "Edge"
+	Firefox        = "Firefox"
+	IE             = "IE"
+	Opera          = "Opera"
+	OperaMini      = "Mini"
+	Safari         = "Safari"
+	Vivaldi        = "Vivaldi"
+	Samsung        = "SamsungBrowser"
+	Nintendo       = "NintendoBrowser"
 
 	// Operating Systems.
 	Android  = "Android"
@@ -100,16 +103,17 @@ var matchMap = map[string][]string{
 // and use that as the final result.
 var matchPrecedenceMap = map[string]uint8{
 	// Browsers
-	Safari:    1, // Is always at the end of a Chrome user agent.
-	Chrome:    2,
-	Firefox:   3,
-	IE:        4,
-	Opera:     5,
-	OperaMini: 6,
-	Edge:      7,
-	Vivaldi:   8,
-	Samsung:   9,
-	Nintendo:  10,
+	Safari:         1, // Is always at the end of a Chrome user agent.
+	AndroidBrowser: 2,
+	Chrome:         3,
+	Firefox:        4,
+	IE:             5,
+	Opera:          6,
+	OperaMini:      7,
+	Edge:           8,
+	Vivaldi:        9,
+	Samsung:        10,
+	Nintendo:       11,
 
 	// Operating Systems
 	Linux:    1,
@@ -238,6 +242,11 @@ func (ua *UserAgent) addMatch(result Result) bool {
 		switch result.Match {
 		case Android:
 			ua.OS = Android
+			// An older generic white-labeled variant of Chrome/Chromium on Android.
+			if ua.Browser == "" {
+				ua.Browser = AndroidBrowser
+				ua.precedence.Browser = matchPrecedenceMap[AndroidBrowser]
+			}
 		case ChromeOS:
 			ua.OS = ChromeOS
 			ua.Desktop = true

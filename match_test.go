@@ -46,7 +46,7 @@ var matchResults = [][]string{
 
 	// Android (6)
 	{ua.Safari, ua.Mobile, ua.Chrome, ua.Samsung, ua.Android, ua.Linux},
-	{ua.Chrome, ua.Android},
+	{ua.Safari, ua.Mobile, ua.Version, ua.Android, ua.Linux},
 	{ua.Chrome, ua.Android},
 	{ua.Chrome, ua.Android},
 	{ua.Chrome, ua.Android},
@@ -55,19 +55,17 @@ var matchResults = [][]string{
 
 func TestMatchTokenIndexes(t *testing.T) {
 	for i, v := range testCases {
-		if i == 25 {
-			t.Run(fmt.Sprintf("Case:%d", i), func(t *testing.T) {
-				match := ua.MatchTokenIndexes(v)
+		t.Run(fmt.Sprintf("Case:%d", i), func(t *testing.T) {
+			match := ua.MatchTokenIndexes(v)
 
-				if len(match) != len(matchResults[i]) {
-					t.Errorf("Test Case: %s, expected %d matches, got %d\nMatch Index: %d", v, len(match), len(matchResults[i]), i)
-					t.FailNow()
-				}
+			if len(match) != len(matchResults[i]) {
+				t.Errorf("Test Case: %s, expected %d matches, got %d\nMatch Index: %d", v, len(match), len(matchResults[i]), i)
+				t.FailNow()
+			}
 
-				for j, m := range match {
-					assert.Equal(t, matchResults[i][j], m.Match, "Test Case: %s\nMatch Number: %d\nExpected: %v\nGot: %v", v, i, matchResults[i], match)
-				}
-			})
-		}
+			for j, m := range match {
+				assert.Equal(t, matchResults[i][j], m.Match, "Test Case: %s\nMatch Number: %d\nExpected: %v\nGot: %v", v, i, matchResults[i], match)
+			}
+		})
 	}
 }

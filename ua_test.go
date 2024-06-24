@@ -46,6 +46,7 @@ var testCases = []string{
 
 	// Android
 	"Mozilla/5.0 (Linux; Android 6.0.1; SAMSUNG SM-G930F Build/MMB29K) AppleWebKit/537.36 (KHTML, like Gecko) SamsungBrowser/4.0 Chrome/44.0.2403.133 Mobile Safari/537.36",
+	"Mozilla/5.0 (Linux; Android 4.4.2; en-us; Z520 Build/KOT49H) AppleWebKit/534.30 (KHTML, like Gecko) Version/4.0 Mobile Safari/534.30",
 	/*Mozilla/5.0 (Linux; U; Android 4.4.2; en-us; Z520 Build/KOT49H) AppleWebKit/534.30 (KHTML, like Gecko) Version/4.0 Mobile Safari/534.30;
 	Mozilla/5.0 (Linux; Android 5.0.1; LG-H440n Build/LRX21Y) AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 Chrome/38.0.2125.102 Mobile Safari/537.36
 	Mozilla/5.0 (Linux; Android 4.4.4; Nexus 7 Build/KTU84P) AppleWebKit/537.36 (KHTML like Gecko) Chrome/36.0.1985.135 Safari/537.36
@@ -88,7 +89,7 @@ var resultCases = []ua.UserAgent{
 	{Browser: ua.Firefox, OS: ua.IOS, Tablet: true, Version: "119.0"},
 	// Android (6) 25
 	{Browser: ua.Samsung, OS: ua.Android, Mobile: true, Version: "4.0"},
-	{Browser: ua.Chrome, OS: ua.Android, Mobile: true, Version: "112.0.0.0"},
+	{Browser: ua.AndroidBrowser, OS: ua.Android, Mobile: true, Version: "4.0"},
 	{Browser: ua.Chrome, OS: ua.Android, Mobile: true, Version: "112.0.0.0"},
 	{Browser: ua.Chrome, OS: ua.Android, Mobile: true, Version: "112.0.0.0"},
 	{Browser: ua.Chrome, OS: ua.Android, Mobile: true, Version: "112.0.0.0"},
@@ -99,18 +100,16 @@ func TestParse(t *testing.T) {
 	parser := ua.NewParser()
 
 	for i, v := range testCases {
-		if i == 25 {
-			t.Run(fmt.Sprintf("Case:%d", i), func(t *testing.T) {
-				result := parser.Parse(v)
-				assert.Equal(t, resultCases[i].Browser, result.Browser, "Browser\nTest Case: %s\nExpected: %s", v, resultCases[i].Browser)
-				assert.Equal(t, resultCases[i].OS, result.OS, "OS\nTest Case: %s\nExpected: %s", v, resultCases[i].OS)
-				assert.Equal(t, resultCases[i].Desktop, result.Desktop, "Desktop\nTest Case: %s\nExpected: %s", v, resultCases[i].Desktop)
-				assert.Equal(t, resultCases[i].Version, result.Version, "Version\nTest Case: %s\nExpected: %s", v, resultCases[i].Version)
-				assert.Equal(t, resultCases[i].Mobile, result.Mobile, "Mobile\nTest Case: %s\nExpected: %s", v, resultCases[i].Mobile)
-				assert.Equal(t, resultCases[i].Tablet, result.Tablet, "Tablet\nTest Case: %s\nExpected: %s", v, resultCases[i].Tablet)
-				assert.Equal(t, resultCases[i].TV, result.TV, "TV\nTest Case: %s\nExpected: %s", v, resultCases[i].TV)
-				assert.Equal(t, resultCases[i].Bot, result.Bot, "Bot\nTest Case: %s\nExpected: %s", v, resultCases[i].Bot)
-			})
-		}
+		t.Run(fmt.Sprintf("Case:%d", i), func(t *testing.T) {
+			result := parser.Parse(v)
+			assert.Equal(t, resultCases[i].Browser, result.Browser, "Browser\nTest Case: %s\nExpected: %s", v, resultCases[i].Browser)
+			assert.Equal(t, resultCases[i].OS, result.OS, "OS\nTest Case: %s\nExpected: %s", v, resultCases[i].OS)
+			assert.Equal(t, resultCases[i].Desktop, result.Desktop, "Desktop\nTest Case: %s\nExpected: %s", v, resultCases[i].Desktop)
+			assert.Equal(t, resultCases[i].Version, result.Version, "Version\nTest Case: %s\nExpected: %s", v, resultCases[i].Version)
+			assert.Equal(t, resultCases[i].Mobile, result.Mobile, "Mobile\nTest Case: %s\nExpected: %s", v, resultCases[i].Mobile)
+			assert.Equal(t, resultCases[i].Tablet, result.Tablet, "Tablet\nTest Case: %s\nExpected: %s", v, resultCases[i].Tablet)
+			assert.Equal(t, resultCases[i].TV, result.TV, "TV\nTest Case: %s\nExpected: %s", v, resultCases[i].TV)
+			assert.Equal(t, resultCases[i].Bot, result.Bot, "Bot\nTest Case: %s\nExpected: %s", v, resultCases[i].Bot)
+		})
 	}
 }

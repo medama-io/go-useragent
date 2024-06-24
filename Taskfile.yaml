@@ -4,7 +4,7 @@ version: "3"
 tasks:
   test:
     cmds:
-      - go test ./...
+      - go test ./... {{.CLI_ARGS}}
   
   bench:
     cmds:
