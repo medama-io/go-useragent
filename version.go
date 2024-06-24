@@ -64,9 +64,10 @@ func RemoveVersions(ua string) string {
 	return ua
 }
 
-// RemoveDeviceIdentifiers removes the device identifiers from the user agent string.
+// RemoveMobileIdentifiers removes the device identifiers from the user agent string.
 // This specifically removes any strings that follow the Mobile tokens.
-func RemoveDeviceIdentifiers(ua string) string {
+// For example, "Mobile/14F89" should be "Mobile".
+func RemoveMobileIdentifiers(ua string) string {
 	tokens := MatchTokenIndexes(ua)
 
 	// Find mobile token.
@@ -88,6 +89,43 @@ func RemoveDeviceIdentifiers(ua string) string {
 
 				if i == token.EndIndex-1 {
 					skipUntilWhitespace = true
+				}
+			}
+
+			ua = ReplaceIndexes(ua, indexesToReplace)
+			return ua
+		}
+	}
+
+	return ua
+}
+
+// RemoveAndroidIdentifiers removes the device identifiers from the user agent string.
+// This specifically removes any strings that follow the Android tokens.
+func RemoveAndroidIdentifiers(ua string) string {
+	tokens := MatchTokenIndexes(ua)
+
+	// Find mobile token.
+	for _, token := range tokens {
+		var skipUntilClosingParenthesis bool
+		var indexesToReplace []int
+
+		if token.Match == Android {
+			// Iterate over the user agent string and remove all characters
+			// after the Android token until we encounter a closing parenthesis
+			// to remove device identifiers.
+			for i, r := range ua {
+				if skipUntilClosingParenthesis {
+					if r == ')' {
+						skipUntilClosingParenthesis = false
+					} else {
+						indexesToReplace = append(indexesToReplace, i)
+						continue
+					}
+				}
+
+				if i == token.EndIndex-1 {
+					skipUntilClosingParenthesis = true
 				}
 			}
 

@@ -1,6 +1,7 @@
 package useragent
 
 import (
+	"slices"
 	"strings"
 )
 
@@ -41,6 +42,8 @@ func (trie *RuneTrie) Get(key string) UserAgent {
 	var skipCount uint8
 	// Skip until we encounter whitespace.
 	var skipUntilWhitespace bool
+	// Skip until we encounter a closing parenthesis, used for skipping over device IDs.
+	var skipUntilClosingParenthesis bool
 
 	for i, r := range key {
 		if skipUntilWhitespace {
@@ -54,6 +57,14 @@ func (trie *RuneTrie) Get(key string) UserAgent {
 		if skipCount > 0 {
 			skipCount--
 			continue
+		}
+
+		if skipUntilClosingParenthesis {
+			if r == ')' {
+				skipUntilClosingParenthesis = false
+			} else {
+				continue
+			}
 		}
 
 		if isVersion {
@@ -92,6 +103,7 @@ func (trie *RuneTrie) Get(key string) UserAgent {
 		// If result exists, we can append it to the value.
 		for _, result := range node.result {
 			matched := ua.addMatch(result)
+
 			// If we matched a browser of the highest precedence, we can mark the
 			// next set of runes as the version number we want to store.
 			//
@@ -106,17 +118,16 @@ func (trie *RuneTrie) Get(key string) UserAgent {
 
 			// If we matched a mobile token, we want to strip everything after it
 			// until we reach whitespace to get around random device IDs.
+			// For example, "Mobile/14F89" should be "Mobile".
 			if matched && result.Match == Mobile {
-				// We need to clear the result so we can match the next token.
-				node.result = nil
 				skipUntilWhitespace = true
 			}
-		}
 
-		// We need to catch the flag change after the loop since it isn't possible
-		// for a continue to affect an outer loop.
-		if skipUntilWhitespace {
-			continue
+			// If we matched an Android token, we want to strip everything after it until
+			// we reach a closing parenthesis to get around random device IDs.
+			if matched && result.Match == Android {
+				skipUntilClosingParenthesis = true
+			}
 		}
 
 		// Set the next node to the child of the current node.
@@ -141,14 +152,18 @@ func (trie *RuneTrie) Put(key string) {
 	node := trie
 	matchResults := MatchTokenIndexes(key)
 	for keyIndex, r := range key {
-		// Reset the result slice for each new rune.
-		node.result = []Result{}
+		// Initialise a new result slice for each new rune.
+		if node.result == nil {
+			node.result = []Result{}
+		}
 
 		// If we encounter a match, we can store it in the trie.
 		for _, result := range matchResults {
 			if keyIndex == result.EndIndex-1 {
-				result := Result{Match: result.Match, Type: result.MatchType, Precedence: result.Precedence}
-				node.result = append(node.result, result)
+				newResult := Result{Match: result.Match, Type: result.MatchType, Precedence: result.Precedence}
+				if !slices.Contains(node.result, newResult) {
+					node.result = append(node.result, newResult)
+				}
 			}
 		}
 

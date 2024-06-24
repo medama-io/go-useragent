@@ -43,164 +43,51 @@ var testCases = []string{
 	"Mozilla/5.0 (iPad; CPU OS 10_3_2 like Mac OS X) AppleWebKit/603.2.4 (KHTML, like Gecko) Version/10.0 Mobile/14F89 Safari/602.1",
 	"Mozilla/5.0 (iPad; CPU OS 17_1 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) CriOS/119.0.6045.169 Mobile/15E148 Safari/604.1",
 	"Mozilla/5.0 (iPad; CPU OS 14_1 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) FxiOS/119.0 Mobile/15E148 Safari/605.1.15",
+
+	// Android
+	"Mozilla/5.0 (Linux; Android 6.0.1; SAMSUNG SM-G930F Build/MMB29K) AppleWebKit/537.36 (KHTML, like Gecko) SamsungBrowser/4.0 Chrome/44.0.2403.133 Mobile Safari/537.36",
+	"Mozilla/5.0 (Linux; Android 4.4.2; en-us; Z520 Build/KOT49H) AppleWebKit/534.30 (KHTML, like Gecko) Version/4.0 Mobile Safari/534.30",
+	"Mozilla/5.0 (Linux; U; Android 4.4.2; en-us; Z520 Build/KOT49H) AppleWebKit/534.30 (KHTML, like Gecko) Version/4.0 Mobile Safari/534.30",
+	"Mozilla/5.0 (Linux; Android 5.0.1; LG-H440n Build/LRX21Y) AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 Chrome/38.0.2125.102 Mobile Safari/537.36",
 }
 
 var resultCases = []ua.UserAgent{
-	// Windows
-	{
-		Browser: ua.Chrome,
-		OS:      ua.Windows,
-		Desktop: true,
-		Version: "118.0.0.0",
-	},
-	{
-		Browser: ua.Chrome,
-		OS:      ua.Windows,
-		Desktop: true,
-		Version: "59.0.3071.115",
-	},
-	{
-		Browser: ua.IE,
-		OS:      ua.Windows,
-		Desktop: true,
-		Version: "8.0",
-	},
-	{
-		Browser: ua.IE,
-		OS:      ua.Windows,
-		Desktop: true,
-		Version: "10.0",
-	},
-	{
-		Browser: ua.IE,
-		OS:      ua.Windows,
-		Desktop: true,
-		Version: "7.0", // Technically should be 11.0, but we need to manually map this after getting it.
-	},
-	{
-		Browser: ua.IE,
-		OS:      ua.Windows,
-		Desktop: true,
-		Version: "6.0",
-	},
-	{
-		Browser: ua.Edge,
-		OS:      ua.Windows,
-		Desktop: true,
-		Version: "15.15063",
-	},
-	// Mac
-	{
-		Browser: ua.Safari,
-		OS:      ua.MacOS,
-		Desktop: true,
-		Version: "10.1.2",
-	},
-	{
-		Browser: ua.Chrome,
-		OS:      ua.MacOS,
-		Desktop: true,
-		Version: "60.0.3112.90",
-	},
-	{
-		Browser: ua.Firefox,
-		OS:      ua.MacOS,
-		Desktop: true,
-		Version: "54.0",
-	},
-	{
-		Browser: ua.Vivaldi,
-		OS:      ua.MacOS,
-		Desktop: true,
-		Version: "1.92.917.39",
-	},
-	{
-		Browser: ua.Edge,
-		OS:      ua.MacOS,
-		Desktop: true,
-		Version: "79.0.309.71",
-	},
-	// Linux
-	{
-		Browser: ua.Firefox,
-		OS:      ua.Linux,
-		Desktop: true,
-		Version: "52.0",
-	},
-	{
-		Browser: ua.Firefox,
-		OS:      ua.Linux,
-		Desktop: true,
-		Version: "119.0",
-	},
-	{
-		Browser: ua.Firefox,
-		OS:      ua.Linux,
-		Desktop: true,
-		Version: "119.0",
-	},
-	{
-		Browser: ua.Firefox,
-		OS:      ua.Linux,
-		Desktop: true,
-		Version: "119.0",
-	},
-	{
-		Browser: ua.Chrome,
-		OS:      ua.Linux,
-		Desktop: true,
-		Version: "119.0.0.0",
-	},
-	// iPhone
-	{
-		Browser: ua.Safari,
-		OS:      ua.IOS,
-		Mobile:  true,
-		Version: "10.0",
-	},
-	{
-		Browser: ua.Chrome,
-		OS:      ua.IOS,
-		Mobile:  true,
-		Version: "60.0.3112.89",
-	},
-	{
-		Browser: ua.Opera,
-		OS:      ua.IOS,
-		Mobile:  true,
-		Version: "14.0.0.104835",
-	},
-	{
-		Browser: ua.Firefox,
-		OS:      ua.IOS,
-		Mobile:  true,
-		Version: "8.1.1",
-	},
-	{
-		Browser: ua.Edge,
-		OS:      ua.IOS,
-		Mobile:  true,
-		Version: "44.11.15",
-	},
-	// iPad
-	{
-		Browser: ua.Safari,
-		OS:      ua.IOS,
-		Tablet:  true,
-		Version: "10.0",
-	},
-	{
-		Browser: ua.Chrome,
-		OS:      ua.IOS,
-		Tablet:  true,
-		Version: "119.0.6045.169",
-	},
-	{
-		Browser: ua.Firefox,
-		OS:      ua.IOS,
-		Tablet:  true,
-		Version: "119.0",
-	},
+	// Windows (7)
+	{Browser: ua.Chrome, OS: ua.Windows, Desktop: true, Version: "118.0.0.0"},
+	{Browser: ua.Chrome, OS: ua.Windows, Desktop: true, Version: "59.0.3071.115"},
+	{Browser: ua.IE, OS: ua.Windows, Desktop: true, Version: "8.0"},
+	{Browser: ua.IE, OS: ua.Windows, Desktop: true, Version: "10.0"},
+	// Technically should be 11.0, but we need to manually map this after getting it.
+	{Browser: ua.IE, OS: ua.Windows, Desktop: true, Version: "7.0"},
+	{Browser: ua.IE, OS: ua.Windows, Desktop: true, Version: "6.0"},
+	{Browser: ua.Edge, OS: ua.Windows, Desktop: true, Version: "15.15063"},
+	// Mac (5) 7
+	{Browser: ua.Safari, OS: ua.MacOS, Desktop: true, Version: "10.1.2"},
+	{Browser: ua.Chrome, OS: ua.MacOS, Desktop: true, Version: "60.0.3112.90"},
+	{Browser: ua.Firefox, OS: ua.MacOS, Desktop: true, Version: "54.0"},
+	{Browser: ua.Vivaldi, OS: ua.MacOS, Desktop: true, Version: "1.92.917.39"},
+	{Browser: ua.Edge, OS: ua.MacOS, Desktop: true, Version: "79.0.309.71"},
+	// Linux (5) 12
+	{Browser: ua.Firefox, OS: ua.Linux, Desktop: true, Version: "52.0"},
+	{Browser: ua.Firefox, OS: ua.Linux, Desktop: true, Version: "119.0"},
+	{Browser: ua.Firefox, OS: ua.Linux, Desktop: true, Version: "119.0"},
+	{Browser: ua.Firefox, OS: ua.Linux, Desktop: true, Version: "119.0"},
+	{Browser: ua.Chrome, OS: ua.Linux, Desktop: true, Version: "119.0.0.0"},
+	// iPhone (5) 17
+	{Browser: ua.Safari, OS: ua.IOS, Mobile: true, Version: "10.0"},
+	{Browser: ua.Chrome, OS: ua.IOS, Mobile: true, Version: "60.0.3112.89"},
+	{Browser: ua.Opera, OS: ua.IOS, Mobile: true, Version: "14.0.0.104835"},
+	{Browser: ua.Firefox, OS: ua.IOS, Mobile: true, Version: "8.1.1"},
+	{Browser: ua.Edge, OS: ua.IOS, Mobile: true, Version: "44.11.15"},
+	// iPad (3) 22
+	{Browser: ua.Safari, OS: ua.IOS, Tablet: true, Version: "10.0"},
+	{Browser: ua.Chrome, OS: ua.IOS, Tablet: true, Version: "119.0.6045.169"},
+	{Browser: ua.Firefox, OS: ua.IOS, Tablet: true, Version: "119.0"},
+	// Android (4) 25
+	{Browser: ua.Samsung, OS: ua.Android, Mobile: true, Version: "4.0"},
+	{Browser: ua.AndroidBrowser, OS: ua.Android, Mobile: true, Version: "4.0"},
+	{Browser: ua.AndroidBrowser, OS: ua.Android, Mobile: true, Version: "4.0"},
+	{Browser: ua.Chrome, OS: ua.Android, Mobile: true, Version: "38.0.2125.102"},
 }
 
 func TestParse(t *testing.T) {
@@ -209,14 +96,14 @@ func TestParse(t *testing.T) {
 	for i, v := range testCases {
 		t.Run(fmt.Sprintf("Case:%d", i), func(t *testing.T) {
 			result := parser.Parse(v)
-			assert.Equal(t, resultCases[i].Browser, result.Browser, "Browser Test Case: %s\nExpected: %s", v, resultCases[i].Browser)
-			assert.Equal(t, resultCases[i].OS, result.OS, "OS Test Case: %s\nExpected: %s", v, resultCases[i].OS)
-			assert.Equal(t, resultCases[i].Desktop, result.Desktop, "Desktop Test Case: %s\nExpected: %s", v, resultCases[i].Desktop)
-			assert.Equal(t, resultCases[i].Version, result.Version, "Version Test Case: %s\nExpected: %s", v, resultCases[i].Version)
-			assert.Equal(t, resultCases[i].Mobile, result.Mobile, "Mobile Test Case: %s\nExpected: %s", v, resultCases[i].Mobile)
-			assert.Equal(t, resultCases[i].Tablet, result.Tablet, "Tablet Test Case: %s\nExpected: %s", v, resultCases[i].Tablet)
-			assert.Equal(t, resultCases[i].TV, result.TV, "TV Test Case: %s\nExpected: %s", v, resultCases[i].TV)
-			assert.Equal(t, resultCases[i].Bot, result.Bot, "Bot Test Case: %s\nExpected: %s", v, resultCases[i].Bot)
+			assert.Equal(t, resultCases[i].Browser, result.Browser, "Browser\nTest Case: %s\nExpected: %s", v, resultCases[i].Browser)
+			assert.Equal(t, resultCases[i].OS, result.OS, "OS\nTest Case: %s\nExpected: %s", v, resultCases[i].OS)
+			assert.Equal(t, resultCases[i].Desktop, result.Desktop, "Desktop\nTest Case: %s\nExpected: %s", v, resultCases[i].Desktop)
+			assert.Equal(t, resultCases[i].Version, result.Version, "Version\nTest Case: %s\nExpected: %s", v, resultCases[i].Version)
+			assert.Equal(t, resultCases[i].Mobile, result.Mobile, "Mobile\nTest Case: %s\nExpected: %s", v, resultCases[i].Mobile)
+			assert.Equal(t, resultCases[i].Tablet, result.Tablet, "Tablet\nTest Case: %s\nExpected: %s", v, resultCases[i].Tablet)
+			assert.Equal(t, resultCases[i].TV, result.TV, "TV\nTest Case: %s\nExpected: %s", v, resultCases[i].TV)
+			assert.Equal(t, resultCases[i].Bot, result.Bot, "Bot\nTest Case: %s\nExpected: %s", v, resultCases[i].Bot)
 		})
 	}
 }
