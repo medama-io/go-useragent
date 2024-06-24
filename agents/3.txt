@@ -946,3 +946,45 @@ Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like 
 Mozilla/5.0 (X11; Linux aarch64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/125.0.6422.141 Safari/537.36
 Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/125.0.0.0 Safari/537.36
 Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/126.0.6478.114 Safari/537.36
+Mozilla/5.0 (Linux; arm_64; Android 8.0.0; SM-G930F) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.6099.80 YaBrowser/24.1.6.80.00 SA/3 Mobile Safari/537.36
+Mozilla/5.0 (Linux; arm_64; Android 10; SM-M215F) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.6099.90 YaBrowser/24.1.8.90.00 SA/3 Mobile Safari/537.36
+Mozilla/5.0 (Linux; arm_64; Android 12; AGS5-L09) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.6099.109 YaBrowser/24.1.2.109.00 SA/3 Mobile Safari/537.36
+Mozilla/5.0 (Linux; arm_64; Android 13; SM-A325F) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.6099.90 YaBrowser/24.1.8.90.00 SA/3 Mobile Safari/537.36
+Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 YaBrowser/24.1.0.0 Safari/537.36
+Mozilla/5.0 (Linux; arm_64; Android 13; Infinix X6710) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.6099.90 YaBrowser/24.1.8.90.00 SA/3 Mobile Safari/537.36
+Mozilla/5.0 (Linux; arm_64; Android 9; LLD-L31) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.6099.90 YaBrowser/24.1.8.90.00 SA/3 Mobile Safari/537.36
+Mozilla/5.0 (Linux; arm; Android 13; 2305EPCC4G) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/108.0.0.0 YaBrowser/23.1.5.98.00 SA/3 Mobile Safari/537.36
+Mozilla/5.0 (Linux; arm_64; Android 13; 2207117BPG) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.6099.90 YaBrowser/24.1.8.90.00 SA/3 Mobile Safari/537.36
+Mozilla/5.0 (Linux; arm_64; Android 13; CMG101) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.6099.104 YaBrowser/24.1.2.104.01 Safari/537.36
+Mozilla/5.0 (Linux; arm_64; Android 14; SM-G991U1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.6099.26 YaBrowser/24.1.9.26.00 (beta) SA/3 Mobile Safari/537.36
+Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/104.0.5112.124 YaBrowser/22.9.5.710 Yowser/2.5 Safari/537.36/Zknd3mjS7/Zknd3mjS7
+Mozilla/5.0 (Linux; arm_64; Android 10; MAR-LX1A) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.6099.101 YaBrowser/24.1.7.101.00 SA/3 Mobile Safari/537.36
+Mozilla/5.0 (Linux; arm_64; Android 14; V2231) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.6099.90 YaBrowser/24.1.8.90.00 SA/3 Mobile Safari/537.36
+Mozilla/5.0 (Linux; arm_64; Android 9; ZB633KL) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/114.0.0.0 YaBrowser/23.7.3.104.00 SA/3 Mobile Safari/537.36
+Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 YaBrowser/24.1.0.0 Safari/537.36
+Mozilla/5.0 (Linux; arm_64; Android 8.1.0; Redmi Note 5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.6099.101 YaBrowser/24.1.7.101.00 SA/3 Mobile Safari/537.36
+Mozilla/5.0 (Linux; arm; Android 10; PMT3231_4G_D_RU) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.6099.90 YaBrowser/24.1.8.90.01 Safari/537.36
+Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 YaBrowser/24.1.0.0 Safari/537.36
+Mozilla/5.0 (Linux; arm_64; Android 10; SAMSUNG SM-G991B) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.6099.85 YaBrowser/24.1.2.85.00 SA/3 Mobile Safari/537.36
+Mozilla/5.0 (Linux; arm_64; Android 9; F1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.6099.101 YaBrowser/24.1.7.101.00 SA/3 Mobile Safari/537.36
+Mozilla/5.0 (iPhone; CPU iPhone OS 16_6 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/16.0 YaBrowser/24.1.8.486.10 SA/3 Mobile/15E148 Safari/604.1
+Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 YaBrowser/24.1.0.0 Safari/537.36
+Mozilla/5.0 (iPhone; CPU iPhone OS 16_5 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/16.0 YaBrowser/24.1.8.486.10 SA/3 Mobile/15E148 Safari/604.1
+Mozilla/5.0 (Linux; arm_64; Android 13; 2312FPCA6G) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.6099.101 YaBrowser/24.1.7.101.00 SA/3 Mobile Safari/537.36
+Mozilla/5.0 (Linux; arm_64; Android 13; SM-A325F) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.6099.101 YaBrowser/24.1.7.101.00 SA/3 Mobile Safari/537.36
+Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 YaBrowser/24.1.0.0 Safari/537.36 
+Mozilla/5.0 (Linux; arm_64; Android 11; SM-A035F) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.6099.101 YaBrowser/24.1.7.101.00 SA/3 Mobile Safari/537.36
+Mozilla/5.0 (Linux; arm_64; Android 13; SM-G7810) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.6099.90 YaBrowser/24.1.8.90.00 SA/3 Mobile Safari/537.36
+Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 YaBrowser/24.1.0.0 Safari/537.36
+Mozilla/5.0 (Linux; arm_64; Android 13; 220333QNY) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.6099.101 YaBrowser/24.1.7.101.00 SA/3 Mobile Safari/537.36
+Mozilla/5.0 (Linux; arm_64; Android 11; M2103K19Y) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.6099.101 YaBrowser/24.1.7.101.00 SA/3 Mobile Safari/537.36
+Mozilla/5.0 (Linux; arm_64; Android 10; Lenovo TB-X306F) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.6099.101 YaBrowser/24.1.7.101.01 Safari/537.36
+Mozilla/5.0 (Linux; arm_64; Android 14; CPH2413) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.6099.101 YaBrowser/24.1.7.101.00 SA/3 Mobile Safari/537.36
+Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 YaBrowser/24.1.0.0 Safari/537.36
+Mozilla/5.0 (Linux; arm_64; Android 10; M2006C3MNG) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.6099.88 YaBrowser/24.1.5.88.00 SA/3 Mobile Safari/537.36
+Mozilla/5.0 (Linux; arm_64; Android 13; RMX3511) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.6099.27 YaBrowser/24.1.7.27.00 (alpha) SA/3 Mobile Safari/537.36
+Mozilla/5.0 (Linux; arm_64; Android 13; RMX3624) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.6099.101 YaBrowser/24.1.7.101.00 SA/3 Mobile Safari/537.36
+Mozilla/5.0 (Windows NT 10.0.0; Win64; x64; ) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.6099.291 Not_A Brand/8 YaBrowser/24.1.4.790 Yowser/2.5 Safari/537.36
+Mozilla/5.0 (Linux; arm_64; Android 13; SM-A325F) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/118.0.5993.0 YaBrowser/23.11.4.0.00 (alpha) SA/3 Mobile Safari/537.36
+Mozilla/5.0 (Linux; arm_64; Android 12; Redmi Note 9 Pro) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.6099.101 YaBrowser/24.1.7.101.00 SA/3 Mobile Safari/537.36
+Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 YaBrowser/24.1.0.0 Safari/537.36

@@ -57,6 +57,9 @@ var matchResults = [][]string{
 	{ua.Bot},
 	{ua.Safari, ua.Chrome, ua.Bot},
 	{ua.Safari, ua.Bot, ua.Chrome, ua.Linux},
+
+	// Yandex Browser (1)
+	{ua.Safari, ua.Mobile, ua.YandexBrowser, ua.Chrome, ua.Android, ua.Linux},
 }
 
 func TestMatchTokenIndexes(t *testing.T) {
