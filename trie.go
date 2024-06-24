@@ -2,6 +2,7 @@ package useragent
 
 import (
 	"fmt"
+	"slices"
 	"strings"
 )
 
@@ -167,19 +168,20 @@ func (trie *RuneTrie) Put(key string) {
 	node := trie
 	matchResults := MatchTokenIndexes(key)
 	for keyIndex, r := range key {
-		// Reset the result slice for each new rune.
-		node.result = []Result{}
+		// Initialise a new result slice for each new rune.
+		if node.result == nil {
+			node.result = []Result{}
+		}
 
 		// If we encounter a match, we can store it in the trie.
-
 		for _, result := range matchResults {
 			if keyIndex == result.EndIndex-1 {
-				result := Result{Match: result.Match, Type: result.MatchType, Precedence: result.Precedence}
-				node.result = append(node.result, result)
+				newResult := Result{Match: result.Match, Type: result.MatchType, Precedence: result.Precedence}
+				if !slices.Contains(node.result, newResult) {
+					node.result = append(node.result, newResult)
+				}
 			}
 		}
-		// fmt.Printf(string(r))
-		// fmt.Printf("%+v\n", node.result)
 
 		child := node.children[r]
 		if child == nil {
