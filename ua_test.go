@@ -49,6 +49,14 @@ var testCases = []string{
 	"Mozilla/5.0 (Linux; Android 4.4.2; en-us; Z520 Build/KOT49H) AppleWebKit/534.30 (KHTML, like Gecko) Version/4.0 Mobile Safari/534.30",
 	"Mozilla/5.0 (Linux; U; Android 4.4.2; en-us; Z520 Build/KOT49H) AppleWebKit/534.30 (KHTML, like Gecko) Version/4.0 Mobile Safari/534.30",
 	"Mozilla/5.0 (Linux; Android 5.0.1; LG-H440n Build/LRX21Y) AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 Chrome/38.0.2125.102 Mobile Safari/537.36",
+
+	// Bots
+	"Mozilla/5.0 (compatible; Googlebot/2.1; +http://www.google.com/bot.html)",
+	"Mozilla/5.0 (compatible; bingbot/2.0; +http://www.bing.com/bingbot.htm)",
+	"Mozilla/5.0 (compatible; Yahoo! Slurp; http://help.yahoo.com/help/us/ysearch/slurp)",
+	"Mozilla/5.0 (compatible; YandexBot/3.0; +http://yandex.com/bots)",
+	"Mozilla/5.0 AppleWebKit/537.36 (KHTML, like Gecko; compatible; bingbot/2.0; +http://www.bing.com/bingbot.htm) Chrome/112.0.0.0 Safari/537.36",
+	// "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/125.0.6422.76 Safari/537.36",
 }
 
 var resultCases = []ua.UserAgent{
@@ -88,6 +96,12 @@ var resultCases = []ua.UserAgent{
 	{Browser: ua.AndroidBrowser, OS: ua.Android, Mobile: true, Version: "4.0"},
 	{Browser: ua.AndroidBrowser, OS: ua.Android, Mobile: true, Version: "4.0"},
 	{Browser: ua.Chrome, OS: ua.Android, Mobile: true, Version: "38.0.2125.102"},
+	// Bots (6) 29
+	{Bot: true},
+	{Bot: true},
+	{Bot: true},
+	{Bot: true},
+	{Bot: true, Browser: ua.Chrome, Version: "112.0.0.0"},
 }
 
 func TestParse(t *testing.T) {

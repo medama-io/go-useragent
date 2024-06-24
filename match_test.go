@@ -44,11 +44,18 @@ var matchResults = [][]string{
 	{ua.Safari, ua.Mobile, ua.Chrome, ua.Tablet, ua.IOS},
 	{ua.Safari, ua.Mobile, ua.Firefox, ua.Tablet, ua.IOS},
 
-	// Android (6)
+	// Android (4)
 	{ua.Safari, ua.Mobile, ua.Chrome, ua.Samsung, ua.Android, ua.Linux},
 	{ua.Safari, ua.Mobile, ua.Version, ua.Android, ua.Linux},
 	{ua.Safari, ua.Mobile, ua.Version, ua.Android, ua.Linux},
 	{ua.Safari, ua.Mobile, ua.Chrome, ua.Version, ua.MobileDevice, ua.Android, ua.Linux},
+
+	// Bots (4)
+	{ua.Bot},
+	{ua.Bot},
+	{ua.Bot},
+	{ua.Bot},
+	{ua.Safari, ua.Chrome, ua.Bot},
 }
 
 func TestMatchTokenIndexes(t *testing.T) {
