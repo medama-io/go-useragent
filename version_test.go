@@ -45,11 +45,19 @@ var versionResults = []string{
 	"MozillaiPadCPUOSlikeMacOSXAppleWebKitKHTMLlikeGeckoCriOSMobileSafari",
 	"MozillaiPadCPUOSlikeMacOSXAppleWebKitKHTMLlikeGeckoFxiOSMobileSafari",
 
-	// Android (6)
+	// Android (4)
 	"MozillaLinuxAndroidAppleWebKitKHTMLlikeGeckoSamsungBrowserChromeMobileSafari",
 	"MozillaLinuxAndroidAppleWebKitKHTMLlikeGeckoVersionMobileSafari",
 	"MozillaLinuxUAndroidAppleWebKitKHTMLlikeGeckoVersionMobileSafari",
 	"MozillaLinuxAndroidAppleWebKitKHTMLlikeGeckoVersionChromeMobileSafari",
+
+	// Bots (4)
+	"MozillacompatibleGooglebothttpwwwgooglecombothtml",
+	"Mozillacompatiblebingbothttpwwwbingcombingbothtm",
+	"MozillacompatibleYahooSlurphttphelpyahoocomhelpusysearchslurp",
+	"MozillacompatibleYandexBothttpyandexcombots",
+	"MozillaAppleWebKitKHTMLlikeGeckocompatiblebingbothttpwwwbingcombingbothtmChromeSafari",
+	"MozillaXLinuxxAppleWebKitKHTMLlikeGeckoHeadlessChromeSafari",
 }
 
 func TestCleanVersions(t *testing.T) {
