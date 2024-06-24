@@ -1,7 +1,6 @@
 package useragent
 
 import (
-	"fmt"
 	"slices"
 	"strings"
 )
@@ -102,8 +101,6 @@ func (trie *RuneTrie) Get(key string) UserAgent {
 		}
 
 		// If result exists, we can append it to the value.
-		// fmt.Printf(string(r))
-		// fmt.Printf("%+v\n", node.result)
 		for _, result := range node.result {
 			matched := ua.addMatch(result)
 
@@ -123,37 +120,23 @@ func (trie *RuneTrie) Get(key string) UserAgent {
 			// until we reach whitespace to get around random device IDs.
 			// For example, "Mobile/14F89" should be "Mobile".
 			if matched && result.Match == Mobile {
-				// We need to clear the result so we can match the next token.
-				// node.result = nil
 				skipUntilWhitespace = true
 			}
 
 			// If we matched an Android token, we want to strip everything after it until
 			// we reach a closing parenthesis to get around random device IDs.
 			if matched && result.Match == Android {
-				// node.result = nil
 				skipUntilClosingParenthesis = true
 			}
-
-			// fmt.Printf("- %t - ", matched)
-			// fmt.Printf("%+v\n", result)
 		}
 
-		// We need to catch the flag change after the loop since it isn't possible
-		// for a continue to affect an outer loop.
-		/* if skipUntilWhitespace {
-			continue
-		}*/
-
 		// Set the next node to the child of the current node.
-
 		next := node.children[r]
 		if next == nil {
 			continue // No match found, but we can try to match the next rune.
 		}
 		node = next
 	}
-	fmt.Println()
 
 	// Store version buffer into the user agent struct.
 	ua.Version = versionBuffer.String()
@@ -183,9 +166,6 @@ func (trie *RuneTrie) Put(key string) {
 				}
 			}
 		}
-
-		// fmt.Printf(string(r))
-		// fmt.Printf("%+v\n", node.result)
 
 		child := node.children[r]
 		if child == nil {

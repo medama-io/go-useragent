@@ -47,12 +47,8 @@ var testCases = []string{
 	// Android
 	"Mozilla/5.0 (Linux; Android 6.0.1; SAMSUNG SM-G930F Build/MMB29K) AppleWebKit/537.36 (KHTML, like Gecko) SamsungBrowser/4.0 Chrome/44.0.2403.133 Mobile Safari/537.36",
 	"Mozilla/5.0 (Linux; Android 4.4.2; en-us; Z520 Build/KOT49H) AppleWebKit/534.30 (KHTML, like Gecko) Version/4.0 Mobile Safari/534.30",
-	/*Mozilla/5.0 (Linux; U; Android 4.4.2; en-us; Z520 Build/KOT49H) AppleWebKit/534.30 (KHTML, like Gecko) Version/4.0 Mobile Safari/534.30;
-	Mozilla/5.0 (Linux; Android 5.0.1; LG-H440n Build/LRX21Y) AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 Chrome/38.0.2125.102 Mobile Safari/537.36
-	Mozilla/5.0 (Linux; Android 4.4.4; Nexus 7 Build/KTU84P) AppleWebKit/537.36 (KHTML like Gecko) Chrome/36.0.1985.135 Safari/537.36
-	Mozilla/5.0 (Linux; Android 7.0; SM-T827R4 Build/NRD90M) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/60.0.3112.116 Safari/537.36
-	Mozilla/5.0 (Linux; Android 11; Lenovo YT-J706X) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/96.0.4664.45 Safari/537.36
-	Mozilla/5.0 (Linux; Android 7.0; Pixel C Build/NRD90M; wv) AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 Chrome/52.0.2743.98 Safari/537.36*/
+	"Mozilla/5.0 (Linux; U; Android 4.4.2; en-us; Z520 Build/KOT49H) AppleWebKit/534.30 (KHTML, like Gecko) Version/4.0 Mobile Safari/534.30",
+	"Mozilla/5.0 (Linux; Android 5.0.1; LG-H440n Build/LRX21Y) AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 Chrome/38.0.2125.102 Mobile Safari/537.36",
 }
 
 var resultCases = []ua.UserAgent{
@@ -87,13 +83,11 @@ var resultCases = []ua.UserAgent{
 	{Browser: ua.Safari, OS: ua.IOS, Tablet: true, Version: "10.0"},
 	{Browser: ua.Chrome, OS: ua.IOS, Tablet: true, Version: "119.0.6045.169"},
 	{Browser: ua.Firefox, OS: ua.IOS, Tablet: true, Version: "119.0"},
-	// Android (6) 25
+	// Android (4) 25
 	{Browser: ua.Samsung, OS: ua.Android, Mobile: true, Version: "4.0"},
 	{Browser: ua.AndroidBrowser, OS: ua.Android, Mobile: true, Version: "4.0"},
-	{Browser: ua.Chrome, OS: ua.Android, Mobile: true, Version: "112.0.0.0"},
-	{Browser: ua.Chrome, OS: ua.Android, Mobile: true, Version: "112.0.0.0"},
-	{Browser: ua.Chrome, OS: ua.Android, Mobile: true, Version: "112.0.0.0"},
-	{Browser: ua.Chrome, OS: ua.Android, Mobile: true, Version: "112.0.0.0"},
+	{Browser: ua.AndroidBrowser, OS: ua.Android, Mobile: true, Version: "4.0"},
+	{Browser: ua.Chrome, OS: ua.Android, Mobile: true, Version: "38.0.2125.102"},
 }
 
 func TestParse(t *testing.T) {
