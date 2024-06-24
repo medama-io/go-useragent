@@ -57,6 +57,7 @@ var versionResults = []string{
 	"MozillacompatibleYahooSlurphttphelpyahoocomhelpusysearchslurp",
 	"MozillacompatibleYandexBothttpyandexcombots",
 	"MozillaAppleWebKitKHTMLlikeGeckocompatiblebingbothttpwwwbingcombingbothtmChromeSafari",
+	"MozillaXLinuxxAppleWebKitKHTMLlikeGeckoHeadlessChromeSafari",
 }
 
 func TestCleanVersions(t *testing.T) {

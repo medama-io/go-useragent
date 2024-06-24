@@ -56,7 +56,7 @@ var testCases = []string{
 	"Mozilla/5.0 (compatible; Yahoo! Slurp; http://help.yahoo.com/help/us/ysearch/slurp)",
 	"Mozilla/5.0 (compatible; YandexBot/3.0; +http://yandex.com/bots)",
 	"Mozilla/5.0 AppleWebKit/537.36 (KHTML, like Gecko; compatible; bingbot/2.0; +http://www.bing.com/bingbot.htm) Chrome/112.0.0.0 Safari/537.36",
-	// "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/125.0.6422.76 Safari/537.36",
+	"Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/125.0.6422.76 Safari/537.36",
 }
 
 var resultCases = []ua.UserAgent{
@@ -102,6 +102,7 @@ var resultCases = []ua.UserAgent{
 	{Bot: true},
 	{Bot: true},
 	{Bot: true, Browser: ua.Chrome, Version: "112.0.0.0"},
+	{Bot: true, Browser: ua.Chrome, OS: ua.Linux, Version: "125.0.6422.76", Desktop: true},
 }
 
 func TestParse(t *testing.T) {

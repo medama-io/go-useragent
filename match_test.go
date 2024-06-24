@@ -56,6 +56,7 @@ var matchResults = [][]string{
 	{ua.Bot},
 	{ua.Bot},
 	{ua.Safari, ua.Chrome, ua.Bot},
+	{ua.Safari, ua.Bot, ua.Chrome, ua.Linux},
 }
 
 func TestMatchTokenIndexes(t *testing.T) {
