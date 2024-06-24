@@ -18,7 +18,7 @@ const (
 
 	// Browsers.
 	// There is no match token for this, but the absence of any browser token paired with Android is a good indicator of this browser.
-	AndroidBrowser = "AndroidBrowser"
+	AndroidBrowser = "Android Browser"
 	Chrome         = "Chrome"
 	Edge           = "Edge"
 	Firefox        = "Firefox"
@@ -27,8 +27,9 @@ const (
 	OperaMini      = "Mini"
 	Safari         = "Safari"
 	Vivaldi        = "Vivaldi"
-	Samsung        = "SamsungBrowser"
-	Nintendo       = "NintendoBrowser"
+	Samsung        = "Samsung Browser"
+	Nintendo       = "Nintendo Browser"
+	YandexBrowser  = "Yandex Browser"
 
 	// Operating Systems.
 	Android  = "Android"
@@ -60,16 +61,17 @@ const (
 // most important match.
 var matchMap = map[string][]string{
 	// Browsers
-	Chrome:    {"CriOS", Chrome},
-	Edge:      {"EdgiOS", Edge, "Edg"},
-	Firefox:   {"FxiOS", Firefox},
-	IE:        {"MSIE", "Trident"},
-	Opera:     {"OPiOS", "OPR", Opera},
-	OperaMini: {OperaMini},
-	Safari:    {Safari},
-	Vivaldi:   {Vivaldi},
-	Samsung:   {Samsung},
-	Nintendo:  {Nintendo},
+	Chrome:        {"CriOS", Chrome},
+	Edge:          {"EdgiOS", Edge, "Edg"},
+	Firefox:       {"FxiOS", Firefox},
+	IE:            {"MSIE", "Trident"},
+	Opera:         {"OPiOS", "OPR", Opera},
+	OperaMini:     {OperaMini},
+	Safari:        {Safari},
+	Vivaldi:       {Vivaldi},
+	Samsung:       {"SamsungBrowser"},
+	Nintendo:      {"NintendoBrowser"},
+	YandexBrowser: {"YaBrowser"},
 
 	// Operating Systems
 	Android:  {Android},
@@ -114,6 +116,7 @@ var matchPrecedenceMap = map[string]uint8{
 	Vivaldi:        9,
 	Samsung:        10,
 	Nintendo:       11,
+	YandexBrowser:  12,
 
 	// Operating Systems
 	Linux:    1,
@@ -146,7 +149,7 @@ type MatchResults struct {
 // GetMatchType returns the match type of a match result using the MatchPrecedenceMap.
 func GetMatchType(match string) uint8 {
 	switch match {
-	case Chrome, Edge, Firefox, IE, Opera, OperaMini, Safari, Vivaldi, Samsung, Nintendo:
+	case Chrome, Edge, Firefox, IE, Opera, OperaMini, Safari, Vivaldi, Samsung, Nintendo, YandexBrowser:
 		return BrowserMatch
 	case Android, ChromeOS, IOS, Linux, MacOS, Windows:
 		return OSMatch
@@ -231,6 +234,8 @@ func (ua *UserAgent) addMatch(result Result) bool {
 			ua.Browser = Samsung
 		case Nintendo:
 			ua.Browser = Nintendo
+		case YandexBrowser:
+			ua.Browser = YandexBrowser
 		}
 
 		ua.precedence.Browser = result.Precedence
