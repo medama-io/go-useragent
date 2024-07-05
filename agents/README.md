@@ -11,3 +11,9 @@ To update the final list of cleaned user agents, run the following command:
 ```bash
 go run scripts/main.go
 ```
+
+### Useful Regexes
+
+```regex
+`\[ip:\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3}\]
+```
