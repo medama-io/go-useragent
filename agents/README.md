@@ -15,5 +15,5 @@ go run scripts/main.go
 ### Useful Regexes
 
 ```regex
-`\[ip:\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3}\]
+\[ip:\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3}\]
 ```
