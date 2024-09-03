@@ -10,6 +10,10 @@ It achieves this efficiency by using a [trie](https://en.wikipedia.org/wiki/Trie
 go get -u github.com/medama-io/go-useragent
 ```
 
+## Usage
+
+This type of parser is typically initialized once at application startup and reused throughout the application's lifecycle. While it doesn't offer the exhaustive coverage of regex-based parsers, it can be paired with a regex-based parser to handle unknown edge cases, where the trie-based parser acts as a fast path for the majority of user-agents.
+
 ## Example
 
 ```go
