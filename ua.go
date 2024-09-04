@@ -8,16 +8,14 @@ type Parser struct {
 	Trie *RuneTrie
 }
 
-// Precedence is the order in which the user agent matched the
-// browser, device, and OS. The lower the number, the higher the
-// precedence.
-type Precedence struct {
-	Browser uint8
-	OS      uint8
-	Type    uint8
-}
-
 type UserAgent struct {
+	// Precedence is the order in which the user agent matched the
+	// browser, device, and OS. The lower the number, the higher the
+	// precedence.
+	BrowserPrecedence uint8
+	OSPrecedence      uint8
+	TypePrecedence    uint8
+
 	Browser string
 	OS      string
 	Version string
@@ -27,8 +25,6 @@ type UserAgent struct {
 	Tablet  bool
 	TV      bool
 	Bot     bool
-
-	precedence Precedence
 }
 
 // Create a new Trie and populate it with user agent data.

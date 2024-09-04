@@ -15,12 +15,13 @@ const (
 )
 
 type Result struct {
-	Match string
 	// 0: Unknown, 1: Browser, 2: OS, 3: Type
 	Type uint8
 	// Precedence value for each result type to determine which result
 	// should be overwritten.
 	Precedence uint8
+
+	Match string
 }
 
 type childNode struct {
@@ -50,9 +51,7 @@ func NewRuneTrie() *RuneTrie {
 // nodes or for nodes with a value of nil.
 func (trie *RuneTrie) Get(key string) UserAgent {
 	node := trie
-	ua := UserAgent{
-		precedence: Precedence{},
-	}
+	ua := UserAgent{}
 
 	// Flag to indicate if we are currently iterating over a version number.
 	var isVersion bool

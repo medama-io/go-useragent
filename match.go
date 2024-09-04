@@ -211,7 +211,7 @@ func MatchTokenIndexes(ua string) []MatchResults {
 // This adds a matching constant to a user agent struct.
 func (ua *UserAgent) addMatch(result Result) bool {
 	// Browsers
-	if result.Type == BrowserMatch && result.Precedence > ua.precedence.Browser {
+	if result.Type == BrowserMatch && result.Precedence > ua.BrowserPrecedence {
 		switch result.Match {
 		case Chrome:
 			ua.Browser = Chrome
@@ -238,12 +238,12 @@ func (ua *UserAgent) addMatch(result Result) bool {
 			ua.Browser = YandexBrowser
 		}
 
-		ua.precedence.Browser = result.Precedence
+		ua.BrowserPrecedence = result.Precedence
 		return true
 	}
 
 	// Operating Systems
-	if result.Type == OSMatch && result.Precedence > ua.precedence.OS {
+	if result.Type == OSMatch && result.Precedence > ua.OSPrecedence {
 		switch result.Match {
 		case Android:
 			ua.OS = Android
@@ -252,7 +252,7 @@ func (ua *UserAgent) addMatch(result Result) bool {
 				ua.Browser = AndroidBrowser
 				// Special case we set this as the precedence with this is zero
 				// and can be overwritten by Safari.
-				ua.precedence.Browser = matchPrecedenceMap[Mobile]
+				ua.BrowserPrecedence = matchPrecedenceMap[Mobile]
 			}
 		case ChromeOS:
 			ua.OS = ChromeOS
@@ -276,12 +276,12 @@ func (ua *UserAgent) addMatch(result Result) bool {
 			ua.Desktop = true
 		}
 
-		ua.precedence.OS = result.Precedence
+		ua.OSPrecedence = result.Precedence
 		return true
 	}
 
 	// Types
-	if result.Type == TypeMatch && result.Precedence > ua.precedence.Type {
+	if result.Type == TypeMatch && result.Precedence > ua.TypePrecedence {
 		switch result.Match {
 		case Desktop:
 			ua.Desktop = true
@@ -301,7 +301,7 @@ func (ua *UserAgent) addMatch(result Result) bool {
 			ua.Bot = true
 		}
 
-		ua.precedence.Type = result.Precedence
+		ua.TypePrecedence = result.Precedence
 		return true
 	}
 
