@@ -5,6 +5,15 @@ import (
 	"strings"
 )
 
+const (
+	// This is the number of rune trie children to store in the array
+	// before switching to a map. Smaller arrays are faster to iterate
+	// and use less memory.
+	//
+	// This is an arbitrary number, but seemed to perform well in benchmarks.
+	MaxChildArraySize = 64
+)
+
 type Result struct {
 	Match string
 	// 0: Unknown, 1: Browser, 2: OS, 3: Type
@@ -14,10 +23,22 @@ type Result struct {
 	Precedence uint8
 }
 
+type childNode struct {
+	r    rune
+	node *RuneTrie
+}
+
 // RuneTrie is a trie of runes with string keys and interface{} values.
 type RuneTrie struct {
-	children map[rune]*RuneTrie
-	result   []Result
+	// childrenArr is an array of pointers to the next RuneTrie node. This
+	// is used when the number of children is small to improve performance
+	// and reduce memory usage.
+	childrenArr []childNode
+	// childrenMap is a map of runes to the next RuneTrie node. This is used
+	// when the number of children exceeds the diminishing returns of the
+	// childrenArr array.
+	childrenMap map[rune]*RuneTrie
+	result      []Result
 }
 
 // NewRuneTrie allocates and returns a new *RuneTrie.
@@ -78,12 +99,11 @@ func (trie *RuneTrie) Get(key string) UserAgent {
 			}
 		}
 
-		// We want to strip any other version numbers from other products to get more hits
-		// to the trie.
+		// Strip any other version numbers from other products to get more hits to the trie.
 		//
-		// We also do not use a switch here as Go does not generate a jump table for
-		// switch statements with no integral constants. Benchmarking shows that ops
-		// go down if we try to migrate statements like this to a switch.
+		// Also do not use a switch here as Go does not generate a jump table for switch
+		// statements with no integral constants. Benchmarking shows that ops go down
+		// if we try to migrate statements like this to a switch.
 		if IsDigit(r) || (r == '.' && len(key) > i+1 && IsDigit(rune(key[i+1]))) {
 			continue
 		}
@@ -131,7 +151,18 @@ func (trie *RuneTrie) Get(key string) UserAgent {
 		}
 
 		// Set the next node to the child of the current node.
-		next := node.children[r]
+		var next *RuneTrie
+		if len(node.childrenArr) != 0 {
+			for _, child := range node.childrenArr {
+				if child.r == r {
+					next = child.node
+					break
+				}
+			}
+		} else {
+			next = node.childrenMap[r]
+		}
+
 		if next == nil {
 			continue // No match found, but we can try to match the next rune.
 		}
@@ -167,17 +198,45 @@ func (trie *RuneTrie) Put(key string) {
 			}
 		}
 
-		child := node.children[r]
-		if child == nil {
-			// If no map is found, create a new one.
-			if node.children == nil {
-				node.children = map[rune]*RuneTrie{}
+		var child *RuneTrie
+		// If the number of children is less than the array size, we can store
+		// the children in an array.
+		if node.childrenMap == nil && len(node.childrenArr) < MaxChildArraySize {
+			// Search for the child in the array
+			for _, c := range node.childrenArr {
+				// If the child is found, set the child to the node.
+				if c.r == r {
+					child = c.node
+					break
+				}
 			}
 
-			// Store new runes in the trie.
-			child = new(RuneTrie)
-			node.children[r] = child
+			if child == nil {
+				// No child found, create a new one
+				child = new(RuneTrie)
+				node.childrenArr = append(node.childrenArr, childNode{r: r, node: child})
+			}
+		} else {
+			// If the number of children is greater than the array size, we can store
+			// the children in a map. We also empty the array.
+			if node.childrenMap == nil {
+				node.childrenMap = make(map[rune]*RuneTrie)
+
+				// Transfer children from array to map
+				for _, c := range node.childrenArr {
+					node.childrenMap[c.r] = c.node
+				}
+				node.childrenArr = nil // Clear the array as it's no longer needed
+			}
+
+			// Use the map to store the child
+			child = node.childrenMap[r]
+			if child == nil {
+				child = new(RuneTrie)
+				node.childrenMap[r] = child
+			}
 		}
+
 		node = child
 	}
 }

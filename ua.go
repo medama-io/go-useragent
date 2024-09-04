@@ -1,6 +1,8 @@
 package useragent
 
-import "strings"
+import (
+	"strings"
+)
 
 type Parser struct {
 	Trie *RuneTrie
