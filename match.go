@@ -211,97 +211,97 @@ func MatchTokenIndexes(ua string) []MatchResults {
 // This adds a matching constant to a user agent struct.
 func (ua *UserAgent) addMatch(result Result) bool {
 	// Browsers
-	if result.Type == BrowserMatch && result.Precedence > ua.BrowserPrecedence {
+	if result.Type == BrowserMatch && result.Precedence > ua.browserPrecedence {
 		switch result.Match {
 		case Chrome:
-			ua.Browser = Chrome
+			ua.browser = Chrome
 		case Edge:
-			ua.Browser = Edge
+			ua.browser = Edge
 		case Firefox:
-			ua.Browser = Firefox
+			ua.browser = Firefox
 		case IE:
-			ua.Browser = IE
+			ua.browser = IE
 		case Opera:
-			ua.Browser = Opera
+			ua.browser = Opera
 		case OperaMini:
-			ua.Browser = OperaMini
-			ua.Mobile = true
+			ua.browser = OperaMini
+			ua.mobile = true
 		case Safari:
-			ua.Browser = Safari
+			ua.browser = Safari
 		case Vivaldi:
-			ua.Browser = Vivaldi
+			ua.browser = Vivaldi
 		case Samsung:
-			ua.Browser = Samsung
+			ua.browser = Samsung
 		case Nintendo:
-			ua.Browser = Nintendo
+			ua.browser = Nintendo
 		case YandexBrowser:
-			ua.Browser = YandexBrowser
+			ua.browser = YandexBrowser
 		}
 
-		ua.BrowserPrecedence = result.Precedence
+		ua.browserPrecedence = result.Precedence
 		return true
 	}
 
 	// Operating Systems
-	if result.Type == OSMatch && result.Precedence > ua.OSPrecedence {
+	if result.Type == OSMatch && result.Precedence > ua.osPrecedence {
 		switch result.Match {
 		case Android:
-			ua.OS = Android
+			ua.os = Android
 			// An older generic white-labeled variant of Chrome/Chromium on Android.
-			if ua.Browser == "" {
-				ua.Browser = AndroidBrowser
+			if ua.browser == "" {
+				ua.browser = AndroidBrowser
 				// Special case we set this as the precedence with this is zero
 				// and can be overwritten by Safari.
-				ua.BrowserPrecedence = matchPrecedenceMap[Mobile]
+				ua.browserPrecedence = matchPrecedenceMap[Mobile]
 			}
 		case ChromeOS:
-			ua.OS = ChromeOS
-			ua.Desktop = true
+			ua.os = ChromeOS
+			ua.desktop = true
 
 		case IOS:
-			ua.OS = IOS
-			if !ua.Tablet {
-				ua.Mobile = true
+			ua.os = IOS
+			if !ua.tablet {
+				ua.mobile = true
 			}
 		case Linux:
-			ua.OS = Linux
-			if !ua.Tablet && !ua.TV {
-				ua.Desktop = true
+			ua.os = Linux
+			if !ua.tablet && !ua.tv {
+				ua.desktop = true
 			}
 		case MacOS:
-			ua.OS = MacOS
-			ua.Desktop = true
+			ua.os = MacOS
+			ua.desktop = true
 		case Windows:
-			ua.OS = Windows
-			ua.Desktop = true
+			ua.os = Windows
+			ua.desktop = true
 		}
 
-		ua.OSPrecedence = result.Precedence
+		ua.osPrecedence = result.Precedence
 		return true
 	}
 
 	// Types
-	if result.Type == TypeMatch && result.Precedence > ua.TypePrecedence {
+	if result.Type == TypeMatch && result.Precedence > ua.typePrecedence {
 		switch result.Match {
 		case Desktop:
-			ua.Desktop = true
+			ua.desktop = true
 		case Tablet:
-			if ua.Mobile {
-				ua.Mobile = false
+			if ua.mobile {
+				ua.mobile = false
 			}
-			ua.Tablet = true
+			ua.tablet = true
 		case Mobile, MobileDevice:
-			if !ua.Tablet {
-				ua.Mobile = true
-				ua.Desktop = false
+			if !ua.tablet {
+				ua.mobile = true
+				ua.desktop = false
 			}
 		case TV:
-			ua.TV = true
+			ua.tv = true
 		case Bot:
-			ua.Bot = true
+			ua.bot = true
 		}
 
-		ua.TypePrecedence = result.Precedence
+		ua.typePrecedence = result.Precedence
 		return true
 	}
 

@@ -37,14 +37,14 @@ func main() {
 	agent := ua.Parse(str)
 
 	// Access parsed information using agent fields.
-	fmt.Println(agent.Browser)  // Chrome
-	fmt.Println(agent.OS)       // Windows
-	fmt.Println(agent.Version)  // 118.0.0.0
-	fmt.Println(agent.Desktop)  // true
-	fmt.Println(agent.Mobile)   // false
-	fmt.Println(agent.Tablet)   // false
-	fmt.Println(agent.TV)       // false
-	fmt.Println(agent.Bot)      // false
+	fmt.Println(agent.GetBrowser())  // Chrome
+	fmt.Println(agent.GetOS())       // Windows
+	fmt.Println(agent.GetVersion())  // 118.0.0.0
+	fmt.Println(agent.IsDesktop())  // true
+	fmt.Println(agent.IsMobile())   // false
+	fmt.Println(agent.IsTablet())   // false
+	fmt.Println(agent.IsTV())       // false
+	fmt.Println(agent.IsBot())      // false
 
 	// Helper functions.
 	fmt.Println(agent.GetMajorVersion())  // 118

@@ -12,19 +12,19 @@ type UserAgent struct {
 	// Precedence is the order in which the user agent matched the
 	// browser, device, and OS. The lower the number, the higher the
 	// precedence.
-	BrowserPrecedence uint8
-	OSPrecedence      uint8
-	TypePrecedence    uint8
+	browserPrecedence uint8
+	osPrecedence      uint8
+	typePrecedence    uint8
 
-	Browser string
-	OS      string
-	Version string
+	browser string
+	os      string
+	version string
 
-	Desktop bool
-	Mobile  bool
-	Tablet  bool
-	TV      bool
-	Bot     bool
+	desktop bool
+	mobile  bool
+	tablet  bool
+	tv      bool
+	bot     bool
 }
 
 // Create a new Trie and populate it with user agent data.

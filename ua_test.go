@@ -9,7 +9,19 @@ import (
 	"github.com/stretchr/testify/assert"
 )
 
-var resultCases = []ua.UserAgent{
+type ResultCase struct {
+	Browser string
+	OS      string
+	Version string
+
+	Desktop bool
+	Mobile  bool
+	Tablet  bool
+	TV      bool
+	Bot     bool
+}
+
+var resultCases = []ResultCase{
 	// Windows (7)
 	{Browser: ua.Chrome, OS: ua.Windows, Desktop: true, Version: "118.0.0.0"},
 	{Browser: ua.Chrome, OS: ua.Windows, Desktop: true, Version: "59.0.3071.115"},
@@ -63,14 +75,14 @@ func TestParse(t *testing.T) {
 	for i, v := range testdata.TestCases {
 		t.Run(fmt.Sprintf("Case:%d", i), func(t *testing.T) {
 			result := parser.Parse(v)
-			assert.Equal(t, resultCases[i].Browser, result.Browser, "Browser\nTest Case: %s\nExpected: %s", v, resultCases[i].Browser)
-			assert.Equal(t, resultCases[i].OS, result.OS, "OS\nTest Case: %s\nExpected: %s", v, resultCases[i].OS)
-			assert.Equal(t, resultCases[i].Desktop, result.Desktop, "Desktop\nTest Case: %s\nExpected: %s", v, resultCases[i].Desktop)
-			assert.Equal(t, resultCases[i].Version, result.Version, "Version\nTest Case: %s\nExpected: %s", v, resultCases[i].Version)
-			assert.Equal(t, resultCases[i].Mobile, result.Mobile, "Mobile\nTest Case: %s\nExpected: %s", v, resultCases[i].Mobile)
-			assert.Equal(t, resultCases[i].Tablet, result.Tablet, "Tablet\nTest Case: %s\nExpected: %s", v, resultCases[i].Tablet)
-			assert.Equal(t, resultCases[i].TV, result.TV, "TV\nTest Case: %s\nExpected: %s", v, resultCases[i].TV)
-			assert.Equal(t, resultCases[i].Bot, result.Bot, "Bot\nTest Case: %s\nExpected: %s", v, resultCases[i].Bot)
+			assert.Equal(t, resultCases[i].Browser, result.GetBrowser(), "Browser\nTest Case: %s\nExpected: %s", v, resultCases[i].Browser)
+			assert.Equal(t, resultCases[i].OS, result.GetOS(), "OS\nTest Case: %s\nExpected: %s", v, resultCases[i].OS)
+			assert.Equal(t, resultCases[i].Desktop, result.IsDesktop(), "Desktop\nTest Case: %s\nExpected: %s", v, resultCases[i].Desktop)
+			assert.Equal(t, resultCases[i].Version, result.GetVersion(), "Version\nTest Case: %s\nExpected: %s", v, resultCases[i].Version)
+			assert.Equal(t, resultCases[i].Mobile, result.IsMobile(), "Mobile\nTest Case: %s\nExpected: %s", v, resultCases[i].Mobile)
+			assert.Equal(t, resultCases[i].Tablet, result.IsTablet(), "Tablet\nTest Case: %s\nExpected: %s", v, resultCases[i].Tablet)
+			assert.Equal(t, resultCases[i].TV, result.IsTV(), "TV\nTest Case: %s\nExpected: %s", v, resultCases[i].TV)
+			assert.Equal(t, resultCases[i].Bot, result.IsBot(), "Bot\nTest Case: %s\nExpected: %s", v, resultCases[i].Bot)
 		})
 	}
 }

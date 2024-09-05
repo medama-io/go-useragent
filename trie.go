@@ -128,7 +128,7 @@ func (trie *RuneTrie) Get(key string) UserAgent {
 			//
 			// We also reject any version numbers related to Safari since it has a
 			// separate key for its version number.
-			if (matched && result.Type == BrowserMatch && result.Match != Safari) || (result.Type == VersionMatch && ua.Version == "") {
+			if (matched && result.Type == BrowserMatch && result.Match != Safari) || (result.Type == VersionMatch && ua.version == "") {
 				// Clear version buffer if it has old values.
 				versionBuffer.Reset()
 				skipCount = 1 // We want to omit the slash after the browser name.
@@ -169,7 +169,7 @@ func (trie *RuneTrie) Get(key string) UserAgent {
 	}
 
 	// Store version buffer into the user agent struct.
-	ua.Version = versionBuffer.String()
+	ua.version = versionBuffer.String()
 
 	return ua
 }
