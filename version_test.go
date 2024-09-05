@@ -5,6 +5,7 @@ import (
 	"testing"
 
 	ua "github.com/medama-io/go-useragent"
+	"github.com/medama-io/go-useragent/testdata"
 	"github.com/stretchr/testify/assert"
 )
 
@@ -62,7 +63,7 @@ var versionResults = []string{
 }
 
 func TestCleanVersions(t *testing.T) {
-	for i, v := range testCases {
+	for i, v := range testdata.TestCases {
 		t.Run(fmt.Sprintf("Case:%d", i), func(t *testing.T) {
 			line := ua.RemoveMobileIdentifiers(v)
 			line = ua.RemoveAndroidIdentifiers(line)
