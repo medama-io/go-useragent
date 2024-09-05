@@ -5,7 +5,7 @@ import (
 	"os"
 	"strings"
 
-	ua "github.com/medama-io/go-useragent"
+	"github.com/medama-io/go-useragent/internal"
 )
 
 // This reads the agents.txt file and returns a new agents_cleaned.txt file
@@ -24,13 +24,13 @@ func CleanAgentsFile(filePath string) ([]string, error) {
 	var cleanedAgents []string
 	seen := make(map[string]bool) // to track duplicates
 	for _, line := range lines {
-		line = ua.RemoveMobileIdentifiers(line)
-		line = ua.RemoveAndroidIdentifiers(line)
-		line = ua.RemoveVersions(line)
+		line = internal.RemoveMobileIdentifiers(line)
+		line = internal.RemoveAndroidIdentifiers(line)
+		line = internal.RemoveVersions(line)
 
 		// For each line, get all token indexes
 		// and remove all strings after the largest EndIndex.
-		results := ua.MatchTokenIndexes(line)
+		results := internal.MatchTokenIndexes(line)
 
 		// If no results, skip the line.
 		if len(results) == 0 {

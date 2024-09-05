@@ -4,11 +4,51 @@ import (
 	"strings"
 )
 
-// Helper function to get the major version of the browser.
+// IsDesktop returns true if the user agent is a desktop browser.
+func (ua UserAgent) IsDesktop() bool {
+	return ua.desktop
+}
+
+// IsMobile returns true if the user agent is a mobile browser.
+func (ua UserAgent) IsMobile() bool {
+	return ua.mobile
+}
+
+// IsTablet returns true if the user agent is a tablet browser.
+func (ua UserAgent) IsTablet() bool {
+	return ua.tablet
+}
+
+// IsTV returns true if the user agent is a TV browser.
+func (ua UserAgent) IsTV() bool {
+	return ua.tv
+}
+
+// IsBot returns true if the user agent is a bot.
+func (ua UserAgent) IsBot() bool {
+	return ua.bot
+}
+
+// GetBrowser returns the browser name.
+func (ua UserAgent) GetBrowser() string {
+	return ua.browser
+}
+
+// GetOS returns the operating system name.
+func (ua UserAgent) GetOS() string {
+	return ua.os
+}
+
+// GetVersion returns the browser version.
+func (ua UserAgent) GetVersion() string {
+	return ua.version
+}
+
+// GetMajorVersion returns the major version of the browser.
 func (ua UserAgent) GetMajorVersion() string {
-	if ua.Version == "" {
+	if ua.version == "" {
 		return ""
 	}
 
-	return strings.Split(ua.Version, ".")[0]
+	return strings.Split(ua.version, ".")[0]
 }
