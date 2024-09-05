@@ -51,7 +51,7 @@ func NewRuneTrie() *RuneTrie {
 // nodes or for nodes with a value of nil.
 func (trie *RuneTrie) Get(key string) UserAgent {
 	node := trie
-	ua := UserAgent{}
+	var ua UserAgent
 
 	// Flag to indicate if we are currently iterating over a version number.
 	var isVersion bool
