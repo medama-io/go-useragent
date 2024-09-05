@@ -3,42 +3,84 @@ package useragent_test
 import (
 	"testing"
 
-	ua "github.com/medama-io/go-useragent"
+	medama "github.com/medama-io/go-useragent"
 	"github.com/medama-io/go-useragent/testdata"
+	mileusna "github.com/mileusna/useragent"
+	uap "github.com/ua-parser/uap-go/uaparser"
 )
 
-var result ua.UserAgent
+func BenchmarkMedamaParserGetAll(b *testing.B) {
+	parser := medama.NewParser()
+	b.ResetTimer()
 
-func BenchmarkParserGetAll(b *testing.B) {
-	parser := ua.NewParser()
-
-	b.Run("All", func(b *testing.B) {
+	for i := 0; i < b.N; i++ {
 		for _, k := range testdata.TestCases {
-			for i := 0; i < b.N; i++ {
-				result = parser.Parse(k)
-			}
+			_ = parser.Parse(k)
 		}
-	})
-}
-
-func BenchmarkParserGetSingle(b *testing.B) {
-	parser := ua.NewParser()
-
-	for i := 0; i < b.N; i++ {
-		result = parser.Parse(testdata.TestCases[0])
 	}
 }
 
-func BenchmarkParserPutAll(b *testing.B) {
+func BenchmarkUAPParserGetAll(b *testing.B) {
+	parser, _ := uap.New("./uap_regexes.yaml")
+	b.ResetTimer()
+
 	for i := 0; i < b.N; i++ {
-		ua.NewParser()
+		for _, k := range testdata.TestCases {
+			_ = parser.Parse(k)
+		}
 	}
 }
 
-func BenchmarkParserPutSingle(b *testing.B) {
-	trie := ua.NewRuneTrie()
+func BenchmarkMileusnaParserGetAll(b *testing.B) {
+	for i := 0; i < b.N; i++ {
+		for _, k := range testdata.TestCases {
+			_ = mileusna.Parse(k)
+		}
+	}
+}
+
+func BenchmarkMedamaParserGetSingle(b *testing.B) {
+	parser := medama.NewParser()
+	testCase := testdata.TestCases[0]
+	b.ResetTimer()
 
 	for i := 0; i < b.N; i++ {
-		trie.Put(testdata.TestCases[0])
+		_ = parser.Parse(testCase)
+	}
+}
+
+func BenchmarkUAPParserGetSingle(b *testing.B) {
+	parser, _ := uap.New("./uap_regexes.yaml")
+	testCase := testdata.TestCases[0]
+	b.ResetTimer()
+
+	for i := 0; i < b.N; i++ {
+		_ = parser.Parse(testCase)
+	}
+}
+
+func BenchmarkMileusnaParserGetSingle(b *testing.B) {
+	testCase := testdata.TestCases[0]
+	b.ResetTimer()
+
+	for i := 0; i < b.N; i++ {
+		_ = mileusna.Parse(testCase)
+	}
+}
+
+// Extra benchmarks for trie implementations
+func BenchmarkMedamaParserPutAll(b *testing.B) {
+	for i := 0; i < b.N; i++ {
+		_ = medama.NewParser()
+	}
+}
+
+func BenchmarkMedamaParserPutSingle(b *testing.B) {
+	trie := medama.NewRuneTrie()
+	testCase := testdata.TestCases[0]
+	b.ResetTimer()
+
+	for i := 0; i < b.N; i++ {
+		trie.Put(testCase)
 	}
 }

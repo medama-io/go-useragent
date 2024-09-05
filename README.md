@@ -52,10 +52,22 @@ func main() {
 ```
 Refer to the [pkg.go.dev](https://pkg.go.dev/github.com/medama-io/go-useragent) documentation for more details on available fields and their meanings.
 
-
 ## Benchmarks 
 
 Benchmarks were performed against [`ua-parser/uap-go`](https://github.com/ua-parser/uap-go) and [`mileusena/useragent`](https://github.com/mileusna/useragent) on an AMD Ryzen 7 5800X 8 Core Processor. 
+
+```bash
+cd ./benchmarks
+go test -bench=. -benchmem ./...
+
+BenchmarkMedamaParserGetSingle-16        2685813               440.2 ns/op            24 B/op          2 allocs/op
+BenchmarkUAPParserGetSingle-16           1025696              1205 ns/op             233 B/op          8 allocs/op
+BenchmarkMileusnaParserGetSingle-16       959205              1215 ns/op             600 B/op         16 allocs/op
+
+BenchmarkMedamaParserGetAll-16             64491             18114 ns/op             576 B/op         55 allocs/op
+BenchmarkUAPParserGetAll-16                25078             47720 ns/op            8425 B/op        288 allocs/op
+BenchmarkMileusnaParserGetAll-16           22962             51956 ns/op           23735 B/op        596 allocs/op
+```
 
 ## Acknowledgements
 
