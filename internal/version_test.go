@@ -1,10 +1,10 @@
-package useragent_test
+package internal_test
 
 import (
 	"fmt"
 	"testing"
 
-	ua "github.com/medama-io/go-useragent"
+	"github.com/medama-io/go-useragent/internal"
 	"github.com/medama-io/go-useragent/testdata"
 	"github.com/stretchr/testify/assert"
 )
@@ -65,9 +65,9 @@ var versionResults = []string{
 func TestCleanVersions(t *testing.T) {
 	for i, v := range testdata.TestCases {
 		t.Run(fmt.Sprintf("Case:%d", i), func(t *testing.T) {
-			line := ua.RemoveMobileIdentifiers(v)
-			line = ua.RemoveAndroidIdentifiers(line)
-			line = ua.RemoveVersions(line)
+			line := internal.RemoveMobileIdentifiers(v)
+			line = internal.RemoveAndroidIdentifiers(line)
+			line = internal.RemoveVersions(line)
 			assert.Equal(t, versionResults[i], line, "Test Case: %s\nNoID: %s\nExpected: %s", v, line, versionResults[i])
 		})
 	}

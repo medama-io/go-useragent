@@ -1,4 +1,4 @@
-package useragent
+package internal
 
 // ReplaceIndexes replaces the runes at the given indexes with empty strings.
 func ReplaceIndexes(ua string, indexes []int) string {

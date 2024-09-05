@@ -1,4 +1,4 @@
-package useragent
+package internal
 
 import (
 	"sort"
@@ -93,7 +93,7 @@ var matchMap = map[string][]string{
 	Version: {Version},
 }
 
-// matchPrecedenceMap is a map of user agent types to their importance
+// MatchPrecedenceMap is a map of user agent types to their importance
 // in determining what is the actual browser/device/OS being used.
 //
 // For example, Chrome user agents also contain the string "Safari" at
@@ -103,7 +103,7 @@ var matchMap = map[string][]string{
 //
 // By setting a precedence, we can determine which match is more important
 // and use that as the final result.
-var matchPrecedenceMap = map[string]uint8{
+var MatchPrecedenceMap = map[string]uint8{
 	// Browsers
 	Safari:         1, // Is always at the end of a Chrome user agent.
 	AndroidBrowser: 2,
@@ -187,7 +187,7 @@ func MatchTokenIndexes(ua string) []MatchResults {
 
 			// Add the match to the results.
 			matchType := GetMatchType(key)
-			results = append(results, MatchResults{EndIndex: lastIndex[1], Match: key, MatchType: matchType, Precedence: matchPrecedenceMap[key]})
+			results = append(results, MatchResults{EndIndex: lastIndex[1], Match: key, MatchType: matchType, Precedence: MatchPrecedenceMap[key]})
 			exists[key] = true
 		}
 	}
@@ -206,104 +206,4 @@ func MatchTokenIndexes(ua string) []MatchResults {
 	})
 
 	return results
-}
-
-// This adds a matching constant to a user agent struct.
-func (ua *UserAgent) addMatch(result Result) bool {
-	// Browsers
-	if result.Type == BrowserMatch && result.Precedence > ua.browserPrecedence {
-		switch result.Match {
-		case Chrome:
-			ua.browser = Chrome
-		case Edge:
-			ua.browser = Edge
-		case Firefox:
-			ua.browser = Firefox
-		case IE:
-			ua.browser = IE
-		case Opera:
-			ua.browser = Opera
-		case OperaMini:
-			ua.browser = OperaMini
-			ua.mobile = true
-		case Safari:
-			ua.browser = Safari
-		case Vivaldi:
-			ua.browser = Vivaldi
-		case Samsung:
-			ua.browser = Samsung
-		case Nintendo:
-			ua.browser = Nintendo
-		case YandexBrowser:
-			ua.browser = YandexBrowser
-		}
-
-		ua.browserPrecedence = result.Precedence
-		return true
-	}
-
-	// Operating Systems
-	if result.Type == OSMatch && result.Precedence > ua.osPrecedence {
-		switch result.Match {
-		case Android:
-			ua.os = Android
-			// An older generic white-labeled variant of Chrome/Chromium on Android.
-			if ua.browser == "" {
-				ua.browser = AndroidBrowser
-				// Special case we set this as the precedence with this is zero
-				// and can be overwritten by Safari.
-				ua.browserPrecedence = matchPrecedenceMap[Mobile]
-			}
-		case ChromeOS:
-			ua.os = ChromeOS
-			ua.desktop = true
-
-		case IOS:
-			ua.os = IOS
-			if !ua.tablet {
-				ua.mobile = true
-			}
-		case Linux:
-			ua.os = Linux
-			if !ua.tablet && !ua.tv {
-				ua.desktop = true
-			}
-		case MacOS:
-			ua.os = MacOS
-			ua.desktop = true
-		case Windows:
-			ua.os = Windows
-			ua.desktop = true
-		}
-
-		ua.osPrecedence = result.Precedence
-		return true
-	}
-
-	// Types
-	if result.Type == TypeMatch && result.Precedence > ua.typePrecedence {
-		switch result.Match {
-		case Desktop:
-			ua.desktop = true
-		case Tablet:
-			if ua.mobile {
-				ua.mobile = false
-			}
-			ua.tablet = true
-		case Mobile, MobileDevice:
-			if !ua.tablet {
-				ua.mobile = true
-				ua.desktop = false
-			}
-		case TV:
-			ua.tv = true
-		case Bot:
-			ua.bot = true
-		}
-
-		ua.typePrecedence = result.Precedence
-		return true
-	}
-
-	return false
 }

@@ -3,6 +3,8 @@ package useragent
 import (
 	"slices"
 	"strings"
+
+	"github.com/medama-io/go-useragent/internal"
 )
 
 const (
@@ -11,7 +13,7 @@ const (
 	// and use less memory.
 	//
 	// This is an arbitrary number, but seemed to perform well in benchmarks.
-	MaxChildArraySize = 64
+	maxChildArraySize = 64
 )
 
 type Result struct {
@@ -89,7 +91,7 @@ func (trie *RuneTrie) Get(key string) UserAgent {
 
 		if isVersion {
 			// If we encounter any unknown characters, we can assume the version number is over.
-			if !IsDigit(r) && r != '.' {
+			if !internal.IsDigit(r) && r != '.' {
 				isVersion = false
 			} else {
 				// Add to rune buffer
@@ -103,12 +105,12 @@ func (trie *RuneTrie) Get(key string) UserAgent {
 		// Also do not use a switch here as Go does not generate a jump table for switch
 		// statements with no integral constants. Benchmarking shows that ops go down
 		// if we try to migrate statements like this to a switch.
-		if IsDigit(r) || (r == '.' && len(key) > i+1 && IsDigit(rune(key[i+1]))) {
+		if internal.IsDigit(r) || (r == '.' && len(key) > i+1 && internal.IsDigit(rune(key[i+1]))) {
 			continue
 		}
 
 		// Identify and skip language codes e.g. en-US, zh-cn, en_US, ZH_cn
-		if len(key) > i+6 && r == ' ' && IsLetter(rune(key[i+1])) && IsLetter(rune(key[i+2])) && (key[i+3] == '-' || key[i+3] == '_') && IsLetter(rune(key[i+4])) && IsLetter(rune(key[i+5])) && (key[i+6] == ' ' || key[i+6] == ')' || key[i+6] == ';') {
+		if len(key) > i+6 && r == ' ' && internal.IsLetter(rune(key[i+1])) && internal.IsLetter(rune(key[i+2])) && (key[i+3] == '-' || key[i+3] == '_') && internal.IsLetter(rune(key[i+4])) && internal.IsLetter(rune(key[i+5])) && (key[i+6] == ' ' || key[i+6] == ')' || key[i+6] == ';') {
 			// Add the number of runes to skip to the skip count.
 			skipCount += 6
 			continue
@@ -128,7 +130,7 @@ func (trie *RuneTrie) Get(key string) UserAgent {
 			//
 			// We also reject any version numbers related to Safari since it has a
 			// separate key for its version number.
-			if (matched && result.Type == BrowserMatch && result.Match != Safari) || (result.Type == VersionMatch && ua.version == "") {
+			if (matched && result.Type == internal.BrowserMatch && result.Match != internal.Safari) || (result.Type == internal.VersionMatch && ua.version == "") {
 				// Clear version buffer if it has old values.
 				versionBuffer.Reset()
 				skipCount = 1 // We want to omit the slash after the browser name.
@@ -138,13 +140,13 @@ func (trie *RuneTrie) Get(key string) UserAgent {
 			// If we matched a mobile token, we want to strip everything after it
 			// until we reach whitespace to get around random device IDs.
 			// For example, "Mobile/14F89" should be "Mobile".
-			if matched && result.Match == Mobile {
+			if matched && result.Match == internal.Mobile {
 				skipUntilWhitespace = true
 			}
 
 			// If we matched an Android token, we want to strip everything after it until
 			// we reach a closing parenthesis to get around random device IDs.
-			if matched && result.Match == Android {
+			if matched && result.Match == internal.Android {
 				skipUntilClosingParenthesis = true
 			}
 		}
@@ -180,7 +182,7 @@ func (trie *RuneTrie) Get(key string) UserAgent {
 // by MatchTokenIndexes.
 func (trie *RuneTrie) Put(key string) {
 	node := trie
-	matchResults := MatchTokenIndexes(key)
+	matchResults := internal.MatchTokenIndexes(key)
 	for keyIndex, r := range key {
 		// Initialise a new result slice for each new rune.
 		if node.result == nil {
@@ -200,7 +202,7 @@ func (trie *RuneTrie) Put(key string) {
 		var child *RuneTrie
 		// If the number of children is less than the array size, we can store
 		// the children in an array.
-		if node.childrenMap == nil && len(node.childrenArr) < MaxChildArraySize {
+		if node.childrenMap == nil && len(node.childrenArr) < maxChildArraySize {
 			// Search for the child in the array
 			for _, c := range node.childrenArr {
 				// If the child is found, set the child to the node.
