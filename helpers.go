@@ -29,22 +29,22 @@ func (ua UserAgent) IsBot() bool {
 	return ua.bot
 }
 
-// GetBrowser returns the browser name.
+// GetBrowser returns the browser name. If no browser is found, it returns an empty string.
 func (ua UserAgent) GetBrowser() string {
 	return ua.browser
 }
 
-// GetOS returns the operating system name.
+// GetOS returns the operating system name. If no OS is found, it returns an empty string.
 func (ua UserAgent) GetOS() string {
 	return ua.os
 }
 
-// GetVersion returns the browser version.
+// GetVersion returns the browser version. If no version is found, it returns an empty string.
 func (ua UserAgent) GetVersion() string {
 	return ua.version
 }
 
-// GetMajorVersion returns the major version of the browser.
+// GetMajorVersion returns the major version of the browser. If no version is found, it returns an empty string.
 func (ua UserAgent) GetMajorVersion() string {
 	if ua.version == "" {
 		return ""
