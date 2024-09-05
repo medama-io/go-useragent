@@ -16,7 +16,7 @@ const (
 	maxChildArraySize = 64
 )
 
-type Result struct {
+type resultItem struct {
 	// 0: Unknown, 1: Browser, 2: OS, 3: Type
 	Type uint8
 	// Precedence value for each result type to determine which result
@@ -41,7 +41,7 @@ type RuneTrie struct {
 	// when the number of children exceeds the diminishing returns of the
 	// childrenArr array.
 	childrenMap map[rune]*RuneTrie
-	result      []Result
+	result      []resultItem
 }
 
 // NewRuneTrie allocates and returns a new *RuneTrie.
@@ -186,13 +186,13 @@ func (trie *RuneTrie) Put(key string) {
 	for keyIndex, r := range key {
 		// Initialise a new result slice for each new rune.
 		if node.result == nil {
-			node.result = []Result{}
+			node.result = []resultItem{}
 		}
 
 		// If we encounter a match, we can store it in the trie.
 		for _, result := range matchResults {
 			if keyIndex == result.EndIndex-1 {
-				newResult := Result{Match: result.Match, Type: result.MatchType, Precedence: result.Precedence}
+				newResult := resultItem{Match: result.Match, Type: result.MatchType, Precedence: result.Precedence}
 				if !slices.Contains(node.result, newResult) {
 					node.result = append(node.result, newResult)
 				}
@@ -240,4 +240,104 @@ func (trie *RuneTrie) Put(key string) {
 
 		node = child
 	}
+}
+
+// This adds a matching constant to a user agent struct.
+func (ua *UserAgent) addMatch(result resultItem) bool {
+	// Browsers
+	if result.Type == internal.BrowserMatch && result.Precedence > ua.browserPrecedence {
+		switch result.Match {
+		case internal.Chrome:
+			ua.browser = internal.Chrome
+		case internal.Edge:
+			ua.browser = internal.Edge
+		case internal.Firefox:
+			ua.browser = internal.Firefox
+		case internal.IE:
+			ua.browser = internal.IE
+		case internal.Opera:
+			ua.browser = internal.Opera
+		case internal.OperaMini:
+			ua.browser = internal.OperaMini
+			ua.mobile = true
+		case internal.Safari:
+			ua.browser = internal.Safari
+		case internal.Vivaldi:
+			ua.browser = internal.Vivaldi
+		case internal.Samsung:
+			ua.browser = internal.Samsung
+		case internal.Nintendo:
+			ua.browser = internal.Nintendo
+		case internal.YandexBrowser:
+			ua.browser = internal.YandexBrowser
+		}
+
+		ua.browserPrecedence = result.Precedence
+		return true
+	}
+
+	// Operating Systems
+	if result.Type == internal.OSMatch && result.Precedence > ua.osPrecedence {
+		switch result.Match {
+		case internal.Android:
+			ua.os = internal.Android
+			// An older generic white-labeled variant of Chrome/Chromium on Android.
+			if ua.browser == "" {
+				ua.browser = internal.AndroidBrowser
+				// Special case we set this as the precedence with this is zero
+				// and can be overwritten by Safari.
+				ua.browserPrecedence = internal.MatchPrecedenceMap[internal.Mobile]
+			}
+		case internal.ChromeOS:
+			ua.os = internal.ChromeOS
+			ua.desktop = true
+
+		case internal.IOS:
+			ua.os = internal.IOS
+			if !ua.tablet {
+				ua.mobile = true
+			}
+		case internal.Linux:
+			ua.os = internal.Linux
+			if !ua.tablet && !ua.tv {
+				ua.desktop = true
+			}
+		case internal.MacOS:
+			ua.os = internal.MacOS
+			ua.desktop = true
+		case internal.Windows:
+			ua.os = internal.Windows
+			ua.desktop = true
+		}
+
+		ua.osPrecedence = result.Precedence
+		return true
+	}
+
+	// Types
+	if result.Type == internal.TypeMatch && result.Precedence > ua.typePrecedence {
+		switch result.Match {
+		case internal.Desktop:
+			ua.desktop = true
+		case internal.Tablet:
+			if ua.mobile {
+				ua.mobile = false
+			}
+			ua.tablet = true
+		case internal.Mobile, internal.MobileDevice:
+			if !ua.tablet {
+				ua.mobile = true
+				ua.desktop = false
+			}
+		case internal.TV:
+			ua.tv = true
+		case internal.Bot:
+			ua.bot = true
+		}
+
+		ua.typePrecedence = result.Precedence
+		return true
+	}
+
+	return false
 }
