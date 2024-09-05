@@ -9,6 +9,7 @@ tasks:
   bench:
     cmds:
       - go test -bench=. -benchmem ./...
+    dir: ./benchmarks
 
   generate:
     cmds:

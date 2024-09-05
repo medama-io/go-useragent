@@ -5,6 +5,7 @@ import (
 	"testing"
 
 	ua "github.com/medama-io/go-useragent"
+	"github.com/medama-io/go-useragent/testdata"
 	"github.com/stretchr/testify/assert"
 )
 
@@ -63,7 +64,7 @@ var matchResults = [][]string{
 }
 
 func TestMatchTokenIndexes(t *testing.T) {
-	for i, v := range testCases {
+	for i, v := range testdata.TestCases {
 		t.Run(fmt.Sprintf("Case:%d", i), func(t *testing.T) {
 			match := ua.MatchTokenIndexes(v)
 
