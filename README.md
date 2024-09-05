@@ -60,7 +60,7 @@ Benchmarks were performed against [`ua-parser/uap-go`](https://github.com/ua-par
 cd ./benchmarks
 go test -bench=. -benchmem ./...
 
-BenchmarkMedamaParserGetSingle-16        2685813               440.2 ns/op            24 B/op          2 allocs/op
+BenchmarkMedamaParserGetSingle-16        2685813             440.2 ns/op              24 B/op          2 allocs/op
 BenchmarkUAPParserGetSingle-16           1025696              1205 ns/op             233 B/op          8 allocs/op
 BenchmarkMileusnaParserGetSingle-16       959205              1215 ns/op             600 B/op         16 allocs/op
 
