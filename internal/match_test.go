@@ -77,6 +77,9 @@ var matchResults = [][]string{
 	// Samsung Browser
 	{internal.Safari, internal.TV, internal.Chrome, internal.Samsung, internal.Linux},
 	{internal.Safari, internal.Chrome, internal.Samsung, internal.Linux},
+
+	// OpenBSD
+	{internal.Firefox, internal.OpenBSD},
 }
 
 func TestMatchTokenIndexes(t *testing.T) {

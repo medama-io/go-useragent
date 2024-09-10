@@ -305,6 +305,9 @@ func (ua *UserAgent) addMatch(result resultItem) bool {
 			if !ua.tablet && !ua.tv {
 				ua.desktop = true
 			}
+		case internal.OpenBSD:
+			ua.os = internal.OpenBSD
+			ua.desktop = true
 		case internal.MacOS:
 			ua.os = internal.MacOS
 			ua.desktop = true
