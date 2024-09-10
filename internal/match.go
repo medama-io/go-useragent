@@ -28,6 +28,7 @@ const (
 	Safari         = "Safari"
 	Vivaldi        = "Vivaldi"
 	Samsung        = "Samsung Browser"
+	Falkon         = "Falkon"
 	Nintendo       = "Nintendo Browser"
 	YandexBrowser  = "Yandex Browser"
 
@@ -70,6 +71,7 @@ var matchMap = map[string][]string{
 	Safari:        {Safari, "AppleWebKit"},
 	Vivaldi:       {Vivaldi},
 	Samsung:       {"SamsungBrowser"},
+	Falkon:        {Falkon},
 	Nintendo:      {"NintendoBrowser"},
 	YandexBrowser: {"YaBrowser"},
 
@@ -115,8 +117,9 @@ var MatchPrecedenceMap = map[string]uint8{
 	Edge:           8,
 	Vivaldi:        9,
 	Samsung:        10,
-	Nintendo:       11,
-	YandexBrowser:  12,
+	Falkon:         11,
+	Nintendo:       12,
+	YandexBrowser:  13,
 
 	// Operating Systems
 	Linux:    1,
@@ -149,7 +152,7 @@ type MatchResults struct {
 // GetMatchType returns the match type of a match result using the MatchPrecedenceMap.
 func GetMatchType(match string) uint8 {
 	switch match {
-	case Chrome, Edge, Firefox, IE, Opera, OperaMini, Safari, Vivaldi, Samsung, Nintendo, YandexBrowser:
+	case Chrome, Edge, Firefox, IE, Opera, OperaMini, Safari, Vivaldi, Samsung, Falkon, Nintendo, YandexBrowser:
 		return BrowserMatch
 	case Android, ChromeOS, IOS, Linux, MacOS, Windows:
 		return OSMatch

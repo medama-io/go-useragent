@@ -63,7 +63,7 @@ func CleanAgentsFile(filePath string) ([]string, error) {
 
 func main() {
 	var content []string
-	filenames := []string{"agents/1.txt", "agents/2.txt", "agents/3.txt"}
+	filenames := []string{"agents/1.txt", "agents/2.txt", "agents/3.txt", "agents/4.txt"}
 
 	for _, filename := range filenames {
 		// Read agents.txt file.
