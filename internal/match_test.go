@@ -67,6 +67,9 @@ var matchResults = [][]string{
 
 	// Falkon (1)
 	{internal.Safari, internal.Chrome, internal.Falkon, internal.Linux},
+
+	// Android Firefox (1)
+	{internal.Firefox, internal.Mobile, internal.Android},
 }
 
 func TestMatchTokenIndexes(t *testing.T) {
