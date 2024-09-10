@@ -61,4 +61,7 @@ var TestCases = []string{
 
 	// Android Firefox
 	"Mozilla/5.0 (Android 13; Mobile; rv:123.0) Gecko/123.0 Firefox/123.0",
+
+	// Linux ARM Architecture
+	"Mozilla/5.0 (X11; Linux aarch64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/88.0.4324.182 Safari/537.36",
 }
