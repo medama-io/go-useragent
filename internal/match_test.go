@@ -70,6 +70,9 @@ var matchResults = [][]string{
 
 	// Android Firefox (1)
 	{internal.Firefox, internal.Mobile, internal.Android},
+
+	// Linux ARM Architecture (1)
+	{internal.Safari, internal.Chrome, internal.Linux},
 }
 
 func TestMatchTokenIndexes(t *testing.T) {
