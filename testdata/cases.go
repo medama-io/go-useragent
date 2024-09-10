@@ -55,4 +55,7 @@ var TestCases = []string{
 
 	// Safari UIWebView
 	"Mozilla/5.0 (iPhone; CPU iPhone OS 16_7_8 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Mobile/15E148",
+
+	// Falkon
+	"Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Falkon/24.02.2 QtWebEngine/6.7.0 Chrome/118.0.5993.220 Safari/537.36",
 }

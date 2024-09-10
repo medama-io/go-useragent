@@ -64,6 +64,9 @@ var matchResults = [][]string{
 
 	// Safari UIWebView (1)
 	{internal.Mobile, internal.Safari, internal.MobileDevice, internal.IOS},
+
+	// Falkon (1)
+	{internal.Safari, internal.Chrome, internal.Falkon, internal.Linux},
 }
 
 func TestMatchTokenIndexes(t *testing.T) {

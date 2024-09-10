@@ -71,6 +71,8 @@ var resultCases = []ResultCase{
 	{Browser: internal.YandexBrowser, OS: internal.Android, Mobile: true, Version: "24.1.7.27.00"},
 	// Safari UIWebView (1) 36
 	{Browser: internal.Safari, OS: internal.IOS, Mobile: true},
+	// Falkon (1) 37
+	{Browser: internal.Falkon, OS: internal.Linux, Desktop: true, Version: "24.02.2"},
 }
 
 func TestParse(t *testing.T) {

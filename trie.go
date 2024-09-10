@@ -266,6 +266,8 @@ func (ua *UserAgent) addMatch(result resultItem) bool {
 			ua.browser = internal.Vivaldi
 		case internal.Samsung:
 			ua.browser = internal.Samsung
+		case internal.Falkon:
+			ua.browser = internal.Falkon
 		case internal.Nintendo:
 			ua.browser = internal.Nintendo
 		case internal.YandexBrowser:
