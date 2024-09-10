@@ -24,6 +24,15 @@ func CleanAgentsFile(filePath string) ([]string, error) {
 	var cleanedAgents []string
 	seen := make(map[string]bool) // to track duplicates
 	for _, line := range lines {
+		// Check for any invalid lines.
+		if len(line) == 0 || len(line) > 400 {
+			continue
+		}
+
+		if strings.Contains(line, "javascript") || strings.Contains(line, "function") || strings.Contains(line, "quot") || strings.Contains(line, "parent") {
+			continue
+		}
+
 		line = internal.RemoveMobileIdentifiers(line)
 		line = internal.RemoveAndroidIdentifiers(line)
 		line = internal.RemoveVersions(line)

@@ -52,4 +52,7 @@ var TestCases = []string{
 
 	// Yandex Browser
 	"Mozilla/5.0 (Linux; arm_64; Android 13; RMX3511) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.6099.27 YaBrowser/24.1.7.27.00 (alpha) SA/3 Mobile Safari/537.36",
+
+	// Safari UIWebView
+	"Mozilla/5.0 (iPhone; CPU iPhone OS 16_7_8 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Mobile/15E148",
 }

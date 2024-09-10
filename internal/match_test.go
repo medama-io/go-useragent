@@ -61,6 +61,9 @@ var matchResults = [][]string{
 
 	// Yandex Browser (1)
 	{internal.Safari, internal.Mobile, internal.YandexBrowser, internal.Chrome, internal.Android, internal.Linux},
+
+	// Safari UIWebView (1)
+	{internal.Mobile, internal.Safari, internal.MobileDevice, internal.IOS},
 }
 
 func TestMatchTokenIndexes(t *testing.T) {
