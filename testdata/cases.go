@@ -58,4 +58,7 @@ var TestCases = []string{
 
 	// Falkon
 	"Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Falkon/24.02.2 QtWebEngine/6.7.0 Chrome/118.0.5993.220 Safari/537.36",
+
+	// Android Firefox
+	"Mozilla/5.0 (Android 13; Mobile; rv:123.0) Gecko/123.0 Firefox/123.0",
 }

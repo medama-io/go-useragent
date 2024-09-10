@@ -283,6 +283,7 @@ func (ua *UserAgent) addMatch(result resultItem) bool {
 		switch result.Match {
 		case internal.Android:
 			ua.os = internal.Android
+			ua.mobile = true
 			// An older generic white-labeled variant of Chrome/Chromium on Android.
 			if ua.browser == "" {
 				ua.browser = internal.AndroidBrowser
