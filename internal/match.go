@@ -67,7 +67,7 @@ var matchMap = map[string][]string{
 	IE:            {"MSIE", "Trident"},
 	Opera:         {"OPiOS", "OPR", Opera},
 	OperaMini:     {OperaMini},
-	Safari:        {Safari},
+	Safari:        {Safari, "AppleWebKit"},
 	Vivaldi:       {Vivaldi},
 	Samsung:       {"SamsungBrowser"},
 	Nintendo:      {"NintendoBrowser"},

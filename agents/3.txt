@@ -27527,8 +27527,6 @@ WordPress/6.2.2; https://giftsgalore10.com
 WordPress/6.2.2; https://learninghub.4es.nz
 https://m.sports.naver.com/video/1076990
 WordPress/6.2.2; https://savingsays.co.uk
-System.getProperty(&quot;java.vm.version&quot;)
-WinHttpClient\r\n
 GuzzleHttp/6.5.5 curl/7.52.1 PHP/7.4.11 domain/www.robomarkets.com
 Hadoop 3.3.1, aws-sdk-java/1.11.983 Linux/5.4.0-81-generic OpenJDK_64-Bit_Server_VM/17.0.5+8-LTS java/17.0.5 kotlin/1.8.20 vendor/BellSoft cfg/retry-mode/legacy
 Java/11.0.17
@@ -27546,7 +27544,7 @@ WordPress/6.2.2; https://launchwebs.co.uk
 WhatsApp/2.23.14.79 i
 Python/3.9 aiohttp/3.8.5
 Apache-HttpClient/4.5.13 (Java/1.8.0_331)
-Mozilla/5.0 (compatible; Google-Apps-Script; beanserver; +https://script.google.com; id: UAEmdDd_0YnMOU9VR-f4cNQ55MbpG59fLrw)
+Mozilla/5.0 (compatible; Google-Apps-Script; beanserver; +https://script.google.com; id: 
 Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko; Google Page Speed Insights) Chrome/27.0.1453 Safari/537.36 
 WordPress/6.2.2; https://paperwriter.co
 WordPress/6.2.2; https://koupons.es
@@ -28037,3 +28035,5 @@ WordPress/6.2.3; http://technbest.com
 Mozilla/5.0 (Linux; Android 4.0.4; Galaxy Nexus Build/IMM76B) AppleWebKit/537.36 (KHTML, like Gecko; Mediapartners-Google) Chrome/119.0.6045.199 Mobile Safari/537.36 
 AdsBot-Google (+http://www.google.com/adsbot.html) 
 Gregarius/0.5.2 ( http://devlog.gregarius.net/docs/ua)(Linux LLC 1.2)
+Mozilla/5.0 (iPhone; CPU iPhone OS 16_7_8 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Mobile/15E148
+Mozilla/5.0 (iPhone; CPU iPhone OS 17_6_1 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Mobile/15E148
