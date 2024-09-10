@@ -80,7 +80,7 @@ var matchMap = map[string][]string{
 	Android:  {Android},
 	ChromeOS: {"CrOS"},
 	IOS:      {"iPhone", "iPad", "iPod"},
-	Linux:    {Linux},
+	Linux:    {Linux, "Ubuntu", "Fedora"},
 	OpenBSD:  {OpenBSD},
 	MacOS:    {"Macintosh"},
 	Windows:  {"Windows NT", "WindowsNT"},
