@@ -80,6 +80,8 @@ var resultCases = []ResultCase{
 	// Samsung
 	{Browser: internal.Samsung, OS: internal.Linux, TV: true, Version: "2.1"},
 	{Browser: internal.Samsung, OS: internal.Linux, Desktop: true, Version: "26.0"},
+	// OpenBSD (1)
+	{Browser: internal.Firefox, OS: internal.OpenBSD, Desktop: true, Version: "57.0"},
 }
 
 func TestParse(t *testing.T) {

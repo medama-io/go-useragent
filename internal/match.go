@@ -37,6 +37,7 @@ const (
 	ChromeOS = "ChromeOS"
 	IOS      = "iOS"
 	Linux    = "Linux"
+	OpenBSD  = "OpenBSD"
 	MacOS    = "MacOS"
 	Windows  = "Windows"
 
@@ -80,6 +81,7 @@ var matchMap = map[string][]string{
 	ChromeOS: {"CrOS"},
 	IOS:      {"iPhone", "iPad", "iPod"},
 	Linux:    {Linux, "Ubuntu", "Fedora"},
+	OpenBSD:  {OpenBSD},
 	MacOS:    {"Macintosh"},
 	Windows:  {"Windows NT", "WindowsNT"},
 
@@ -125,9 +127,10 @@ var MatchPrecedenceMap = map[string]uint8{
 	Linux:    1,
 	Android:  2,
 	IOS:      3,
-	ChromeOS: 4,
-	MacOS:    5,
-	Windows:  6,
+	OpenBSD:  4,
+	ChromeOS: 5,
+	MacOS:    6,
+	Windows:  7,
 
 	// Types
 	Desktop:      1,
@@ -154,7 +157,7 @@ func GetMatchType(match string) uint8 {
 	switch match {
 	case Chrome, Edge, Firefox, IE, Opera, OperaMini, Safari, Vivaldi, Samsung, Falkon, Nintendo, YandexBrowser:
 		return BrowserMatch
-	case Android, ChromeOS, IOS, Linux, MacOS, Windows:
+	case Android, ChromeOS, IOS, Linux, OpenBSD, MacOS, Windows:
 		return OSMatch
 	case Desktop, Mobile, MobileDevice, Tablet, Bot, TV:
 		return TypeMatch

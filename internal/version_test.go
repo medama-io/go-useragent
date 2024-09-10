@@ -69,6 +69,8 @@ var versionResults = []string{
 
 	"MozillaSMARTTVLinuxTizenAppleWebKitKHTMLlikeGeckoSamsungBrowserChromeTVSafari",
 	"MozillaXLinuxxAppleWebKitKHTMLlikeGeckoSamsungBrowserChromeSafari",
+
+	"MozillaXOpenBSDamdrvGeckoFirefox",
 }
 
 func TestCleanVersions(t *testing.T) {
