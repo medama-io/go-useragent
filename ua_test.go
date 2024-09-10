@@ -77,6 +77,9 @@ var resultCases = []ResultCase{
 	{Browser: internal.Firefox, OS: internal.Android, Mobile: true, Version: "123.0"},
 	// Linux ARM Architecture (1) 39
 	{Browser: internal.Chrome, OS: internal.Linux, Desktop: true, Version: "88.0.4324.182"},
+	// Samsung
+	{Browser: internal.Samsung, OS: internal.Linux, TV: true, Version: "2.1"},
+	{Browser: internal.Samsung, OS: internal.Linux, Desktop: true, Version: "26.0"},
 }
 
 func TestParse(t *testing.T) {
