@@ -22,7 +22,9 @@ type Parser struct {
 type UserAgent struct {
 	browser string
 	os      string
-	version string
+
+	version      [32]rune
+	versionIndex int
 
 	// Precedence is the order in which the user agent matched the
 	// browser, device, and OS. The lower the number, the higher the
