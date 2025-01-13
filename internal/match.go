@@ -6,17 +6,8 @@ import (
 	str "github.com/boyter/go-string"
 )
 
+// Browsers.
 const (
-	// These are enum constants for the match type.
-	BrowserMatch = 1
-	OSMatch      = 2
-	TypeMatch    = 3
-	VersionMatch = 4
-	UnknownMatch = 0
-
-	// The following constants are used to determine agents.
-
-	// Browsers.
 	// There is no match token for this, but the absence of any browser token paired with Android is a good indicator of this browser.
 	AndroidBrowser = "Android Browser"
 	Chrome         = "Chrome"
@@ -143,28 +134,27 @@ var MatchPrecedenceMap = map[string]uint8{
 
 // MatchResults contains the information from MatchTokenIndexes.
 type MatchResults struct {
-	Match    string
-	EndIndex int
-	// 0: Unknown, 1: Browser, 2: OS, 3: Type
-	MatchType uint8
+	Match     string
+	EndIndex  int
+	MatchType Match
 	// Precedence value for each result type to determine which result should be overwritten.
 	// Higher values overwrite lower values.
 	Precedence uint8
 }
 
 // GetMatchType returns the match type of a match result using the MatchPrecedenceMap.
-func GetMatchType(match string) uint8 {
+func GetMatchType(match string) Match {
 	switch match {
 	case Chrome, Edge, Firefox, IE, Opera, OperaMini, Safari, Vivaldi, Samsung, Falkon, Nintendo, YandexBrowser:
-		return BrowserMatch
+		return MatchBrowser
 	case Android, ChromeOS, IOS, Linux, OpenBSD, MacOS, Windows:
-		return OSMatch
+		return MatchOS
 	case Desktop, Mobile, MobileDevice, Tablet, Bot, TV:
-		return TypeMatch
+		return MatchType
 	case Version:
-		return VersionMatch
+		return MatchVersion
 	default:
-		return UnknownMatch
+		return MatchUnknown
 	}
 }
 

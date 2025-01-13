@@ -3,17 +3,8 @@ package useragent
 import (
 	"strings"
 	"sync"
-)
 
-type device uint8
-
-const (
-	deviceUnknown device = iota
-	deviceDesktop
-	deviceMobile
-	deviceTablet
-	deviceTV
-	deviceBot
+	"github.com/medama-io/go-useragent/internal"
 )
 
 var (
@@ -39,7 +30,7 @@ type UserAgent struct {
 	osPrecedence      uint8
 	typePrecedence    uint8
 
-	device device
+	device internal.Device
 }
 
 // Create a new Trie and populate it with user agent data.
