@@ -6,27 +6,27 @@ import (
 
 // IsDesktop returns true if the user agent is a desktop browser.
 func (ua UserAgent) IsDesktop() bool {
-	return ua.desktop
+	return ua.device == deviceDesktop
 }
 
 // IsMobile returns true if the user agent is a mobile browser.
 func (ua UserAgent) IsMobile() bool {
-	return ua.mobile
+	return ua.device == deviceMobile
 }
 
 // IsTablet returns true if the user agent is a tablet browser.
 func (ua UserAgent) IsTablet() bool {
-	return ua.tablet
+	return ua.device == deviceTablet
 }
 
 // IsTV returns true if the user agent is a TV browser.
 func (ua UserAgent) IsTV() bool {
-	return ua.tv
+	return ua.device == deviceTV
 }
 
 // IsBot returns true if the user agent is a bot.
 func (ua UserAgent) IsBot() bool {
-	return ua.bot
+	return ua.device == deviceBot
 }
 
 // GetBrowser returns the browser name. If no browser is found, it returns an empty string.
