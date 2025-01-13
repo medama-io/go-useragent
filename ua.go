@@ -2,6 +2,7 @@ package useragent
 
 import (
 	"strings"
+	"sync"
 )
 
 type device uint8
@@ -13,6 +14,11 @@ const (
 	deviceTablet
 	deviceTV
 	deviceBot
+)
+
+var (
+	once   sync.Once
+	parser *Parser
 )
 
 type Parser struct {
@@ -38,13 +44,15 @@ type UserAgent struct {
 
 // Create a new Trie and populate it with user agent data.
 func NewParser() *Parser {
-	trie := NewRuneTrie()
-	parser := &Parser{Trie: trie}
+	once.Do(func() {
+		trie := NewRuneTrie()
+		parser = &Parser{Trie: trie}
 
-	// For each newline in the file, add the user agent to the trie.
-	for _, ua := range strings.Split(userAgentsFile, "\n") {
-		parser.Trie.Put(ua)
-	}
+		// For each newline in the file, add the user agent to the trie.
+		for _, ua := range strings.Split(userAgentsFile, "\n") {
+			parser.Trie.Put(ua)
+		}
+	})
 
 	return parser
 }
