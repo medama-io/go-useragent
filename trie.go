@@ -17,18 +17,17 @@ const (
 )
 
 type resultItem struct {
+	Match string
 	// 0: Unknown, 1: Browser, 2: OS, 3: Type
 	Type uint8
 	// Precedence value for each result type to determine which result
 	// should be overwritten.
 	Precedence uint8
-
-	Match string
 }
 
 type childNode struct {
-	r    rune
 	node *RuneTrie
+	r    rune
 }
 
 // RuneTrie is a trie of runes with string keys and interface{} values.
@@ -259,7 +258,7 @@ func (ua *UserAgent) addMatch(result resultItem) bool {
 			ua.browser = internal.Opera
 		case internal.OperaMini:
 			ua.browser = internal.OperaMini
-			ua.mobile = true
+			ua.device = deviceMobile
 		case internal.Safari:
 			ua.browser = internal.Safari
 		case internal.Vivaldi:
@@ -283,7 +282,7 @@ func (ua *UserAgent) addMatch(result resultItem) bool {
 		switch result.Match {
 		case internal.Android:
 			ua.os = internal.Android
-			ua.mobile = true
+			ua.device = deviceMobile
 			// An older generic white-labeled variant of Chrome/Chromium on Android.
 			if ua.browser == "" {
 				ua.browser = internal.AndroidBrowser
@@ -293,27 +292,27 @@ func (ua *UserAgent) addMatch(result resultItem) bool {
 			}
 		case internal.ChromeOS:
 			ua.os = internal.ChromeOS
-			ua.desktop = true
+			ua.device = deviceDesktop
 
 		case internal.IOS:
 			ua.os = internal.IOS
-			if !ua.tablet {
-				ua.mobile = true
+			if ua.device != deviceTablet {
+				ua.device = deviceMobile
 			}
 		case internal.Linux:
 			ua.os = internal.Linux
-			if !ua.tablet && !ua.tv {
-				ua.desktop = true
+			if ua.device != deviceTablet && ua.device != deviceTV {
+				ua.device = deviceDesktop
 			}
 		case internal.OpenBSD:
 			ua.os = internal.OpenBSD
-			ua.desktop = true
+			ua.device = deviceDesktop
 		case internal.MacOS:
 			ua.os = internal.MacOS
-			ua.desktop = true
+			ua.device = deviceDesktop
 		case internal.Windows:
 			ua.os = internal.Windows
-			ua.desktop = true
+			ua.device = deviceDesktop
 		}
 
 		ua.osPrecedence = result.Precedence
@@ -324,21 +323,17 @@ func (ua *UserAgent) addMatch(result resultItem) bool {
 	if result.Type == internal.TypeMatch && result.Precedence > ua.typePrecedence {
 		switch result.Match {
 		case internal.Desktop:
-			ua.desktop = true
+			ua.device = deviceDesktop
 		case internal.Tablet:
-			if ua.mobile {
-				ua.mobile = false
-			}
-			ua.tablet = true
+			ua.device = deviceTablet
 		case internal.Mobile, internal.MobileDevice:
-			if !ua.tablet {
-				ua.mobile = true
-				ua.desktop = false
+			if ua.device != deviceTablet {
+				ua.device = deviceMobile
 			}
 		case internal.TV:
-			ua.tv = true
+			ua.device = deviceTV
 		case internal.Bot:
-			ua.bot = true
+			ua.device = deviceBot
 		}
 
 		ua.typePrecedence = result.Precedence

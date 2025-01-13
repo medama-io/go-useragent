@@ -66,7 +66,7 @@ var resultCases = []ResultCase{
 	{Bot: true},
 	{Bot: true},
 	{Bot: true, Browser: internal.Chrome, Version: "112.0.0.0"},
-	{Bot: true, Browser: internal.Chrome, OS: internal.Linux, Version: "125.0.6422.76", Desktop: true},
+	{Bot: true, Browser: internal.Chrome, OS: internal.Linux, Version: "125.0.6422.76"},
 	// Yandex Browser (1) 35
 	{Browser: internal.YandexBrowser, OS: internal.Android, Mobile: true, Version: "24.1.7.27.00"},
 	// Safari UIWebView (1) 36

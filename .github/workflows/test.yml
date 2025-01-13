@@ -1,5 +1,10 @@
 name: Go
-on: [push, pull_request]
+on:
+  workflow_dispatch: ~
+  pull_request: ~
+  push:
+    branches:
+      - main
 
 jobs:
   build:
@@ -21,4 +26,3 @@ jobs:
 
       - name: Run Benchmarks
         run: go test -bench=. -benchmem ./...
-

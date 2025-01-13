@@ -4,11 +4,26 @@ import (
 	"strings"
 )
 
+type device uint8
+
+const (
+	deviceUnknown device = iota
+	deviceDesktop
+	deviceMobile
+	deviceTablet
+	deviceTV
+	deviceBot
+)
+
 type Parser struct {
 	Trie *RuneTrie
 }
 
 type UserAgent struct {
+	browser string
+	os      string
+	version string
+
 	// Precedence is the order in which the user agent matched the
 	// browser, device, and OS. The lower the number, the higher the
 	// precedence.
@@ -16,15 +31,7 @@ type UserAgent struct {
 	osPrecedence      uint8
 	typePrecedence    uint8
 
-	browser string
-	os      string
-	version string
-
-	desktop bool
-	mobile  bool
-	tablet  bool
-	tv      bool
-	bot     bool
+	device device
 }
 
 // Create a new Trie and populate it with user agent data.

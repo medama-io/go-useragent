@@ -22,39 +22,40 @@ This type of parser is typically initialized once at application startup and reu
 package main
 
 import (
-	"fmt"
-	"github.com/medama-io/go-useragent"
+    "fmt"
+    "github.com/medama-io/go-useragent"
 )
 
 func main() {
-	// Create a new parser. Initialize only once during application startup.
-	ua := useragent.NewParser()
+    // Create a new parser. Initialize only once during application startup.
+    ua := useragent.NewParser()
 
-	// Example user-agent string.
-	str := "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/118.0.0.0 Safari/537.36"
+    // Example user-agent string.
+    str := "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/118.0.0.0 Safari/537.36"
 
-	// Parse the user-agent string.
-	agent := ua.Parse(str)
+    // Parse the user-agent string.
+    agent := ua.Parse(str)
 
-	// Access parsed information using agent fields.
-	fmt.Println(agent.GetBrowser())  // Chrome
-	fmt.Println(agent.GetOS())       // Windows
-	fmt.Println(agent.GetVersion())  // 118.0.0.0
-	fmt.Println(agent.IsDesktop())  // true
-	fmt.Println(agent.IsMobile())   // false
-	fmt.Println(agent.IsTablet())   // false
-	fmt.Println(agent.IsTV())       // false
-	fmt.Println(agent.IsBot())      // false
+    // Access parsed information using agent fields.
+    fmt.Println(agent.GetBrowser())  // Chrome
+    fmt.Println(agent.GetOS())       // Windows
+    fmt.Println(agent.GetVersion())  // 118.0.0.0
+    fmt.Println(agent.IsDesktop())  // true
+    fmt.Println(agent.IsMobile())   // false
+    fmt.Println(agent.IsTablet())   // false
+    fmt.Println(agent.IsTV())       // false
+    fmt.Println(agent.IsBot())      // false
 
-	// Helper functions.
-	fmt.Println(agent.GetMajorVersion())  // 118
+    // Helper functions.
+    fmt.Println(agent.GetMajorVersion())  // 118
 }
 ```
+
 Refer to the [pkg.go.dev](https://pkg.go.dev/github.com/medama-io/go-useragent) documentation for more details on available fields and their meanings.
 
-## Benchmarks 
+## Benchmarks
 
-Benchmarks were performed against [`ua-parser/uap-go`](https://github.com/ua-parser/uap-go) and [`mileusena/useragent`](https://github.com/mileusna/useragent) on an AMD Ryzen 7 5800X 8 Core Processor. 
+Benchmarks were performed against [`ua-parser/uap-go`](https://github.com/ua-parser/uap-go) and [`mileusena/useragent`](https://github.com/mileusna/useragent) on an AMD Ryzen 7 5800X 8 Core Processor.
 
 ```bash
 cd ./benchmarks
