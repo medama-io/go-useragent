@@ -18,7 +18,7 @@ const (
 type resultItem struct {
 	Match string
 	// 0: Unknown, 1: Browser, 2: OS, 3: Type
-	Type uint8
+	Type internal.Match
 	// Precedence value for each result type to determine which result
 	// should be overwritten.
 	Precedence uint8
@@ -129,7 +129,7 @@ func (trie *RuneTrie) Get(key string) UserAgent {
 			//
 			// We also reject any version numbers related to Safari since it has a
 			// separate key for its version number.
-			if (matched && result.Type == internal.BrowserMatch && result.Match != internal.Safari) || (result.Type == internal.VersionMatch && ua.versionIndex == 0) {
+			if (matched && result.Type == internal.MatchBrowser && result.Match != internal.Safari) || (result.Type == internal.MatchVersion && ua.versionIndex == 0) {
 				// Clear version buffer if it has old values.
 				if ua.versionIndex > 0 {
 					ua.version = [32]rune{}
@@ -246,7 +246,7 @@ func (trie *RuneTrie) Put(key string) {
 // This adds a matching constant to a user agent struct.
 func (ua *UserAgent) addMatch(result resultItem) bool {
 	// Browsers
-	if result.Type == internal.BrowserMatch && result.Precedence > ua.browserPrecedence {
+	if result.Type == internal.MatchBrowser && result.Precedence > ua.browserPrecedence {
 		switch result.Match {
 		case internal.Chrome:
 			ua.browser = internal.Chrome
@@ -260,7 +260,7 @@ func (ua *UserAgent) addMatch(result resultItem) bool {
 			ua.browser = internal.Opera
 		case internal.OperaMini:
 			ua.browser = internal.OperaMini
-			ua.device = deviceMobile
+			ua.device = internal.DeviceMobile
 		case internal.Safari:
 			ua.browser = internal.Safari
 		case internal.Vivaldi:
@@ -280,11 +280,11 @@ func (ua *UserAgent) addMatch(result resultItem) bool {
 	}
 
 	// Operating Systems
-	if result.Type == internal.OSMatch && result.Precedence > ua.osPrecedence {
+	if result.Type == internal.MatchOS && result.Precedence > ua.osPrecedence {
 		switch result.Match {
 		case internal.Android:
 			ua.os = internal.Android
-			ua.device = deviceMobile
+			ua.device = internal.DeviceMobile
 			// An older generic white-labeled variant of Chrome/Chromium on Android.
 			if ua.browser == "" {
 				ua.browser = internal.AndroidBrowser
@@ -294,27 +294,27 @@ func (ua *UserAgent) addMatch(result resultItem) bool {
 			}
 		case internal.ChromeOS:
 			ua.os = internal.ChromeOS
-			ua.device = deviceDesktop
+			ua.device = internal.DeviceDesktop
 
 		case internal.IOS:
 			ua.os = internal.IOS
-			if ua.device != deviceTablet {
-				ua.device = deviceMobile
+			if ua.device != internal.DeviceTablet {
+				ua.device = internal.DeviceMobile
 			}
 		case internal.Linux:
 			ua.os = internal.Linux
-			if ua.device != deviceTablet && ua.device != deviceTV {
-				ua.device = deviceDesktop
+			if ua.device != internal.DeviceTablet && ua.device != internal.DeviceTV {
+				ua.device = internal.DeviceDesktop
 			}
 		case internal.OpenBSD:
 			ua.os = internal.OpenBSD
-			ua.device = deviceDesktop
+			ua.device = internal.DeviceDesktop
 		case internal.MacOS:
 			ua.os = internal.MacOS
-			ua.device = deviceDesktop
+			ua.device = internal.DeviceDesktop
 		case internal.Windows:
 			ua.os = internal.Windows
-			ua.device = deviceDesktop
+			ua.device = internal.DeviceDesktop
 		}
 
 		ua.osPrecedence = result.Precedence
@@ -322,20 +322,20 @@ func (ua *UserAgent) addMatch(result resultItem) bool {
 	}
 
 	// Types
-	if result.Type == internal.TypeMatch && result.Precedence > ua.typePrecedence {
+	if result.Type == internal.MatchType && result.Precedence > ua.typePrecedence {
 		switch result.Match {
 		case internal.Desktop:
-			ua.device = deviceDesktop
+			ua.device = internal.DeviceDesktop
 		case internal.Tablet:
-			ua.device = deviceTablet
+			ua.device = internal.DeviceTablet
 		case internal.Mobile, internal.MobileDevice:
-			if ua.device != deviceTablet {
-				ua.device = deviceMobile
+			if ua.device != internal.DeviceTablet {
+				ua.device = internal.DeviceMobile
 			}
 		case internal.TV:
-			ua.device = deviceTV
+			ua.device = internal.DeviceTV
 		case internal.Bot:
-			ua.device = deviceBot
+			ua.device = internal.DeviceBot
 		}
 
 		ua.typePrecedence = result.Precedence
