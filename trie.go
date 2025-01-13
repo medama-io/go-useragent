@@ -90,7 +90,7 @@ func (trie *RuneTrie) Get(key string) UserAgent {
 			if !internal.IsDigit(r) && r != '.' {
 				isVersion = false
 			} else {
-				// Add to rune buffer
+				// Add to rune buffer.
 				if ua.versionIndex < cap(ua.version) {
 					ua.version[ua.versionIndex] = r
 					ua.versionIndex++

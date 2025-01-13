@@ -1,6 +1,6 @@
 # go-useragent
 
-`go-useragent` is a high-performance Go library designed to parse browser name and version, operating system, and device type information from user-agent strings with _sub-microsecond_ parsing times.
+`go-useragent` is a high-performance zero-allocation Go library designed to parse browser name and version, operating system, and device type information from user-agent strings with _sub-microsecond_ parsing times.
 
 It achieves this efficiency by using a modified hybrid [trie](https://en.wikipedia.org/wiki/Trie) data structure to store and rapidly look up user-agent tokens. It utilizes heuristic rules, tokenizing a list of user-agent strings into a trie during startup. During runtime, the parsing process involves a straightforward lookup operation.
 
@@ -55,19 +55,19 @@ Refer to the [pkg.go.dev](https://pkg.go.dev/github.com/medama-io/go-useragent) 
 
 ## Benchmarks
 
-Benchmarks were performed against [`ua-parser/uap-go`](https://github.com/ua-parser/uap-go) and [`mileusena/useragent`](https://github.com/mileusna/useragent) on an AMD Ryzen 7 5800X 8 Core Processor.
+Benchmarks were performed against [`ua-parser/uap-go`](https://github.com/ua-parser/uap-go) and [`mileusena/useragent`](https://github.com/mileusna/useragent) on an Apple M3 Pro Processor.
 
 ```bash
 cd ./benchmarks
 go test -bench=. -benchmem ./...
 
-MedamaParserGetSingle-16        2685813             440.2 ns/op              24 B/op          2 allocs/op
-UAPParserGetSingle-16           1025696              1205 ns/op             233 B/op          8 allocs/op
-MileusnaParserGetSingle-16       959205              1215 ns/op             600 B/op         16 allocs/op
+MedamaParserGetSingle-12        2916867             408.5 ns/op               0 B/op          0 allocs/op
+MileusnaParserGetSingle-12      1322602             917.3 ns/op             600 B/op         16 allocs/op
+UAPParserGetSingle-12            986428              1159 ns/op             233 B/op          8 allocs/op
 
-MedamaParserGetAll-16             64491             18114 ns/op             576 B/op         55 allocs/op
-UAPParserGetAll-16                25078             47720 ns/op            8425 B/op        288 allocs/op
-MileusnaParserGetAll-16           22962             51956 ns/op           23735 B/op        596 allocs/op
+MedamaParserGetAll-12             57078             20037 ns/op               0 B/op          0 allocs/op
+MileusnaParserGetAll-12           28375             42301 ns/op           28031 B/op        716 allocs/op
+UAPParserGetAll-12                18645             56951 ns/op           10179 B/op        344 allocs/op
 ```
 
 ## Acknowledgements
