@@ -143,8 +143,8 @@ var MatchPrecedenceMap = map[string]uint8{
 
 // MatchResults contains the information from MatchTokenIndexes.
 type MatchResults struct {
-	EndIndex int
 	Match    string
+	EndIndex int
 	// 0: Unknown, 1: Browser, 2: OS, 3: Type
 	MatchType uint8
 	// Precedence value for each result type to determine which result should be overwritten.

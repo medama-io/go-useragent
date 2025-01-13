@@ -17,18 +17,17 @@ const (
 )
 
 type resultItem struct {
+	Match string
 	// 0: Unknown, 1: Browser, 2: OS, 3: Type
 	Type uint8
 	// Precedence value for each result type to determine which result
 	// should be overwritten.
 	Precedence uint8
-
-	Match string
 }
 
 type childNode struct {
-	r    rune
 	node *RuneTrie
+	r    rune
 }
 
 // RuneTrie is a trie of runes with string keys and interface{} values.
