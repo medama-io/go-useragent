@@ -41,14 +41,16 @@ func (ua UserAgent) GetOS() string {
 
 // GetVersion returns the browser version. If no version is found, it returns an empty string.
 func (ua UserAgent) GetVersion() string {
-	return ua.version
+	return string(ua.version[:ua.versionIndex])
 }
 
 // GetMajorVersion returns the major version of the browser. If no version is found, it returns an empty string.
 func (ua UserAgent) GetMajorVersion() string {
-	if ua.version == "" {
+	if ua.versionIndex == 0 {
 		return ""
 	}
 
-	return strings.Split(ua.version, ".")[0]
+	version := string(ua.version[:ua.versionIndex])
+
+	return strings.Split(version, ".")[0]
 }

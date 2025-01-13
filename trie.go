@@ -2,7 +2,6 @@ package useragent
 
 import (
 	"slices"
-	"strings"
 
 	"github.com/medama-io/go-useragent/internal"
 )
@@ -56,8 +55,6 @@ func (trie *RuneTrie) Get(key string) UserAgent {
 
 	// Flag to indicate if we are currently iterating over a version number.
 	var isVersion bool
-	// A buffer to store the version number.
-	var versionBuffer strings.Builder
 	// Number of runes to skip when iterating over the trie. This is used
 	// to skip over version numbers or language codes.
 	var skipCount uint8
@@ -94,7 +91,10 @@ func (trie *RuneTrie) Get(key string) UserAgent {
 				isVersion = false
 			} else {
 				// Add to rune buffer
-				versionBuffer.WriteRune(r)
+				if ua.versionIndex < cap(ua.version) {
+					ua.version[ua.versionIndex] = r
+					ua.versionIndex++
+				}
 				continue
 			}
 		}
@@ -129,10 +129,15 @@ func (trie *RuneTrie) Get(key string) UserAgent {
 			//
 			// We also reject any version numbers related to Safari since it has a
 			// separate key for its version number.
-			if (matched && result.Type == internal.BrowserMatch && result.Match != internal.Safari) || (result.Type == internal.VersionMatch && ua.version == "") {
+			if (matched && result.Type == internal.BrowserMatch && result.Match != internal.Safari) || (result.Type == internal.VersionMatch && ua.versionIndex == 0) {
 				// Clear version buffer if it has old values.
-				versionBuffer.Reset()
-				skipCount = 1 // We want to omit the slash after the browser name.
+				if ua.versionIndex > 0 {
+					ua.version = [32]rune{}
+					ua.versionIndex = 0
+				}
+
+				// We want to omit the slash after the browser name.
+				skipCount = 1
 				isVersion = true
 			}
 
@@ -168,9 +173,6 @@ func (trie *RuneTrie) Get(key string) UserAgent {
 		}
 		node = next
 	}
-
-	// Store version buffer into the user agent struct.
-	ua.version = versionBuffer.String()
 
 	return ua
 }
