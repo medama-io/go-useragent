@@ -10,17 +10,17 @@ import (
 func (ua UserAgent) GetDevice() string {
 	switch ua.device {
 	case internal.DeviceDesktop:
-		return internal.DeviceDesktopStr
+		return internal.Desktop
 	case internal.DeviceMobile:
-		return internal.DeviceMobileStr
+		return internal.Mobile
 	case internal.DeviceTablet:
-		return internal.DeviceTabletStr
+		return internal.Tablet
 	case internal.DeviceTV:
-		return internal.DeviceTVStr
+		return internal.TV
 	case internal.DeviceBot:
-		return internal.DeviceBotStr
+		return internal.Bot
 	default:
-		return internal.DeviceUnknownStr
+		return internal.Unknown
 	}
 }
 

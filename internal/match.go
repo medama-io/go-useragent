@@ -22,6 +22,7 @@ const (
 	Falkon         = "Falkon"
 	Nintendo       = "Nintendo Browser"
 	YandexBrowser  = "Yandex Browser"
+	Unknown		   = "Unknown"
 
 	// Operating Systems.
 	Android  = "Android"
