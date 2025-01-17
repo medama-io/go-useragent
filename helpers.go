@@ -6,6 +6,26 @@ import (
 	"github.com/medama-io/go-useragent/internal"
 )
 
+// GetDevice returns the device type as a string.
+func (ua UserAgent) GetDevice() string {
+	switch ua.device {
+	case internal.DeviceDesktop:
+		return internal.DeviceDesktopStr
+	case internal.DeviceMobile:
+		return internal.DeviceMobileStr
+	case internal.DeviceTablet:
+		return internal.DeviceTabletStr
+	case internal.DeviceTV:
+		return internal.DeviceTVStr
+	case internal.DeviceBot:
+		return internal.DeviceBotStr
+	default:
+		return internal.DeviceUnknownStr
+	}
+}
+
+
+
 // IsDesktop returns true if the user agent is a desktop browser.
 func (ua UserAgent) IsDesktop() bool {
 	return ua.device == internal.DeviceDesktop

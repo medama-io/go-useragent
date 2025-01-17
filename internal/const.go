@@ -20,4 +20,15 @@ const (
 	DeviceTablet
 	DeviceTV
 	DeviceBot
+
+	DeviceUnknownStr = "Unknown"
+	DeviceDesktopStr = "Desktop" 
+	DeviceMobileStr = "Mobile"
+	DeviceTabletStr = "Tablet"
+	DeviceTVStr = "TV"
+	DeviceBotStr = "Bot"
+
 )
+
+
+

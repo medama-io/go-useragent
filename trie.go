@@ -245,7 +245,6 @@ func (trie *RuneTrie) Put(key string) {
 
 // This adds a matching constant to a user agent struct.
 func (ua *UserAgent) addMatch(result resultItem) bool {
-	ua.Device = "Unknown"
 	// Browsers
 	if result.Type == internal.MatchBrowser && result.Precedence > ua.browserPrecedence {
 		switch result.Match {
@@ -262,7 +261,6 @@ func (ua *UserAgent) addMatch(result resultItem) bool {
 		case internal.OperaMini:
 			ua.browser = internal.OperaMini
 			ua.device = internal.DeviceMobile
-			ua.Device = "Mobile"
 		case internal.Safari:
 			ua.browser = internal.Safari
 		case internal.Vivaldi:
@@ -287,7 +285,6 @@ func (ua *UserAgent) addMatch(result resultItem) bool {
 		case internal.Android:
 			ua.os = internal.Android
 			ua.device = internal.DeviceMobile
-			ua.Device = "Mobile"
 			// An older generic white-labeled variant of Chrome/Chromium on Android.
 			if ua.browser == "" {
 				ua.browser = internal.AndroidBrowser
@@ -298,32 +295,26 @@ func (ua *UserAgent) addMatch(result resultItem) bool {
 		case internal.ChromeOS:
 			ua.os = internal.ChromeOS
 			ua.device = internal.DeviceDesktop
-			ua.Device = "Desktop"
 
 		case internal.IOS:
 			ua.os = internal.IOS
 			if ua.device != internal.DeviceTablet {
 				ua.device = internal.DeviceMobile
-				ua.Device = "Mobile"
 			}
 		case internal.Linux:
 			ua.os = internal.Linux
 			if ua.device != internal.DeviceTablet && ua.device != internal.DeviceTV {
 				ua.device = internal.DeviceDesktop
-				ua.Device = "Desktop"
 			}
 		case internal.OpenBSD:
 			ua.os = internal.OpenBSD
 			ua.device = internal.DeviceDesktop
-			ua.Device = "Desktop"
 		case internal.MacOS:
 			ua.os = internal.MacOS
 			ua.device = internal.DeviceDesktop
-			ua.Device = "Desktop"
 		case internal.Windows:
 			ua.os = internal.Windows
 			ua.device = internal.DeviceDesktop
-			ua.Device = "Desktop"
 		}
 
 		ua.osPrecedence = result.Precedence
@@ -335,21 +326,16 @@ func (ua *UserAgent) addMatch(result resultItem) bool {
 		switch result.Match {
 		case internal.Desktop:
 			ua.device = internal.DeviceDesktop
-			ua.Device = "Desktop"
 		case internal.Tablet:
 			ua.device = internal.DeviceTablet
-			ua.Device = "Tablet"
 		case internal.Mobile, internal.MobileDevice:
 			if ua.device != internal.DeviceTablet {
 				ua.device = internal.DeviceMobile
-				ua.Device = "Mobile"
 			}
 		case internal.TV:
 			ua.device = internal.DeviceTV
-			ua.Device = "TV"
 		case internal.Bot:
 			ua.device = internal.DeviceBot
-			ua.Device = "Bot"
 		}
 
 		ua.typePrecedence = result.Precedence
