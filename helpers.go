@@ -24,8 +24,6 @@ func (ua UserAgent) GetDevice() string {
 	}
 }
 
-
-
 // IsDesktop returns true if the user agent is a desktop browser.
 func (ua UserAgent) IsDesktop() bool {
 	return ua.device == internal.DeviceDesktop
