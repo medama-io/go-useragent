@@ -31,6 +31,7 @@ type UserAgent struct {
 	typePrecedence    uint8
 
 	device internal.Device
+	Device string
 }
 
 // Create a new Trie and populate it with user agent data.
