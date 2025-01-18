@@ -15,6 +15,21 @@ const (
 	maxChildArraySize = 64
 )
 
+// trieState is used to determine the current state of the trie.
+type trieState int
+
+const (
+	// StateDefault is the default state of the trie.
+	StateDefault trieState = iota
+	// StateVersion is the state when we are looking for a version number.
+	StateVersion
+	// StateSkipWhitespace is the state when we are skipping whitespace.
+	StateSkipWhitespace
+	// StateSkipClosingParenthesis is the state when we are skipping until a closing parenthesis.
+	// This is used to skip over device IDs.
+	StateSkipClosingParenthesis
+)
+
 type resultItem struct {
 	Match string
 	// 0: Unknown, 1: Browser, 2: OS, 3: Type
@@ -42,34 +57,24 @@ type RuneTrie struct {
 	result      []resultItem
 }
 
-// NewRuneTrie allocates and returns a new *RuneTrie.
-func NewRuneTrie() *RuneTrie {
-	return new(RuneTrie)
-}
-
 // Get returns the value stored at the given key. Returns nil for internal
 // nodes or for nodes with a value of nil.
 func (trie *RuneTrie) Get(key string) UserAgent {
+	state := StateDefault
 	node := trie
 	var ua UserAgent
 
-	// Flag to indicate if we are currently iterating over a version number.
-	var isVersion bool
 	// Number of runes to skip when iterating over the trie. This is used
 	// to skip over version numbers or language codes.
 	var skipCount uint8
-	// Skip until we encounter whitespace.
-	var skipUntilWhitespace bool
-	// Skip until we encounter a closing parenthesis, used for skipping over device IDs.
-	var skipUntilClosingParenthesis bool
 
 	for i, r := range key {
-		if skipUntilWhitespace {
+		if state == StateSkipWhitespace {
 			if r == ' ' {
-				skipUntilWhitespace = false
-			} else {
-				continue
+				state = StateDefault
 			}
+			continue
+
 		}
 
 		if skipCount > 0 {
@@ -77,18 +82,17 @@ func (trie *RuneTrie) Get(key string) UserAgent {
 			continue
 		}
 
-		if skipUntilClosingParenthesis {
+		switch state {
+		case StateSkipClosingParenthesis:
 			if r == ')' {
-				skipUntilClosingParenthesis = false
-			} else {
-				continue
+				state = StateDefault
 			}
-		}
+			continue
 
-		if isVersion {
+		case StateVersion:
 			// If we encounter any unknown characters, we can assume the version number is over.
 			if !internal.IsDigit(r) && r != '.' {
-				isVersion = false
+				state = StateDefault
 			} else {
 				// Add to rune buffer.
 				if ua.versionIndex < cap(ua.version) {
@@ -138,20 +142,20 @@ func (trie *RuneTrie) Get(key string) UserAgent {
 
 				// We want to omit the slash after the browser name.
 				skipCount = 1
-				isVersion = true
+				state = StateVersion
 			}
 
 			// If we matched a mobile token, we want to strip everything after it
 			// until we reach whitespace to get around random device IDs.
 			// For example, "Mobile/14F89" should be "Mobile".
 			if matched && result.Match == internal.Mobile {
-				skipUntilWhitespace = true
+				state = StateSkipWhitespace
 			}
 
 			// If we matched an Android token, we want to strip everything after it until
 			// we reach a closing parenthesis to get around random device IDs.
 			if matched && result.Match == internal.Android {
-				skipUntilClosingParenthesis = true
+				state = StateSkipClosingParenthesis
 			}
 		}
 
@@ -343,4 +347,9 @@ func (ua *UserAgent) addMatch(result resultItem) bool {
 	}
 
 	return false
+}
+
+// NewRuneTrie allocates and returns a new *RuneTrie.
+func NewRuneTrie() *RuneTrie {
+	return new(RuneTrie)
 }
