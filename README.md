@@ -38,8 +38,9 @@ func main() {
 
     // Access parsed information using agent fields.
     fmt.Println(agent.GetBrowser())  // Chrome
-    fmt.Println(agent.GetOS())       // Windows
     fmt.Println(agent.GetVersion())  // 118.0.0.0
+    fmt.Println(agent.GetOS())       // Windows
+    fmt.Println(agent.GetDevice())   // Desktop
     fmt.Println(agent.IsDesktop())  // true
     fmt.Println(agent.IsMobile())   // false
     fmt.Println(agent.IsTablet())   // false
