@@ -6,28 +6,25 @@ import (
 	"github.com/medama-io/go-useragent/internal"
 )
 
+// trieState is used to determine the current parsing state of the trie.
+type trieState int
+
 const (
+	// stateDefault is the default parsing state of the trie.
+	stateDefault trieState = iota
+	// stateVersion is the state when we are looking for a version number.
+	stateVersion
+	// stateSkipWhitespace is the state when we are skipping whitespace.
+	stateSkipWhitespace
+	// stateSkipClosingParenthesis is the state when we are skipping until a closing parenthesis.
+	// This is used to skip over device IDs.
+	stateSkipClosingParenthesis
 	// This is the number of rune trie children to store in the array
 	// before switching to a map. Smaller arrays are faster to iterate
 	// and use less memory.
 	//
 	// This is an arbitrary number, but seemed to perform well in benchmarks.
 	maxChildArraySize = 64
-)
-
-// trieState is used to determine the current state of the trie.
-type trieState int
-
-const (
-	// StateDefault is the default state of the trie.
-	StateDefault trieState = iota
-	// StateVersion is the state when we are looking for a version number.
-	StateVersion
-	// StateSkipWhitespace is the state when we are skipping whitespace.
-	StateSkipWhitespace
-	// StateSkipClosingParenthesis is the state when we are skipping until a closing parenthesis.
-	// This is used to skip over device IDs.
-	StateSkipClosingParenthesis
 )
 
 type resultItem struct {
@@ -60,7 +57,7 @@ type RuneTrie struct {
 // Get returns the value stored at the given key. Returns nil for internal
 // nodes or for nodes with a value of nil.
 func (trie *RuneTrie) Get(key string) UserAgent {
-	state := StateDefault
+	state := stateDefault
 	node := trie
 	var ua UserAgent
 
@@ -69,113 +66,109 @@ func (trie *RuneTrie) Get(key string) UserAgent {
 	var skipCount uint8
 
 	for i, r := range key {
-		if state == StateSkipWhitespace {
-			if r == ' ' {
-				state = StateDefault
-			}
-			continue
-
-		}
-
 		if skipCount > 0 {
 			skipCount--
 			continue
 		}
 
 		switch state {
-		case StateSkipClosingParenthesis:
-			if r == ')' {
-				state = StateDefault
+		case stateSkipWhitespace:
+			if r == ' ' {
+				state = stateDefault
 			}
-			continue
 
-		case StateVersion:
+		case stateSkipClosingParenthesis:
+			if r == ')' {
+				state = stateDefault
+			}
+
+		case stateVersion:
 			// If we encounter any unknown characters, we can assume the version number is over.
 			if !internal.IsDigit(r) && r != '.' {
-				state = StateDefault
+				state = stateDefault
 			} else {
 				// Add to rune buffer.
 				if ua.versionIndex < cap(ua.version) {
 					ua.version[ua.versionIndex] = r
 					ua.versionIndex++
 				}
+			}
+
+		case stateDefault:
+			// Strip any other version numbers from other products to get more hits to the trie.
+			//
+			// Also do not use a switch here as Go does not generate a jump table for switch
+			// statements with no integral constants. Benchmarking shows that ops go down
+			// if we try to migrate statements like this to a switch.
+			if internal.IsDigit(r) || (r == '.' && len(key) > i+1 && internal.IsDigit(rune(key[i+1]))) {
 				continue
 			}
-		}
 
-		// Strip any other version numbers from other products to get more hits to the trie.
-		//
-		// Also do not use a switch here as Go does not generate a jump table for switch
-		// statements with no integral constants. Benchmarking shows that ops go down
-		// if we try to migrate statements like this to a switch.
-		if internal.IsDigit(r) || (r == '.' && len(key) > i+1 && internal.IsDigit(rune(key[i+1]))) {
-			continue
-		}
+			// Identify and skip language codes e.g. en-US, zh-cn, en_US, ZH_cn
+			if len(key) > i+6 && r == ' ' && internal.IsLetter(rune(key[i+1])) && internal.IsLetter(rune(key[i+2])) && (key[i+3] == '-' || key[i+3] == '_') && internal.IsLetter(rune(key[i+4])) && internal.IsLetter(rune(key[i+5])) && (key[i+6] == ' ' || key[i+6] == ')' || key[i+6] == ';') {
+				// Add the number of runes to skip to the skip count.
+				skipCount += 6
+				continue
+			}
 
-		// Identify and skip language codes e.g. en-US, zh-cn, en_US, ZH_cn
-		if len(key) > i+6 && r == ' ' && internal.IsLetter(rune(key[i+1])) && internal.IsLetter(rune(key[i+2])) && (key[i+3] == '-' || key[i+3] == '_') && internal.IsLetter(rune(key[i+4])) && internal.IsLetter(rune(key[i+5])) && (key[i+6] == ' ' || key[i+6] == ')' || key[i+6] == ';') {
-			// Add the number of runes to skip to the skip count.
-			skipCount += 6
-			continue
-		}
+			switch r {
+			case ' ', ';', ')', '(', ',', '_', '-', '/':
+				continue
+			}
 
-		switch r {
-		case ' ', ';', ')', '(', ',', '_', '-', '/':
-			continue
-		}
+			// If result exists, we can append it to the value.
+			for _, result := range node.result {
+				matched := ua.addMatch(result)
 
-		// If result exists, we can append it to the value.
-		for _, result := range node.result {
-			matched := ua.addMatch(result)
+				// If we matched a browser of the highest precedence, we can mark the
+				// next set of runes as the version number we want to store.
+				//
+				// We also reject any version numbers related to Safari since it has a
+				// separate key for its version number.
+				if (matched && result.Type == internal.MatchBrowser && result.Match != internal.Safari) || (result.Type == internal.MatchVersion && ua.versionIndex == 0) {
+					// Clear version buffer if it has old values.
+					if ua.versionIndex > 0 {
+						ua.version = [32]rune{}
+						ua.versionIndex = 0
+					}
 
-			// If we matched a browser of the highest precedence, we can mark the
-			// next set of runes as the version number we want to store.
-			//
-			// We also reject any version numbers related to Safari since it has a
-			// separate key for its version number.
-			if (matched && result.Type == internal.MatchBrowser && result.Match != internal.Safari) || (result.Type == internal.MatchVersion && ua.versionIndex == 0) {
-				// Clear version buffer if it has old values.
-				if ua.versionIndex > 0 {
-					ua.version = [32]rune{}
-					ua.versionIndex = 0
+					// We want to omit the slash after the browser name.
+					skipCount = 1
+					state = stateVersion
 				}
 
-				// We want to omit the slash after the browser name.
-				skipCount = 1
-				state = StateVersion
-			}
+				// If we matched a mobile token, we want to strip everything after it
+				// until we reach whitespace to get around random device IDs.
+				// For example, "Mobile/14F89" should be "Mobile".
+				if matched && result.Match == internal.Mobile {
+					state = stateSkipWhitespace
+				}
 
-			// If we matched a mobile token, we want to strip everything after it
-			// until we reach whitespace to get around random device IDs.
-			// For example, "Mobile/14F89" should be "Mobile".
-			if matched && result.Match == internal.Mobile {
-				state = StateSkipWhitespace
-			}
-
-			// If we matched an Android token, we want to strip everything after it until
-			// we reach a closing parenthesis to get around random device IDs.
-			if matched && result.Match == internal.Android {
-				state = StateSkipClosingParenthesis
-			}
-		}
-
-		// Set the next node to the child of the current node.
-		var next *RuneTrie
-		if len(node.childrenArr) != 0 {
-			for _, child := range node.childrenArr {
-				if child.r == r {
-					next = child.node
-					break
+				// If we matched an Android token, we want to strip everything after it until
+				// we reach a closing parenthesis to get around random device IDs.
+				if matched && result.Match == internal.Android {
+					state = stateSkipClosingParenthesis
 				}
 			}
-		} else {
-			next = node.childrenMap[r]
-		}
 
-		if next == nil {
-			continue // No match found, but we can try to match the next rune.
+			// Set the next node to the child of the current node.
+			var next *RuneTrie
+			if len(node.childrenArr) != 0 {
+				for _, child := range node.childrenArr {
+					if child.r == r {
+						next = child.node
+						break
+					}
+				}
+			} else {
+				next = node.childrenMap[r]
+			}
+
+			if next == nil {
+				continue // No match found, but we can try to match the next rune.
+			}
+			node = next
 		}
-		node = next
 	}
 
 	return ua
