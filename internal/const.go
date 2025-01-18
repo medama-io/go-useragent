@@ -20,8 +20,4 @@ const (
 	DeviceTablet
 	DeviceTV
 	DeviceBot
-
 )
-
-
-

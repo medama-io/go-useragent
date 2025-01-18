@@ -22,7 +22,6 @@ const (
 	Falkon         = "Falkon"
 	Nintendo       = "Nintendo Browser"
 	YandexBrowser  = "Yandex Browser"
-	Unknown		   = "Unknown"
 
 	// Operating Systems.
 	Android  = "Android"
@@ -46,6 +45,7 @@ const (
 
 	// Version.
 	Version = "Version"
+	Unknown = "Unknown"
 )
 
 // matchMap is a map of user agent types to their matching strings.
