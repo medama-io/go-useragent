@@ -59,7 +59,6 @@ type RuneTrie struct {
 func (trie *RuneTrie) Get(key string) UserAgent {
 	state := stateDefault
 	node := trie
-
 	var ua UserAgent
 
 	// Number of runes to skip when iterating over the trie. This is used
@@ -67,6 +66,11 @@ func (trie *RuneTrie) Get(key string) UserAgent {
 	var skipCount uint8
 
 	for i, r := range key {
+		if skipCount > 0 {
+			skipCount--
+			continue
+		}
+
 		switch state {
 		case stateSkipWhitespace:
 			if r == ' ' {
@@ -91,11 +95,6 @@ func (trie *RuneTrie) Get(key string) UserAgent {
 			}
 
 		case stateDefault:
-			if skipCount > 0 {
-				skipCount--
-				continue
-			}
-
 			// Strip any other version numbers from other products to get more hits to the trie.
 			//
 			// Also do not use a switch here as Go does not generate a jump table for switch
