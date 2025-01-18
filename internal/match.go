@@ -45,6 +45,7 @@ const (
 
 	// Version.
 	Version = "Version"
+	Unknown = "Unknown"
 )
 
 // matchMap is a map of user agent types to their matching strings.
