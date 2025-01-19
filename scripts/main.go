@@ -29,7 +29,8 @@ func CleanAgentsFile(filePath string) ([]string, error) {
 			continue
 		}
 
-		if strings.Contains(line, "javascript") || strings.Contains(line, "function") || strings.Contains(line, "quot") || strings.Contains(line, "parent") {
+		lineLower := strings.ToLower(line)
+		if strings.Contains(lineLower, "javascript") || strings.Contains(lineLower, "function") || strings.Contains(lineLower, "quot") || strings.Contains(lineLower, "parent") {
 			continue
 		}
 
