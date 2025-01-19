@@ -7,7 +7,7 @@ import (
 )
 
 // trieState is used to determine the current parsing state of the trie.
-type trieState int
+type trieState uint8
 
 const (
 	// stateDefault is the default parsing state of the trie.
@@ -83,6 +83,13 @@ func (trie *RuneTrie) Get(key string) UserAgent {
 			}
 
 		case stateVersion:
+			// In the case of Edg and Edge, skipCount = 1 might just put us on the slash.
+			// Ideally, we need to improve the matcher to choose Edge over Edg, but this is
+			// a quick fix for now.
+			if r == '/' {
+				continue
+			}
+
 			// If we encounter any unknown characters, we can assume the version number is over.
 			if !internal.IsDigit(r) && r != '.' {
 				state = stateDefault
@@ -125,7 +132,10 @@ func (trie *RuneTrie) Get(key string) UserAgent {
 				//
 				// We also reject any version numbers related to Safari since it has a
 				// separate key for its version number.
-				if (matched && result.Type == internal.MatchBrowser && result.Match != internal.Safari) || (result.Type == internal.MatchVersion && ua.versionIndex == 0) {
+				if (matched && result.Type == internal.MatchBrowser &&
+					result.Match != internal.Safari) ||
+					(result.Type == internal.MatchVersion &&
+						ua.versionIndex == 0) {
 					// Clear version buffer if it has old values.
 					if ua.versionIndex > 0 {
 						ua.version = [32]rune{}

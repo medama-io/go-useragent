@@ -45,13 +45,6 @@ func RemoveVersions(ua string) string {
 			continue
 		}
 
-		// Skip whitespace
-		switch r {
-		case ' ', ';', ')', '(', ',', '_', '-', '/':
-			indexesToReplace = append(indexesToReplace, i)
-			continue
-		}
-
 		// Replace all non-latin characters with a space. The trie function will automatically
 		// skip over any characters it can't find, so this is a safe operation.
 		if !IsLetter(r) {
