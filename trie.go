@@ -80,9 +80,10 @@ func (trie *RuneTrie) Get(key string) UserAgent {
 			}
 
 		case stateSkipClosingParenthesis:
-			if r == '(' {
+			switch r {
+			case '(':
 				closingParenthisisNestCount++
-			} else if r == ')' {
+			case ')':
 				if closingParenthisisNestCount == 0 {
 					state = stateDefault
 				} else {
