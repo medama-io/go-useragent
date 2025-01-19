@@ -33,6 +33,11 @@ func CleanAgentsFile(filePath string) ([]string, error) {
 			continue
 		}
 
+		// Cut the line after the first "[" is used.
+		if strings.Contains(line, "[") {
+			line = line[:strings.Index(line, "[")]
+		}
+
 		line = internal.RemoveMobileIdentifiers(line)
 		line = internal.RemoveAndroidIdentifiers(line)
 		line = internal.RemoveVersions(line)
