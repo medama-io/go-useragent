@@ -69,7 +69,7 @@ func CleanAgentsFile(filePath string) ([]string, error) {
 
 func main() {
 	var content []string
-	filenames := []string{"agents/1.txt", "agents/2.txt", "agents/3.txt", "agents/4.txt", "agents/5.txt"}
+	filenames := []string{"data/1.txt", "data/2.txt", "data/3.txt", "data/4.txt", "data/5.txt"}
 
 	for _, filename := range filenames {
 		// Read agents.txt file.
@@ -96,12 +96,12 @@ func main() {
 	finalStr := strings.Join(contentNoDuplicates, "\n")
 
 	// Write the cleaned content to agents_cleaned.txt file.
-	writePath := "agents/final.txt"
+	writePath := "data/final.txt"
 	err := os.WriteFile(writePath, []byte(finalStr), 0o644)
 	if err != nil {
 		fmt.Printf("Error writing cleaned agents file: %s\n", err)
 		return
 	}
 
-	fmt.Println("Cleaned agents saved to agents_cleaned.txt")
+	fmt.Println("Cleaned agents saved to data/final.txt")
 }
