@@ -83,7 +83,7 @@ var matchMap = map[string][]string{
 	MobileDevice: {"ONEPLUS", "Huawei", "HTC", "Galaxy", "iPhone", "iPod", "Windows Phone", "WindowsPhone", "LG"},
 	Tablet:       {Tablet, "Touch", "iPad", "Nintendo Switch", "NintendoSwitch", "Kindle"},
 	TV:           {TV, "Large Screen", "LargeScreen", "Smart Display", "SmartDisplay", "PLAYSTATION", "PlayStation", "ADT-2", "ADT-1", "CrKey", "Roku", "AFT", "Web0S", "Nexus Player", "Xbox", "XBOX", "Nintendo WiiU", "NintendoWiiU"},
-	Bot:          {Bot, "HeadlessChrome", "bot", "Slurp", "LinkCheck", "QuickLook", "Haosou", "Yahoo Ad", "YahooAd", "Google", "Mediapartners", "Headless", "facebookexternalhit", "facebookcatalog", "Baidu", "Instagram", "Pinterest", "PageSpeedInsights"},
+	Bot:          {Bot, "HeadlessChrome", "bot", "Slurp", "LinkCheck", "QuickLook", "Haosou", "Yahoo Ad", "YahooAd", "Google", "Mediapartners", "Headless", "facebookexternalhit", "facebookcatalog", "Baidu", "Instagram", "Pinterest", "PageSpeedInsights", "WhatsApp"},
 
 	// Version
 	Version: {Version},
