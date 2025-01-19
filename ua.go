@@ -17,11 +17,12 @@ type Parser struct {
 }
 
 type UserAgent struct {
-	browser string
-	os      string
-
 	version      [32]rune
 	versionIndex int
+
+	browser internal.Match
+	os      internal.Match
+	device  internal.Match
 
 	// Precedence is the order in which the user agent matched the
 	// browser, device, and OS. The lower the number, the higher the
@@ -29,8 +30,6 @@ type UserAgent struct {
 	browserPrecedence uint8
 	osPrecedence      uint8
 	typePrecedence    uint8
-
-	device internal.Device
 }
 
 // Create a new Trie and populate it with user agent data.

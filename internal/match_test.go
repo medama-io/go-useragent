@@ -9,78 +9,78 @@ import (
 	"github.com/stretchr/testify/assert"
 )
 
-var matchResults = [][]string{
+var matchResults = [][]internal.Match{
 	// Windows (7)
-	{internal.Safari, internal.Chrome, internal.Windows},
-	{internal.Safari, internal.Chrome, internal.Windows},
-	{internal.Windows, internal.IE},
-	{internal.Windows, internal.IE},
-	{internal.IE, internal.Windows},
-	{internal.Windows, internal.IE},
-	{internal.Edge, internal.Safari, internal.Chrome, internal.Windows},
+	{internal.BrowserSafari, internal.BrowserChrome, internal.OSWindows},
+	{internal.BrowserSafari, internal.BrowserChrome, internal.OSWindows},
+	{internal.OSWindows, internal.BrowserIE},
+	{internal.OSWindows, internal.BrowserIE},
+	{internal.BrowserIE, internal.OSWindows},
+	{internal.OSWindows, internal.BrowserIE},
+	{internal.BrowserEdge, internal.BrowserSafari, internal.BrowserChrome, internal.OSWindows},
 
 	// Mac (5)
-	{internal.Safari, internal.Version, internal.MacOS},
-	{internal.Safari, internal.Chrome, internal.MacOS},
-	{internal.Firefox, internal.MacOS},
-	{internal.Vivaldi, internal.Safari, internal.Chrome, internal.MacOS},
-	{internal.Edge, internal.Safari, internal.Chrome, internal.MacOS},
+	{internal.BrowserSafari, internal.TokenVersion, internal.OSMacOS},
+	{internal.BrowserSafari, internal.BrowserChrome, internal.OSMacOS},
+	{internal.BrowserFirefox, internal.OSMacOS},
+	{internal.BrowserVivaldi, internal.BrowserSafari, internal.BrowserChrome, internal.OSMacOS},
+	{internal.BrowserEdge, internal.BrowserSafari, internal.BrowserChrome, internal.OSMacOS},
 
 	// Linux (5)
-	{internal.Firefox, internal.Linux},
-	{internal.Firefox, internal.Linux},
-	{internal.Firefox, internal.Linux, internal.Desktop},
-	{internal.Firefox, internal.Linux, internal.Desktop},
-	{internal.Safari, internal.Chrome, internal.Linux},
+	{internal.BrowserFirefox, internal.OSLinux},
+	{internal.BrowserFirefox, internal.OSLinux},
+	{internal.BrowserFirefox, internal.OSLinux, internal.DeviceDesktop},
+	{internal.BrowserFirefox, internal.OSLinux, internal.DeviceDesktop},
+	{internal.BrowserSafari, internal.BrowserChrome, internal.OSLinux},
 
 	// iPhone (5)
-	{internal.Safari, internal.Mobile, internal.Version, internal.MobileDevice, internal.IOS},
-	{internal.Safari, internal.Mobile, internal.Chrome, internal.MobileDevice, internal.IOS},
-	{internal.Safari, internal.Mobile, internal.Opera, internal.MobileDevice, internal.IOS},
-	{internal.Safari, internal.Mobile, internal.Firefox, internal.MobileDevice, internal.IOS},
-	{internal.Safari, internal.Mobile, internal.Edge, internal.Version, internal.MobileDevice, internal.IOS},
+	{internal.BrowserSafari, internal.DeviceMobile, internal.TokenVersion, internal.OSIOS, internal.TokenMobileDevice},
+	{internal.BrowserSafari, internal.DeviceMobile, internal.BrowserChrome, internal.OSIOS, internal.TokenMobileDevice},
+	{internal.BrowserSafari, internal.DeviceMobile, internal.BrowserOpera, internal.OSIOS, internal.TokenMobileDevice},
+	{internal.BrowserSafari, internal.DeviceMobile, internal.BrowserFirefox, internal.OSIOS, internal.TokenMobileDevice},
+	{internal.BrowserSafari, internal.DeviceMobile, internal.BrowserEdge, internal.TokenVersion, internal.OSIOS, internal.TokenMobileDevice},
 
 	// iPad (3)
-	{internal.Safari, internal.Mobile, internal.Version, internal.Tablet, internal.IOS},
-	{internal.Safari, internal.Mobile, internal.Chrome, internal.Tablet, internal.IOS},
-	{internal.Safari, internal.Mobile, internal.Firefox, internal.Tablet, internal.IOS},
+	{internal.BrowserSafari, internal.DeviceMobile, internal.TokenVersion, internal.OSIOS, internal.DeviceTablet},
+	{internal.BrowserSafari, internal.DeviceMobile, internal.BrowserChrome, internal.OSIOS, internal.DeviceTablet},
+	{internal.BrowserSafari, internal.DeviceMobile, internal.BrowserFirefox, internal.OSIOS, internal.DeviceTablet},
 
 	// Android (4)
-	{internal.Safari, internal.Mobile, internal.Chrome, internal.Samsung, internal.Android, internal.Linux},
-	{internal.Safari, internal.Mobile, internal.Version, internal.Android, internal.Linux},
-	{internal.Safari, internal.Mobile, internal.Version, internal.Android, internal.Linux},
-	{internal.Safari, internal.Mobile, internal.Chrome, internal.Version, internal.MobileDevice, internal.Android, internal.Linux},
-	{internal.Safari, internal.Mobile, internal.Chrome, internal.Android, internal.Linux},
+	{internal.BrowserSafari, internal.DeviceMobile, internal.BrowserChrome, internal.BrowserSamsung, internal.OSAndroid, internal.OSLinux},
+	{internal.BrowserSafari, internal.DeviceMobile, internal.TokenVersion, internal.OSAndroid, internal.OSLinux},
+	{internal.BrowserSafari, internal.DeviceMobile, internal.TokenVersion, internal.OSAndroid, internal.OSLinux},
+	{internal.BrowserSafari, internal.DeviceMobile, internal.BrowserChrome, internal.TokenVersion, internal.TokenMobileDevice, internal.OSAndroid, internal.OSLinux},
+	{internal.BrowserSafari, internal.DeviceMobile, internal.BrowserChrome, internal.OSAndroid, internal.OSLinux},
 
 	// Bots (4)
-	{internal.Bot},
-	{internal.Bot},
-	{internal.Bot},
-	{internal.Bot},
-	{internal.Safari, internal.Chrome, internal.Bot},
-	{internal.Safari, internal.Bot, internal.Chrome, internal.Linux},
+	{internal.DeviceBot},
+	{internal.DeviceBot},
+	{internal.DeviceBot},
+	{internal.DeviceBot},
+	{internal.BrowserSafari, internal.BrowserChrome, internal.DeviceBot},
+	{internal.BrowserSafari, internal.BrowserChrome, internal.DeviceBot, internal.OSLinux},
 
 	// Yandex Browser (1)
-	{internal.Safari, internal.Mobile, internal.YandexBrowser, internal.Chrome, internal.Android, internal.Linux},
+	{internal.BrowserSafari, internal.DeviceMobile, internal.BrowserYandex, internal.BrowserChrome, internal.OSAndroid, internal.OSLinux},
 
 	// Safari UIWebView (1)
-	{internal.Mobile, internal.Safari, internal.MobileDevice, internal.IOS},
+	{internal.DeviceMobile, internal.BrowserSafari, internal.OSIOS, internal.TokenMobileDevice},
 
 	// Falkon (1)
-	{internal.Safari, internal.Chrome, internal.Falkon, internal.Linux},
+	{internal.BrowserSafari, internal.BrowserChrome, internal.BrowserFalkon, internal.OSLinux},
 
 	// Android Firefox (1)
-	{internal.Firefox, internal.Mobile, internal.Android},
+	{internal.BrowserFirefox, internal.DeviceMobile, internal.OSAndroid},
 
 	// Linux ARM Architecture (1)
-	{internal.Safari, internal.Chrome, internal.Linux},
+	{internal.BrowserSafari, internal.BrowserChrome, internal.OSLinux},
 
 	// Samsung Browser
-	{internal.Safari, internal.TV, internal.Chrome, internal.Samsung, internal.Linux},
-	{internal.Safari, internal.Chrome, internal.Samsung, internal.Linux},
+	{internal.BrowserSafari, internal.DeviceTV, internal.BrowserChrome, internal.BrowserSamsung, internal.OSLinux},
+	{internal.BrowserSafari, internal.BrowserChrome, internal.BrowserSamsung, internal.OSLinux},
 
 	// OpenBSD
-	{internal.Firefox, internal.OpenBSD},
+	{internal.BrowserFirefox, internal.OSOpenBSD},
 }
 
 func TestMatchTokenIndexes(t *testing.T) {
@@ -94,7 +94,18 @@ func TestMatchTokenIndexes(t *testing.T) {
 			}
 
 			for j, m := range match {
-				assert.Equal(t, matchResults[i][j], m.Match, "Test Case: %s\nMatch Number: %d\nExpected: %v\nGot: %v", v, i, matchResults[i], match)
+				expected := []string{}
+				got := []string{}
+
+				for _, e := range matchResults[i] {
+					expected = append(expected, e.GetMatchName())
+				}
+
+				for _, g := range match {
+					got = append(got, g.Match.GetMatchName())
+				}
+
+				assert.Equal(t, matchResults[i][j], m.Match, "Test Case: %s\nMatch Number: %d\nExpected: %v\nGot: %v", v, i, expected, got)
 			}
 		})
 	}
