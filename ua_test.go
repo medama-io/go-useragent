@@ -60,6 +60,7 @@ var resultCases = []ResultCase{
 	{Browser: internal.AndroidBrowser, OS: internal.Android, Mobile: true, Version: "4.0"},
 	{Browser: internal.AndroidBrowser, OS: internal.Android, Mobile: true, Version: "4.0"},
 	{Browser: internal.Chrome, OS: internal.Android, Mobile: true, Version: "38.0.2125.102"},
+	{Browser: internal.Chrome, OS: internal.Android, Mobile: true, Version: "112.0.0.0"},
 	// Bots (6) 29
 	{Bot: true},
 	{Bot: true},

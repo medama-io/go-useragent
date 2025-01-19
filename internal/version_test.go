@@ -51,6 +51,7 @@ var versionResults = []string{
 	"MozillaLinuxAndroidAppleWebKitKHTMLlikeGeckoVersionMobileSafari",
 	"MozillaLinuxUAndroidAppleWebKitKHTMLlikeGeckoVersionMobileSafari",
 	"MozillaLinuxAndroidAppleWebKitKHTMLlikeGeckoVersionChromeMobileSafari",
+	"MozillaLinuxAndroidAppleWebKitKHTMLlikeGeckoChromeMobileSafari",
 
 	// Bots (4)
 	"MozillacompatibleGooglebothttpwwwgooglecombothtml",

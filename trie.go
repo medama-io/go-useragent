@@ -64,6 +64,8 @@ func (trie *RuneTrie) Get(key string) UserAgent {
 	// Number of runes to skip when iterating over the trie. This is used
 	// to skip over version numbers or language codes.
 	var skipCount uint8
+	// This is used to determine how many nested parenthesis deep we are.
+	var closingParenthisisNestCount uint8
 
 	for i, r := range key {
 		if skipCount > 0 {
@@ -78,8 +80,14 @@ func (trie *RuneTrie) Get(key string) UserAgent {
 			}
 
 		case stateSkipClosingParenthesis:
-			if r == ')' {
-				state = stateDefault
+			if r == '(' {
+				closingParenthisisNestCount++
+			} else if r == ')' {
+				if closingParenthisisNestCount == 0 {
+					state = stateDefault
+				} else {
+					closingParenthisisNestCount--
+				}
 			}
 
 		case stateVersion:
