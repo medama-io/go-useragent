@@ -28,9 +28,9 @@ const (
 )
 
 type resultItem struct {
-	Match string
+	Match internal.Match
 	// 0: Unknown, 1: Browser, 2: OS, 3: Type
-	Type internal.Match
+	Type internal.MatchType
 	// Precedence value for each result type to determine which result
 	// should be overwritten.
 	Precedence uint8
@@ -142,7 +142,7 @@ func (trie *RuneTrie) Get(key string) UserAgent {
 				// We also reject any version numbers related to Safari since it has a
 				// separate key for its version number.
 				if (matched && result.Type == internal.MatchBrowser &&
-					result.Match != internal.Safari) ||
+					result.Match != internal.BrowserSafari) ||
 					(result.Type == internal.MatchVersion &&
 						ua.versionIndex == 0) {
 					// Clear version buffer if it has old values.
@@ -159,13 +159,13 @@ func (trie *RuneTrie) Get(key string) UserAgent {
 				// If we matched a mobile token, we want to strip everything after it
 				// until we reach whitespace to get around random device IDs.
 				// For example, "Mobile/14F89" should be "Mobile".
-				if matched && result.Match == internal.Mobile {
+				if matched && result.Match == internal.DeviceMobile {
 					state = stateSkipWhitespace
 				}
 
 				// If we matched an Android token, we want to strip everything after it until
 				// we reach a closing parenthesis to get around random device IDs.
-				if matched && result.Match == internal.Android {
+				if matched && result.Match == internal.OSAndroid {
 					state = stateSkipClosingParenthesis
 				}
 			}
@@ -264,31 +264,22 @@ func (ua *UserAgent) addMatch(result resultItem) bool {
 	// Browsers
 	if result.Type == internal.MatchBrowser && result.Precedence > ua.browserPrecedence {
 		switch result.Match {
-		case internal.Chrome:
-			ua.browser = internal.Chrome
-		case internal.Edge:
-			ua.browser = internal.Edge
-		case internal.Firefox:
-			ua.browser = internal.Firefox
-		case internal.IE:
-			ua.browser = internal.IE
-		case internal.Opera:
-			ua.browser = internal.Opera
-		case internal.OperaMini:
-			ua.browser = internal.OperaMini
+		case internal.BrowserChrome,
+			internal.BrowserEdge,
+			internal.BrowserFirefox,
+			internal.BrowserIE,
+			internal.BrowserOpera,
+			internal.BrowserSafari,
+			internal.BrowserVivaldi,
+			internal.BrowserSamsung,
+			internal.BrowserFalkon,
+			internal.BrowserNintendo,
+			internal.BrowserYandex:
+			ua.browser = result.Match
+
+		case internal.BrowserOperaMini:
+			ua.browser = result.Match
 			ua.device = internal.DeviceMobile
-		case internal.Safari:
-			ua.browser = internal.Safari
-		case internal.Vivaldi:
-			ua.browser = internal.Vivaldi
-		case internal.Samsung:
-			ua.browser = internal.Samsung
-		case internal.Falkon:
-			ua.browser = internal.Falkon
-		case internal.Nintendo:
-			ua.browser = internal.Nintendo
-		case internal.YandexBrowser:
-			ua.browser = internal.YandexBrowser
 		}
 
 		ua.browserPrecedence = result.Precedence
@@ -298,39 +289,35 @@ func (ua *UserAgent) addMatch(result resultItem) bool {
 	// Operating Systems
 	if result.Type == internal.MatchOS && result.Precedence > ua.osPrecedence {
 		switch result.Match {
-		case internal.Android:
-			ua.os = internal.Android
-			ua.device = internal.DeviceMobile
-			// An older generic white-labeled variant of Chrome/Chromium on Android.
-			if ua.browser == "" {
-				ua.browser = internal.AndroidBrowser
-				// Special case we set this as the precedence with this is zero
-				// and can be overwritten by Safari.
-				ua.browserPrecedence = internal.MatchPrecedenceMap[internal.Mobile]
-			}
-		case internal.ChromeOS:
-			ua.os = internal.ChromeOS
+		case internal.OSChromeOS,
+			internal.OSOpenBSD,
+			internal.OSMacOS,
+			internal.OSWindows:
+			ua.os = result.Match
 			ua.device = internal.DeviceDesktop
 
-		case internal.IOS:
-			ua.os = internal.IOS
+		case internal.OSAndroid:
+			ua.os = result.Match
+			ua.device = internal.DeviceMobile
+			// An older generic white-labeled variant of Chrome/Chromium on Android.
+			if ua.browser == internal.Unknown {
+				ua.browser = internal.BrowserAndroid
+				// Special case we set this as the precedence with this is zero
+				// and can be overwritten by Safari.
+				ua.browserPrecedence = internal.MatchPrecedenceMap[internal.DeviceMobile]
+			}
+
+		case internal.OSIOS:
+			ua.os = result.Match
 			if ua.device != internal.DeviceTablet {
 				ua.device = internal.DeviceMobile
 			}
-		case internal.Linux:
-			ua.os = internal.Linux
+
+		case internal.OSLinux:
+			ua.os = result.Match
 			if ua.device != internal.DeviceTablet && ua.device != internal.DeviceTV {
 				ua.device = internal.DeviceDesktop
 			}
-		case internal.OpenBSD:
-			ua.os = internal.OpenBSD
-			ua.device = internal.DeviceDesktop
-		case internal.MacOS:
-			ua.os = internal.MacOS
-			ua.device = internal.DeviceDesktop
-		case internal.Windows:
-			ua.os = internal.Windows
-			ua.device = internal.DeviceDesktop
 		}
 
 		ua.osPrecedence = result.Precedence
@@ -338,20 +325,18 @@ func (ua *UserAgent) addMatch(result resultItem) bool {
 	}
 
 	// Types
-	if result.Type == internal.MatchType && result.Precedence > ua.typePrecedence {
+	if result.Type == internal.MatchDevice && result.Precedence > ua.typePrecedence {
 		switch result.Match {
-		case internal.Desktop:
-			ua.device = internal.DeviceDesktop
-		case internal.Tablet:
-			ua.device = internal.DeviceTablet
-		case internal.Mobile, internal.MobileDevice:
+		case internal.DeviceDesktop,
+			internal.DeviceTablet,
+			internal.DeviceTV,
+			internal.DeviceBot:
+			ua.device = result.Match
+
+		case internal.DeviceMobile, internal.TokenMobileDevice:
 			if ua.device != internal.DeviceTablet {
 				ua.device = internal.DeviceMobile
 			}
-		case internal.TV:
-			ua.device = internal.DeviceTV
-		case internal.Bot:
-			ua.device = internal.DeviceBot
 		}
 
 		ua.typePrecedence = result.Precedence

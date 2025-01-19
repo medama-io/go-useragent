@@ -67,7 +67,7 @@ func RemoveMobileIdentifiers(ua string) string {
 	for _, token := range tokens {
 		var skipUntilWhitespace bool
 		var indexesToReplace []int
-		if token.Match == Mobile {
+		if token.Match == DeviceMobile {
 			// Iterate over the user agent string and remove all characters
 			// after the mobile token until we encounter whitespace.
 			for i, r := range ua {
@@ -103,7 +103,7 @@ func RemoveAndroidIdentifiers(ua string) string {
 		var skipUntilClosingParenthesis int
 		var indexesToReplace []int
 
-		if token.Match == Android {
+		if token.Match == OSAndroid {
 			// Iterate over the user agent string and remove all characters
 			// after the Android token until we encounter a closing parenthesis
 			// to remove device identifiers.
