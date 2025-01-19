@@ -7,7 +7,7 @@ import (
 )
 
 // trieState is used to determine the current parsing state of the trie.
-type trieState int
+type trieState uint8
 
 const (
 	// stateDefault is the default parsing state of the trie.
@@ -64,6 +64,8 @@ func (trie *RuneTrie) Get(key string) UserAgent {
 	// Number of runes to skip when iterating over the trie. This is used
 	// to skip over version numbers or language codes.
 	var skipCount uint8
+	// This is used to determine how many nested parenthesis deep we are.
+	var closingParenthisisNestCount uint8
 
 	for i, r := range key {
 		if skipCount > 0 {
@@ -78,11 +80,25 @@ func (trie *RuneTrie) Get(key string) UserAgent {
 			}
 
 		case stateSkipClosingParenthesis:
-			if r == ')' {
-				state = stateDefault
+			switch r {
+			case '(':
+				closingParenthisisNestCount++
+			case ')':
+				if closingParenthisisNestCount == 0 {
+					state = stateDefault
+				} else {
+					closingParenthisisNestCount--
+				}
 			}
 
 		case stateVersion:
+			// In the case of Edg and Edge, skipCount = 1 might just put us on the slash.
+			// Ideally, we need to improve the matcher to choose Edge over Edg, but this is
+			// a quick fix for now.
+			if r == '/' {
+				continue
+			}
+
 			// If we encounter any unknown characters, we can assume the version number is over.
 			if !internal.IsDigit(r) && r != '.' {
 				state = stateDefault
@@ -125,7 +141,10 @@ func (trie *RuneTrie) Get(key string) UserAgent {
 				//
 				// We also reject any version numbers related to Safari since it has a
 				// separate key for its version number.
-				if (matched && result.Type == internal.MatchBrowser && result.Match != internal.Safari) || (result.Type == internal.MatchVersion && ua.versionIndex == 0) {
+				if (matched && result.Type == internal.MatchBrowser &&
+					result.Match != internal.Safari) ||
+					(result.Type == internal.MatchVersion &&
+						ua.versionIndex == 0) {
 					// Clear version buffer if it has old values.
 					if ua.versionIndex > 0 {
 						ua.version = [32]rune{}

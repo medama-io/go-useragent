@@ -50,6 +50,7 @@ var matchResults = [][]string{
 	{internal.Safari, internal.Mobile, internal.Version, internal.Android, internal.Linux},
 	{internal.Safari, internal.Mobile, internal.Version, internal.Android, internal.Linux},
 	{internal.Safari, internal.Mobile, internal.Chrome, internal.Version, internal.MobileDevice, internal.Android, internal.Linux},
+	{internal.Safari, internal.Mobile, internal.Chrome, internal.Android, internal.Linux},
 
 	// Bots (4)
 	{internal.Bot},

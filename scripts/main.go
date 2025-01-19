@@ -29,8 +29,14 @@ func CleanAgentsFile(filePath string) ([]string, error) {
 			continue
 		}
 
-		if strings.Contains(line, "javascript") || strings.Contains(line, "function") || strings.Contains(line, "quot") || strings.Contains(line, "parent") {
+		lineLower := strings.ToLower(line)
+		if strings.Contains(lineLower, "javascript") || strings.Contains(lineLower, "function") || strings.Contains(lineLower, "quot") || strings.Contains(lineLower, "parent") {
 			continue
+		}
+
+		// Cut the line after the first "[" is used.
+		if strings.Contains(line, "[") {
+			line = line[:strings.Index(line, "[")]
 		}
 
 		line = internal.RemoveMobileIdentifiers(line)
@@ -63,7 +69,7 @@ func CleanAgentsFile(filePath string) ([]string, error) {
 
 func main() {
 	var content []string
-	filenames := []string{"agents/1.txt", "agents/2.txt", "agents/3.txt", "agents/4.txt"}
+	filenames := []string{"agents/1.txt", "agents/2.txt", "agents/3.txt", "agents/4.txt", "agents/5.txt"}
 
 	for _, filename := range filenames {
 		// Read agents.txt file.
