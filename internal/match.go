@@ -19,7 +19,7 @@ var matchMap = map[Match][]string{
 	BrowserFirefox:   {"FxiOS", string(agents.BrowserFirefox)},
 	BrowserIE:        {"MSIE", "Trident"},
 	BrowserOpera:     {"OPiOS", "OPR", string(agents.BrowserOpera)},
-	BrowserOperaMini: {string(agents.BrowserOperaMini)},
+	BrowserOperaMini: {"Mini"},
 	BrowserSafari:    {string(agents.BrowserSafari), "AppleWebKit"},
 	BrowserVivaldi:   {string(agents.BrowserVivaldi)},
 	BrowserSamsung:   {"SamsungBrowser"},
