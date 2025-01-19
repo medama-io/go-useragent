@@ -4,5 +4,5 @@ import (
 	_ "embed"
 )
 
-//go:embed agents/final.txt
+//go:embed data/final.txt
 var userAgentsFile string
