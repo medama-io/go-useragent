@@ -55,6 +55,8 @@ func (ua UserAgent) BrowserVersionMinor() string {
 }
 
 // BrowserVersionPatch returns the patch version of the browser. If no version is found, it returns an empty string.
+//
+// Note: The patch version may include a suffix (e.g., "1.2.3b").
 func (ua UserAgent) BrowserVersionPatch() string {
 	if ua.versionIndex == 0 {
 		return ""
