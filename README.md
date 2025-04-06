@@ -1,5 +1,7 @@
 # go-useragent
 
+[![Go Reference](https://pkg.go.dev/badge/github.com/medama-io/go-useragent.svg)](https://pkg.go.dev/github.com/medama-io/go-useragent)
+
 `go-useragent` is a high-performance zero-allocation Go library designed to parse browser name and version, operating system, and device type information from user-agent strings with _sub-microsecond_ parsing times.
 
 It achieves this efficiency by using a modified hybrid [trie](https://en.wikipedia.org/wiki/Trie) data structure to store and rapidly look up user-agent tokens. It utilizes heuristic rules, tokenizing a list of user-agent strings into a trie during startup. During runtime, the parsing process involves a straightforward lookup operation.
