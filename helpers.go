@@ -71,6 +71,106 @@ func (ua UserAgent) BrowserVersionPatch() string {
 	return strings.Join(parts[2:], ".")
 }
 
+// IsAndroidBrowser returns true if the user agent is an Android browser.
+func (ua UserAgent) IsAndroidBrowser() bool {
+	return ua.browser == internal.BrowserAndroid
+}
+
+// IsChrome returns true if the user agent is a Chrome browser.
+func (ua UserAgent) IsChrome() bool {
+	return ua.browser == internal.BrowserChrome
+}
+
+// IsEdge returns true if the user agent is an Edge browser.
+func (ua UserAgent) IsEdge() bool {
+	return ua.browser == internal.BrowserEdge
+}
+
+// IsFirefox returns true if the user agent is a Firefox browser.
+func (ua UserAgent) IsFirefox() bool {
+	return ua.browser == internal.BrowserFirefox
+}
+
+// IsIE returns true if the user agent is an Internet Explorer browser.
+func (ua UserAgent) IsIE() bool {
+	return ua.browser == internal.BrowserIE
+}
+
+// IsOpera returns true if the user agent is an Opera browser.
+func (ua UserAgent) IsOpera() bool {
+	return ua.browser == internal.BrowserOpera
+}
+
+// IsOperaMini returns true if the user agent is an Opera Mini browser.
+func (ua UserAgent) IsOperaMini() bool {
+	return ua.browser == internal.BrowserOperaMini
+}
+
+// IsSafari returns true if the user agent is a Safari browser.
+func (ua UserAgent) IsSafari() bool {
+	return ua.browser == internal.BrowserSafari
+}
+
+// IsVivaldi returns true if the user agent is a Vivaldi browser.
+func (ua UserAgent) IsVivaldi() bool {
+	return ua.browser == internal.BrowserVivaldi
+}
+
+// IsSamsungBrowser returns true if the user agent is a Samsung browser.
+func (ua UserAgent) IsSamsungBrowser() bool {
+	return ua.browser == internal.BrowserSamsung
+}
+
+// IsFalkon returns true if the user agent is a Falkon browser.
+func (ua UserAgent) IsFalkon() bool {
+	return ua.browser == internal.BrowserFalkon
+}
+
+// IsNintendoBrowser returns true if the user agent is a Nintendo browser.
+func (ua UserAgent) IsNintendoBrowser() bool {
+	return ua.browser == internal.BrowserNintendo
+}
+
+// IsYandexBrowser returns true if the user agent is a Yandex browser.
+func (ua UserAgent) IsYandexBrowser() bool {
+	return ua.browser == internal.BrowserYandex
+}
+
+// IsAndroidOS returns true if the user agent is an Android OS device.
+func (ua UserAgent) IsAndroidOS() bool {
+	return ua.os == internal.OSAndroid
+}
+
+// IsChromeOS returns true if the user agent is a Chrome OS device.
+func (ua UserAgent) IsChromeOS() bool {
+	return ua.os == internal.OSChromeOS
+}
+
+// IsIOS returns true if the user agent is an iOS device.
+func (ua UserAgent) IsIOS() bool {
+	return ua.os == internal.OSIOS
+}
+
+// IsLinux returns true if the user agent is a Linux device.
+func (ua UserAgent) IsLinux() bool {
+	return ua.os == internal.OSLinux
+}
+
+// IsOpenBSD returns true if the user agent is an OpenBSD device.
+func (ua UserAgent) IsOpenBSD() bool {
+	return ua.os == internal.OSOpenBSD
+}
+
+// IsMacOS returns true if the user agent is a macOS device.
+func (ua UserAgent) IsMacOS() bool {
+	return ua.os == internal.OSMacOS
+}
+
+// IsWindows returns true if the user agent is a Windows device.
+func (ua UserAgent) IsWindows() bool {
+	return ua.os == internal.OSWindows
+}
+
 // IsDesktop returns true if the user agent is a desktop browser.
 func (ua UserAgent) IsDesktop() bool {
 	return ua.device == internal.DeviceDesktop
