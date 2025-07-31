@@ -53,11 +53,6 @@ func NewParser() *Parser {
 			// Panicking is fine since it would be caught in a test and is a fixed trusted input.
 			panic("failed to parse embedded user agent definitions: " + err.Error())
 		}
-
-		// For each newline in the file, add the user agent to the trie.
-		for _, ua := range strings.Split(userAgentsFile, "\n") {
-			parser.Trie.Put(ua)
-		}
 	})
 
 	return parser
