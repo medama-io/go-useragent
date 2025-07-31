@@ -2,6 +2,7 @@ package useragent
 
 import (
 	"bufio"
+	"context"
 	"errors"
 	"fmt"
 	"io"
@@ -9,6 +10,7 @@ import (
 	"os"
 	"strings"
 	"sync"
+	"time"
 
 	"github.com/medama-io/go-useragent/internal"
 )
@@ -72,17 +74,27 @@ func NewParserWithFile(filePath string) (*Parser, error) {
 }
 
 // NewParserWithURL creates a new parser with user agent definitions loaded from a URL.
+// It accepts a context for cancellation and timeout control.
 //
 // The URL should serve content with one user agent definition per line.
-func NewParserWithURL(url string) (*Parser, error) {
-	resp, err := http.Get(url)
+func NewParserWithURL(ctx context.Context, url string) (*Parser, error) {
+	client := &http.Client{
+		Timeout: 30 * time.Second, // Default timeout
+	}
+
+	req, err := http.NewRequestWithContext(ctx, http.MethodGet, url, nil)
 	if err != nil {
-		return nil, fmt.Errorf("failed to fetch URL %s: %w", url, err)
+		return nil, fmt.Errorf("failed to create request for url %s: %w", url, err)
+	}
+
+	resp, err := client.Do(req)
+	if err != nil {
+		return nil, fmt.Errorf("failed to fetch url %s: %w", url, err)
 	}
 	defer resp.Body.Close()
 
 	if resp.StatusCode != http.StatusOK {
-		return nil, fmt.Errorf("HTTP request failed with status %d: %s", resp.StatusCode, resp.Status)
+		return nil, fmt.Errorf("http request failed with status %d: %s", resp.StatusCode, resp.Status)
 	}
 
 	return newParserFromReader(resp.Body)
