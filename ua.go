@@ -105,18 +105,18 @@ func newParserFromReader(reader io.Reader) (*Parser, error) {
 	parser := &Parser{Trie: trie}
 
 	scanner := bufio.NewScanner(reader)
-	lineCount := 0
+	linesProcessed := false
 
 	for scanner.Scan() {
 		parser.Trie.Put(scanner.Text())
-		lineCount++
+		linesProcessed = true
 	}
 
 	if err := scanner.Err(); err != nil {
 		return nil, fmt.Errorf("error reading user agent definitions: %w", err)
 	}
 
-	if lineCount == 0 {
+	if !linesProcessed {
 		return nil, errors.New("no user agent definitions found")
 	}
 
