@@ -29,6 +29,7 @@ const (
 	OSChromeOS OS = "ChromeOS"
 	OSIOS      OS = "iOS"
 	OSLinux    OS = "Linux"
+	OSFreeBSD  OS = "FreeBSD"
 	OSOpenBSD  OS = "OpenBSD"
 	OSMacOS    OS = "MacOS"
 	OSWindows  OS = "Windows"

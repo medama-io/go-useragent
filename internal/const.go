@@ -32,6 +32,7 @@ const (
 	OSChromeOS
 	OSIOS
 	OSLinux
+	OSFreeBSD
 	OSOpenBSD
 	OSMacOS
 	OSWindows
@@ -78,6 +79,7 @@ func (m Match) GetMatchType() MatchType {
 		OSChromeOS,
 		OSIOS,
 		OSLinux,
+		OSFreeBSD,
 		OSOpenBSD,
 		OSMacOS,
 		OSWindows:

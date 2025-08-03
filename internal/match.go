@@ -33,6 +33,7 @@ var matchMap = map[Match][]string{
 	OSChromeOS: {"CrOS"},
 	OSIOS:      {"iPhone", "iPad", "iPod"},
 	OSLinux:    {string(agents.OSLinux), "Ubuntu", "Fedora"},
+	OSFreeBSD:  {string(agents.OSFreeBSD)},
 	OSOpenBSD:  {string(agents.OSOpenBSD)},
 	OSMacOS:    {"Macintosh"},
 	OSWindows:  {"Windows NT", "WindowsNT"},
@@ -43,7 +44,7 @@ var matchMap = map[Match][]string{
 	TokenMobileDevice: {"ONEPLUS", "Huawei", "HTC", "Galaxy", "iPhone", "iPod", "Windows Phone", "WindowsPhone", "LG"},
 	DeviceTablet:      {string(agents.DeviceTablet), "Touch", "iPad", "Nintendo Switch", "NintendoSwitch", "Kindle"},
 	DeviceTV:          {string(agents.DeviceTV), "Large Screen", "LargeScreen", "Smart Display", "SmartDisplay", "PLAYSTATION", "PlayStation", "ADT-2", "ADT-1", "CrKey", "Roku", "AFT", "Web0S", "Nexus Player", "Xbox", "XBOX", "Nintendo WiiU", "NintendoWiiU"},
-	DeviceBot:         {string(agents.DeviceBot), "HeadlessChrome", "bot", "Slurp", "LinkCheck", "QuickLook", "Haosou", "Yahoo Ad", "YahooAd", "Google", "Mediapartners", "Headless", "facebookexternalhit", "facebookcatalog", "Baidu", "Instagram", "Pinterest", "PageSpeedInsights", "WhatsApp", "PHP", "curl", "Python-urllib", "Go-http-client", "Java", "Ruby", "Node.js", "Dart", "C#", "PHP-Curl", "PHP-HTTP", "PHP-SOAP"},
+	DeviceBot:         {string(agents.DeviceBot), "HeadlessChrome", "bot", "Slurp", "LinkCheck", "QuickLook", "Haosou", "Yahoo Ad", "YahooAd", "Google", "Mediapartners", "Headless", "facebookexternalhit", "facebookcatalog", "Baidu", "Instagram", "Pinterest", "PageSpeedInsights", "WhatsApp", "PHP", "curl", "Python-urllib", "Go-http-client", "Java", "Ruby", "Node.js", "Dart", "C#", "PHP-Curl", "PHP-HTTP", "PHP-SOAP", "amazon-QBusiness"},
 
 	// Version
 	TokenVersion: {"Version"},
@@ -80,7 +81,8 @@ var MatchPrecedenceMap = map[Match]uint8{
 	OSLinux:    1,
 	OSAndroid:  2,
 	OSIOS:      3,
-	OSOpenBSD:  4,
+	OSFreeBSD:  4,
+	OSOpenBSD:  5,
 	OSChromeOS: 5,
 	OSMacOS:    6,
 	OSWindows:  7,

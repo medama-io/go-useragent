@@ -3792,3 +3792,456 @@ Mozilla/5.0 (Linux; Android 7.1.2; AFTEAMR311) AppleWebKit/537.36 (KHTML, like G
 Mozilla/5.0 (Linux; Android 11; KFTUWI) AppleWebKit/537.36 (KHTML, like Gecko) Silk/138.2.3 like Chrome/138.0.7204.157 Safari/537.36
 Mozilla/5.0 (Linux; Android 9; KFTRPWI) AppleWebKit/537.36 (KHTML, like Gecko) Silk/136.7.3 like Chrome/136.0.7103.169 Safari/537.36
 Mozilla/5.0 (Linux; Android 9; AFTWMST22) AppleWebKit/537.36 (KHTML, like Gecko) Silk/138.1.150 like Chrome/138.0.7204.157 Safari/537.36
+Mozilla/5.0 (Windows NT 10.0; WOW64; x64; rv:128.0) Gecko/20100101 Firefox/128.0
+Mozilla/5.0 (Windows 10; Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/126.0.6478.234 YaBrowser/24.7.3.1250 Safari/537.36
+Mozilla/5.0 (X11; Linux x86_64; FreeBSD amd64) AppleWebKit/537.36 (KHTML, like Gecko) QtWebEngine/6.7.2 Chrome/118.0.5993.220 Safari/537.36
+Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko)
+Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) SamsungBrowser/26.0 Chrome/122.0.0.0 Safari/537.36
+Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_1) AppleWebKit/601.2.4 (KHTML, like Gecko) Version/9.0.1 Safari/601.2.4 facebookexternalhit/1.1 Facebot Twitterbot/1.0
+Mozilla/5.0 (SMART-TV; LINUX; Tizen 6.5) AppleWebKit/537.36 (KHTML, like Gecko) 85.0.4183.93/6.5 TV Safari/537.36
+Mozilla/5.0 (FreeBSD; Viera; rv:34.0) Gecko/20100101 Firefox/34.0
+Mozilla/5.0 (X11; FreeBSD amd64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/52.0.2743.82 Safari/537.36
+Opera/9.80 (X11; FreeBSD 8.1-RELEASE-p1 i386; U; ru) Presto/2.6.30 Version/10.61
+Mozilla/5.0 (X11; FreeBSD amd64; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/63.0.3239.132 Safari/537.36
+Mozilla/5.0 (X11; FreeBSD amd64; rv:52.0) Gecko/20100101 Firefox/52.0
+Mozilla/5.0 (X11; FreeBSD amd64; rv:52.0) Gecko/20100101 Firefox/52.0 SeaMonkey/2.49.3
+Mozilla/5.0 (X11; FreeBSD amd64; rv:56.0) Gecko/20100101 Firefox/56.0
+Mozilla/5.0 (X11; FreeBSD amd64; rv:50.0) Gecko/20100101 Firefox/50.0
+Mozilla/5.0 (X11; FreeBSD amd64; rv:58.0) Gecko/20100101 Firefox/58.0
+Mozilla/5.0 (X11; FreeBSD amd64; rv:59.0) Gecko/20100101 Firefox/59.0
+Mozilla/5.0 (X11; FreeBSD i386; rv:38.0) Gecko/20100101 Firefox/38.0
+Mozilla/5.0 (X11; FreeBSD amd64; rv:45.0) Gecko/20100101 Firefox/45.0
+Mozilla/5.0 (X11; FreeBSD amd64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/61.0.3163.100 Safari/537.36
+Mozilla/5.0 (X11; FreeBSD) AppleWebKit/537.21 (KHTML, like Gecko) konqueror/4.14.3 Safari/537.21
+Opera/9.80 (X11; FreeBSD 9.1-RELEASE i386) Presto/2.12.388 Version/12.11
+Mozilla/5.0 (X11; FreeBSD amd64; rv:60.0) Gecko/20100101 Firefox/60.0
+Mozilla/5.0 (compatible; Konqueror/3.5; FreeBSD) KHTML/3.5.10 (like Gecko)
+Mozilla/5.0 (X11; FreeBSD amd64; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/65.0.3325.181 Safari/537.36
+Mozilla/5.0 (X11; FreeBSD; U; Viera; de-DE) AppleWebKit/535.1 (KHTML, like Gecko) Viera/1.5.2 Chrome/14.0.835.202 Safari/535.1
+Mozilla/5.0 (X11; FreeBSD; U; Viera; ru-RU) AppleWebKit/537.11 (KHTML, like Gecko) Viera/3.10.14 Chrome/23.0.1271.97 Safari/537.11
+Mozilla/5.0 (X11; FreeBSD amd64; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/64.0.3282.186 Safari/537.36
+Mozilla/5.0 (X11; FreeBSD i386; rv:58.0) Gecko/20100101 Firefox/58.0
+Mozilla/5.0 (X11; U; FreeBSD i386; en-US; rv:1.8.0.2) Gecko/20060414 Firefox/1.5.0.2
+Mozilla/5.0 (X11; FreeBSD arm7hf) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/44.0.2403.155 Safari/537.36
+Mozilla/5.0 (X11; FreeBSD amd64; rv:42.0) Gecko/20100101 Firefox/42.0
+Mozilla/5.0 (X11; FreeBSD i386) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/43.0.2357.124 Safari/537.36
+Mozilla/5.0 (X11; FreeBSD amd64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/43.0.2357.125 Safari/537.36
+Mozilla/5.0 (X11; FreeBSD amd64; rv:43.0) Gecko/20100101 Firefox/43.0
+Mozilla/5.0 (X11; FreeBSD; U; Viera; cs-CZ) AppleWebKit/537.11 (KHTML, like Gecko) Viera/3.10.17 Chrome/23.0.1271.97 Safari/537.11
+Mozilla/5.0 (X11; FreeBSD amd64; rv:41.0) Gecko/20100101 Firefox/41.0
+Mozilla/5.0 (X11; FreeBSD; U; Viera; ru-RU) AppleWebKit/537.11 (KHTML, like Gecko) Viera/3.10.17 Chrome/23.0.1271.97 Safari/537.11
+Mozilla/5.0 (X11; U; FreeBSD i386 4.6; rv:216.47) Gecko/20100101  Firefox/132.67 Safari/216.47;
+Mozilla/5.0 (X11; FreeBSD i386 on amd64 7.34; rv:135.31) Gecko/20100101  OPR/78.79 Firefox/135.31;
+Mozilla/5.0 (X11; FreeBSD amd64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.181 Safari/537.36
+Opera/9.80 (X11; FreeBSD 10.2-RELEASE amd64) Presto/2.12.388 Version/12.16
+Mozilla/5.0 (X11; FreeBSD amd64; rv:48.0) Gecko/20100101 Firefox/48.0
+Links (2.5; FreeBSD 9.3-STABLE amd64; GNU C 4.2.1; text)
+Mozilla/5.0 (X11; FreeBSD amd64; rv:5.0) Gecko/20100101 Firefox/5.0
+Mozilla/5.0 (X11; U; FreeBSD i386; en-US; rv:1.9.2.9) Gecko/20100913 Firefox/3.6.9
+Mozilla/5.0 (compatible; Konqueror/4.5; FreeBSD) KHTML/4.5.4 (like Gecko)
+Mozilla/5.0 (X11; U; FreeBSD i386; en-US) AppleWebKit/534.16 (KHTML, like Gecko) Chrome/10.0.648.204 Safari/534.16
+Mozilla/5.0 (X11; FreeBSD amd64) AppleWebKit/535.11 (KHTML, like Gecko) Chrome/17.0.963.65 Safari/535.11
+Mozilla/5.0 (X11; U; FreeBSD i386; en-US; rv:1.5) Gecko/20031021
+Mozilla/5.0 (X11; FreeBSD amd64; rv:57.0) Gecko/20100101 Firefox/57.0
+Mozilla/5.0 (X11; U; FreeBSD i386; en-US; rv:1.8.1.4) Gecko/20070531 Firefox/2.0.0.4
+Mozilla/5.0 (X11; FreeBSD amd64) AppleWebKit/537.1 (KHTML, like Gecko) Chrome/21.0.1180.89 Safari/537.1
+Mozilla/5.0 (X11; FreeBSD; U; Viera; ru-RU) AppleWebKit/537.11 (KHTML, like Gecko) Viera/3.3.3 Chrome/23.0.1271.97 Safari/537.11
+Mozilla/5.0 (X11; FreeBSD amd64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/47.0.2526.106 Safari/537.36
+Mozilla/5.0 (X11; U; FreeBSD i386; en-US) AppleWebKit/532.0 (KHTML, like Gecko) Chrome/4.0.207.0 Safari/532.0
+Mozilla/5.0 (X11; FreeBSD amd64) AppleWebKit/537.11 (KHTML, like Gecko) Chrome/23.0.1271.97 Safari/537.11
+Mozilla/5.0 (FreeBSD; U; Viera; ru-RU) AppleWebKit/535.1 (KHTML, like Gecko) Viera/1.5.2 Chrome/14.0.835.202 Safari/535.1
+Mozilla/5.0 (X11; U; FreeBSD i386; zh-tw; rv:31.0) Gecko/20100101 Opera/13.0
+Mozilla/5.0 (X11; FreeBSD amd64) AppleWebKit/535.19 (KHTML, like Gecko) Chrome/18.0.1025.168 Safari/535.19
+Opera/9.63 (X11; FreeBSD 7.1-RELEASE i386; U; en) Presto/2.1.1
+Mozilla/5.0 (X11; FreeBSD amd64; rv:62.0) Gecko/20100101 Firefox/62.0
+ELinks/0.11.4-2 (textmode; Debian; GNU/kFreeBSD 6.3-1-486 i686; 141x21-2)
+Mozilla/5.0 (X11; FreeBSD; U; Viera; pt-BR) AppleWebKit/537.11 (KHTML, like Gecko) Viera/3.18.1 Chrome/23.0.1271.97 Safari/537.11
+Mozilla/4.76 [en] (X11; U; FreeBSD 4.4-STABLE i386)
+Mozilla/5.0 (X11; FreeBSD i386; rv:26.0) Gecko/20100101 Firefox/26.0
+Mozilla/5.0 (X11; U; FreeBSD amd64; en-US; rv:1.8.0.8) Gecko/20061116 Firefox/1.5.0.8
+Mozilla/5.0 (X11; U; FreeBSD i386; ja-JP; rv:1.9.1.8) Gecko/20100305 Firefox/3.5.8
+Mozilla/5.0 (X11; FreeBSD amd64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/43.0.2357.81 Safari/537.36
+Opera/9.80 (X11; FreeBSD 8.1-RELEASE i386; Edition Next) Presto/2.12.388 Version/12.10
+Mozilla/5.0 (X11; FreeBSD) KHTML/4.9.1 (like Gecko) Konqueror/4.9
+Mozilla/5.0 (X11; U; FreeBSD i386; en-US; rv:1.6) Gecko/20040406 Galeon/1.3.15
+Mozilla/5.0 (X11; U; FreeBSD amd64 8.75; rv:56.23) Gecko/20100101  Firefox/227.60 Firefox/56.23;
+Mozilla/5.0 (X11; FreeBSD amd64) AppleWebKit/537.4 (KHTML like Gecko) Chrome/22.0.1229.79 Safari/537.4
+Mozilla/5.0 (X11; FreeBSD; U; Viera; pt-PT) AppleWebKit/537.11 (KHTML, like Gecko) Viera/3.4.13 Chrome/23.0.1271.97 Safari/537.11
+Mozilla/5.0 (X11; FreeBSD amd64; rv:36.0) Gecko/20100101 Firefox/36.0 SeaMonkey/2.33.1
+Mozilla/5.0 (X11; FreeBSD amd64; rv:40.0) Gecko/20100101 Firefox/40.0
+Mozilla/5.0 (X11; U; FreeBSD i386; en-US; rv:1.7.12) Gecko/20051105 Firefox/1.0.8
+Mozilla/5.0 (X11; U; FreeBSD i386; en-US; rv:1.8.1.2) Gecko/20070402 SeaMonkey/1.1.1
+Mozilla/5.0 (X11; FreeBSD; U; Viera; pt-PT) AppleWebKit/537.11 (KHTML, like Gecko) Viera/3.10.14 Chrome/23.0.1271.97 Safari/537.11
+Mozilla/5.0 (X11; U; FreeBSD i386; en-US; rv:1.8.1.20) Gecko/20090413 Firefox/2.0.0.20
+Mozilla/5.0 (X11; FreeBSD i386 8.11; rv:32.63) Gecko/20100101  Firefox/32.81 AppleWebKit/32.63;
+Mozilla/5.0 (X11; FreeBSD amd64; rv:63.0) Gecko/20100101 Firefox/63.0
+Mozilla/5.0 (X11; FreeBSD i386; rv:36.0) Gecko/20100101 Firefox/36.0 SeaMonkey/2.33.1
+Mozilla/5.0 (X11; U; FreeBSD i386; en-US; rv:1.8.0.8) Gecko/20061210 Firefox/52.0
+Mozilla/5.0 (X11; U; FreeBSD amd64; en-US; rv:1.8.0.8) Gecko/20061116 Firefox/52.4.1
+Mozilla/5.0 (X11; FreeBSD amd64; rv:38.0) Gecko/20100101 Firefox/38.0
+Mozilla/5.0 (X11; FreeBSD amd64; rv:49.0) Gecko/20100101 Firefox/49.0
+Mozilla/5.0 (X11; FreeBSD i386) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/43.0.2357.81 Safari/537.36
+Mozilla/5.0 (X11; FreeBSD i386; rv:5.0) Gecko/20100101 Firefox/5.0
+Mozilla/5.0 (X11; FreeBSD amd64) AppleWebKit/536.5 (KHTML like Gecko) Chrome/19.0.1084.56 Safari/536.5
+Mozilla/5.0 (X11; U; FreeBSD i386; en-US; rv:1.8.1.4) Gecko/20070515 Firefox/2.0.0.10
+Mozilla/5.0 (X11; FreeBSD; U; Viera; pl-PL) AppleWebKit/537.11 (KHTML, like Gecko) Viera/3.10.17 Chrome/23.0.1271.97 Safari/537.11
+Mozilla/5.0 (X11; FreeBSD amd64; rv:54.0) Gecko/20100101 Firefox/54.0
+Opera/9.80 (X11; FreeBSD 9.0-RELEASE-p3 i386; U; en) Presto/2.10.289 Version/12.01
+Mozilla/5.0 (X11; FreeBSD i386) AppleWebKit/536.5 (KHTML, like Gecko) Chrome/19.0.1084.56 Safari/536.5
+Opera/9.80 (X11; FreeBSD 9.0-RELEASE amd64; U; ru) Presto/2.10.229 Version/11.60
+Opera/9.80 (X11; FreeBSD 8.3-RELEASE-p2 i386) Presto/2.12.388 Version/12.10
+Mozilla/5.0 (X11; U; FreeBSD x86_64; en-US) AppleWebKit/534.16 (KHTML like Gecko) Chrome/10.0.648.204 Safari/534.16
+Mozilla/5.0 (X11; FreeBSD i386) AppleWebKit/537.11 (KHTML, like Gecko) Chrome/23.0.1271.95 Safari/537.11
+Opera/9.80 (X11; FreeBSD 8.1-PRERELEASE amd64; U; en) Presto/2.2.15 Version/10.10
+Mozilla/5.0 (X11; FreeBSD i386) AppleWebKit/537.11 (KHTML, like Gecko) Chrome/23.0.1271.97 Safari/537.11
+Mozilla/5.0 (X11; FreeBSD amd64; rv:39.0) Gecko/20100101 Firefox/39.0
+Mozilla/5.0 (X11; FreeBSD i386) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/38.0.2125.104 Safari/537.36
+Opera/9.80 (X11; FreeBSD 7.1-RELEASE-p4 i386; U; fr) Presto/2.6.30 Version/10.62
+Mozilla/5.0 (X11; FreeBSD amd64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/43.0.2357.124 Safari/537.36
+Mozilla/5.0 (X11; U; FreeBSD i386; en-US; rv:1.7.12) Gecko/20051105 Galeon/1.3.21
+Mozilla/5.0 (X11; FreeBSD i386; rv:42.0) Gecko/20100101 Firefox/42.0
+Mozilla/5.0 (X11; FreeBSD i386; rv:33.0) Gecko/20100101 Firefox/33.0
+Mozilla/5.0 (X11; FreeBSD amd64; rv:67.0) Gecko/20100101 Firefox/67.0
+Mozilla/5.0 (X11; FreeBSD amd64; rv:68.0) Gecko/20100101 Firefox/68.0
+Mozilla/5.0 (FreeBSD; Viera; ru:34.0) Gecko/20100101 Firefox/34.0
+Mozilla/5.0 (X11; FreeBSD amd64) AppleWebKit/536.5 (KHTML like Gecko) Chrome/19.0.1084.56 Safari/1EA69
+Mozilla/5.0 (X11; FreeBSD amd64; rv:66.0) Gecko/20100101 Firefox/66.0
+Links (2.1pre15; FreeBSD 5.3-RELEASE i386; 196x84)
+Mozilla/5.0 (X11; U; FreeBSD i386; en-US; rv:1.7.5) Gecko/20041114 Firefox/1.0
+Mozilla/5.0 (X11; U; FreeBSD i386; ru-RU; rv:1.9.1.3) Gecko/20090913 Firefox/3.5.3
+Mozilla/5.0 (X11; U; FreeBSD i386; en-US; rv:1.9.0.10) Gecko/20090624 Firefox/3.5
+Mozilla/5.0 (X11; FreeBSD amd64; rv:69.0) Gecko/20100101 Firefox/69.0
+Mozilla/5.0 (X11; FreeBSD amd64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/40.0.2214.115 Safari/537.36
+Mozilla/5.0 (X11; FreeBSD amd64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/43.0.2357.130 Safari/537.36
+Mozilla/5.0 (X11; FreeBSD amd64; rv:52.0) Gecko/20100101 Firefox/52.0 SeaMonkey/2.49.4 Lightning/5.4
+Mozilla/5.0 (X11; U; FreeBSD i386; de-CH; rv:1.9.2.8) Gecko/20100729 Firefox/3.6.8
+Mozilla/5.0 (X11; FreeBSD amd64; rv:65.0) Gecko/20100101 Firefox/65.0
+Mozilla/5.0 (X11; FreeBSD; U; Viera; ru-RU) AppleWebKit/537.11 (KHTML, like Gecko) Viera/3.10.21 Chrome/23.0.1271.97 Safari/537.11
+Mozilla/5.0 (X11; FreeBSD amd64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/43.0.2357.65 Safari/537.36
+Mozilla/5.0 (X11; FreeBSD amd64; rv:70.0) Gecko/20100101 Firefox/70.0
+Mozilla/5.0 (X11; FreeBSD; U; Viera; ru-RU) AppleWebKit/535.1 (KHTML, like Gecko) Viera/1.5.2 Chrome/14.0.835.202 Safari/535.1
+Mozilla/5.0 (X11; FreeBSD i386; rv:65.0) Gecko/20100101 Firefox/65.0
+Mozilla/5.0 (X11; FreeBSD i386; rv:67.0) Gecko/20100101 Firefox/67.0
+Mozilla/5.0 (X11; FreeBSD amd64; rv:71.0) Gecko/20100101 Firefox/71.0
+Mozilla/5.0 (X11; FreeBSD amd64; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Falkon/3.1.0 Chrome/73.0.3683.105 Safari/537.36
+Mozilla/5.0 (X11; FreeBSD amd64; rv:72.0) Gecko/20100101 Firefox/72.0
+Mozilla/5.0 (X11; FreeBSD amd64; rv:87.0) Gecko/20100101 Firefox/87.0
+Mozilla/5.0 (X11; FreeBSD; U; Viera; pl-PL) AppleWebKit/537.11 (KHTML, like Gecko) Viera/3.10.15 Chrome/23.0.1271.97 Safari/537.11
+Mozilla/5.0 (X11; FreeBSD i386) AppleWebKit/535.22+ (KHTML, like Gecko) Chromium/17.0.963.56 Chrome/17.0.963.56 Safari/535.22+ Epiphany/2.30.6
+Mozilla/5.0 (X11; FreeBSD i386) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/43.0.2357.130 Safari/537.36
+Mozilla/5.0 (X11; FreeBSD amd64; rv:60.9) Gecko/20100101 Firefox/60.9
+Mozilla/5.0 (X11; U; FreeBSD i386; pl; rv:1.8.1.12) Gecko/20080213 Epiphany/2.20 Firefox/2.0.0.12
+Mozilla/5.0 (X11; FreeBSD amd64; rv:73.0) Gecko/20100101 Firefox/73.0
+Mozilla/5.0 (X11; FreeBSD; U; Viera; en-IE) AppleWebKit/537.11 (KHTML, like Gecko) Viera/3.10.21 Chrome/23.0.1271.97 Safari/537.11
+Mozilla/5.0 (X11; FreeBSD i386; rv:43.0) Gecko/20100101 Firefox/43.0
+Mozilla/5.0 (X11; FreeBSD amd64; rv:52.0) Gecko/20100101 Firefox/52.0 SeaMonkey/2.49.4
+Mozilla/5.0 (X11; FreeBSD amd64) AppleWebKit/534.34 (KHTML, like Gecko) konqueror/5.0.97 Safari/534.34
+Mozilla/5.0 (X11; FreeBSD amd64; rv:74.0) Gecko/20100101 Firefox/74.0
+Mozilla/5.0 (X11; FreeBSD; U; Viera; de-DE) AppleWebKit/537.11 (KHTML, like Gecko) Viera/3.10.21 Chrome/23.0.1271.97 Safari/537.11
+Mozilla/5.0 (X11; FreeBSD; U; Viera; pt-BR) AppleWebKit/537.11 (KHTML, like Gecko) Viera/3.10.12 Chrome/23.0.1271.97 Safari/537.11
+Mozilla/5.0 (X11; FreeBSD; U; Viera; ja-JP) AppleWebKit/537.11 (KHTML, like Gecko) Viera/3.18.1 Chrome/23.0.1271.97 Safari/537.11
+Mozilla/5.0 (X11; U; FreeBSD amd64; rv:50.0) Gecko/20100101 Firefox/50.0
+Mozilla/5.0 (X11; FreeBSD amd64; rv:70.0.1) Gecko/20100101 Firefox/70.0.1
+Mozilla/5.0 (X11; FreeBSD amd64; rv:75.0) Gecko/20100101 Firefox/75.0
+Mozilla/5.0 (X11; FreeBSD i386 on amd64 2.52; rv:217.52) Gecko/20100101  Safari/108.38 Firefox/217.52;
+Mozilla/5.0 (X11; FreeBSD amd64) AppleWebKit/535.22+ (KHTML, like Gecko) Chromium/17.0.963.56 Chrome/17.0.963.56 Safari/535.22+ Epiphany/2.30.6
+Mozilla/5.0 (X11; FreeBSD i386; rv:68.0) Gecko/20100101 Firefox/68.0
+Mozilla/5.0 (X11; FreeBSD; U; Viera; pl-PL) AppleWebKit/537.11 (KHTML, like Gecko) Viera/3.3.3 Chrome/23.0.1271.97 Safari/537.11
+Mozilla/5.0 (X11; FreeBSD; U; Viera; tr-TR) AppleWebKit/537.11 (KHTML, like Gecko) Viera/3.18.1 Chrome/23.0.1271.97 Safari/537.11
+Mozilla/5.0 (X11; FreeBSD i386; rv:73.0) Gecko/20100101 Firefox/73.0
+Mozilla/5.0 (X11; FreeBSD; U; Viera; en-IE) AppleWebKit/537.11 (KHTML, like Gecko) Viera/3.12.5 Chrome/23.0.1271.97 Safari/537.11
+Mozilla/5.0 (X11; FreeBSD amd64; rv:47.0) Gecko/20100101 Firefox/47.0
+Opera/9.80 (X11; FreeBSD 11.1-RELEASE-p15 i386) Presto/2.12.388 Version/12.16
+Mozilla/5.0 (X11; FreeBSD amd64; rv:76.0) Gecko/20100101 Firefox/76.0
+Mozilla/5.0 (X11; FreeBSD; U; Viera; it-IT) AppleWebKit/537.11 (KHTML, like Gecko) Viera/3.10.14 Chrome/23.0.1271.97 Safari/537.11
+Mozilla/5.0 (X11; FreeBSD amd64; rv:57.0) Gecko/20100101 Firefox/75.0
+Mozilla/5.0 (X11; FreeBSD amd64) Gecko/20100101 Firefox/75.0
+Mozilla/5.0 (X11; FreeBSD amd64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/81.0.2214.115 Safari/537.36
+Mozilla/5.0 (X11; FreeBSD amd64; Linux x86_64; rv:21.0) Gecko/20130331 Firefox/21.0
+Mozilla/5.0 (X11; FreeBSD amd64; rv:28.0) Gecko/20100101 Firefox/28.0
+Mozilla/5.0 (X11; FreeBSD i386; rv:76.0) Gecko/20100101 Firefox/76.0
+Mozilla/5.0 (X11; FreeBSD amd64; Linux x86_64; rv:24.0) Gecko/20100101 Firefox/24.0
+Mozilla/5.0 (X11; FreeBSD i386; rv:75.0) Gecko/20100101 Firefox/75.0
+Mozilla/5.0 (X11; FreeBSD amd64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/48.0.2564.116 Safari/537.36
+Mozilla/5.0 (X11; FreeBSD amd64; rv:77.0) Gecko/20100101 Firefox/77.0
+Mozilla/5.0 (X11; FreeBSD; U; Viera; en) AppleWebKit/537.11 (KHTML, like Gecko) Viera/3.10.14 Chrome/23.0.1271.97 Safari/537.11
+Mozilla/5.0 (X11; FreeBSD i386; rv:77.0) Gecko/20100101 Firefox/77.0
+Mozilla/5.0 (X11; FreeBSD i386) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/43.0.2357.125 Safari/537.36
+Opera/5.0 ZBZvk996Zu9REb2f EmZ3nt9T S29fG1fCt CZZDyQheWmr0WZ (Windows; Mac OS X; FreeBSD x86_64; rv:77.0) 9DsBHd949th ZyeQ9LLT85xd82 Opera/20100101 rgK9YBdZtZ
+Mozilla/5.0 (X11; FreeBSD; U; Viera; en) AppleWebKit/537.11 (KHTML, like Gecko) Viera/3.10.17 Chrome/23.0.1271.97 Safari/537.11
+Mozilla/5.0 (X11; FreeBSD; U; Viera; pt-BR) AppleWebKit/537.11 (KHTML, like Gecko) Viera/3.10.17 Chrome/23.0.1271.97 Safari/537.11
+Mozilla/5.0 (X11; FreeBSD i386; rv:28.0) Gecko/20100101 Firefox/28.0 SeaMonkey/2.25
+Mozilla/5.0 (X11; FreeBSD; U; Viera; en) AppleWebKit/537.11 (KHTML, like Gecko) Viera/3.18.1 Chrome/23.0.1271.97 Safari/537.11
+Mozilla/5.0 (X11; FreeBSD amd64 3.11; rv:3.32) Gecko/20100101  Firefox/5.84 Firefox/3.32;
+Mozilla/5.0 (X11; FreeBSD amd64 0.72; rv:141.66) Gecko/20100101  AppleWebKit/129.20 Firefox/141.66;
+Mozilla/5.0 (X11; FreeBSD amd64; rv:78.0) Gecko/20100101 Firefox/78.0
+Mozilla/5.0 (X11; FreeBSD; U; Viera; de-DE) AppleWebKit/537.11 (KHTML, like Gecko) Viera/3.18.1 Chrome/23.0.1271.97 Safari/537.11
+Mozilla/5.0 (X11; FreeBSD i386; rv:78.0) Gecko/20100101 Firefox/78.0
+Mozilla/5.0 (X11; FreeBSD amd64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/68.0.2564.116 Safari/537.36
+Mozilla/5.0 (X11; FreeBSD amd64; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Falkon/3.1.0 Chrome/77.0.3865.129 Safari/537.36
+Mozilla/5.0 (X11; FreeBSD amd64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/69.0.2214.115 Safari/537.36
+Mozilla/5.0 (X11; FreeBSD amd64; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/77.0.3865.129 Otter/1.0.81
+Mozilla/5.0 (X11; FreeBSD amd64; rv:79.0) Gecko/20100101 Firefox/79.0
+Mozilla/5.0 (X11; FreeBSD amd64; rv:53.0) Gecko/20100101 Firefox/53.0
+Mozilla/5.0 (X11; FreeBSD amd64) AppleWebKit/536.5 (KHTML like Gecko) Chrome/84.0.4147.89 Safari/1EA69
+Mozilla/5.0 (X11; FreeBSD; U; Viera; ru-RU) AppleWebKit/537.11 (KHTML, like Gecko) Viera/3.10.20 Chrome/23.0.1271.97 Safari/537.11
+Mozilla/5.0 (X11; FreeBSD; U; Viera; ru-RU) AppleWebKit/537.11 (KHTML, like Gecko) Viera/3.3.2 Chrome/23.0.1271.97 Safari/537.11
+Mozilla/5.0 (X11; FreeBSD i386; rv:79.0) Gecko/20100101 Firefox/79.0
+Konqueror/84.0.4147.125 9tvZbq2ZMiOs9VZ oNsqGN4zdG4cs Z22QR9nZAEtr pWoPpVpv9KZS44yB Gecko/5.0 9kZX49Qhh99 AppleWebKit/537.36 (FreeBSD NT 10.0; Win64; x64) (Chrome, like AppleWebKit) HZjB9I9f Oa9dNZ4D9vx
+Mozilla/5.0 (X11; FreeBSD amd64; rv:80.0) Gecko/20100101 Firefox/80.0
+Mozilla/5.0 (X11; FreeBSD amd64; rv:46.0) Gecko/20100101 Firefox/46.0
+Mozilla/5.0 (X11; FreeBSD; U; Viera; it-IT) AppleWebKit/537.11 (KHTML, like Gecko) Viera/3.10.51 Chrome/23.0.1271.97 Safari/537.11
+Mozilla/5.0 (X11; FreeBSD amd64; rv:55.0) Gecko/20100101 Firefox/55.0
+Mozilla/5.0 (X11; FreeBSD amd64; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Falkon/3.1.0 Chrome/80.0.3987.163 Safari/537.36
+Mozilla/5.0 (X11; FreeBSD powerpc; rv:80.0) Gecko/20100101 Firefox/80.0
+Mozilla/5.0 (X11; FreeBSD; U; Viera; es-BR) AppleWebKit/537.11 (KHTML, like Gecko) Viera/3.5.15 Chrome/23.0.1271.97 Safari/537.11
+Mozilla/5.0 (X11; FreeBSD amd64; rv:81.0) Gecko/20100101 Firefox/81.0
+Mozilla/5.0 (X11; FreeBSD; U; Viera; es-US) AppleWebKit/537.11 (KHTML, like Gecko) Viera/3.18.0 Chrome/23.0.1271.97 Safari/537.11
+Mozilla/5.0 (X11; FreeBSD; U; Viera; fr-CA) AppleWebKit/537.11 (KHTML, like Gecko) Viera/3.10.18 Chrome/23.0.1271.97 Safari/537.11
+Mozilla/5.0 (X11; FreeBSD; U; Viera; de-DE) AppleWebKit/537.11 (KHTML, like Gecko) Viera/3.4.13 Chrome/23.0.1271.97 Safari/537.11
+Mozilla/5.0 (X11; U; FreeBSD i386; en-US; rv:1.8.1.4) Gecko/20070515 Firefox/50.0.2
+Mozilla/5.0 (X11; FreeBSD amd64; rv:82.0) Gecko/20100101 Firefox/82.0
+Mozilla/5.0 (FreeBSD; U; Viera; ru-RU) AppleWebKit/537.11 (KHTML, like Gecko) Viera/3.10.21 Chrome/23.0.1271.97 Safari/537.11 SmartTvA/3.0.0
+Mozilla/5.0 (X11; FreeBSD; U; Viera; es-BR) AppleWebKit/537.11 (KHTML, like Gecko) Viera/3.18.0 Chrome/23.0.1271.97 Safari/537.11
+Mozilla/5.0 (X11; FreeBSD amd64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/87.0.4252.0 Safari/537.36
+Mozilla/5.0 (X11; FreeBSD amd64; rv:82.0) Gecko/20100101 Firefox/82.0 [ip:78.14.28.101]
+Mozilla/5.0 (X11; FreeBSD; U; Viera; en) AppleWebKit/537.11 (KHTML, like Gecko) Viera/3.10.18 Chrome/23.0.1271.97 Safari/537.11
+Mozilla/5.0 (X11; FreeBSD amd64; rv:83.0) Gecko/20100101 Firefox/83.0
+Mozilla/5.0 (X11; U; FreeBSD amd64; en-US) AppleWebKit/534.16 (KHTML, like Gecko) Chrome/10.0.648.205 Safari/534.16
+Mozilla/5.0 (X11; FreeBSD amd64) AppleWebKit/534.24 (KHTML, like Gecko) Chrome/11.0.696.71 Safari/534.24
+Mozilla/5.0 (X11; FreeBSD amd64; rv:2.0.1) Gecko/20100101 Firefox/4.0.1
+Mozilla/5.0 (X11; FreeBSD amd64) AppleWebKit/535.19 (KHTML, like Gecko) Chrome/18.0.1025.151 Safari/535.19
+Mozilla/5.0 (X11; FreeBSD amd64) AppleWebKit/535.19 (KHTML, like Gecko) Chrome/18.0.1025.162 Safari/535.19
+Mozilla/5.0 (X11; FreeBSD amd64; rv:15.0) Gecko/20100101 Firefox/15.0.1
+Mozilla/5.0 (X11; FreeBSD amd64; rv:18.0) Gecko/20100101 Firefox/18.0
+Mozilla/5.0 (X11; FreeBSD amd64) AppleWebKit/537.22 (KHTML, like Gecko) Chrome/25.0.1364.172 Safari/537.22
+Mozilla/5.0 (X11; U; FreeBSD i386; ru-RU; rv:1.9.1.2) Gecko/20090903 Firefox/3.5.2
+Mozilla/5.0 (X11; FreeBSD amd64; rv:21.0) Gecko/20100101 Firefox/21.0
+Mozilla/5.0 (X11; FreeBSD amd64; rv:26.0) Gecko/20100101 Firefox/26.0
+Mozilla/5.0 (X11; FreeBSD amd64; rv:29.0) Gecko/20100101 Firefox/29.0
+Mozilla/5.0 (X11; FreeBSD amd64; rv:33.0) Gecko/20100101 Firefox/33.0
+Mozilla/5.0 (X11; FreeBSD amd64) AppleWebKit/537.4 (KHTML, like Gecko) Chrome/22.0.1229.94 Safari/537.4
+Mozilla/5.0 (X11; U; FreeBSD i386; ru-RU; rv:1.9.2.14) Gecko/20110304 Firefox/3.6.14
+Opera/9.80 (X11; FreeBSD 8.2-RELEASE i386) Presto/2.12.388 Version/12.14
+Opera/9.80 (X11; FreeBSD 8.2-RELEASE i386) Presto/2.12.388 Version/12.16
+Opera/9.80 (X11; FreeBSD 9.1-RELEASE amd64) Presto/2.12.388 Version/12.12
+Mozilla/5.0 (X11; FreeBSD amd64; rv:27.0) Gecko/20100101 Firefox/27.0
+Opera/9.80 (X11; FreeBSD 10.1-STABLE amd64) Presto/2.12.388 Version/12.16
+Mozilla/5.0 (X11; FreeBSD amd64; rv:44.0) Gecko/20100101 Firefox/44.0
+Mozilla/5.0 (X11; FreeBSD i386; rv:18.0) Gecko/20100101 Firefox/18.0
+Opera/9.80 (X11; FreeBSD 9.0-RELEASE-p3 i386; U; ru) Presto/2.10.289 Version/12.02
+Mozilla/5.0 (X11; FreeBSD amd64; rv:25.0) Gecko/20100101 Firefox/25.0
+Mozilla/5.0 (X11; FreeBSD amd64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/46.0.2490.80 Safari/537.36
+Opera/9.80 (X11; FreeBSD 11.2-RELEASE amd64) Presto/2.12.388 Version/12.16
+Mozilla/5.0 (X11; FreeBSD amd64; rv:15.0) Gecko/20100101 Firefox/15.0
+Mozilla/5.0 (X11; FreeBSD amd64; rv:19.0) Gecko/20100101 Firefox/19.0
+Mozilla/5.0 (X11; FreeBSD amd64; rv:32.0) Gecko/20100101 Firefox/32.0
+Mozilla/5.0 (X11; FreeBSD amd64; rv:37.0) Gecko/20100101 Firefox/37.0
+Mozilla/5.0 (X11; FreeBSD i386; rv:10.0.3) Gecko/20100101 Firefox/10.0.3
+Mozilla/5.0 (X11; FreeBSD i386; rv:52.0) Gecko/20100101 Firefox/52.0
+Mozilla/5.0 (X11; U; U; FreeBSD amd64; rv:68.9) Gecko/20100101 Goanna/4.7 Firefox/68.9 PaleMoon/28.15.0
+Mozilla/5.0 (X11; FreeBSD amd64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/85.0.4183.121 Safari/537.36
+Mozilla/5.0 (X11; FreeBSD; U; Viera; en-US) AppleWebKit/537.11 (KHTML, like Gecko) Viera/3.4.13 Chrome/23.0.1271.97 Safari/537.11
+Mozilla/5.0 (X11; U; FreeBSD i386; en-US; rv:1.9a2) Gecko/20080530 Firefox/50.0.1
+Mozilla/5.0 (X11; FreeBSD i386; Linux i686) AppleWebKit/537.36 (KHTML, like Gecko) Falkon/3.1.0 Chrome/83.0.4103.122 Safari/537.36
+Mozilla/5.0 (X11; FreeBSD i386; Linux i686) AppleWebKit/537.36 (KHTML, like Gecko) Falkon/3.1.0 Chrome/80.0.3987.163 Safari/537.36
+Mozilla/5.0 (X11; FreeBSD i386; rv:83.0) Gecko/20100101 Firefox/83.0
+Mozilla/5.0 (X11; FreeBSD; U; Viera; it-IT) AppleWebKit/537.11 (KHTML, like Gecko) Viera/3.10.17 Chrome/23.0.1271.97 Safari/537.11
+Mozilla/5.0 (X11; FreeBSD amd64) AppleWebKit/536.5 (KHTML, like Gecko) Chrome/19.0.1084.52 Safari/536.5
+Mozilla/5.0 (X11; U; FreeBSD amd64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/62.0.3202.94 Safari/537.36
+Mozilla/5.0 (X11; FreeBSD i386; Linux i686) AppleWebKit/537.36 (KHTML, like Gecko) Falkon/3.1.0 Chrome/87.0.4103.122 Safari/537.36
+Mozilla/5.0 (X11; FreeBSD i386; rv:12.0) Gecko/20100101 Firefox/12.0
+Opera/9.80 (X11; FreeBSD 9.2-RELEASE i386) Presto/2.12.388 Version/12.16
+Mozilla/5.0 (X11; FreeBSD amd64; rv:10.0.2) Gecko/20100101 Firefox/10.0.2
+Opera/9.80 (X11; FreeBSD 9.2-BETA2 amd64) Presto/2.12.388 Version/12.16
+Mozilla/5.0 (X11; FreeBSD amd64; rv:84.0) Gecko/20100101 Firefox/84.0
+Mozilla/5.0 (X11; FreeBSD amd64; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Falkon/3.1.0 Chrome/83.0.4103.122 Safari/537.36
+Mozilla/5.0 (X11; FreeBSD amd64; rv:81.0) Gecko/20100101 Firefox/79.0
+Mozilla/5.0 (X11; FreeBSD amd64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/51.0.2704.106 Safari/537.36
+Mozilla/5.0 (X11; FreeBSD; U; Viera; ru-RU) AppleWebKit/537.11 (KHTML, like Gecko) Viera/3.10.51 Chrome/23.0.1271.97 Safari/537.11
+Mozilla/5.0 (X11; FreeBSD i386; rv:84.0) Gecko/20100101 Firefox/84.0
+Mozilla/5.0 (X11; FreeBSD; U; Viera; el-GR) AppleWebKit/537.11 (KHTML, like Gecko) Viera/3.10.21 Chrome/23.0.1271.97 Safari/537.11
+Mozilla/5.0 (X11; FreeBSD powerpc; rv:84.0) Gecko/20100101 Firefox/84.0
+Mozilla/5.0 (X11; FreeBSD i386; rv:82.0) Gecko/20100101 Firefox/82.0
+Mozilla/5.0 (X11; FreeBSD; U; Viera; pl-PL) AppleWebKit/537.11 (KHTML, like Gecko) Viera/3.10.14 Chrome/23.0.1271.97 Safari/537.11
+Mozilla/5.0 (X11; FreeBSD; U; Viera; bg-BG) AppleWebKit/537.11 (KHTML, like Gecko) Viera/3.4.10 Chrome/23.0.1271.97 Safari/537.11
+Midori/0.2 (X11; FreeBSD; U; en-us) WebKit/531.2+
+Mozilla/5.0 (X11; FreeBSD amd64; rv:85.0) Gecko/20100101 Firefox/85.0
+Mozilla/5.0 (X11; FreeBSD i386; rv:85.0) Gecko/20100101 Firefox/85.0
+Opera/9.01 (X11; FreeBSD 6 i386; U; en)
+Mozilla/5.0 (X11; FreeBSD amd64; rv:43.0) Gecko/20100101 Firefox/43.0 SeaMonkey/2.40
+Mozilla/5.0 (X11; FreeBSD i386; rv:59.0) Gecko/20100101 Firefox/59.0
+Mozilla/5.0 (X11; FreeBSD; U; Viera; sk-SK) AppleWebKit/537.11 (KHTML, like Gecko) Viera/3.10.51 Chrome/23.0.1271.97 Safari/537.11
+Mozilla/5.0 (X11; FreeBSD amd64; rv:86.0) Gecko/20100101 Firefox/86.0
+Mozilla/5.0 (X11; FreeBSD amd64; rv:1.0.1) Gecko/20100101 Firefox/1.0.1
+Mozilla/5.0 (X11; FreeBSD arm64; rv:86.0) Gecko/20100101 Firefox/86.0
+Mozilla/5.0 (X11; FreeBSD OS x86_64) AppleWebKit/535.11 (KHTML, like Gecko) Ubuntu/11.10 Chromium/27.0.1453.93 Chrome/27.0.1453.93 Safari/537.36
+Mozilla/5.0 (X11; FreeBSD; U; Viera; it-IT) AppleWebKit/537.11 (KHTML, like Gecko) Viera/3.18.1 Chrome/23.0.1271.97 Safari/537.11
+Mozilla/5.0 (X11; U; FreeBSD i386; en-US; rv:1.7.7) Gecko/20060303 Firefox/52.4.1
+Mozilla/5.0 (X11; FreeBSD amd64; rv:68.0) Gecko/20100101 Goanna/4.8 Firefox/68.0 PaleMoon/29.0.1
+Mozilla/5.0 (X11; FreeBSD i386; rv:86.0) Gecko/20100101 Firefox/86.0
+Mozilla/5.0 (X11; FreeBSD amd64; rv:43.0) Gecko/20100101 Firefox/0EBA
+Mozilla/5.0 (X11; U; FreeBSD i386; zh-tw; rv:31.0) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/90.0.4421.0 Safari/537.36 Edg/90.0.810.1
+Mozilla/5.0 (X11; FreeBSD amd64) AppleWebKit/534.34 (KHTML, like Gecko) konqueror/20.12.0 Safari/534.34
+Mozilla/5.0 (X11; FreeBSD amd64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/87.0.4280.141 YaBrowser/20.12.5.121.00 SA/3 Safari/537.36
+Mozilla/5.0 (X11; FreeBSD) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/88.0.4147.105 Safari/537.36
+Mozilla/5.0 (X11; U; FreeBSD i386; en-US; rv:1.8.1.2) Gecko/20070303 SeaMonkey/1.1.1
+Mozilla/5.0 (X11; FreeBSD; U; Viera; es-BR) AppleWebKit/537.11 (KHTML, like Gecko) Viera/3.10.17 Chrome/23.0.1271.97 Safari/537.11
+Mozilla/5.0 (X11; U; FreeBSD i386; en-US; rv:1.9a2) Gecko/20080530 Firefox/3.0a2
+Mozilla/5.0 (X11; U; FreeBSD i386; en-US; rv:1.9a2) Gecko/20080530 Firefox/3.0a2\x22'`--
+Mozilla/5.0 (X11; U; FreeBSD i386; en-US; rv:1.8.0.2) Gecko/20060414 Firefox/52.0
+Mozilla/5.0 (X11; FreeBSD amd64; rv:68.0) Gecko/20100101 Goanna/4.8 Firefox/68.0 PaleMoon/29.0.10
+Mozilla/5.0 (X11; FreeBSD i386) AppleWebKit/537.11 (KHTML, like Gecko) Chrome/23.0.1271.91 Safari/537.11
+Mozilla/5.0 (X11; FreeBSD amd64; rv:60.0) Gecko/20100101 Firefox/60.0 SeaMonkey/2.53.7
+Mozilla/5.0 (X11; FreeBSD amd64; rv:52.9) Gecko/20100101 Goanna/3.4 Firefox/52.9 ArcticFox/27.11.0
+Mozilla/5.0 (X11; U; FreeBSD i386; en-US; rv:1.7b) Gecko/20040429
+ELinks/0.11.4rc1 (textmode; FreeBSD 7.1-RELEASE i386; 80x25-2)
+Mozilla/5.0 (X11; FreeBSD amd64; rv:88.0) Gecko/20100101 Firefox/88.0
+Mozilla/5.0 (X11; FreeBSD amd64; rv:43.0) Gecko/20100101 Firefox/C09C
+Mozilla/5.0 (X11; FreeBSD; rv:85.0) Gecko/20100101 Firefox/85.0
+Mozilla/5.0 (X11; FreeBSD i386; rv:88.0) Gecko/20100101 Firefox/88.0
+Mozilla/5.0 (X11; FreeBSD i386) AppleWebKit/535.2 (KHTML, like Gecko) Chrome/15.0.874.121 Safari/535.2
+ELinks/0.11.7 (textmode; FreeBSD 8.0-RC1 i386; 80x49-2)
+Mozilla/5.0 (FreeBSD; U; Viera; pt-BR) AppleWebKit/537.11 (KHTML, like Gecko) Viera/3.18.1 Chrome/23.0.1271.97 Safari/537.11 SmartTvA/3.0.0
+Mozilla/5.0 (X11; FreeBSD amd64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/90.0.4430.85 Safari/537.36
+Mozilla/5.0 (X11; FreeBSD; U; Viera; sv-SE) AppleWebKit/537.11 (KHTML, like Gecko) Viera/3.10.21 Chrome/23.0.1271.97 Safari/537.11
+Mozilla/5.0 (X11; U; FreeBSD i386; en-US; rv:1.8.1.16) Gecko/20080816 Firefox/2.0.0.16 Kazehakase/0.5.4
+Mozilla/5.0 (X11; U; FreeBSD i386; zh-tw; rv:31.0) Gecko/20100101 Firefox/31.0 Opera/13.0
+Mozilla/5.0 (X11; FreeBSD; U; Viera; fr-FR) AppleWebKit/537.11 (KHTML, like Gecko) Viera/3.4.13 Chrome/23.0.1271.97 Safari/537.11
+Mozilla/5.0 (X11; U; FreeBSD i386; en-US; rv:1.7.12) Gecko/20051105 Firefox/52.5.0
+Mozilla/5.0 (X11; FreeBSD amd64; rv:89.0) Gecko/20100101 Firefox/89.0
+Mozilla/5.0 (X11; FreeBSD; U; Viera; it-IT) AppleWebKit/537.11 (KHTML, like Gecko) Viera/3.4.13 Chrome/23.0.1271.97 Safari/537.11
+Mozilla/5.0 (X11; FreeBSD i386; rv:89.0) Gecko/20100101 Firefox/89.0
+Mozilla/5.0 (X11; FreeBSD; U; Viera; vi-SG) AppleWebKit/537.11 (KHTML, like Gecko) Viera/3.18.1 Chrome/23.0.1271.97 Safari/537.11
+Mozilla/5.0 (X11; TrueOS; FreeBSD amd64; rv:90.0) Gecko/20100101 Firefox/90.0
+Mozilla/5.0 (X11; FreeBSD amd64; rv:25.0) Gecko/20100101 Firefox/25.0 SeaMonkey/2.22 Lightning/2.7b1
+Mozilla/5.0 (X11; FreeBSD amd64; rv:90.0) Gecko/20100101 Firefox/90.0
+Mozilla/5.0 (X11; FreeBSD amd64; rv:43.0) Gecko/20100101 Firefox/0894
+Mozilla/5.0 (FreeBSD; U; Viera; it-IT) AppleWebKit/537.11 (KHTML, like Gecko) Viera/3.3.3 Chrome/23.0.1271.97 Safari/537.11
+Mozilla/5.0 (X11; FreeBSD amd64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/43.0.2357.130 Safari/35C858
+Mozilla/5.0 (X11; FreeBSD) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4147.105 Safari/537.36
+Mozilla/5.0 (X11; FreeBSD amd64; rv:42.0) Gecko/20100101 Firefox/2689
+Mozilla/5.0 (X11; FreeBSD amd64; rv:42.0) Gecko/20100101 Firefox/FF84
+Links (2.20.2; FreeBSD 13.0-RELEASE amd64; LLVM/Clang 11.0.1; text)
+Mozilla/5.0 (X11; FreeBSD i386; rv:90.0) Gecko/20100101 Firefox/90.0
+Mozilla/5.0 (X11; FreeBSD i386; rv:36.0) Gecko/20100101 Firefox/36.0 SeaMonkey/F3A5C3
+Mozilla/5.0 (X11; FreeBSD amd64; rv:91.0) Gecko/20100101 Firefox/91.0
+Mozilla/5.0 (X11; FreeBSD; U; Viera; sv-SE) AppleWebKit/537.11 (KHTML, like Gecko) Viera/3.4.13 Chrome/23.0.1271.97 Safari/537.11
+Mozilla/5.0 (X11; FreeBSD amd64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/92.0.4515.131 Safari/537.36
+Mozilla/5.0 (X11; FreeBSD amd64; rv:43.0) Gecko/20100101 Firefox/E2DD
+Mozilla/5.0 (X11; FreeBSD; U; Viera; sv-SE) AppleWebKit/537.11 (KHTML, like Gecko) Viera/3.10.17 Chrome/23.0.1271.97 Safari/537.11
+Mozilla/5.0 (X11; FreeBSD arm64; rv:78.0) Gecko/20100101 Firefox/78.0
+Mozilla/5.0 (X11; FreeBSD i386) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/43.0.2357.125 Safari/6F0925
+Mozilla/5.0 (X11; FreeBSD amd64; rv:92.0) Gecko/20100101 Firefox/92.0
+Mozilla/5.0 (FreeBSD; Viera; ru:68.0) Gecko/68.0 Firefox/68.0
+Mozilla/5.0 (X11; FreeBSD amd64; rv:42.0) Gecko/20100101 Firefox/AEA7
+Mozilla/5.0 (X11; FreeBSD; U; Viera; ru-RU) AppleWebKit/537.11 (KHTML, like Gecko) Viera/3.4.10 Chrome/23.0.1271.97 Safari/537.11
+Mozilla/5.0 (X11; U; FreeBSD i386; en-US; rv:1.7.5) Gecko/20041114 Firefox/52.0.1
+Mozilla/5.0 (X11; FreeBSD; U; Viera; sk-SK) AppleWebKit/537.11 (KHTML, like Gecko) Viera/3.4.13 Chrome/23.0.1271.97 Safari/537.11
+Mozilla/5.0 (X11; FreeBSD i386; rv:92.0) Gecko/20100101 Firefox/92.0
+Mozilla/5.0 (X11; FreeBSD; U; Viera; it-IT) AppleWebKit/537.11 (KHTML, like Gecko) Viera/3.12.5 Chrome/23.0.1271.97 Safari/537.11
+Mozilla/5.0 (X11; FreeBSD; U; Viera; en-IE) AppleWebKit/537.11 (KHTML, like Gecko) Viera/3.10.20 Chrome/23.0.1271.97 Safari/537.11
+Mozilla/5.0 (X11; FreeBSD i386 on amd64 8.10; rv:112.39) Gecko/20100101  Mobile  Firefox/112.39;
+Mozilla/5.0 (X11; FreeBSD amd64; rv:68.0) Gecko/20100101 Firefox/90.0
+Mozilla/5.0 (X11; FreeBSD; U; Viera; en-IE) AppleWebKit/537.11 (KHTML, like Gecko) Viera/3.10.14 Chrome/23.0.1271.97 Safari/537.11
+Mozilla/5.0 (X11; U; FreeBSD i386; en-US; rv:1.9.1.16) Gecko/20110227 SeaMonkey/2.0.11
+Mozilla/5.0 (X11; FreeBSD amd64; rv:93.0) Gecko/20100101 Firefox/93.0
+Mozilla/5.0 (X11; FreeBSD; U; Viera; en) AppleWebKit/537.11 (KHTML, like Gecko) Viera/3.4.13 Chrome/23.0.1271.97 Safari/537.11
+Mozilla/5.0 (X11; FreeBSD amd64; rv:93.0) Gecko/20100101 Firefox/93.0,gzip(gfe)
+Mozilla/5.0 (FreeBSD; U; Viera; es-ES) AppleWebKit/537.11 (KHTML, like Gecko) Viera/3.3.3 Chrome/23.0.1271.97 Safari/537.11
+Mozilla/5.0 (X11; FreeBSD amd64; rv:94.0) Gecko/20100101 Firefox/94.0
+Mozilla/5.0 (X11; FreeBSD i386 6.54; rv:76.72) Gecko/20100101  Firefox/76.72;
+Mozilla/5.0 (X11; FreeBSD i386; rv:94.0) Gecko/20100101 Firefox/94.0
+Mozilla/5.0 (X11; FreeBSD amd64; rv:95.0) Gecko/20100101 Firefox/95.0
+Mozilla/5.0 (FreeBSD; U; Viera; it-IT) AppleWebKit/537.11 (KHTML, like Gecko) Viera/3.10.17 Chrome/23.0.1271.97 Safari/537.11 SmartTvA/3.0.0
+Mozilla/5.0 (FreeBSD; U; Viera; en-GB) AppleWebKit/537.11 (KHTML, like Gecko) Viera/3.19.8 Chrome/23.0.1271.97 Safari/537.11 SmartTvA/3.0.0
+Mozilla/5.0 (X11; FreeBSD; U; Viera; pl-PL) AppleWebKit/537.11 (KHTML, like Gecko) Viera/3.10.21 Chrome/23.0.1271.97 Safari/537.11
+Mozilla/5.0 (X11; FreeBSD amd64) KHTML/4.12.2 (like Gecko) Konqueror/4.12
+Mozilla/5.0 (X11; FreeBSD; U; Viera; pl-PL) AppleWebKit/537.11 (KHTML, like Gecko) Viera/3.4.13 Chrome/23.0.1271.97 Safari/537.11
+Mozilla/5.0 (X11; FreeBSD i386) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/43.0.2357.81 Safari/AAD0DF
+Mozilla/5.0 (X11; FreeBSD; U; Viera; it-IT) AppleWebKit/537.11 (KHTML, like Gecko) Viera/3.10.21 Chrome/23.0.1271.97 Safari/537.11
+Mozilla/5.0 (X11; U; FreeBSD i386; en-US; rv:1.9.2.9) Gecko/20100913 Firefox/54.0
+Mozilla/5.0 (X11; FreeBSD amd64; rv:51.0) Gecko/20100101 Firefox/51.0 SeaMonkey/2.48
+Mozilla/5.0 (X11; FreeBSD amd64; rv:96.0) Gecko/20100101 Firefox/96.0
+Mozilla/5.0 (X11; FreeBSD; U; Viera; de-DE) AppleWebKit/537.11 (KHTML, like Gecko) Viera/3.12.5 Chrome/23.0.1271.97 Safari/537.11
+Mozilla/5.0 (X11; FreeBSD i386) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/90.0.2357.81 Safari/AAD0DF
+Mozilla/5.0 (X11; U; FreeBSD i386; en; rv:1.8.1.12) Gecko/20080213 Epiphany/2.20 Firefox/2.0.0.12
+Mozilla/5.0 (X11; FreeBSD amd64; rv:97.0) Gecko/20100101 Firefox/97.0
+Mozilla/5.0 (X11; FreeBSD i386; rv:95.0) Gecko/20100101 Firefox/95.0
+Mozilla/5.0 (X11; U; FreeBSD i386; en-US; rv:1.8.1.20) Gecko/20090225 Firefox/2.0.0.20
+Mozilla/5.0 (FreeBSD; Viera; ru:66.0) Gecko/20100101 Firefox/66.0
+Mozilla/5.0 (X11; FreeBSD amd64; rv:43.0) Gecko/20100101 Firefox/7853
+Mozilla/5.0 (X11; FreeBSD; U; Viera; da-DK) AppleWebKit/537.11 (KHTML, like Gecko) Viera/3.10.21 Chrome/23.0.1271.97 Safari/537.11
+Mozilla/5.0 (X11; FreeBSD i386; rv:97.0) Gecko/20100101 Firefox/97.0
+Mozilla/5.0 (X11; FreeBSD amd64; rv:42.0) Gecko/20100101 Firefox/5304
+Mozilla/5.0 (X11; FreeBSD amd64) AppleWebkit/537.36 (KHTML, like Gecko) Chrome/99.0.4818.0 Safari/537.36
+Mozilla/5.0 (X11; FreeBSD amd64; rv:98.0) Gecko/20100101 Firefox/98.0
+Mozilla/5.0 (X11; U; FreeBSD amd64) AppleWebKit/538.15 (KHTML, like Gecko) Chrome/18.0.1025.133 Safari/538.15 Midori/0.5
+Mozilla/5.0 (X11; FreeBSD amd64; rv:43.0) Gecko/20100101 Firefox/ECE3
+Links (2.2; GNU/kFreeBSD 6.3-1-486 i686; 80x25)
+Mozilla/5.0 (X11; FreeBSD amd64; rv:99.0) Gecko/20100101 Firefox/99.0
+Mozilla/5.0 (X11; FreeBSD i386; rv:91.0) Gecko/20100101 Firefox/91.0
+Mozilla/5.0 (X11; U; FreeBSD i386; ja-JP; rv:1.7.2) Gecko/20050330
+Opera/6.11 (FreeBSD 4.7-RELEASE i386; U)  [en]
+Mozilla/5.0 (X11; U; FreeBSD i386; en-US; rv:1.8.0.8) Gecko/20061210 Firefox/1.5.0.8
+Mozilla/5.0 (X11; U; FreeBSD i386; rv:1.8.1.12) Gecko/0 Kazehakase/0.4.9
+Opera/8.51 (FreeBSD 5.1; U; en)
+Mozilla/5.0 (X11; U; FreeBSD i386; en-US; rv:1.7.13) Gecko/20061230
+Mozilla/5.0 (X11; U; FreeBSD i386; en-US; rv:1.7.7) Gecko/20060303 Firefox/1.0.3
+Mozilla/5.0 (X11; U; FreeBSD i386; en-US; rv:1.8.1) Gecko/20070322 Epiphany/2.18
+Opera/9.01 (X11; FreeBSD 6 i386; U;pl)
+Mozilla/5.0 (Darwin; FreeBSD 5.6; en-GB; rv:1.8.1.17pre) Gecko/20080716 K-Meleon/1.5.0
+Mozilla/5.0 (X11; U; FreeBSD i386; en-US; rv:1.1) Gecko/20021223
+Mozilla/5.0 (X11; U; FreeBSD i386; en-US; rv:1.7.7) Gecko/20050420 Firefox/1.0.3
+Mozilla/5.0 (X11; FreeBSD amd64; rv:6.0) Gecko/20110818 Firefox/6.0 SeaMonkey/2.3
+Mozilla/5.0 (X11; FreeBSD amd64; rv:100.0) Gecko/20100101 Firefox/100.0
+Mozilla/5.0 (X11; FreeBSD; U; Viera; pl-PL) AppleWebKit/537.11 (KHTML, like Gecko) Viera/3.18.1 Chrome/23.0.1271.97 Safari/537.11
+Mozilla/5.0 (X11; FreeBSD amd64; rv:87.0) Gecko/20100101 Firefox/99.0
+Mozilla/5.0 (X11; FreeBSD i386; rv:100.0) Gecko/20100101 Firefox/100.0
+Mozilla/5.0 (X11; FreeBSD i386; rv:36.0) Gecko/20100101 Firefox/36.0 SeaMonkey/0062A2
+Mozilla/5.0 (X11; FreeBSD amd64; rv:101.0) Gecko/20100101 Firefox/101.0
+Mozilla/5.0 (X11; FreeBSD amd64; rv:43.0) Gecko/20100101 Firefox/E3B8
+Mozilla/5.0 (X11; FreeBSD amd64; rv:51.0) Gecko/20100101 Firefox/51.0 SeaMonkey/2.48 Lightning/5.3
+Mozilla/5.0 (X11; FreeBSD amd64) AppleWebKit/536.5 (KHTML like Gecko) Chrome/19.0.1084.56 Safari/A4747
+Mozilla/5.0 (X11; FreeBSD; U; Viera; de-DE) AppleWebKit/537.11 (KHTML, like Gecko) Viera/3.10.51 Chrome/23.0.1271.97 Safari/537.11
+Mozilla/5.0 (X11; FreeBSD amd64; rv:43.0) Gecko/20100101 Firefox/8C7C
+Mozilla/5.0 (X11; FreeBSD arm64; rv:91.0) Gecko/20100101 Firefox/91.0
+Mozilla/5.0 (X11; FreeBSD amd64; rv:102.0) Gecko/20100101 Firefox/102.0
+Mozilla/5.0 (X11; FreeBSD amd64; rv:103.0) Gecko/20100101 Firefox/103.0
+Mozilla/5.0 (X11; FreeBSD; rv:92.0) Gecko/20100101 Firefox/92.0
+Mozilla/5.0 (X11; FreeBSD amd64; rv:102.0) Gecko/20100101 Firefox/102.0 [ip:37.161.135.9]
+Mozilla/5.0 (X11; FreeBSD amd64; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Falkon/22.04.3 Chrome/83.0.4103.122 Safari/537.36
+Mozilla/5.0 (X11; FreeBSD; U; Viera; ru-RU) AppleWebKit/537.11 (KHTML, like Gecko) Viera/3.18.1 Chrome/23.0.1271.97 Safari/537.11
+Mozilla/5.0 (X11; FreeBSD amd64; rv:43.0) Gecko/20100101 Firefox/9A54
+Mozilla/5.0 (X11; FreeBSD amd64; rv:42.0) Gecko/20100101 Firefox/67B6
+Mozilla/5.0 (X11; FreeBSD amd64; rv:105.0) Gecko/20100101 Firefox/105.0
+Mozilla/5.0 (X11; FreeBSD amd64; rv:104.0) Gecko/20100101 Firefox/104.0
+Mozilla/5.0 (X11; FreeBSD amd64; rv:36.0) Gecko/20100101 Firefox/36.0 SeaMonkey/E6938E
+Mozilla/5.0 (X11; FreeBSD; U; Viera; nl-NL) AppleWebKit/537.11 (KHTML, like Gecko) Viera/3.12.5 Chrome/23.0.1271.97 Safari/537.11
+Mozilla/5.0 (X11; U; FreeBSD i386) AppleWebKit/530.56.03 (KHTML, like Gecko) Chrome/55.0.4480.9117 Safari/531.95
+Mozilla/5.0 (X11; U; FreeBSD x86_64) AppleWebKit/530.65.12 (KHTML, like Gecko) Chrome/55.0.5323.0051 Safari/532.95
+Mozilla/5.0 (X11; FreeBSD amd64) AppleWebKit/531.71.28 (KHTML, like Gecko) Chrome/55.1.6046.1774 Safari/532.01 Edge/36.05958
+Mozilla/5.0 (X11; FreeBSD amd64) AppleWebKit/531.75.23 (KHTML, like Gecko) Chrome/55.1.6472.1109 Safari/532.05 Edge/36.09216
+Mozilla/5.0 (X11; U; FreeBSD x86_64) AppleWebKit/531.73.26 (KHTML, like Gecko) Chrome/56.3.8495.3767 Safari/533.43
+Mozilla/5.0 (X11; FreeBSD amd64) AppleWebKit/531.80.33 (KHTML, like Gecko) Chrome/56.4.9273.4546 Safari/534.41
+Mozilla/5.0 (X11; FreeBSD amd64; rv:107.0) Gecko/20100101 Firefox/107.0
+Mozilla/5.0 (X11; FreeBSD amd64; rv:108.0) Gecko/20100101 Firefox/108.0
+Mozilla/5.0 (X11; FreeBSD; U; Viera; fr-FR) AppleWebKit/537.11 (KHTML, like Gecko) Viera/3.10.21 Chrome/23.0.1271.97 Safari/537.11
+Mozilla/5.0 (X11; FreeBSD amd64; rv:111.0) Gecko/20100101 Firefox/111.0
+Mozilla/5.0 (FreeBSD; U; Viera; de-DE) AppleWebKit/537.11 (KHTML, like Gecko) Viera/3.10.21 Chrome/23.0.1271.97 Safari/537.11 SmartTvA/3.0.0
+Mozilla/5.0 (FreeBSD; U; Viera; ru-RU) AppleWebKit/537.11 (KHTML, like Gecko) Viera/3.3.3 Chrome/23.0.1271.97 Safari/537.11
+Mozilla/5.0 (FreeBSD; U; Viera; ru-RU) AppleWebKit/537.11 (KHTML, like Gecko) Viera/3.18.1 Chrome/23.0.1271.97 Safari/537.11 SmartTvA/3.0.0
+Mozilla/5.0 (FreeBSD; U; Viera; ru-RU) AppleWebKit/537.11 (KHTML, like Gecko) Viera/3.10.20 Chrome/23.0.1271.97 Safari/537.11 SmartTvA/3.0.0
+Links (2.1pre15; FreeBSD 5.3-RELEASE i386; 196x84)(Linux LLC 1.2)
+Midori/0.1.9 (X11; FreeBSD i386; U; en-us) WebKit/532+
+Opera/9.63 (X11; FreeBSD 7.1-RELEASE i386; U; en)
+Opera/9.80 (X11; FreeBSD 8.1-RELEASE i386; Edition Next) Presto/2.12.388
+Mozilla/5.0 (X11; FreeBSD amd64; rv:5.0) Gecko/20100101 Firefox/5.0 [ip:134.209.137.157]
+Mozilla/5.0 (X11; FreeBSD amd64; rv:124.0) Gecko/20100101 Firefox/126.0.1
+Mozilla/5.0 (X11; U; FreeBSD i386; en-US; rv:1.6) Gecko/20040406 Galeon/1.3.15 [ip:134.209.137.157]
+Mozilla/5.0 (X11; FreeBSD aarch64; rv:124.0) Gecko/20100101 Firefox/126.0.1
+Mozilla/5.0 (X11; FreeBSD arm64; rv:124.0) Gecko/20100101 Firefox/126.0.1
+Mozilla/5.0 (X11; FreeBSD; Linux i386; rv:135.0) Gecko/20100101 Firefox/135.0
+Mozilla/5.0 (X11; FreeBSD amd64; rv:54.0) Gecko/20100101 Firefox/54.0 [ip:134.209.137.157]
+Mozilla/5.0 (X11; FreeBSD; Linux i686; rv:70.0) Gecko/20100101 Firefox/70.0
+Mozilla/5.0 (X11; U; FreeBSD amd64; rv:128.0) Gecko/20100101 Firefox/128.0
