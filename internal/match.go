@@ -1,6 +1,7 @@
 package internal
 
 import (
+	"cmp"
 	"slices"
 
 	str "github.com/boyter/go-string"
@@ -143,24 +144,14 @@ func MatchTokenIndexes(ua string) []MatchResults {
 	// Some tokens may have the same EndIndex, so we need to sort by Match key
 	// to make it deterministic.
 	slices.SortFunc(results, func(a, b MatchResults) int {
-		// Sort by EndIndex in descending order
-		if a.EndIndex != b.EndIndex {
-			if b.EndIndex < a.EndIndex {
-				return -1
-			}
-
-			return 1
+		// Sort by EndIndex in descending order.
+		result := cmp.Compare(b.EndIndex, a.EndIndex)
+		if result != 0 {
+			return result
 		}
 
-		// If EndIndex is the same, sort by Match key for determinism
-		if a.Match < b.Match {
-			return -1
-		}
-		if a.Match > b.Match {
-			return 1
-		}
-
-		return 0 // a and b are equal
+		// Ascending order.
+		return cmp.Compare(a.Match, b.Match)
 	})
 
 	return results
