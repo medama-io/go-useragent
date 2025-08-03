@@ -1,7 +1,7 @@
 package internal
 
 import (
-	"sort"
+	"slices"
 
 	str "github.com/boyter/go-string"
 	"github.com/medama-io/go-useragent/agents"
@@ -109,8 +109,9 @@ type MatchResults struct {
 // that match a known browser, device, or OS. This is used to determine
 // when to insert a result value into the trie.
 func MatchTokenIndexes(ua string) []MatchResults {
-	var results []MatchResults
+	results := make([]MatchResults, 0, len(matchMap))
 	exists := make(map[Match]bool)
+
 	for key, match := range matchMap {
 		for _, m := range match {
 			// Check if key match doesn't already exist in results.
@@ -141,11 +142,27 @@ func MatchTokenIndexes(ua string) []MatchResults {
 	//
 	// Some tokens may have the same EndIndex, so we need to sort by Match key
 	// to make it deterministic.
-	sort.Slice(results, func(i, j int) bool {
-		if results[i].EndIndex == results[j].EndIndex {
-			return results[i].Match < results[j].Match
+	slices.SortFunc(results, func(a, b MatchResults) int {
+		// Sort by EndIndex in descending order
+		if a.EndIndex != b.EndIndex {
+			// Go's new comparison functions expect -1, 0, or 1.
+			// To sort descending, we can compare b to a.
+			if b.EndIndex < a.EndIndex {
+				return -1
+			}
+
+			return 1
 		}
-		return results[i].EndIndex > results[j].EndIndex
+
+		// If EndIndex is the same, sort by Match key for determinism
+		if a.Match < b.Match {
+			return -1
+		}
+		if a.Match > b.Match {
+			return 1
+		}
+
+		return 0 // a and b are equal
 	})
 
 	return results
