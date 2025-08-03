@@ -4,7 +4,7 @@ import (
 	"testing"
 
 	medama "github.com/medama-io/go-useragent"
-	"github.com/medama-io/go-useragent/testdata"
+	"github.com/medama-io/go-useragent/data"
 	mileusna "github.com/mileusna/useragent"
 	uap "github.com/ua-parser/uap-go/uaparser"
 )
@@ -14,8 +14,8 @@ func BenchmarkMedamaParserGetAll(b *testing.B) {
 	b.ResetTimer()
 
 	for i := 0; i < b.N; i++ {
-		for _, k := range testdata.TestCases {
-			_ = parser.Parse(k)
+		for _, k := range data.AllTestCases {
+			_ = parser.Parse(k.UserAgent)
 		}
 	}
 }
@@ -25,23 +25,23 @@ func BenchmarkUAPParserGetAll(b *testing.B) {
 	b.ResetTimer()
 
 	for i := 0; i < b.N; i++ {
-		for _, k := range testdata.TestCases {
-			_ = parser.Parse(k)
+		for _, k := range data.AllTestCases {
+			_ = parser.Parse(k.UserAgent)
 		}
 	}
 }
 
 func BenchmarkMileusnaParserGetAll(b *testing.B) {
 	for i := 0; i < b.N; i++ {
-		for _, k := range testdata.TestCases {
-			_ = mileusna.Parse(k)
+		for _, k := range data.AllTestCases {
+			_ = mileusna.Parse(k.UserAgent)
 		}
 	}
 }
 
 func BenchmarkMedamaParserGetSingle(b *testing.B) {
 	parser := medama.NewParser()
-	testCase := testdata.TestCases[0]
+	testCase := data.AllTestCases[0].UserAgent
 	b.ResetTimer()
 
 	for i := 0; i < b.N; i++ {
@@ -51,7 +51,7 @@ func BenchmarkMedamaParserGetSingle(b *testing.B) {
 
 func BenchmarkUAPParserGetSingle(b *testing.B) {
 	parser, _ := uap.New("./uap_regexes.yaml")
-	testCase := testdata.TestCases[0]
+	testCase := data.AllTestCases[0].UserAgent
 	b.ResetTimer()
 
 	for i := 0; i < b.N; i++ {
@@ -60,7 +60,7 @@ func BenchmarkUAPParserGetSingle(b *testing.B) {
 }
 
 func BenchmarkMileusnaParserGetSingle(b *testing.B) {
-	testCase := testdata.TestCases[0]
+	testCase := data.AllTestCases[0].UserAgent
 	b.ResetTimer()
 
 	for i := 0; i < b.N; i++ {
@@ -77,7 +77,7 @@ func BenchmarkMedamaParserPutAll(b *testing.B) {
 
 func BenchmarkMedamaParserPutSingle(b *testing.B) {
 	trie := medama.NewRuneTrie()
-	testCase := testdata.TestCases[0]
+	testCase := data.AllTestCases[0].UserAgent
 	b.ResetTimer()
 
 	for i := 0; i < b.N; i++ {

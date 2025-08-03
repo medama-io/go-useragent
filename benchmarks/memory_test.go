@@ -5,20 +5,20 @@ import (
 	"testing"
 
 	medama "github.com/medama-io/go-useragent"
-	"github.com/medama-io/go-useragent/testdata"
+	"github.com/medama-io/go-useragent/data"
 )
 
 // TestMemoryUsage prints memory stats once without benchmarking
 func TestMemoryUsage(t *testing.T) {
 	// Testcases trie
 	trie := medama.NewRuneTrie()
-	for _, ua := range testdata.TestCases {
-		trie.Put(ua)
+	for _, ua := range data.AllTestCases {
+		trie.Put(ua.UserAgent)
 	}
 	stats := trie.GetTotalMemoryStats()
 
 	fmt.Println("=== Test Data Memory Usage ===")
-	fmt.Printf("Entries: %d\n", len(testdata.TestCases))
+	fmt.Printf("Entries: %d\n", len(data.AllTestCases))
 	fmt.Printf("Total memory: %.2f MB\n", float64(stats.TotalMemoryBytes)/1024/1024)
 	fmt.Printf("Number of nodes: %d\n", stats.NodeCount)
 	fmt.Printf("Average bytes per node: %.1f\n", stats.AvgBytesPerNode)
