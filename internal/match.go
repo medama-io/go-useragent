@@ -145,8 +145,6 @@ func MatchTokenIndexes(ua string) []MatchResults {
 	slices.SortFunc(results, func(a, b MatchResults) int {
 		// Sort by EndIndex in descending order
 		if a.EndIndex != b.EndIndex {
-			// Go's new comparison functions expect -1, 0, or 1.
-			// To sort descending, we can compare b to a.
 			if b.EndIndex < a.EndIndex {
 				return -1
 			}
