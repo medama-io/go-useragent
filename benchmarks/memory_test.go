@@ -1,6 +1,7 @@
 package useragent_test
 
 import (
+	"fmt"
 	"testing"
 
 	medama "github.com/medama-io/go-useragent"
@@ -16,24 +17,24 @@ func TestMemoryUsage(t *testing.T) {
 	}
 	stats := trie.GetTotalMemoryStats()
 
-	t.Logf("\n=== Test Data Memory Usage ===")
-	t.Logf("Entries: %d", len(testdata.TestCases))
-	t.Logf("Total memory: %.2f MB", float64(stats.TotalMemoryBytes)/1024/1024)
-	t.Logf("Number of nodes: %d", stats.NodeCount)
-	t.Logf("Average bytes per node: %.1f", stats.AvgBytesPerNode)
-	t.Logf("Largest node: %d bytes", stats.LargestNode)
-	t.Logf("Smallest node: %d bytes", stats.SmallestNode)
-	t.Logf("Array nodes: %d, Map nodes: %d", stats.ArrayNodes, stats.MapNodes)
+	fmt.Println("=== Test Data Memory Usage ===")
+	fmt.Printf("Entries: %d\n", len(testdata.TestCases))
+	fmt.Printf("Total memory: %.2f MB\n", float64(stats.TotalMemoryBytes)/1024/1024)
+	fmt.Printf("Number of nodes: %d\n", stats.NodeCount)
+	fmt.Printf("Average bytes per node: %.1f\n", stats.AvgBytesPerNode)
+	fmt.Printf("Largest node: %d bytes\n", stats.LargestNode)
+	fmt.Printf("Smallest node: %d bytes\n", stats.SmallestNode)
+	fmt.Printf("Array nodes: %d, Map nodes: %d\n\n", stats.ArrayNodes, stats.MapNodes)
 
 	// Production trie
 	parser := medama.NewParser()
 	prodStats := parser.Trie.GetTotalMemoryStats()
 
-	t.Logf("\n=== Production Trie Memory Usage ===")
-	t.Logf("Total memory: %.2f MB", float64(prodStats.TotalMemoryBytes)/1024/1024)
-	t.Logf("Number of nodes: %d", prodStats.NodeCount)
-	t.Logf("Average bytes per node: %.1f", prodStats.AvgBytesPerNode)
-	t.Logf("Largest node: %d bytes", prodStats.LargestNode)
-	t.Logf("Smallest node: %d bytes", prodStats.SmallestNode)
-	t.Logf("Array nodes: %d, Map nodes: %d", prodStats.ArrayNodes, prodStats.MapNodes)
+	fmt.Println("\n=== Production Trie Memory Usage ===")
+	fmt.Printf("Total memory: %.2f MB\n", float64(prodStats.TotalMemoryBytes)/1024/1024)
+	fmt.Printf("Number of nodes: %d\n", prodStats.NodeCount)
+	fmt.Printf("Average bytes per node: %.1f\n", prodStats.AvgBytesPerNode)
+	fmt.Printf("Largest node: %d bytes\n", prodStats.LargestNode)
+	fmt.Printf("Smallest node: %d bytes\n", prodStats.SmallestNode)
+	fmt.Printf("Array nodes: %d, Map nodes: %d\n", prodStats.ArrayNodes, prodStats.MapNodes)
 }
