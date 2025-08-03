@@ -19,6 +19,7 @@ const (
 	BrowserOperaMini Browser = "Opera Mini"
 	BrowserSafari    Browser = "Safari"
 	BrowserVivaldi   Browser = "Vivaldi"
+	BrowserSilk      Browser = "Amazon Silk"
 	BrowserSamsung   Browser = "Samsung Browser"
 	BrowserFalkon    Browser = "Falkon"
 	BrowserNintendo  Browser = "Nintendo Browser"

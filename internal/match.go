@@ -42,7 +42,7 @@ var matchMap = map[Match][]string{
 	TokenMobileDevice: {"ONEPLUS", "Huawei", "HTC", "Galaxy", "iPhone", "iPod", "Windows Phone", "WindowsPhone", "LG"},
 	DeviceTablet:      {string(agents.DeviceTablet), "Touch", "iPad", "Nintendo Switch", "NintendoSwitch", "Kindle"},
 	DeviceTV:          {string(agents.DeviceTV), "Large Screen", "LargeScreen", "Smart Display", "SmartDisplay", "PLAYSTATION", "PlayStation", "ADT-2", "ADT-1", "CrKey", "Roku", "AFT", "Web0S", "Nexus Player", "Xbox", "XBOX", "Nintendo WiiU", "NintendoWiiU"},
-	DeviceBot:         {string(agents.DeviceBot), "HeadlessChrome", "bot", "Slurp", "LinkCheck", "QuickLook", "Haosou", "Yahoo Ad", "YahooAd", "Google", "Mediapartners", "Headless", "facebookexternalhit", "facebookcatalog", "Baidu", "Instagram", "Pinterest", "PageSpeedInsights", "WhatsApp"},
+	DeviceBot:         {string(agents.DeviceBot), "HeadlessChrome", "bot", "Slurp", "LinkCheck", "QuickLook", "Haosou", "Yahoo Ad", "YahooAd", "Google", "Mediapartners", "Headless", "facebookexternalhit", "facebookcatalog", "Baidu", "Instagram", "Pinterest", "PageSpeedInsights", "WhatsApp", "PHP", "curl", "Python-urllib", "Go-http-client", "Java", "Ruby", "Node.js", "Dart", "C#", "PHP-Curl", "PHP-HTTP", "PHP-SOAP"},
 
 	// Version
 	TokenVersion: {"Version"},
@@ -70,9 +70,10 @@ var MatchPrecedenceMap = map[Match]uint8{
 	BrowserEdge:      8,
 	BrowserVivaldi:   9,
 	BrowserSamsung:   10,
-	BrowserFalkon:    11,
-	BrowserNintendo:  12,
-	BrowserYandex:    13,
+	BrowserSilk:      11,
+	BrowserFalkon:    12,
+	BrowserNintendo:  13,
+	BrowserYandex:    14,
 
 	// Operating Systems
 	OSLinux:    1,
