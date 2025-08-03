@@ -102,25 +102,26 @@ func (trie *RuneTrie) Get(key string) UserAgent {
 			}
 
 		case stateDefault:
-			// Strip any other version numbers from other products to get more hits to the trie.
-			//
-			// Also do not use a switch here as Go does not generate a jump table for switch
-			// statements with no integral constants. Benchmarking shows that ops go down
-			// if we try to migrate statements like this to a switch.
-			if internal.IsDigit(r) || (r == '.' && len(key) > i+1 && internal.IsDigit(rune(key[i+1]))) {
-				continue
-			}
-
-			// Identify and skip language codes e.g. en-US, zh-cn, en_US, ZH_cn
-			if len(key) > i+6 && r == ' ' && internal.IsLetter(rune(key[i+1])) && internal.IsLetter(rune(key[i+2])) && (key[i+3] == '-' || key[i+3] == '_') && internal.IsLetter(rune(key[i+4])) && internal.IsLetter(rune(key[i+5])) && (key[i+6] == ' ' || key[i+6] == ')' || key[i+6] == ';') {
-				// Add the number of runes to skip to the skip count.
-				skipCount += 6
-				continue
-			}
-
 			switch r {
 			case ' ', ';', ')', '(', ',', '_', '-', '/':
 				continue
+
+			default:
+				// Strip any other version numbers from other products to get more hits to the trie.
+				//
+				// Also do not use a switch here as Go does not generate a jump table for switch
+				// statements with no integral constants. Benchmarking shows that ops go down
+				// if we try to migrate statements like this to a switch.
+				if internal.IsDigit(r) || (r == '.' && len(key) > i+1 && internal.IsDigit(rune(key[i+1]))) {
+					continue
+				}
+
+				// Identify and skip language codes e.g. en-US, zh-cn, en_US, ZH_cn
+				if len(key) > i+6 && r == ' ' && internal.IsLetter(rune(key[i+1])) && internal.IsLetter(rune(key[i+2])) && (key[i+3] == '-' || key[i+3] == '_') && internal.IsLetter(rune(key[i+4])) && internal.IsLetter(rune(key[i+5])) && (key[i+6] == ' ' || key[i+6] == ')' || key[i+6] == ';') {
+					// Add the number of runes to skip to the skip count.
+					skipCount += 6
+					continue
+				}
 			}
 
 			// If result exists, we can append it to the value.
@@ -239,6 +240,7 @@ func (ua *UserAgent) addMatch(result resultItem) bool {
 			internal.BrowserSafari,
 			internal.BrowserVivaldi,
 			internal.BrowserSamsung,
+			internal.BrowserSilk,
 			internal.BrowserFalkon,
 			internal.BrowserNintendo,
 			internal.BrowserYandex:
@@ -257,6 +259,7 @@ func (ua *UserAgent) addMatch(result resultItem) bool {
 	if result.Type == internal.MatchOS && result.Precedence > ua.osPrecedence {
 		switch result.Match {
 		case internal.OSChromeOS,
+			internal.OSFreeBSD,
 			internal.OSOpenBSD,
 			internal.OSMacOS,
 			internal.OSWindows:

@@ -73,13 +73,13 @@ Benchmarks were performed against [`ua-parser/uap-go`](https://github.com/ua-par
 cd ./benchmarks
 go test -bench=. -benchmem ./...
 
-MedamaParserGetSingle-12        3871813             296.2 ns/op               0 B/op          0 allocs/op
-MileusnaParserGetSingle-12      1322602             965.4 ns/op             600 B/op         16 allocs/op
-UAPParserGetSingle-12            986428              1108 ns/op             233 B/op          8 allocs/op
+MedamaParserGetSingle-12        3871813             287.2 ns/op               0 B/op          0 allocs/op
+MileusnaParserGetSingle-12      1322602             945.1 ns/op             600 B/op         16 allocs/op
+UAPParserGetSingle-12            986428              1112 ns/op             233 B/op          8 allocs/op
 
-MedamaParserGetAll-12             75219             15461 ns/op               0 B/op          0 allocs/op
-MileusnaParserGetAll-12           25644             46991 ns/op           29496 B/op        735 allocs/op
-UAPParserGetAll-12                19263             54038 ns/op           10309 B/op        352 allocs/op
+MedamaParserGetAll-12             75219             14616 ns/op               0 B/op          0 allocs/op
+MileusnaParserGetAll-12           25644             46806 ns/op           28878 B/op        732 allocs/op
+UAPParserGetAll-12                19263             54621 ns/op           10316 B/op        352 allocs/op
 ```
 
 ## Acknowledgements
