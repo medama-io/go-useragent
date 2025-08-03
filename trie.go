@@ -45,14 +45,9 @@ type childNode struct {
 
 // RuneTrie is a trie of runes with string keys and interface{} values.
 type RuneTrie struct {
-	// childrenArr is an array of pointers to the next RuneTrie node. This
-	// is used when the number of children is small to improve performance
+	// childrenArr is an array of pointers to the next RuneTrie node. This is used over a map to improve performance
 	// and reduce memory usage.
 	childrenArr []childNode
-	// childrenMap is a map of runes to the next RuneTrie node. This is used
-	// when the number of children exceeds the diminishing returns of the
-	// childrenArr array.
-	childrenMap map[rune]*RuneTrie
 	result      []resultItem
 }
 
@@ -181,8 +176,6 @@ func (trie *RuneTrie) Get(key string) UserAgent {
 						break
 					}
 				}
-			} else {
-				next = node.childrenMap[r]
 			}
 
 			if next == nil {
@@ -219,42 +212,20 @@ func (trie *RuneTrie) Put(key string) {
 		}
 
 		var child *RuneTrie
-		// If the number of children is less than the array size, we can store
-		// the children in an array.
-		if node.childrenMap == nil && len(node.childrenArr) < maxChildArraySize {
-			// Search for the child in the array
-			for _, c := range node.childrenArr {
-				// If the child is found, set the child to the node.
-				if c.r == r {
-					child = c.node
-					break
-				}
-			}
 
-			if child == nil {
-				// No child found, create a new one
-				child = new(RuneTrie)
-				node.childrenArr = append(node.childrenArr, childNode{r: r, node: child})
+		// Search for the child in the array
+		for _, c := range node.childrenArr {
+			// If the child is found, set the child to the node.
+			if c.r == r {
+				child = c.node
+				break
 			}
-		} else {
-			// If the number of children is greater than the array size, we can store
-			// the children in a map. We also empty the array.
-			if node.childrenMap == nil {
-				node.childrenMap = make(map[rune]*RuneTrie)
+		}
 
-				// Transfer children from array to map
-				for _, c := range node.childrenArr {
-					node.childrenMap[c.r] = c.node
-				}
-				node.childrenArr = nil // Clear the array as it's no longer needed
-			}
-
-			// Use the map to store the child
-			child = node.childrenMap[r]
-			if child == nil {
-				child = new(RuneTrie)
-				node.childrenMap[r] = child
-			}
+		if child == nil {
+			// No child found, create a new one
+			child = new(RuneTrie)
+			node.childrenArr = append(node.childrenArr, childNode{r: r, node: child})
 		}
 
 		node = child
@@ -350,15 +321,12 @@ func (ua *UserAgent) addMatch(result resultItem) bool {
 
 // MemoryStats contains memory usage statistics for a trie node
 type MemoryStats struct {
-	NodeSize        int  // Size of this node in bytes
-	ChildrenArrSize int  // Memory used by children array
-	ChildrenMapSize int  // Memory used by children map
-	ResultSize      int  // Memory used by result slice
-	TotalSize       int  // Total memory for this node
-	HasChildrenArr  bool // Whether this node uses array storage
-	HasChildrenMap  bool // Whether this node uses map storage
-	ChildrenCount   int  // Number of children
-	ResultCount     int  // Number of result items
+	NodeSize        int // Size of this node in bytes
+	ChildrenArrSize int // Memory used by children array
+	ResultSize      int // Memory used by result slice
+	TotalSize       int // Total memory for this node
+	ChildrenCount   int // Number of children
+	ResultCount     int // Number of result items
 }
 
 type ResultStats struct {
@@ -368,7 +336,6 @@ type ResultStats struct {
 	LargestNode      int
 	SmallestNode     int
 	ArrayNodes       int64
-	MapNodes         int64
 }
 
 // GetMemoryStats returns accurate memory usage statistics for this node.
@@ -380,23 +347,11 @@ func (trie *RuneTrie) GetMemoryStats() MemoryStats {
 
 	// Children array memory
 	if len(trie.childrenArr) > 0 {
-		stats.HasChildrenArr = true
 		stats.ChildrenCount = len(trie.childrenArr)
 		// Slice header + capacity * element size
 		sliceHeader := int(unsafe.Sizeof([]childNode{}))
 		elementSize := int(unsafe.Sizeof(childNode{}))
 		stats.ChildrenArrSize = sliceHeader + (cap(trie.childrenArr) * elementSize)
-	}
-
-	// Children map memory
-	if len(trie.childrenMap) > 0 {
-		stats.HasChildrenMap = true
-		stats.ChildrenCount = len(trie.childrenMap)
-		// Map header + buckets + key/value pairs
-		mapHeader := 48 // Approximate map header size
-		keySize := int(unsafe.Sizeof(rune(0)))
-		valueSize := int(unsafe.Sizeof((*RuneTrie)(nil)))
-		stats.ChildrenMapSize = mapHeader + (len(trie.childrenMap) * (keySize + valueSize))
 	}
 
 	// Result slice memory
@@ -407,7 +362,7 @@ func (trie *RuneTrie) GetMemoryStats() MemoryStats {
 		stats.ResultSize = sliceHeader + (cap(trie.result) * elementSize)
 	}
 
-	stats.TotalSize = stats.NodeSize + stats.ChildrenArrSize + stats.ChildrenMapSize + stats.ResultSize
+	stats.TotalSize = stats.NodeSize + stats.ChildrenArrSize + stats.ResultSize
 	return stats
 }
 
@@ -432,13 +387,6 @@ func (trie *RuneTrie) walkMemoryStatsRecursive(callback func(stats MemoryStats),
 			child.node.walkMemoryStatsRecursive(callback, visited)
 		}
 	}
-
-	// Walk children in map
-	for _, child := range trie.childrenMap {
-		if child != nil {
-			child.walkMemoryStatsRecursive(callback, visited)
-		}
-	}
 }
 
 // GetTotalMemoryStats returns aggregate memory statistics for the entire trie
@@ -458,12 +406,7 @@ func (trie *RuneTrie) GetTotalMemoryStats() ResultStats {
 			result.SmallestNode = stats.TotalSize
 		}
 
-		if stats.HasChildrenArr {
-			result.ArrayNodes++
-		}
-		if stats.HasChildrenMap {
-			result.MapNodes++
-		}
+		result.ArrayNodes++
 	})
 
 	if result.NodeCount > 0 {

@@ -24,7 +24,7 @@ func TestMemoryUsage(t *testing.T) {
 	fmt.Printf("Average bytes per node: %.1f\n", stats.AvgBytesPerNode)
 	fmt.Printf("Largest node: %d bytes\n", stats.LargestNode)
 	fmt.Printf("Smallest node: %d bytes\n", stats.SmallestNode)
-	fmt.Printf("Array nodes: %d, Map nodes: %d\n\n", stats.ArrayNodes, stats.MapNodes)
+	fmt.Printf("Array nodes: %d\n\n", stats.ArrayNodes)
 
 	// Production trie
 	parser := medama.NewParser()
@@ -36,5 +36,5 @@ func TestMemoryUsage(t *testing.T) {
 	fmt.Printf("Average bytes per node: %.1f\n", prodStats.AvgBytesPerNode)
 	fmt.Printf("Largest node: %d bytes\n", prodStats.LargestNode)
 	fmt.Printf("Smallest node: %d bytes\n", prodStats.SmallestNode)
-	fmt.Printf("Array nodes: %d, Map nodes: %d\n", prodStats.ArrayNodes, prodStats.MapNodes)
+	fmt.Printf("Array nodes: %d\n", prodStats.ArrayNodes)
 }
