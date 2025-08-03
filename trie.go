@@ -21,12 +21,6 @@ const (
 	// stateSkipClosingParenthesis is the state when we are skipping until a closing parenthesis.
 	// This is used to skip over device IDs.
 	stateSkipClosingParenthesis
-	// This is the number of rune trie children to store in the array
-	// before switching to a map. Smaller arrays are faster to iterate
-	// and use less memory.
-	//
-	// This is an arbitrary number, but seemed to perform well in benchmarks.
-	maxChildArraySize = 64
 )
 
 type resultItem struct {
