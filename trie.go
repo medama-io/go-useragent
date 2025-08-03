@@ -1,7 +1,9 @@
 package useragent
 
 import (
+	"math"
 	"slices"
+	"unsafe"
 
 	"github.com/medama-io/go-useragent/internal"
 )
@@ -344,6 +346,131 @@ func (ua *UserAgent) addMatch(result resultItem) bool {
 	}
 
 	return false
+}
+
+// MemoryStats contains memory usage statistics for a trie node
+type MemoryStats struct {
+	NodeSize        int  // Size of this node in bytes
+	ChildrenArrSize int  // Memory used by children array
+	ChildrenMapSize int  // Memory used by children map
+	ResultSize      int  // Memory used by result slice
+	TotalSize       int  // Total memory for this node
+	HasChildrenArr  bool // Whether this node uses array storage
+	HasChildrenMap  bool // Whether this node uses map storage
+	ChildrenCount   int  // Number of children
+	ResultCount     int  // Number of result items
+}
+
+type ResultStats struct {
+	TotalMemoryBytes int64
+	NodeCount        int64
+	AvgBytesPerNode  float64
+	LargestNode      int
+	SmallestNode     int
+	ArrayNodes       int64
+	MapNodes         int64
+}
+
+// GetMemoryStats returns accurate memory usage statistics for this node.
+func (trie *RuneTrie) GetMemoryStats() MemoryStats {
+	stats := MemoryStats{}
+
+	// Base struct size
+	stats.NodeSize = int(unsafe.Sizeof(*trie))
+
+	// Children array memory
+	if len(trie.childrenArr) > 0 {
+		stats.HasChildrenArr = true
+		stats.ChildrenCount = len(trie.childrenArr)
+		// Slice header + capacity * element size
+		sliceHeader := int(unsafe.Sizeof([]childNode{}))
+		elementSize := int(unsafe.Sizeof(childNode{}))
+		stats.ChildrenArrSize = sliceHeader + (cap(trie.childrenArr) * elementSize)
+	}
+
+	// Children map memory
+	if len(trie.childrenMap) > 0 {
+		stats.HasChildrenMap = true
+		stats.ChildrenCount = len(trie.childrenMap)
+		// Map header + buckets + key/value pairs
+		mapHeader := 48 // Approximate map header size
+		keySize := int(unsafe.Sizeof(rune(0)))
+		valueSize := int(unsafe.Sizeof((*RuneTrie)(nil)))
+		stats.ChildrenMapSize = mapHeader + (len(trie.childrenMap) * (keySize + valueSize))
+	}
+
+	// Result slice memory
+	if len(trie.result) > 0 {
+		stats.ResultCount = len(trie.result)
+		sliceHeader := int(unsafe.Sizeof([]resultItem{}))
+		elementSize := int(unsafe.Sizeof(resultItem{}))
+		stats.ResultSize = sliceHeader + (cap(trie.result) * elementSize)
+	}
+
+	stats.TotalSize = stats.NodeSize + stats.ChildrenArrSize + stats.ChildrenMapSize + stats.ResultSize
+	return stats
+}
+
+// WalkMemoryStats walks the entire trie and calls the callback for each node
+func (trie *RuneTrie) WalkMemoryStats(callback func(stats MemoryStats)) {
+	visited := make(map[*RuneTrie]bool)
+	trie.walkMemoryStatsRecursive(callback, visited)
+}
+
+func (trie *RuneTrie) walkMemoryStatsRecursive(callback func(stats MemoryStats), visited map[*RuneTrie]bool) {
+	if trie == nil || visited[trie] {
+		return
+	}
+	visited[trie] = true
+
+	// Call callback for this node
+	callback(trie.GetMemoryStats())
+
+	// Walk children in array
+	for _, child := range trie.childrenArr {
+		if child.node != nil {
+			child.node.walkMemoryStatsRecursive(callback, visited)
+		}
+	}
+
+	// Walk children in map
+	for _, child := range trie.childrenMap {
+		if child != nil {
+			child.walkMemoryStatsRecursive(callback, visited)
+		}
+	}
+}
+
+// GetTotalMemoryStats returns aggregate memory statistics for the entire trie
+func (trie *RuneTrie) GetTotalMemoryStats() ResultStats {
+	result := ResultStats{
+		SmallestNode: math.MaxInt, // Start with max int to find the smallest node.
+	}
+
+	trie.WalkMemoryStats(func(stats MemoryStats) {
+		result.NodeCount++
+		result.TotalMemoryBytes += int64(stats.TotalSize)
+
+		if stats.TotalSize > result.LargestNode {
+			result.LargestNode = stats.TotalSize
+		}
+		if stats.TotalSize < result.SmallestNode {
+			result.SmallestNode = stats.TotalSize
+		}
+
+		if stats.HasChildrenArr {
+			result.ArrayNodes++
+		}
+		if stats.HasChildrenMap {
+			result.MapNodes++
+		}
+	})
+
+	if result.NodeCount > 0 {
+		result.AvgBytesPerNode = float64(result.TotalMemoryBytes) / float64(result.NodeCount)
+	}
+
+	return result
 }
 
 // NewRuneTrie allocates and returns a new *RuneTrie.
