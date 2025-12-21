@@ -70,8 +70,7 @@ Refer to the [pkg.go.dev](https://pkg.go.dev/github.com/medama-io/go-useragent) 
 Benchmarks were performed against [`ua-parser/uap-go`](https://github.com/ua-parser/uap-go) and [`mileusena/useragent`](https://github.com/mileusna/useragent) on an Apple M3 Pro Processor.
 
 ```bash
-cd ./benchmarks
-go test -bench=. -benchmem ./...
+mise run bench
 
 MedamaParserGetSingle-12        3871813             287.2 ns/op               0 B/op          0 allocs/op
 MileusnaParserGetSingle-12      1322602             945.1 ns/op             600 B/op         16 allocs/op

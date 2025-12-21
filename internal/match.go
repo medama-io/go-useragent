@@ -43,7 +43,7 @@ var matchMap = map[Match][]string{
 	DeviceMobile:      {string(agents.DeviceMobile)},
 	TokenMobileDevice: {"ONEPLUS", "Huawei", "HTC", "Galaxy", "iPhone", "iPod", "Windows Phone", "WindowsPhone", "LG"},
 	DeviceTablet:      {string(agents.DeviceTablet), "Touch", "iPad", "Nintendo Switch", "NintendoSwitch", "Kindle"},
-	DeviceTV:          {string(agents.DeviceTV), "Large Screen", "LargeScreen", "Smart Display", "SmartDisplay", "PLAYSTATION", "PlayStation", "ADT-2", "ADT-1", "CrKey", "Roku", "AFT", "Web0S", "Nexus Player", "Xbox", "XBOX", "Nintendo WiiU", "NintendoWiiU"},
+	DeviceTV:          {string(agents.DeviceTV), "Large Screen", "LargeScreen", "Smart Display", "SmartDisplay", "PLAYSTATION", "PlayStation", "ADT-2", "ADT", "ADT-1", "CrKey", "Roku", "AFT", "Web0S", "WebS", "Nexus Player", "NexusPlayer", "Xbox", "XBOX", "Nintendo WiiU", "NintendoWiiU"},
 	DeviceBot: {
 		string(agents.DeviceBot),
 		"HeadlessChrome",
@@ -67,21 +67,22 @@ var matchMap = map[Match][]string{
 		"PHP",
 		"curl",
 		"Go-http-client",
+		"Gohttpclient",
 		"Java",
 		"Ruby",
-		"Node.js",
+		"Nodejs",
 		"Dart",
-		"C#",
-		"PHP-Curl",
-		"PHP-HTTP",
-		"PHP-SOAP",
-		"amazon-QBusiness",
+		"PHPCurl",
+		"PHPHTTP",
+		"PHPSOAP",
+		"amazonQBusiness",
 
 		// Python client prefixes
 		"Python",
 		"python",
 		"PycURL",
 		"aiohttp",
+		"Pythonurllib",
 	},
 
 	// Version
