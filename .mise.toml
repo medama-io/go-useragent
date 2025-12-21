@@ -1,3 +1,16 @@
 [tools]
 go = "latest"
 gofumpt = "latest"
+
+[tasks.test]
+run = "go test ./... $@"
+
+[tasks.bench]
+run = "go test -bench=. -benchmem ./..."
+dir = "./benchmarks"
+
+[tasks.generate]
+run = "go run ./scripts/main.go"
+
+[tasks.upgrade]
+run = "go get -u ./..."

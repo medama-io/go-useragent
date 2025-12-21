@@ -43,8 +43,8 @@ var matchMap = map[Match][]string{
 	DeviceMobile:      {string(agents.DeviceMobile)},
 	TokenMobileDevice: {"ONEPLUS", "Huawei", "HTC", "Galaxy", "iPhone", "iPod", "Windows Phone", "WindowsPhone", "LG"},
 	DeviceTablet:      {string(agents.DeviceTablet), "Touch", "iPad", "Nintendo Switch", "NintendoSwitch", "Kindle"},
-	DeviceTV:          {string(agents.DeviceTV), "Large Screen", "LargeScreen", "Smart Display", "SmartDisplay", "PLAYSTATION", "PlayStation", "ADT-2", "ADT-1", "CrKey", "Roku", "AFT", "Web0S", "Nexus Player", "Xbox", "XBOX", "Nintendo WiiU", "NintendoWiiU"},
-	DeviceBot:         {string(agents.DeviceBot), "HeadlessChrome", "bot", "Slurp", "LinkCheck", "QuickLook", "Haosou", "Yahoo Ad", "YahooAd", "Google", "Mediapartners", "Headless", "facebookexternalhit", "facebookcatalog", "Baidu", "Instagram", "Pinterest", "PageSpeedInsights", "WhatsApp", "PHP", "curl", "Python-urllib", "Go-http-client", "Java", "Ruby", "Node.js", "Dart", "C#", "PHP-Curl", "PHP-HTTP", "PHP-SOAP", "amazon-QBusiness"},
+	DeviceTV:          {string(agents.DeviceTV), "Large Screen", "LargeScreen", "Smart Display", "SmartDisplay", "PLAYSTATION", "PlayStation", "ADT-2", "ADT", "ADT-1", "CrKey", "Roku", "AFT", "Web0S", "WebS", "Nexus Player", "NexusPlayer", "Xbox", "XBOX", "Nintendo WiiU", "NintendoWiiU"},
+	DeviceBot:         {string(agents.DeviceBot), "HeadlessChrome", "bot", "Slurp", "LinkCheck", "QuickLook", "Haosou", "Yahoo Ad", "YahooAd", "Google", "Mediapartners", "Headless", "facebookexternalhit", "facebookcatalog", "Baidu", "Instagram", "Pinterest", "PageSpeedInsights", "WhatsApp", "PHP", "curl", "Python-urllib", "Pythonurllib", "Go-http-client", "Gohttpclient", "Java", "Ruby", "Nodejs", "Dart", "PHPCurl", "PHPHTTP", "PHPSOAP", "amazonQBusiness"},
 
 	// Version
 	TokenVersion: {"Version"},
