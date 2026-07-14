@@ -27,6 +27,7 @@ var matchMap = map[Match][]string{
 	BrowserFalkon:    {string(agents.BrowserFalkon)},
 	BrowserNintendo:  {"NintendoBrowser"},
 	BrowserYandex:    {"YaBrowser"},
+	BrowserHuawei:    {"HuaweiBrowser"},
 
 	// Operating Systems
 	OSAndroid:  {string(agents.OSAndroid)},
@@ -115,6 +116,7 @@ var MatchPrecedenceMap = map[Match]uint8{
 	BrowserFalkon:    12,
 	BrowserNintendo:  13,
 	BrowserYandex:    14,
+	BrowserHuawei:    15,
 
 	// Operating Systems
 	OSLinux:    1,
