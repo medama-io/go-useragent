@@ -76,6 +76,7 @@ var matchMap = map[Match][]string{
 		"PHPCurl",
 		"PHPHTTP",
 		"PHPSOAP",
+		"amazon-QBusiness",
 		"amazonQBusiness",
 
 		// Python client prefixes
