@@ -140,6 +140,15 @@ var AllTestCases = []UATestCase{
 		ExpectedDevice:       agents.DeviceDesktop,
 		ExpectedVersion:      "79.0.309.71",
 	},
+	{
+		Name:                 "macOS Safari (AppleWebKit only)",
+		UserAgent:            "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko)",
+		ExpectedMatches:      []internal.Match{internal.BrowserSafari, internal.OSMacOS},
+		ExpectedCleanVersion: "MozillaMacintoshIntelMacOSXAppleWebKitKHTMLlikeGecko",
+		ExpectedBrowser:      agents.BrowserSafari,
+		ExpectedOS:           agents.OSMacOS,
+		ExpectedDevice:       agents.DeviceDesktop,
+	},
 	// Linux
 	{
 		Name:                 "Linux Firefox",
@@ -242,6 +251,25 @@ var AllTestCases = []UATestCase{
 		ExpectedDevice:       agents.DeviceMobile,
 		ExpectedVersion:      "44.11.15",
 	},
+	{
+		Name:                 "iPhone Safari (No Version token)",
+		UserAgent:            "Mozilla/5.0 (iPhone; CPU iPhone OS 17_6_1 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Mobile/15E148",
+		ExpectedMatches:      []internal.Match{internal.DeviceMobile, internal.BrowserSafari, internal.OSIOS, internal.TokenMobileDevice},
+		ExpectedCleanVersion: "MozillaiPhoneCPUiPhoneOSlikeMacOSXAppleWebKitKHTMLlikeGeckoMobile",
+		ExpectedBrowser:      agents.BrowserSafari,
+		ExpectedOS:           agents.OSIOS,
+		ExpectedDevice:       agents.DeviceMobile,
+	},
+	{
+		Name:                 "iPhone Edge (Version after browser)",
+		UserAgent:            "Mozilla/5.0 (iPhone; CPU iPhone OS 17_5 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) EdgiOS/125.0.2535.87 Version/17.0 Mobile/15E148 Safari/604.1",
+		ExpectedMatches:      []internal.Match{internal.BrowserSafari, internal.DeviceMobile, internal.TokenVersion, internal.BrowserEdge, internal.OSIOS, internal.TokenMobileDevice},
+		ExpectedCleanVersion: "MozillaiPhoneCPUiPhoneOSlikeMacOSXAppleWebKitKHTMLlikeGeckoEdgiOSVersionMobileSafari",
+		ExpectedBrowser:      agents.BrowserEdge,
+		ExpectedOS:           agents.OSIOS,
+		ExpectedDevice:       agents.DeviceMobile,
+		ExpectedVersion:      "125.0.2535.87",
+	},
 	// iPad
 	{
 		Name:                 "iPad Safari",
@@ -324,6 +352,16 @@ var AllTestCases = []UATestCase{
 		ExpectedDevice:       agents.DeviceMobile,
 		ExpectedVersion:      "112.0.0.0",
 	},
+	{
+		Name:                 "Android Firefox (Plain variant)",
+		UserAgent:            "Mozilla/5.0 (Android 10; Mobile; rv:130.0) Gecko/130.0 Firefox/130.0",
+		ExpectedMatches:      []internal.Match{internal.BrowserFirefox, internal.DeviceMobile, internal.OSAndroid},
+		ExpectedCleanVersion: "MozillaAndroidGeckoFirefox",
+		ExpectedBrowser:      agents.BrowserFirefox,
+		ExpectedOS:           agents.OSAndroid,
+		ExpectedDevice:       agents.DeviceMobile,
+		ExpectedVersion:      "130.0",
+	},
 	// Bots
 	{
 		Name:                 "Googlebot",
@@ -371,6 +409,13 @@ var AllTestCases = []UATestCase{
 		ExpectedBrowser:      agents.BrowserChrome,
 		ExpectedOS:           agents.OSLinux,
 		ExpectedVersion:      "125.0.6422.76",
+	},
+	{
+		Name:                 "Amazon QBusiness Bot",
+		UserAgent:            "amazon-QBusiness",
+		ExpectedMatches:      []internal.Match{internal.DeviceBot},
+		ExpectedCleanVersion: "amazonQBusiness",
+		ExpectedDevice:       agents.DeviceBot,
 	},
 	// Others
 	{
