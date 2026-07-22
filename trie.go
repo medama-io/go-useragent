@@ -21,6 +21,9 @@ const (
 	// stateSkipClosingParenthesis is the state when we are skipping until a closing parenthesis.
 	// This is used to skip over device IDs.
 	stateSkipClosingParenthesis
+	// stateSkipToken is the state when we are skipping the rest of an
+	// unknown token until the next separator.
+	stateSkipToken
 )
 
 type resultItem struct {
@@ -80,6 +83,14 @@ func (trie *RuneTrie) Get(key string) UserAgent {
 				} else {
 					closingParenthisisNestCount--
 				}
+			}
+
+		case stateSkipToken:
+			// Skip until the next separator, then resume from the current node.
+			// Separators must match the set stateDefault skips.
+			switch r {
+			case ' ', ';', ')', '(', ',', '_', '-', '/':
+				state = stateDefault
 			}
 
 		case stateVersion:
@@ -174,6 +185,12 @@ func (trie *RuneTrie) Get(key string) UserAgent {
 			}
 
 			if next == nil {
+				// An unmatched letter means we are inside an unknown token
+				// (e.g. "Ecosia"). Skip the rest of it so we don't match
+				// tokens buried inside it.
+				if internal.IsLetter(r) {
+					state = stateSkipToken
+				}
 				continue // No match found, but we can try to match the next rune.
 			}
 			node = next
