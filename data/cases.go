@@ -584,4 +584,26 @@ var AllTestCases = []UATestCase{
 		ExpectedDevice:       agents.DeviceMobile,
 		ExpectedVersion:      "13.0.6.300",
 	},
+
+	// Amazon Silk
+	{
+		Name:                 "Android Amazon Silk (Fire tablet)",
+		UserAgent:            "Mozilla/5.0 (Linux; Android 9; KFMUWI) AppleWebKit/537.36 (KHTML, like Gecko) Silk/86.3.23 like Chrome/86.0.4240.198 Safari/537.36",
+		ExpectedMatches:      []internal.Match{internal.BrowserSafari, internal.BrowserChrome, internal.BrowserSilk, internal.OSAndroid, internal.OSLinux},
+		ExpectedCleanVersion: "MozillaLinuxAndroidAppleWebKitKHTMLlikeGeckoSilklikeChromeSafari",
+		ExpectedBrowser:      agents.BrowserSilk,
+		ExpectedOS:           agents.OSAndroid,
+		ExpectedDevice:       agents.DeviceMobile,
+		ExpectedVersion:      "86.3.23",
+	},
+	{
+		Name:                 "Android Amazon Silk (Kindle Fire HDX, mobile)",
+		UserAgent:            "Mozilla/5.0 (Linux; U; Android 4.2.2; en-gb; SD4930UR Build/JDQ39) AppleWebKit/537.36 (KHTML, like Gecko) Silk/3.44 like Chrome/37.0.2026.117 Mobile Safari/537.36",
+		ExpectedMatches:      []internal.Match{internal.BrowserSafari, internal.DeviceMobile, internal.BrowserChrome, internal.BrowserSilk, internal.OSAndroid, internal.OSLinux},
+		ExpectedCleanVersion: "MozillaLinuxUAndroidAppleWebKitKHTMLlikeGeckoSilklikeChromeMobileSafari",
+		ExpectedBrowser:      agents.BrowserSilk,
+		ExpectedOS:           agents.OSAndroid,
+		ExpectedDevice:       agents.DeviceMobile,
+		ExpectedVersion:      "3.44",
+	},
 }
