@@ -3,6 +3,7 @@ package useragent
 import (
 	"math"
 	"slices"
+	"strings"
 	"unsafe"
 
 	"github.com/medama-io/go-useragent/internal"
@@ -180,7 +181,40 @@ func (trie *RuneTrie) Get(key string) UserAgent {
 		}
 	}
 
+	// IE 11 dropped the "MSIE" token, so it matches via "Trident" and the walk
+	// captured the Trident engine version. The real version is in "rv:".
+	if ua.browser == internal.BrowserIE {
+		ua.applyRVVersion(key)
+	}
+
 	return ua
+}
+
+// applyRVVersion overwrites the version with the number after "rv:", if present.
+// Used for IE 11, which reports its version there rather than after Trident.
+func (ua *UserAgent) applyRVVersion(key string) {
+	idx := strings.Index(key, "rv:")
+	if idx < 0 {
+		return
+	}
+
+	var buf [32]rune
+	n := 0
+	for i := idx + 3; i < len(key) && n < len(buf); i++ {
+		c := rune(key[i])
+		if !internal.IsDigit(c) && c != '.' {
+			break
+		}
+		buf[n] = c
+		n++
+	}
+
+	if n == 0 {
+		return
+	}
+
+	ua.version = buf
+	ua.versionIndex = n
 }
 
 // Put inserts the value into the trie at the given key, replacing any
