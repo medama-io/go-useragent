@@ -94,9 +94,9 @@ func (trie *RuneTrie) Get(key string) UserAgent {
 			if !internal.IsDigit(r) && r != '.' {
 				state = stateDefault
 			} else {
-				// Add to rune buffer.
+				// Add to version buffer. Versions are ASCII, so store as bytes.
 				if ua.versionIndex < cap(ua.version) {
-					ua.version[ua.versionIndex] = r
+					ua.version[ua.versionIndex] = byte(r)
 					ua.versionIndex++
 				}
 			}
@@ -139,7 +139,7 @@ func (trie *RuneTrie) Get(key string) UserAgent {
 						ua.versionIndex == 0) {
 					// Clear version buffer if it has old values.
 					if ua.versionIndex > 0 {
-						ua.version = [32]rune{}
+						ua.version = [32]byte{}
 						ua.versionIndex = 0
 					}
 
