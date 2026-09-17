@@ -67,7 +67,17 @@ var AllTestCases = []UATestCase{
 		ExpectedBrowser:      agents.BrowserIE,
 		ExpectedOS:           agents.OSWindows,
 		ExpectedDevice:       agents.DeviceDesktop,
-		ExpectedVersion:      "7.0",
+		ExpectedVersion:      "11.0",
+	},
+	{
+		Name:                 "Windows IE 11 (WOW64)",
+		UserAgent:            "Mozilla/5.0 (Windows NT 6.1; WOW64; Trident/7.0; rv:11.0) like Gecko",
+		ExpectedMatches:      []internal.Match{internal.BrowserIE, internal.OSWindows},
+		ExpectedCleanVersion: "MozillaWindowsNTWOWTridentrvlikeGecko",
+		ExpectedBrowser:      agents.BrowserIE,
+		ExpectedOS:           agents.OSWindows,
+		ExpectedDevice:       agents.DeviceDesktop,
+		ExpectedVersion:      "11.0",
 	},
 	{
 		Name:                 "Windows IE 6",
