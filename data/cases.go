@@ -417,6 +417,30 @@ var AllTestCases = []UATestCase{
 		ExpectedCleanVersion: "amazonQBusiness",
 		ExpectedDevice:       agents.DeviceBot,
 	},
+	{
+		Name:                 "Amzn SearchBot",
+		UserAgent:            "Mozilla/5.0 AppleWebKit/537.36 (KHTML, like Gecko; compatible; Amzn-SearchBot/0.1) Chrome/119.0.6045.214 Safari/537.36",
+		ExpectedMatches:      []internal.Match{internal.BrowserSafari, internal.BrowserChrome, internal.DeviceBot},
+		ExpectedCleanVersion: "MozillaAppleWebKitKHTMLlikeGeckocompatibleAmznSearchBotChromeSafari",
+		ExpectedDevice:       agents.DeviceBot,
+		ExpectedBrowser:      agents.BrowserChrome,
+		ExpectedVersion:      "119.0.6045.214",
+	},
+	{
+		Name:                 "Keenable Bot",
+		UserAgent:            "Mozilla/5.0 AppleWebKit/537.36 (KHTML, like Gecko; compatible; KeenableBot/1.0; +https://keenable.ai/bot)",
+		ExpectedMatches:      []internal.Match{internal.DeviceBot, internal.BrowserSafari},
+		ExpectedCleanVersion: "MozillaAppleWebKitKHTMLlikeGeckocompatibleKeenableBothttpskeenableaibot",
+		ExpectedDevice:       agents.DeviceBot,
+		ExpectedBrowser:      agents.BrowserSafari,
+	},
+	{
+		Name:                 "Exa Search Bot",
+		UserAgent:            "Mozilla/5.0 (compatible; ExaSearchBot/1.0; +https://crawler.exa.ai/)",
+		ExpectedMatches:      []internal.Match{internal.DeviceBot},
+		ExpectedCleanVersion: "MozillacompatibleExaSearchBothttpscrawlerexaai",
+		ExpectedDevice:       agents.DeviceBot,
+	},
 	// Others
 	{
 		Name:                 "Android Yandex Browser",
