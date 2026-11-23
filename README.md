@@ -2,7 +2,7 @@
 
 [![Go Reference](https://pkg.go.dev/badge/github.com/medama-io/go-useragent.svg)](https://pkg.go.dev/github.com/medama-io/go-useragent)
 
-`go-useragent` is a high-performance zero-allocation Go library designed to parse browser name and version, operating system, and device type information from user-agent strings with _sub-microsecond_ parsing times.
+`go-useragent` is a high-performance zero-allocation Go library designed to parse browser name and version, operating system and version, and device type information from user-agent strings with _sub-microsecond_ parsing times.
 
 It achieves this efficiency by using a modified hybrid [trie](https://en.wikipedia.org/wiki/Trie) data structure to store and rapidly look up user-agent tokens. It utilizes heuristic rules, tokenizing a list of user-agent strings into a trie during startup. During runtime, the parsing process involves a straightforward lookup operation.
 
@@ -42,6 +42,7 @@ func main() {
 	fmt.Println(agent.Browser())        // agents.BrowserChrome
 	fmt.Println(agent.BrowserVersion()) // 118.0.0.0
 	fmt.Println(agent.OS())             // agents.OSWindows
+	fmt.Println(agent.OSVersion())      // 10.0
 	fmt.Println(agent.Device())         // agents.DeviceDesktop
 
 	// Boolean helper functions.
@@ -60,8 +61,14 @@ func main() {
 	fmt.Println(agent.BrowserVersionMajor()) // 118
 	fmt.Println(agent.BrowserVersionMinor()) // 0
 	fmt.Println(agent.BrowserVersionPatch()) // 0.0
+
+	// OS version helper functions.
+	fmt.Println(agent.OSVersionMajor()) // 10
+	fmt.Println(agent.OSVersionMinor()) // 0
 }
 ```
+
+Note that `OSVersion()` returns the raw version reported in the user agent string. For example, Windows 11 user agents still report `Windows NT 10.0`, and browsers may freeze the reported OS version due to [user agent reduction](https://developer.chrome.com/docs/privacy-sandbox/user-agent/).
 
 Refer to the [pkg.go.dev](https://pkg.go.dev/github.com/medama-io/go-useragent) documentation for more details on available fields and their meanings.
 

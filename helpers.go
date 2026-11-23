@@ -27,15 +27,43 @@ func (ua UserAgent) BrowserVersion() string {
 	return string(ua.version[:ua.versionIndex])
 }
 
+// OSVersion returns the operating system version. If no version is found, it
+// returns an empty string.
+//
+// Note: This is the raw version reported in the user agent string. For
+// example, Windows 11 user agents still report "Windows NT 10.0", and
+// browsers may freeze the reported OS version due to user agent reduction.
+func (ua UserAgent) OSVersion() string {
+	return string(ua.osVersion[:ua.osVersionIndex])
+}
+
+// versionPart returns the nth dot-separated part of a version string. For
+// the patch version (index 2), the remainder is joined back together to
+// preserve suffixes e.g. "1.2.3b".
+func versionPart(version string, index int) string {
+	if version == "" {
+		return ""
+	}
+
+	parts := strings.Split(version, ".")
+	if len(parts) <= index {
+		return ""
+	}
+
+	if index == 2 {
+		return strings.Join(parts[2:], ".")
+	}
+
+	return parts[index]
+}
+
 // BrowserVersionMajor returns the major version of the browser. If no version is found, it returns an empty string.
 func (ua UserAgent) BrowserVersionMajor() string {
 	if ua.versionIndex == 0 {
 		return ""
 	}
 
-	version := ua.BrowserVersion()
-
-	return strings.Split(version, ".")[0]
+	return versionPart(ua.BrowserVersion(), 0)
 }
 
 // BrowserVersionMinor returns the minor version of the browser. If no version is found, it returns an empty string.
@@ -44,14 +72,7 @@ func (ua UserAgent) BrowserVersionMinor() string {
 		return ""
 	}
 
-	version := ua.BrowserVersion()
-
-	parts := strings.Split(version, ".")
-	if len(parts) < 2 {
-		return ""
-	}
-
-	return parts[1]
+	return versionPart(ua.BrowserVersion(), 1)
 }
 
 // BrowserVersionPatch returns the patch version of the browser. If no version is found, it returns an empty string.
@@ -62,15 +83,39 @@ func (ua UserAgent) BrowserVersionPatch() string {
 		return ""
 	}
 
-	version := ua.BrowserVersion()
+	return versionPart(ua.BrowserVersion(), 2)
+}
 
-	parts := strings.Split(version, ".")
-	if len(parts) < 3 {
+// OSVersionMajor returns the major version of the operating system. If no
+// version is found, it returns an empty string.
+func (ua UserAgent) OSVersionMajor() string {
+	if ua.osVersionIndex == 0 {
 		return ""
 	}
 
-	// Sometimes the patch version has a suffix, e.g. "1.2.3b".
-	return strings.Join(parts[2:], ".")
+	return versionPart(ua.OSVersion(), 0)
+}
+
+// OSVersionMinor returns the minor version of the operating system. If no
+// version is found, it returns an empty string.
+func (ua UserAgent) OSVersionMinor() string {
+	if ua.osVersionIndex == 0 {
+		return ""
+	}
+
+	return versionPart(ua.OSVersion(), 1)
+}
+
+// OSVersionPatch returns the patch version of the operating system. If no
+// version is found, it returns an empty string.
+//
+// Note: The patch version may include a suffix (e.g., "1.2.3b").
+func (ua UserAgent) OSVersionPatch() string {
+	if ua.osVersionIndex == 0 {
+		return ""
+	}
+
+	return versionPart(ua.OSVersion(), 2)
 }
 
 // IsAndroidBrowser returns true if the user agent is an Android browser.

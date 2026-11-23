@@ -20,6 +20,7 @@ func Example() {
 	fmt.Println(agent.Browser())        // agents.BrowserChrome
 	fmt.Println(agent.BrowserVersion()) // 118.0.0.0
 	fmt.Println(agent.OS())             // agents.OSWindows
+	fmt.Println(agent.OSVersion())      // 10.0
 	fmt.Println(agent.Device())         // agents.DeviceDesktop
 
 	// Boolean helper functions.
@@ -39,10 +40,15 @@ func Example() {
 	fmt.Println(agent.BrowserVersionMinor()) // 0
 	fmt.Println(agent.BrowserVersionPatch()) // 0.0
 
+	// OS version helper functions.
+	fmt.Println(agent.OSVersionMajor()) // 10
+	fmt.Println(agent.OSVersionMinor()) // 0
+
 	// Output:
 	// Chrome
 	// 118.0.0.0
 	// Windows
+	// 10.0
 	// Desktop
 	// true
 	// false
@@ -54,4 +60,6 @@ func Example() {
 	// 118
 	// 0
 	// 0.0
+	// 10
+	// 0
 }

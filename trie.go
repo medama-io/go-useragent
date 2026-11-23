@@ -61,6 +61,12 @@ func (trie *RuneTrie) Get(key string) UserAgent {
 	// This is used to determine how many nested parenthesis deep we are.
 	var closingParenthisisNestCount uint8
 
+	// The final OS match and the byte offset after its match rune. The
+	// version is captured after the main loop so that only the highest
+	// precedence OS match counts.
+	var osVersionMatch internal.Match
+	var osVersionOffset int
+
 	for i, r := range key {
 		if skipCount > 0 {
 			skipCount--
@@ -171,6 +177,13 @@ func (trie *RuneTrie) Get(key string) UserAgent {
 				if matched && result.Match == internal.OSAndroid {
 					state = stateSkipClosingParenthesis
 				}
+
+				// If we matched an OS token, record the position after its match
+				// rune to capture the OS version later.
+				if matched && result.Type == internal.MatchOS {
+					osVersionMatch = result.Match
+					osVersionOffset = i + 1
+				}
 			}
 
 			// Set the next node to the child of the current node.
@@ -197,7 +210,141 @@ func (trie *RuneTrie) Get(key string) UserAgent {
 		}
 	}
 
+	ua.captureOSVersion(key, osVersionMatch, osVersionOffset)
+
 	return ua
+}
+
+// captureOSVersion extracts the operating system version from the user agent
+// string, starting after the byte offset of the matched OS token. Version
+// formats differ per OS, so each match uses a different capture strategy:
+//
+// Windows and Android versions follow the OS token directly, only separated
+// by spaces or slashes e.g. "Windows NT 10.0", "Android 14", "Android/7.0".
+//
+// iOS and macOS versions follow a separate "OS" token because the match token
+// can be separated from the version by vendor names or model identifiers
+// containing digits e.g. "iPhone; CPU iPhone OS 17_5_1 like",
+// "iPhone10,1; iOS 11.2", "Macintosh; Intel Mac OS X 10_15_7".
+//
+// ChromeOS versions are separated from the OS token by the device
+// architecture e.g. "CrOS x86_64 14541.0.0".
+//
+// Linux, FreeBSD, and OpenBSD user agents do not report OS versions.
+func (ua *UserAgent) captureOSVersion(key string, match internal.Match, offset int) {
+	switch match {
+	case internal.OSWindows, internal.OSAndroid:
+		// The version follows the OS token directly, only separated by
+		// spaces or slashes.
+		for offset < len(key) && (key[offset] == ' ' || key[offset] == '/') {
+			offset++
+		}
+
+		if offset < len(key) && isVersionByte(key[offset]) {
+			ua.captureOSVersionDigits(key, offset)
+		}
+
+	case internal.OSIOS, internal.OSMacOS:
+		// Skip until the "OS" token that prefixes the version. If we
+		// leave the matched segment first, the version is not reported.
+		for offset < len(key) {
+			if key[offset] == ')' || key[offset] == '(' {
+				return
+			}
+
+			if offset+1 < len(key) && key[offset] == 'O' && key[offset+1] == 'S' &&
+				isOSVersionToken(key, offset) {
+				offset += 2
+				break
+			}
+
+			offset++
+		}
+
+		// Skip vendor names between the OS token and the version e.g.
+		// "Mac OS X 10_15_7".
+		for offset < len(key) && key[offset] != ')' && key[offset] != '(' && !isVersionByte(key[offset]) {
+			offset++
+		}
+
+		if offset < len(key) && isVersionByte(key[offset]) {
+			ua.captureOSVersionDigits(key, offset)
+		}
+
+	case internal.OSChromeOS:
+		// Skip the spaces and the device architecture token between the
+		// OS token and the version e.g. "CrOS x86_64 14541.0.0".
+		for offset < len(key) && key[offset] == ' ' {
+			offset++
+		}
+
+		for offset < len(key) && key[offset] != ' ' && key[offset] != ')' {
+			offset++
+		}
+
+		for offset < len(key) && key[offset] == ' ' {
+			offset++
+		}
+
+		if offset < len(key) && isVersionByte(key[offset]) {
+			ua.captureOSVersionDigits(key, offset)
+		}
+	}
+}
+
+// isOSVersionSeparator returns true if the byte separates tokens in a user
+// agent string. This mirrors the separators skipped by the trie parser.
+func isOSVersionSeparator(b byte) bool {
+	switch b {
+	case ' ', ';', ')', '(', ',', '_', '-', '/':
+		return true
+	}
+
+	return false
+}
+
+// isOSVersionToken returns true if the "OS" starting at the given offset is
+// a standalone token ("OS" or "iOS") rather than part of a larger word,
+// e.g. "FooOS".
+func isOSVersionToken(key string, offset int) bool {
+	if offset > 0 && isOSVersionSeparator(key[offset-1]) {
+		return true
+	}
+
+	// The "iOS" token.
+	if offset > 1 && key[offset-1] == 'i' && isOSVersionSeparator(key[offset-2]) {
+		return true
+	}
+
+	return false
+}
+
+// captureOSVersionDigits copies the version digits starting at the given
+// offset into the OS version buffer until a non-version byte is found.
+// Versions consist of digits and dots, with iOS and macOS using underscores
+// as separators.
+func (ua *UserAgent) captureOSVersionDigits(key string, offset int) {
+	for offset < len(key) && isVersionByte(key[offset]) {
+		if ua.osVersionIndex >= cap(ua.osVersion) {
+			// The buffer is full, stop capturing.
+			return
+		}
+
+		if key[offset] == '_' {
+			// iOS and macOS use underscores as version separators.
+			ua.osVersion[ua.osVersionIndex] = '.'
+		} else {
+			ua.osVersion[ua.osVersionIndex] = key[offset]
+		}
+
+		ua.osVersionIndex++
+		offset++
+	}
+}
+
+// isVersionByte returns true if the byte is part of an OS version number.
+func isVersionByte(b byte) bool {
+	return (b >= '0' && b <= '9') || b == '.' || b == '_'
 }
 
 // Put inserts the value into the trie at the given key, replacing any
