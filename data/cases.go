@@ -14,6 +14,7 @@ type UATestCase struct {
 	ExpectedOS           agents.OS
 	ExpectedDevice       agents.Device
 	ExpectedVersion      string
+	ExpectedOSVersion    string
 }
 
 // AllTestCases contains all the comprehensive test cases for the user agent parser.
@@ -28,6 +29,7 @@ var AllTestCases = []UATestCase{
 		ExpectedOS:           agents.OSWindows,
 		ExpectedDevice:       agents.DeviceDesktop,
 		ExpectedVersion:      "118.0.0.0",
+		ExpectedOSVersion:    "10.0",
 	},
 	{
 		Name:                 "Windows Chrome (WOW64)",
@@ -38,6 +40,7 @@ var AllTestCases = []UATestCase{
 		ExpectedOS:           agents.OSWindows,
 		ExpectedDevice:       agents.DeviceDesktop,
 		ExpectedVersion:      "59.0.3071.115",
+		ExpectedOSVersion:    "6.1",
 	},
 	{
 		Name:                 "Windows IE 8",
@@ -48,6 +51,7 @@ var AllTestCases = []UATestCase{
 		ExpectedOS:           agents.OSWindows,
 		ExpectedDevice:       agents.DeviceDesktop,
 		ExpectedVersion:      "8.0",
+		ExpectedOSVersion:    "6.1",
 	},
 	{
 		Name:                 "Windows IE 10",
@@ -58,6 +62,7 @@ var AllTestCases = []UATestCase{
 		ExpectedOS:           agents.OSWindows,
 		ExpectedDevice:       agents.DeviceDesktop,
 		ExpectedVersion:      "10.0",
+		ExpectedOSVersion:    "6.2",
 	},
 	{
 		Name:                 "Windows IE 11",
@@ -68,6 +73,7 @@ var AllTestCases = []UATestCase{
 		ExpectedOS:           agents.OSWindows,
 		ExpectedDevice:       agents.DeviceDesktop,
 		ExpectedVersion:      "7.0",
+		ExpectedOSVersion:    "6.3",
 	},
 	{
 		Name:                 "Windows IE 6",
@@ -78,6 +84,7 @@ var AllTestCases = []UATestCase{
 		ExpectedOS:           agents.OSWindows,
 		ExpectedDevice:       agents.DeviceDesktop,
 		ExpectedVersion:      "6.0",
+		ExpectedOSVersion:    "5.1",
 	},
 	{
 		Name:                 "Windows Edge",
@@ -88,6 +95,7 @@ var AllTestCases = []UATestCase{
 		ExpectedOS:           agents.OSWindows,
 		ExpectedDevice:       agents.DeviceDesktop,
 		ExpectedVersion:      "15.15063",
+		ExpectedOSVersion:    "10.0",
 	},
 	// Mac
 	{
@@ -99,6 +107,7 @@ var AllTestCases = []UATestCase{
 		ExpectedOS:           agents.OSMacOS,
 		ExpectedDevice:       agents.DeviceDesktop,
 		ExpectedVersion:      "10.1.2",
+		ExpectedOSVersion:    "10.12.6",
 	},
 	{
 		Name:                 "macOS Chrome",
@@ -109,6 +118,7 @@ var AllTestCases = []UATestCase{
 		ExpectedOS:           agents.OSMacOS,
 		ExpectedDevice:       agents.DeviceDesktop,
 		ExpectedVersion:      "60.0.3112.90",
+		ExpectedOSVersion:    "10.12.6",
 	},
 	{
 		Name:                 "macOS Firefox",
@@ -119,6 +129,7 @@ var AllTestCases = []UATestCase{
 		ExpectedOS:           agents.OSMacOS,
 		ExpectedDevice:       agents.DeviceDesktop,
 		ExpectedVersion:      "54.0",
+		ExpectedOSVersion:    "10.12",
 	},
 	{
 		Name:                 "macOS Vivaldi",
@@ -129,6 +140,7 @@ var AllTestCases = []UATestCase{
 		ExpectedOS:           agents.OSMacOS,
 		ExpectedDevice:       agents.DeviceDesktop,
 		ExpectedVersion:      "1.92.917.39",
+		ExpectedOSVersion:    "10.12.6",
 	},
 	{
 		Name:                 "macOS Edge",
@@ -139,6 +151,7 @@ var AllTestCases = []UATestCase{
 		ExpectedOS:           agents.OSMacOS,
 		ExpectedDevice:       agents.DeviceDesktop,
 		ExpectedVersion:      "79.0.309.71",
+		ExpectedOSVersion:    "10.15.3",
 	},
 	{
 		Name:                 "macOS Safari (AppleWebKit only)",
@@ -148,6 +161,7 @@ var AllTestCases = []UATestCase{
 		ExpectedBrowser:      agents.BrowserSafari,
 		ExpectedOS:           agents.OSMacOS,
 		ExpectedDevice:       agents.DeviceDesktop,
+		ExpectedOSVersion:    "10.15.7",
 	},
 	// Linux
 	{
@@ -159,6 +173,7 @@ var AllTestCases = []UATestCase{
 		ExpectedOS:           agents.OSLinux,
 		ExpectedDevice:       agents.DeviceDesktop,
 		ExpectedVersion:      "52.0",
+		ExpectedOSVersion:    "",
 	},
 	{
 		Name:                 "Linux Firefox (i686)",
@@ -169,6 +184,7 @@ var AllTestCases = []UATestCase{
 		ExpectedOS:           agents.OSLinux,
 		ExpectedDevice:       agents.DeviceDesktop,
 		ExpectedVersion:      "119.0",
+		ExpectedOSVersion:    "",
 	},
 	{
 		Name:                 "Ubuntu Firefox",
@@ -179,6 +195,7 @@ var AllTestCases = []UATestCase{
 		ExpectedOS:           agents.OSLinux,
 		ExpectedDevice:       agents.DeviceDesktop,
 		ExpectedVersion:      "119.0",
+		ExpectedOSVersion:    "",
 	},
 	{
 		Name:                 "Fedora Firefox",
@@ -189,6 +206,7 @@ var AllTestCases = []UATestCase{
 		ExpectedOS:           agents.OSLinux,
 		ExpectedDevice:       agents.DeviceDesktop,
 		ExpectedVersion:      "119.0",
+		ExpectedOSVersion:    "",
 	},
 	{
 		Name:                 "Linux Chrome",
@@ -199,6 +217,7 @@ var AllTestCases = []UATestCase{
 		ExpectedOS:           agents.OSLinux,
 		ExpectedDevice:       agents.DeviceDesktop,
 		ExpectedVersion:      "119.0.0.0",
+		ExpectedOSVersion:    "",
 	},
 	// iPhone
 	{
@@ -210,6 +229,7 @@ var AllTestCases = []UATestCase{
 		ExpectedOS:           agents.OSIOS,
 		ExpectedDevice:       agents.DeviceMobile,
 		ExpectedVersion:      "10.0",
+		ExpectedOSVersion:    "10.0",
 	},
 	{
 		Name:                 "iPhone Chrome",
@@ -220,6 +240,7 @@ var AllTestCases = []UATestCase{
 		ExpectedOS:           agents.OSIOS,
 		ExpectedDevice:       agents.DeviceMobile,
 		ExpectedVersion:      "60.0.3112.89",
+		ExpectedOSVersion:    "10.3.2",
 	},
 	{
 		Name:                 "iPhone Opera",
@@ -230,6 +251,7 @@ var AllTestCases = []UATestCase{
 		ExpectedOS:           agents.OSIOS,
 		ExpectedDevice:       agents.DeviceMobile,
 		ExpectedVersion:      "14.0.0.104835",
+		ExpectedOSVersion:    "10.3.2",
 	},
 	{
 		Name:                 "iPhone Firefox",
@@ -240,6 +262,7 @@ var AllTestCases = []UATestCase{
 		ExpectedOS:           agents.OSIOS,
 		ExpectedDevice:       agents.DeviceMobile,
 		ExpectedVersion:      "8.1.1",
+		ExpectedOSVersion:    "10.3.2",
 	},
 	{
 		Name:                 "iPhone Edge",
@@ -250,6 +273,7 @@ var AllTestCases = []UATestCase{
 		ExpectedOS:           agents.OSIOS,
 		ExpectedDevice:       agents.DeviceMobile,
 		ExpectedVersion:      "44.11.15",
+		ExpectedOSVersion:    "12.1.4",
 	},
 	{
 		Name:                 "iPhone Safari (No Version token)",
@@ -259,6 +283,7 @@ var AllTestCases = []UATestCase{
 		ExpectedBrowser:      agents.BrowserSafari,
 		ExpectedOS:           agents.OSIOS,
 		ExpectedDevice:       agents.DeviceMobile,
+		ExpectedOSVersion:    "17.6.1",
 	},
 	{
 		Name:                 "iPhone Edge (Version after browser)",
@@ -269,6 +294,7 @@ var AllTestCases = []UATestCase{
 		ExpectedOS:           agents.OSIOS,
 		ExpectedDevice:       agents.DeviceMobile,
 		ExpectedVersion:      "125.0.2535.87",
+		ExpectedOSVersion:    "17.5",
 	},
 	// iPad
 	{
@@ -280,6 +306,7 @@ var AllTestCases = []UATestCase{
 		ExpectedOS:           agents.OSIOS,
 		ExpectedDevice:       agents.DeviceTablet,
 		ExpectedVersion:      "10.0",
+		ExpectedOSVersion:    "10.0",
 	},
 	{
 		Name:                 "iPad Chrome",
@@ -290,6 +317,7 @@ var AllTestCases = []UATestCase{
 		ExpectedOS:           agents.OSIOS,
 		ExpectedDevice:       agents.DeviceTablet,
 		ExpectedVersion:      "119.0.6045.169",
+		ExpectedOSVersion:    "17.1.2",
 	},
 	{
 		Name:                 "iPad Firefox",
@@ -300,6 +328,7 @@ var AllTestCases = []UATestCase{
 		ExpectedOS:           agents.OSIOS,
 		ExpectedDevice:       agents.DeviceTablet,
 		ExpectedVersion:      "119.0",
+		ExpectedOSVersion:    "17.1",
 	},
 	// Android
 	{
@@ -311,6 +340,7 @@ var AllTestCases = []UATestCase{
 		ExpectedOS:           agents.OSAndroid,
 		ExpectedDevice:       agents.DeviceMobile,
 		ExpectedVersion:      "4.0",
+		ExpectedOSVersion:    "5.0.2",
 	},
 	{
 		Name:                 "Android Browser",
@@ -321,6 +351,7 @@ var AllTestCases = []UATestCase{
 		ExpectedOS:           agents.OSAndroid,
 		ExpectedDevice:       agents.DeviceMobile,
 		ExpectedVersion:      "4.0",
+		ExpectedOSVersion:    "4.0.4",
 	},
 	{
 		Name:                 "Android Browser (U;)",
@@ -331,6 +362,7 @@ var AllTestCases = []UATestCase{
 		ExpectedOS:           agents.OSAndroid,
 		ExpectedDevice:       agents.DeviceMobile,
 		ExpectedVersion:      "4.0",
+		ExpectedOSVersion:    "4.0.3",
 	},
 	{
 		Name:                 "Android Chrome",
@@ -341,6 +373,7 @@ var AllTestCases = []UATestCase{
 		ExpectedOS:           agents.OSAndroid,
 		ExpectedDevice:       agents.DeviceMobile,
 		ExpectedVersion:      "38.0.2125.102",
+		ExpectedOSVersion:    "4.3",
 	},
 	{
 		Name:                 "Android Chrome (Pixel)",
@@ -351,6 +384,7 @@ var AllTestCases = []UATestCase{
 		ExpectedOS:           agents.OSAndroid,
 		ExpectedDevice:       agents.DeviceMobile,
 		ExpectedVersion:      "112.0.0.0",
+		ExpectedOSVersion:    "13",
 	},
 	{
 		Name:                 "Android Firefox (Plain variant)",
@@ -361,6 +395,7 @@ var AllTestCases = []UATestCase{
 		ExpectedOS:           agents.OSAndroid,
 		ExpectedDevice:       agents.DeviceMobile,
 		ExpectedVersion:      "130.0",
+		ExpectedOSVersion:    "10",
 	},
 	// Bots
 	{
@@ -369,6 +404,7 @@ var AllTestCases = []UATestCase{
 		ExpectedMatches:      []internal.Match{internal.DeviceBot},
 		ExpectedCleanVersion: "MozillacompatibleGooglebothttpwwwgooglecombothtml",
 		ExpectedDevice:       agents.DeviceBot,
+		ExpectedOSVersion:    "",
 	},
 	{
 		Name:                 "Bingbot",
@@ -376,6 +412,7 @@ var AllTestCases = []UATestCase{
 		ExpectedMatches:      []internal.Match{internal.DeviceBot},
 		ExpectedCleanVersion: "Mozillacompatiblebingbothttpwwwbingcombingbothtm",
 		ExpectedDevice:       agents.DeviceBot,
+		ExpectedOSVersion:    "",
 	},
 	{
 		Name:                 "Yahoobot",
@@ -383,6 +420,7 @@ var AllTestCases = []UATestCase{
 		ExpectedMatches:      []internal.Match{internal.DeviceBot},
 		ExpectedCleanVersion: "MozillacompatibleYahooSlurphttphelpyahoocomhelpusysearchslurp",
 		ExpectedDevice:       agents.DeviceBot,
+		ExpectedOSVersion:    "",
 	},
 	{
 		Name:                 "YandexBot",
@@ -390,6 +428,7 @@ var AllTestCases = []UATestCase{
 		ExpectedMatches:      []internal.Match{internal.DeviceBot},
 		ExpectedCleanVersion: "MozillacompatibleYandexBothttpyandexcombots",
 		ExpectedDevice:       agents.DeviceBot,
+		ExpectedOSVersion:    "",
 	},
 	{
 		Name:                 "Bingbot (Chrome)",
@@ -399,6 +438,7 @@ var AllTestCases = []UATestCase{
 		ExpectedDevice:       agents.DeviceBot,
 		ExpectedBrowser:      agents.BrowserChrome,
 		ExpectedVersion:      "112.0.0.0",
+		ExpectedOSVersion:    "",
 	},
 	{
 		Name:                 "Headless Chrome Bot",
@@ -409,6 +449,7 @@ var AllTestCases = []UATestCase{
 		ExpectedBrowser:      agents.BrowserChrome,
 		ExpectedOS:           agents.OSLinux,
 		ExpectedVersion:      "125.0.6422.76",
+		ExpectedOSVersion:    "",
 	},
 	{
 		Name:                 "Amazon QBusiness Bot",
@@ -416,6 +457,7 @@ var AllTestCases = []UATestCase{
 		ExpectedMatches:      []internal.Match{internal.DeviceBot},
 		ExpectedCleanVersion: "amazonQBusiness",
 		ExpectedDevice:       agents.DeviceBot,
+		ExpectedOSVersion:    "",
 	},
 	// Others
 	{
@@ -427,6 +469,7 @@ var AllTestCases = []UATestCase{
 		ExpectedOS:           agents.OSAndroid,
 		ExpectedDevice:       agents.DeviceMobile,
 		ExpectedVersion:      "24.1.7.27.00",
+		ExpectedOSVersion:    "13",
 	},
 	{
 		Name:                 "Safari UIWebView",
@@ -436,6 +479,7 @@ var AllTestCases = []UATestCase{
 		ExpectedBrowser:      agents.BrowserSafari,
 		ExpectedOS:           agents.OSIOS,
 		ExpectedDevice:       agents.DeviceMobile,
+		ExpectedOSVersion:    "8.3",
 	},
 	{
 		Name:                 "Linux Falkon Browser",
@@ -446,6 +490,7 @@ var AllTestCases = []UATestCase{
 		ExpectedOS:           agents.OSLinux,
 		ExpectedDevice:       agents.DeviceDesktop,
 		ExpectedVersion:      "24.02.2",
+		ExpectedOSVersion:    "",
 	},
 	{
 		Name:                 "Android Firefox",
@@ -456,6 +501,7 @@ var AllTestCases = []UATestCase{
 		ExpectedOS:           agents.OSAndroid,
 		ExpectedDevice:       agents.DeviceMobile,
 		ExpectedVersion:      "123.0",
+		ExpectedOSVersion:    "14",
 	},
 	{
 		Name:                 "Linux ARM Chrome",
@@ -466,6 +512,7 @@ var AllTestCases = []UATestCase{
 		ExpectedOS:           agents.OSLinux,
 		ExpectedDevice:       agents.DeviceDesktop,
 		ExpectedVersion:      "88.0.4324.182",
+		ExpectedOSVersion:    "",
 	},
 	{
 		Name:                 "Samsung TV",
@@ -476,6 +523,7 @@ var AllTestCases = []UATestCase{
 		ExpectedOS:           agents.OSLinux,
 		ExpectedDevice:       agents.DeviceTV,
 		ExpectedVersion:      "2.1",
+		ExpectedOSVersion:    "",
 	},
 	{
 		Name:                 "Samsung Browser",
@@ -486,6 +534,7 @@ var AllTestCases = []UATestCase{
 		ExpectedOS:           agents.OSLinux,
 		ExpectedDevice:       agents.DeviceDesktop,
 		ExpectedVersion:      "26.0",
+		ExpectedOSVersion:    "",
 	},
 	{
 		Name:                 "OpenBSD Firefox",
@@ -496,6 +545,7 @@ var AllTestCases = []UATestCase{
 		ExpectedOS:           agents.OSOpenBSD,
 		ExpectedDevice:       agents.DeviceDesktop,
 		ExpectedVersion:      "57.0",
+		ExpectedOSVersion:    "",
 	},
 	{
 		Name:                 "PycURL Bot",
@@ -503,6 +553,7 @@ var AllTestCases = []UATestCase{
 		ExpectedMatches:      []internal.Match{internal.DeviceBot},
 		ExpectedCleanVersion: "PycURLlibcurlDEVnghttp",
 		ExpectedDevice:       agents.DeviceBot,
+		ExpectedOSVersion:    "",
 	},
 	{
 		Name:                 "Python Aiohttp Bot",
@@ -510,6 +561,7 @@ var AllTestCases = []UATestCase{
 		ExpectedMatches:      []internal.Match{internal.DeviceBot},
 		ExpectedCleanVersion: "Pythonaiohttp",
 		ExpectedDevice:       agents.DeviceBot,
+		ExpectedOSVersion:    "",
 	},
 	{
 		Name:                 "Python-Requests Bot",
@@ -517,6 +569,7 @@ var AllTestCases = []UATestCase{
 		ExpectedMatches:      []internal.Match{internal.DeviceBot},
 		ExpectedCleanVersion: "pythonrequests",
 		ExpectedDevice:       agents.DeviceBot,
+		ExpectedOSVersion:    "",
 	},
 	{
 		Name:                 "Python-Urllib3 Bot",
@@ -524,6 +577,7 @@ var AllTestCases = []UATestCase{
 		ExpectedMatches:      []internal.Match{internal.DeviceBot},
 		ExpectedCleanVersion: "pythonurllib",
 		ExpectedDevice:       agents.DeviceBot,
+		ExpectedOSVersion:    "",
 	},
 	{
 		Name:                 "Python-Httpx Bot",
@@ -531,6 +585,7 @@ var AllTestCases = []UATestCase{
 		ExpectedMatches:      []internal.Match{internal.DeviceBot},
 		ExpectedCleanVersion: "pythonhttpx",
 		ExpectedDevice:       agents.DeviceBot,
+		ExpectedOSVersion:    "",
 	},
 
 	// Huawei Browser
@@ -543,6 +598,7 @@ var AllTestCases = []UATestCase{
 		ExpectedOS:           agents.OSAndroid,
 		ExpectedDevice:       agents.DeviceMobile,
 		ExpectedVersion:      "13.0.4.302",
+		ExpectedOSVersion:    "10",
 	},
 	{
 		Name:                 "Android Huawei Browser (WebView build)",
@@ -553,6 +609,7 @@ var AllTestCases = []UATestCase{
 		ExpectedOS:           agents.OSAndroid,
 		ExpectedDevice:       agents.DeviceMobile,
 		ExpectedVersion:      "13.0.4.302",
+		ExpectedOSVersion:    "10",
 	},
 	{
 		Name:                 "HarmonyOS Huawei Browser",
@@ -563,6 +620,7 @@ var AllTestCases = []UATestCase{
 		ExpectedOS:           agents.OSAndroid,
 		ExpectedDevice:       agents.DeviceMobile,
 		ExpectedVersion:      "13.0.5.302",
+		ExpectedOSVersion:    "10",
 	},
 	{
 		Name:                 "OpenHarmony Huawei Browser",
@@ -573,6 +631,7 @@ var AllTestCases = []UATestCase{
 		ExpectedOS:           "",
 		ExpectedDevice:       agents.DeviceMobile,
 		ExpectedVersion:      "5.1.5.330",
+		ExpectedOSVersion:    "",
 	},
 	{
 		Name:                 "Android Huawei Browser (Version token, no Chrome)",
@@ -583,6 +642,7 @@ var AllTestCases = []UATestCase{
 		ExpectedOS:           agents.OSAndroid,
 		ExpectedDevice:       agents.DeviceMobile,
 		ExpectedVersion:      "13.0.6.300",
+		ExpectedOSVersion:    "13",
 	},
 
 	// Amazon Silk
@@ -595,6 +655,7 @@ var AllTestCases = []UATestCase{
 		ExpectedOS:           agents.OSAndroid,
 		ExpectedDevice:       agents.DeviceMobile,
 		ExpectedVersion:      "86.3.23",
+		ExpectedOSVersion:    "9",
 	},
 	{
 		Name:                 "Android Amazon Silk (Kindle Fire HDX, mobile)",
@@ -605,6 +666,7 @@ var AllTestCases = []UATestCase{
 		ExpectedOS:           agents.OSAndroid,
 		ExpectedDevice:       agents.DeviceMobile,
 		ExpectedVersion:      "3.44",
+		ExpectedOSVersion:    "4.2.2",
 	},
 
 	// Vendor wrappers and in-app browsers
@@ -617,6 +679,7 @@ var AllTestCases = []UATestCase{
 		ExpectedOS:           agents.OSAndroid,
 		ExpectedDevice:       agents.DeviceMobile,
 		ExpectedVersion:      "145.0.0.0",
+		ExpectedOSVersion:    "10",
 	},
 	{
 		Name:                 "Android Ecosia (Huawei MRD-LX1)",
@@ -627,6 +690,7 @@ var AllTestCases = []UATestCase{
 		ExpectedOS:           agents.OSAndroid,
 		ExpectedDevice:       agents.DeviceMobile,
 		ExpectedVersion:      "65.0.3325.230",
+		ExpectedOSVersion:    "9",
 	},
 	{
 		Name:                 "Android Ecosia (reduced UA)",
@@ -637,6 +701,7 @@ var AllTestCases = []UATestCase{
 		ExpectedOS:           agents.OSAndroid,
 		ExpectedDevice:       agents.DeviceMobile,
 		ExpectedVersion:      "111.0.0.0",
+		ExpectedOSVersion:    "10",
 	},
 	{
 		Name:                 "Android DuckDuckGo (token after Safari)",
@@ -647,6 +712,7 @@ var AllTestCases = []UATestCase{
 		ExpectedOS:           agents.OSAndroid,
 		ExpectedDevice:       agents.DeviceMobile,
 		ExpectedVersion:      "120.0.6099.43",
+		ExpectedOSVersion:    "12",
 	},
 	{
 		Name:                 "Android DuckDuckGo (token before Safari, with Lilo)",
@@ -657,6 +723,7 @@ var AllTestCases = []UATestCase{
 		ExpectedOS:           agents.OSAndroid,
 		ExpectedDevice:       agents.DeviceMobile,
 		ExpectedVersion:      "117.0.0.0",
+		ExpectedOSVersion:    "10",
 	},
 	{
 		Name:                 "iOS Google Search App (GSA)",
@@ -667,6 +734,7 @@ var AllTestCases = []UATestCase{
 		ExpectedOS:           agents.OSIOS,
 		ExpectedDevice:       agents.DeviceMobile,
 		ExpectedVersion:      "",
+		ExpectedOSVersion:    "14.7",
 	},
 	{
 		Name:                 "Android Instagram in-app webview",
@@ -677,6 +745,7 @@ var AllTestCases = []UATestCase{
 		ExpectedOS:           agents.OSAndroid,
 		ExpectedDevice:       agents.DeviceMobile,
 		ExpectedVersion:      "119.0.6045.66",
+		ExpectedOSVersion:    "14",
 	},
 	{
 		Name:                 "Android KakaoTalk in-app webview",
@@ -687,6 +756,7 @@ var AllTestCases = []UATestCase{
 		ExpectedOS:           agents.OSAndroid,
 		ExpectedDevice:       agents.DeviceMobile,
 		ExpectedVersion:      "137.0.7151.61",
+		ExpectedOSVersion:    "15",
 	},
 	{
 		Name:                 "Android Naver app (Whale/Crosswalk)",
@@ -697,6 +767,7 @@ var AllTestCases = []UATestCase{
 		ExpectedOS:           agents.OSAndroid,
 		ExpectedDevice:       agents.DeviceMobile,
 		ExpectedVersion:      "69.0.3497.128",
+		ExpectedOSVersion:    "9",
 	},
 	{
 		Name:                 "Android Puffin",
@@ -707,6 +778,7 @@ var AllTestCases = []UATestCase{
 		ExpectedOS:           agents.OSAndroid,
 		ExpectedDevice:       agents.DeviceMobile,
 		ExpectedVersion:      "79.0.3945.136",
+		ExpectedOSVersion:    "9",
 	},
 	{
 		Name:                 "iOS Klarna in-app",
@@ -717,6 +789,7 @@ var AllTestCases = []UATestCase{
 		ExpectedOS:           agents.OSIOS,
 		ExpectedDevice:       agents.DeviceMobile,
 		ExpectedVersion:      "",
+		ExpectedOSVersion:    "15.6.1",
 	},
 	{
 		Name:                 "Android WeChat in-app (long chain)",
@@ -727,6 +800,7 @@ var AllTestCases = []UATestCase{
 		ExpectedOS:           agents.OSAndroid,
 		ExpectedDevice:       agents.DeviceMobile,
 		ExpectedVersion:      "78.0.3904.62",
+		ExpectedOSVersion:    "10",
 	},
 	{
 		Name:                 "iOS Twitter for iPhone (space token)",
@@ -737,6 +811,7 @@ var AllTestCases = []UATestCase{
 		ExpectedOS:           agents.OSIOS,
 		ExpectedDevice:       agents.DeviceMobile,
 		ExpectedVersion:      "",
+		ExpectedOSVersion:    "11.3.1",
 	},
 	{
 		Name:                 "Android Edge (EdgA)",
@@ -747,6 +822,7 @@ var AllTestCases = []UATestCase{
 		ExpectedOS:           agents.OSAndroid,
 		ExpectedDevice:       agents.DeviceMobile,
 		ExpectedVersion:      "141.0.0.0",
+		ExpectedOSVersion:    "10",
 	},
 	{
 		Name:                 "Android Opera (OPR)",
@@ -757,6 +833,7 @@ var AllTestCases = []UATestCase{
 		ExpectedOS:           agents.OSAndroid,
 		ExpectedDevice:       agents.DeviceMobile,
 		ExpectedVersion:      "117.0.5408.39",
+		ExpectedOSVersion:    "13",
 	},
 	{
 		Name:                 "Android Samsung Internet",
@@ -767,6 +844,7 @@ var AllTestCases = []UATestCase{
 		ExpectedOS:           agents.OSAndroid,
 		ExpectedDevice:       agents.DeviceMobile,
 		ExpectedVersion:      "24.0",
+		ExpectedOSVersion:    "14",
 	},
 	{
 		Name:                 "Windows Yandex Browser (YaBrowser + Yowser)",
@@ -777,6 +855,7 @@ var AllTestCases = []UATestCase{
 		ExpectedOS:           agents.OSWindows,
 		ExpectedDevice:       agents.DeviceDesktop,
 		ExpectedVersion:      "18.3.1.1232",
+		ExpectedOSVersion:    "10.0",
 	},
 	{
 		Name:                 "Android Huawei Browser (HarmonyOS)",
@@ -787,6 +866,7 @@ var AllTestCases = []UATestCase{
 		ExpectedOS:           agents.OSAndroid,
 		ExpectedDevice:       agents.DeviceMobile,
 		ExpectedVersion:      "11.1.2.301",
+		ExpectedOSVersion:    "10",
 	},
 	{
 		Name:                 "Windows Vivaldi",
@@ -797,6 +877,7 @@ var AllTestCases = []UATestCase{
 		ExpectedOS:           agents.OSWindows,
 		ExpectedDevice:       agents.DeviceDesktop,
 		ExpectedVersion:      "7.6.3797.63",
+		ExpectedOSVersion:    "10.0",
 	},
 	{
 		Name:                 "Windows IE 7",
@@ -807,6 +888,7 @@ var AllTestCases = []UATestCase{
 		ExpectedOS:           agents.OSWindows,
 		ExpectedDevice:       agents.DeviceDesktop,
 		ExpectedVersion:      "7.0",
+		ExpectedOSVersion:    "6.0",
 	},
 	{
 		Name:                 "Googlebot Smartphone",
@@ -817,6 +899,7 @@ var AllTestCases = []UATestCase{
 		ExpectedOS:           agents.OSAndroid,
 		ExpectedDevice:       agents.DeviceBot,
 		ExpectedVersion:      "125.0.6422.76",
+		ExpectedOSVersion:    "6.0.1",
 	},
 	{
 		Name:                 "facebookexternalhit",
@@ -827,6 +910,7 @@ var AllTestCases = []UATestCase{
 		ExpectedOS:           "",
 		ExpectedDevice:       agents.DeviceBot,
 		ExpectedVersion:      "",
+		ExpectedOSVersion:    "",
 	},
 	{
 		Name:                 "macOS Safari with appended crawler tokens",
@@ -837,6 +921,7 @@ var AllTestCases = []UATestCase{
 		ExpectedOS:           agents.OSMacOS,
 		ExpectedDevice:       agents.DeviceBot,
 		ExpectedVersion:      "9.0.1",
+		ExpectedOSVersion:    "10.11.1",
 	},
 	{
 		Name:                 "Windows Chrome (latest)",
@@ -847,6 +932,7 @@ var AllTestCases = []UATestCase{
 		ExpectedOS:           agents.OSWindows,
 		ExpectedDevice:       agents.DeviceDesktop,
 		ExpectedVersion:      "149.0.0.0",
+		ExpectedOSVersion:    "10.0",
 	},
 	{
 		Name:                 "macOS Chrome (latest)",
@@ -857,6 +943,7 @@ var AllTestCases = []UATestCase{
 		ExpectedOS:           agents.OSMacOS,
 		ExpectedDevice:       agents.DeviceDesktop,
 		ExpectedVersion:      "149.0.0.0",
+		ExpectedOSVersion:    "10.15.7",
 	},
 	{
 		Name:                 "iOS Chrome (CriOS)",
@@ -867,6 +954,7 @@ var AllTestCases = []UATestCase{
 		ExpectedOS:           agents.OSIOS,
 		ExpectedDevice:       agents.DeviceMobile,
 		ExpectedVersion:      "150.0.0.0",
+		ExpectedOSVersion:    "18.7",
 	},
 	{
 		Name:                 "Windows Firefox (latest)",
@@ -877,6 +965,7 @@ var AllTestCases = []UATestCase{
 		ExpectedOS:           agents.OSWindows,
 		ExpectedDevice:       agents.DeviceDesktop,
 		ExpectedVersion:      "133.0",
+		ExpectedOSVersion:    "10.0",
 	},
 	{
 		Name:                 "iOS Firefox (FxiOS)",
@@ -887,6 +976,7 @@ var AllTestCases = []UATestCase{
 		ExpectedOS:           agents.OSIOS,
 		ExpectedDevice:       agents.DeviceMobile,
 		ExpectedVersion:      "7.0.4",
+		ExpectedOSVersion:    "12.1",
 	},
 	{
 		Name:                 "macOS Safari (latest)",
@@ -897,6 +987,7 @@ var AllTestCases = []UATestCase{
 		ExpectedOS:           agents.OSMacOS,
 		ExpectedDevice:       agents.DeviceDesktop,
 		ExpectedVersion:      "26.5",
+		ExpectedOSVersion:    "15.7.7",
 	},
 	{
 		Name:                 "iPhone Safari (latest)",
@@ -907,5 +998,107 @@ var AllTestCases = []UATestCase{
 		ExpectedOS:           agents.OSIOS,
 		ExpectedDevice:       agents.DeviceMobile,
 		ExpectedVersion:      "26.5",
+		ExpectedOSVersion:    "18.7.8",
+	},
+
+	// OS versions
+	{
+		Name:                 "ChromeOS Chrome (x86_64)",
+		UserAgent:            "Mozilla/5.0 (X11; CrOS x86_64 14541.0.0) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+		ExpectedMatches:      []internal.Match{internal.BrowserSafari, internal.BrowserChrome, internal.OSChromeOS},
+		ExpectedCleanVersion: "MozillaXCrOSxAppleWebKitKHTMLlikeGeckoChromeSafari",
+		ExpectedBrowser:      agents.BrowserChrome,
+		ExpectedOS:           agents.OSChromeOS,
+		ExpectedDevice:       agents.DeviceDesktop,
+		ExpectedVersion:      "120.0.0.0",
+		ExpectedOSVersion:    "14541.0.0",
+	},
+	{
+		Name:                 "ChromeOS Chrome (armv7l)",
+		UserAgent:            "Mozilla/5.0 (X11; CrOS armv7l 7834.66.0) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/54.0.2840.101 Safari/537.36",
+		ExpectedMatches:      []internal.Match{internal.BrowserSafari, internal.BrowserChrome, internal.OSChromeOS},
+		ExpectedCleanVersion: "MozillaXCrOSarmvlAppleWebKitKHTMLlikeGeckoChromeSafari",
+		ExpectedBrowser:      agents.BrowserChrome,
+		ExpectedOS:           agents.OSChromeOS,
+		ExpectedDevice:       agents.DeviceDesktop,
+		ExpectedVersion:      "54.0.2840.101",
+		ExpectedOSVersion:    "7834.66.0",
+	},
+	{
+		Name:                 "Windows Phone Edge (dual OS)",
+		UserAgent:            "Mozilla/5.0 (Windows Phone 10.0; Android 6.0.1; Microsoft; Lumia 950) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/52.0.2743.116 Mobile Safari/537.36 Edge/15.14977",
+		ExpectedMatches:      []internal.Match{internal.BrowserEdge, internal.BrowserSafari, internal.DeviceMobile, internal.BrowserChrome, internal.OSAndroid, internal.TokenMobileDevice},
+		ExpectedCleanVersion: "MozillaWindowsPhoneAndroidAppleWebKitKHTMLlikeGeckoChromeMobileSafariEdge",
+		ExpectedBrowser:      agents.BrowserEdge,
+		ExpectedOS:           agents.OSAndroid,
+		ExpectedDevice:       agents.DeviceMobile,
+		ExpectedVersion:      "15.14977",
+		ExpectedOSVersion:    "6.0.1",
+	},
+	{
+		Name:                 "Android WhatsApp (slash version)",
+		UserAgent:            "WhatsApp/2.18.105 Android/7.0 Device/motorola-Moto_G_(5)_Plus",
+		ExpectedMatches:      []internal.Match{internal.OSAndroid, internal.DeviceBot},
+		ExpectedCleanVersion: "WhatsAppAndroid",
+		ExpectedBrowser:      agents.BrowserAndroid,
+		ExpectedOS:           agents.OSAndroid,
+		ExpectedDevice:       agents.DeviceMobile,
+		ExpectedVersion:      "",
+		ExpectedOSVersion:    "7.0",
+	},
+	{
+		Name:                 "iOS Snapchat (model identifier)",
+		UserAgent:            "Snapchat/10.29.1.0 (iPhone10,1; iOS 11.2; gzip)",
+		ExpectedMatches:      []internal.Match{internal.OSIOS, internal.TokenMobileDevice},
+		ExpectedCleanVersion: "SnapchatiPhoneiOSgzip",
+		ExpectedBrowser:      "",
+		ExpectedOS:           agents.OSIOS,
+		ExpectedDevice:       agents.DeviceMobile,
+		ExpectedVersion:      "",
+		ExpectedOSVersion:    "11.2",
+	},
+	{
+		Name:                 "iOS GoogleMobile app (multiple iPhone occurrences)",
+		UserAgent:            "com.google.GoogleMobile/47.1.0 iPhone/10.1 hw/iPhone7_2 iOS/15E148 GoogleBot/2.1; +http://www.google.com/bot.html",
+		ExpectedMatches:      []internal.Match{internal.DeviceBot, internal.OSIOS, internal.TokenMobileDevice, internal.DeviceMobile},
+		ExpectedCleanVersion: "comgoogleGoogleMobileiPhonehwiPhoneiOSEGoogleBothttpwwwgooglecombothtml",
+		ExpectedBrowser:      "",
+		ExpectedOS:           agents.OSIOS,
+		ExpectedDevice:       agents.DeviceBot,
+		ExpectedVersion:      "",
+		ExpectedOSVersion:    "15",
+	},
+	{
+		Name:                 "Android DDG app (API level, no version)",
+		UserAgent:            "ddg_android/5.90.0 (com.duckduckgo.mobile.android; Android API 30)",
+		ExpectedMatches:      []internal.Match{internal.OSAndroid},
+		ExpectedCleanVersion: "ddgandroidcomduckduckgomobileandroidAndroid",
+		ExpectedBrowser:      agents.BrowserAndroid,
+		ExpectedOS:           agents.OSAndroid,
+		ExpectedDevice:       agents.DeviceMobile,
+		ExpectedVersion:      "",
+		ExpectedOSVersion:    "",
+	},
+	{
+		Name:                 "iOS Facebook app (FBDV model identifier)",
+		UserAgent:            "Mozilla/5.0 (iPhone; CPU iPhone OS 8_1_3 like Mac OS X) AppleWebKit/600.1.4 (KHTML, like Gecko) Mobile/12B466 [FBAN/FBIOS;FBAV/37.0.0.21.273;FBBV/13822349;FBDV/iPhone6,1;FBMD/iPhone;FBSN/iPhone OS;FBSV/8.1.3;FBSS/2; FBCR/fido;FBID/phone;FBLC/fr_FR;FBOP/5]",
+		ExpectedMatches:      []internal.Match{internal.OSIOS, internal.TokenMobileDevice, internal.DeviceMobile, internal.BrowserSafari},
+		ExpectedCleanVersion: "MozillaiPhoneCPUiPhoneOSlikeMacOSXAppleWebKitKHTMLlikeGeckoMobileFBANFBIOSFBAVFBBVFBDViPhoneFBMDiPhoneFBSNiPhoneOSFBSVFBSSFBCRfidoFBIDphoneFBLCfrFRFBOP",
+		ExpectedBrowser:      agents.BrowserSafari,
+		ExpectedOS:           agents.OSIOS,
+		ExpectedDevice:       agents.DeviceMobile,
+		ExpectedVersion:      "",
+		ExpectedOSVersion:    "8.1.3",
+	},
+	{
+		Name:                 "iOS version ignores fake OS substring",
+		UserAgent:            "Snapchat/10.29.1.0 (iPhone10,1; FooOS 12; iOS 11.2; gzip)",
+		ExpectedMatches:      []internal.Match{internal.OSIOS, internal.TokenMobileDevice},
+		ExpectedCleanVersion: "SnapchatiPhoneFooOSiOSgzip",
+		ExpectedBrowser:      "",
+		ExpectedOS:           agents.OSIOS,
+		ExpectedDevice:       agents.DeviceMobile,
+		ExpectedVersion:      "",
+		ExpectedOSVersion:    "11.2",
 	},
 }

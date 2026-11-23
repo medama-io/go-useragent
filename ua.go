@@ -28,6 +28,9 @@ type UserAgent struct {
 	version      [32]byte
 	versionIndex int
 
+	osVersion      [32]byte
+	osVersionIndex int
+
 	browser internal.Match
 	os      internal.Match
 	device  internal.Match
